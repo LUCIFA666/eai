@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="330" viewBox="0 0 1040 330" role="img" aria-labelledby="title desc">
+  <title id="title">env structure</title>
+  <desc id="desc">Seven parts of an Isaac Lab environment.</desc>
+  <defs>
+    <style>
+      text { font-family: "Noto Sans CJK SC", "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", Inter, system-ui, sans-serif; }
+      .bg { fill: #f6f3ed; }
+      .ink { fill: #24312b; }
+      .muted { fill: #66736c; }
+    </style>
+  </defs>
+  <rect class="bg" width="1040" height="330"/>
+
+  <rect x="360" y="20" width="320" height="48" rx="14" fill="#e4f3ef" stroke="#0b6f64" stroke-width="2"/>
+  <text x="428" y="50" font-size="20" font-weight="800" fill="#0b6f64">环境定义 (EnvCfg)</text>
+
+  <rect x="64" y="112" width="240" height="88" rx="12" fill="#eef5ee" stroke="#bfd0c2" stroke-width="1.5"/>
+  <text class="ink" x="88" y="140" font-size="16" font-weight="700">SceneCfg</text>
+  <text class="muted" x="88" y="162" font-size="13">地面 / 灯光 / 传感器</text>
+  <text class="muted" x="88" y="180" font-size="13">机器人 (Articulation + Actuator)</text>
+
+  <rect x="324" y="112" width="188" height="72" rx="12" fill="#fff6df" stroke="#b7791f" stroke-width="1.5"/>
+  <text class="ink" x="348" y="140" font-size="16" font-weight="700">观测定义</text>
+  <text class="muted" x="348" y="164" font-size="13">策略的输入张量</text>
+
+  <rect x="532" y="112" width="188" height="72" rx="12" fill="#fff6df" stroke="#b7791f" stroke-width="1.5"/>
+  <text class="ink" x="556" y="140" font-size="16" font-weight="700">动作定义</text>
+  <text class="muted" x="556" y="164" font-size="13">策略输出 → 机器人</text>
+
+  <rect x="740" y="112" width="240" height="72" rx="12" fill="#f6efe2" stroke="#dbc99e" stroke-width="1.5"/>
+  <text class="ink" x="764" y="140" font-size="16" font-weight="700">奖励定义</text>
+  <text class="muted" x="764" y="164" font-size="13">多项加权 → 标量反馈</text>
+
+  <rect x="64" y="236" width="240" height="72" rx="12" fill="#f4eeee" stroke="#d6bfbd" stroke-width="1.5"/>
+  <text class="ink" x="88" y="264" font-size="16" font-weight="700">终止条件</text>
+  <text class="muted" x="88" y="288" font-size="13">超时 / 跌倒 / 越界 / 成功</text>
+
+  <rect x="324" y="236" width="240" height="72" rx="12" fill="#e9f1fb" stroke="#33658a" stroke-width="1.5"/>
+  <text class="ink" x="348" y="264" font-size="16" font-weight="700">域随机化</text>
+  <text class="muted" x="348" y="288" font-size="13">物理 / 执行器 / 外力 / 噪声</text>
+
+  <rect x="584" y="236" width="280" height="72" rx="12" fill="#eef2f5" stroke="#becbd3" stroke-width="1.5"/>
+  <text class="ink" x="608" y="264" font-size="16" font-weight="700">Gymnasium 注册</text>
+  <text class="muted" x="608" y="288" font-size="13">task name + entry_point</text>
+
+  <line x1="520" y1="68" x2="184" y2="112" stroke="#9caa9f" stroke-width="2"/>
+  <line x1="520" y1="68" x2="418" y2="112" stroke="#9caa9f" stroke-width="2"/>
+  <line x1="520" y1="68" x2="626" y2="112" stroke="#9caa9f" stroke-width="2"/>
+  <line x1="520" y1="68" x2="860" y2="112" stroke="#9caa9f" stroke-width="2"/>
+  <line x1="184" y1="200" x2="184" y2="236" stroke="#9caa9f" stroke-width="2"/>
+  <line x1="520" y1="68" x2="444" y2="236" stroke="#9caa9f" stroke-width="2" stroke-dasharray="6 4"/>
+  <line x1="520" y1="68" x2="724" y2="236" stroke="#9caa9f" stroke-width="2" stroke-dasharray="6 4"/>
+</svg>

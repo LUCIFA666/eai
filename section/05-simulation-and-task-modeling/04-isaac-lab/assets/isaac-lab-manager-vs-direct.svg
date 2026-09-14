@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="460" viewBox="0 0 1080 460" role="img" aria-labelledby="title desc">
+  <title id="title">Manager-based vs Direct</title>
+  <desc id="desc">Left: Manager-based declarative config. Right: Direct imperative methods.</desc>
+  <defs>
+    <style>
+      text { font-family: "Noto Sans CJK SC", "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", Inter, system-ui, sans-serif; }
+      .bg { fill: #f6f3ed; }
+      .ink { fill: #24312b; }
+      .muted { fill: #66736c; }
+      .conn { stroke: #9caa9f; stroke-width: 2; fill: none; }
+    </style>
+  </defs>
+  <rect class="bg" width="1080" height="460"/>
+
+  <!-- Left: Manager-based -->
+  <rect x="28" y="16" width="484" height="424" rx="20" fill="#ffffff" stroke="#0b6f64" stroke-width="2"/>
+  <rect x="28" y="16" width="484" height="44" rx="20" fill="#e4f3ef"/>
+  <rect x="28" y="40" width="484" height="20" fill="#e4f3ef"/>
+  <text x="176" y="46" font-size="20" font-weight="800" fill="#0b6f64">Manager-based（声明式）</text>
+
+  <rect x="88" y="80" width="364" height="40" rx="10" fill="#e4f3ef" stroke="#0b6f64" stroke-width="1.5"/>
+  <text x="172" y="106" font-size="16" font-weight="700" fill="#0b6f64">ManagerBasedRLEnv</text>
+
+  <rect x="88" y="140" width="176" height="36" rx="8" fill="#eef5ee" stroke="#bfd0c2" stroke-width="1.5"/>
+  <text class="ink" x="108" y="164" font-size="13" font-weight="600">SceneCfg</text>
+  <text class="muted" x="190" y="164" font-size="12">场景资产</text>
+
+  <rect x="272" y="140" width="180" height="36" rx="8" fill="#eef5ee" stroke="#bfd0c2" stroke-width="1.5"/>
+  <text class="ink" x="284" y="164" font-size="13" font-weight="600">ObservationMgr</text>
+  <text class="muted" x="396" y="164" font-size="12">观测</text>
+
+  <rect x="88" y="188" width="176" height="36" rx="8" fill="#eef5ee" stroke="#bfd0c2" stroke-width="1.5"/>
+  <text class="ink" x="108" y="212" font-size="13" font-weight="600">ActionMgr</text>
+  <text class="muted" x="198" y="212" font-size="12">动作空间</text>
+
+  <rect x="272" y="188" width="180" height="36" rx="8" fill="#eef5ee" stroke="#bfd0c2" stroke-width="1.5"/>
+  <text class="ink" x="284" y="212" font-size="13" font-weight="600">RewardMgr</text>
+  <text class="muted" x="386" y="212" font-size="12">奖励加权</text>
+
+  <rect x="88" y="236" width="176" height="36" rx="8" fill="#eef5ee" stroke="#bfd0c2" stroke-width="1.5"/>
+  <text class="ink" x="108" y="260" font-size="13" font-weight="600">TerminationMgr</text>
+  <text class="muted" x="240" y="260" font-size="12">终止</text>
+
+  <rect x="272" y="236" width="180" height="36" rx="8" fill="#eef5ee" stroke="#bfd0c2" stroke-width="1.5"/>
+  <text class="ink" x="284" y="260" font-size="13" font-weight="600">EventMgr</text>
+  <text class="muted" x="368" y="260" font-size="12">域随机化</text>
+
+  <rect x="88" y="284" width="364" height="36" rx="8" fill="#eef5ee" stroke="#bfd0c2" stroke-width="1.5"/>
+  <text class="ink" x="108" y="308" font-size="13" font-weight="600">CurriculumMgr</text>
+  <text class="muted" x="242" y="308" font-size="12">课程学习（逐步增加难度）</text>
+
+  <path class="conn" d="M270 120 V136"/>
+  <path class="conn" d="M176 120 V140"/>
+  <path class="conn" d="M362 120 V140"/>
+  <path class="conn" d="M176 176 V188"/>
+  <path class="conn" d="M362 176 V188"/>
+  <path class="conn" d="M176 224 V236"/>
+  <path class="conn" d="M362 224 V236"/>
+  <path class="conn" d="M270 272 V284"/>
+
+  <rect x="52" y="360" width="440" height="32" rx="6" fill="#e4f3ef" stroke="none"/>
+  <text x="80" y="382" font-size="14" font-weight="700" fill="#0b6f64">适合：新项目 / 快速迭代 / 课程学习</text>
+
+  <!-- Divider -->
+  <line x1="540" y1="24" x2="540" y2="432" stroke="#d9d0c2" stroke-width="2" stroke-dasharray="8 6"/>
+
+  <!-- Right: Direct -->
+  <rect x="568" y="16" width="484" height="424" rx="20" fill="#ffffff" stroke="#b7791f" stroke-width="2"/>
+  <rect x="568" y="16" width="484" height="44" rx="20" fill="#fff6df"/>
+  <rect x="568" y="40" width="484" height="20" fill="#fff6df"/>
+  <text x="728" y="46" font-size="20" font-weight="800" fill="#b7791f">Direct（命令式）</text>
+
+  <rect x="628" y="80" width="364" height="40" rx="10" fill="#fff6df" stroke="#b7791f" stroke-width="1.5"/>
+  <text x="752" y="106" font-size="16" font-weight="700" fill="#b7791f">DirectRLEnv</text>
+
+  <rect x="628" y="140" width="364" height="36" rx="8" fill="#fffcf0" stroke="#dbc99e" stroke-width="1.5"/>
+  <text class="ink" x="648" y="164" font-size="13" font-weight="600">_setup_scene()</text>
+  <text class="muted" x="812" y="164" font-size="12">构建场景</text>
+
+  <rect x="628" y="188" width="364" height="36" rx="8" fill="#fffcf0" stroke="#dbc99e" stroke-width="1.5"/>
+  <text class="ink" x="648" y="212" font-size="13" font-weight="600">_pre_physics_step()</text>
+  <text class="muted" x="840" y="212" font-size="12">物理步前处理</text>
+
+  <rect x="628" y="236" width="364" height="36" rx="8" fill="#fffcf0" stroke="#dbc99e" stroke-width="1.5"/>
+  <text class="ink" x="648" y="260" font-size="13" font-weight="600">_apply_action()</text>
+  <text class="muted" x="812" y="260" font-size="12">发送动作</text>
+
+  <rect x="628" y="284" width="176" height="36" rx="8" fill="#fffcf0" stroke="#dbc99e" stroke-width="1.5"/>
+  <text class="ink" x="648" y="308" font-size="13" font-weight="600">_get_observations()</text>
+
+  <rect x="816" y="284" width="176" height="36" rx="8" fill="#fffcf0" stroke="#dbc99e" stroke-width="1.5"/>
+  <text class="ink" x="836" y="308" font-size="13" font-weight="600">_get_rewards()</text>
+
+  <rect x="628" y="332" width="176" height="36" rx="8" fill="#fffcf0" stroke="#dbc99e" stroke-width="1.5"/>
+  <text class="ink" x="648" y="356" font-size="13" font-weight="600">_get_dones()</text>
+
+  <rect x="816" y="332" width="176" height="36" rx="8" fill="#fffcf0" stroke="#dbc99e" stroke-width="1.5"/>
+  <text class="ink" x="836" y="356" font-size="13" font-weight="600">_reset_idx()</text>
+
+  <path class="conn" d="M810 120 V140" stroke="#dbc99e"/>
+  <path class="conn" d="M810 176 V188" stroke="#dbc99e"/>
+  <path class="conn" d="M810 224 V236" stroke="#dbc99e"/>
+  <path class="conn" d="M810 272 V284" stroke="#dbc99e"/>
+  <path class="conn" d="M716 320 V332" stroke="#dbc99e"/>
+  <path class="conn" d="M904 320 V332" stroke="#dbc99e"/>
+
+  <rect x="592" y="392" width="440" height="32" rx="6" fill="#fff6df" stroke="none"/>
+  <text x="620" y="414" font-size="14" font-weight="700" fill="#b7791f">适合：Isaac Gym 迁移 / 极致性能 / 非标准循环</text>
+</svg>

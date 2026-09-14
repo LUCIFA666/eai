@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="520" viewBox="0 0 1040 520" role="img" aria-labelledby="title desc">
+  <title id="title">Isaac Sim asset visual and physics properties</title>
+  <desc id="desc">A diagram separating visual material, collider, physics material friction, and joint drive in Isaac Sim assets.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2e5a66"/>
+    </marker>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#1d2b33" flood-opacity="0.16"/>
+    </filter>
+  </defs>
+  <rect width="1040" height="520" fill="#f7f8f5"/>
+  <text x="48" y="54" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="800" fill="#17252b">导入后的 USD 要分开检查：看、撞、滑、动</text>
+  <text x="48" y="84" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#52616b">一个机器人“显示出来”只是开始，仿真还需要碰撞体、物理材质和关节驱动。</text>
+
+  <g filter="url(#shadow)">
+    <rect x="70" y="132" width="210" height="138" rx="8" fill="#ffffff" stroke="#9bb3bf"/>
+    <rect x="305" y="132" width="210" height="138" rx="8" fill="#ffffff" stroke="#9bb3bf"/>
+    <rect x="540" y="132" width="210" height="138" rx="8" fill="#ffffff" stroke="#9bb3bf"/>
+    <rect x="775" y="132" width="210" height="138" rx="8" fill="#ffffff" stroke="#9bb3bf"/>
+  </g>
+
+  <text x="96" y="166" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="800" fill="#17394a">Visual Material</text>
+  <text x="96" y="194" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#465860">决定相机看到什么</text>
+  <text x="96" y="220" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#60707a">颜色、纹理、金属度</text>
+  <text x="96" y="242" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#60707a">粗糙度、透明度、反光</text>
+
+  <text x="331" y="166" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="800" fill="#17394a">Collider</text>
+  <text x="331" y="194" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#465860">决定能不能撞</text>
+  <text x="331" y="220" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#60707a">collision mesh、凸包</text>
+  <text x="331" y="242" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#60707a">盒子、胶囊、简化几何</text>
+
+  <text x="566" y="166" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="800" fill="#17394a">Physics Material</text>
+  <text x="566" y="194" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#465860">决定接触时滑不滑</text>
+  <text x="566" y="220" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#60707a">静摩擦、动摩擦</text>
+  <text x="566" y="242" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#60707a">弹性恢复、接触材料</text>
+
+  <text x="801" y="166" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="800" fill="#17394a">Joint Drive</text>
+  <text x="801" y="194" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#465860">决定关节怎么动</text>
+  <text x="801" y="220" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#60707a">position / velocity target</text>
+  <text x="801" y="242" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#60707a">stiffness、damping、force</text>
+
+  <line x1="175" y1="292" x2="175" y2="334" stroke="#2e5a66" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="410" y1="292" x2="410" y2="334" stroke="#2e5a66" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="645" y1="292" x2="645" y2="334" stroke="#2e5a66" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="880" y1="292" x2="880" y2="334" stroke="#2e5a66" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="70" y="350" width="915" height="96" rx="8" fill="#e9f0ed" stroke="#b7c8c2"/>
+  <text x="100" y="384" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#243e3a">进入任务前的资产体检顺序</text>
+  <text x="100" y="416" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#344c46">1. 先看 visual 是否完整，再打开 collider 可视化。</text>
+  <text x="400" y="416" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#344c46">2. 碰撞体正确后，再调摩擦和弹性。</text>
+  <text x="700" y="416" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#344c46">3. 最后调 joint drive，让动作稳定。</text>
+</svg>

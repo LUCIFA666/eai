@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="420" viewBox="0 0 920 420" role="img" aria-labelledby="title desc">
+  <title id="title">Isaac Sim camera render pipeline</title>
+  <desc id="desc">A diagram showing how camera configuration becomes rendered observation data in Isaac Sim.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#455a64"/>
+    </marker>
+    <style>
+      .bg { fill: #f7f8fb; }
+      .panel { fill: #ffffff; stroke: #c7d0d9; stroke-width: 1.4; }
+      .head { font: 700 18px Arial, sans-serif; fill: #263238; }
+      .text { font: 14px Arial, sans-serif; fill: #37474f; }
+      .small { font: 12.5px Arial, sans-serif; fill: #546e7a; }
+      .code { font: 13px Consolas, monospace; fill: #455a64; }
+      .arrow { stroke: #455a64; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+      .warn { fill: #fff8e1; stroke: #d59b2d; stroke-width: 1.2; }
+      .green { fill: #e8f5e9; stroke: #5e9f64; stroke-width: 1.2; }
+      .violet { fill: #f1ecf9; stroke: #8e6ab8; stroke-width: 1.2; }
+      .cyan { fill: #e4f6f8; stroke: #4c9aa5; stroke-width: 1.2; }
+    </style>
+  </defs>
+  <rect class="bg" x="0" y="0" width="920" height="420"/>
+
+  <rect class="panel" x="32" y="48" width="170" height="122" rx="8"/>
+  <text class="head" x="58" y="82">相机配置</text>
+  <text class="code" x="54" y="112">prim_path</text>
+  <text class="code" x="54" y="134">translation / orientation</text>
+  <text class="code" x="54" y="156">resolution / focal_length</text>
+
+  <rect class="panel" x="260" y="48" width="170" height="122" rx="8"/>
+  <text class="head" x="286" y="82">Camera prim</text>
+  <text class="small" x="284" y="112">stage 里的传感器节点</text>
+  <text class="small" x="284" y="136">可固定，也可挂在手腕</text>
+  <text class="small" x="284" y="160">需要 initialize()</text>
+
+  <rect class="panel" x="488" y="48" width="170" height="122" rx="8"/>
+  <text class="head" x="512" y="82">Render product</text>
+  <text class="small" x="512" y="112">RGB / depth</text>
+  <text class="small" x="512" y="136">segmentation / bbox</text>
+  <text class="small" x="512" y="160">绑定到渲染器输出</text>
+
+  <rect class="panel" x="716" y="48" width="170" height="122" rx="8"/>
+  <text class="head" x="748" y="82">Frame buffer</text>
+  <text class="small" x="746" y="112">最近一次完成渲染</text>
+  <text class="small" x="746" y="136">不是当前 Python 行</text>
+  <text class="small" x="746" y="160">读太早会空或旧</text>
+
+  <path class="arrow" d="M 204 109 L 252 109"/>
+  <path class="arrow" d="M 432 109 L 480 109"/>
+  <path class="arrow" d="M 660 109 L 708 109"/>
+
+  <rect class="warn" x="96" y="234" width="190" height="98" rx="8"/>
+  <text class="head" x="126" y="266">等待几帧</text>
+  <text class="small" x="122" y="296">world.reset()</text>
+  <text class="small" x="122" y="318">world.step(render=True)</text>
+
+  <rect class="cyan" x="366" y="234" width="190" height="98" rx="8"/>
+  <text class="head" x="396" y="266">读取观测</text>
+  <text class="small" x="392" y="296">get_rgb() / get_depth()</text>
+  <text class="small" x="392" y="318">get_current_frame()</text>
+
+  <rect class="green" x="636" y="234" width="190" height="98" rx="8"/>
+  <text class="head" x="666" y="266">写入 episode</text>
+  <text class="small" x="662" y="296">camera_1_rgb</text>
+  <text class="small" x="662" y="318">step_index + state + action</text>
+
+  <path class="arrow" d="M 800 172 C 800 210 252 198 210 230"/>
+  <path class="arrow" d="M 288 283 L 358 283"/>
+  <path class="arrow" d="M 558 283 L 628 283"/>
+
+  <rect class="violet" x="148" y="360" width="624" height="34" rx="8"/>
+  <text class="text" x="177" y="382">核心经验：创建相机后要等渲染完成；读取的是上一帧完成的传感器缓存；保存时必须和动作、状态、阶段对齐。</text>
+</svg>

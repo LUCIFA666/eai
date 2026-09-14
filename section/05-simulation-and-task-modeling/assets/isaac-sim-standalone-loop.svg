@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="520" viewBox="0 0 1040 520" role="img" aria-labelledby="title desc">
+  <title id="title">Isaac Sim standalone embodied loop</title>
+  <desc id="desc">A diagram showing SimulationApp, USD Stage, World, sensors, policy, actions, simulation step, and logging.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#0b6f64"/>
+    </marker>
+    <style>
+      .bg { fill: #f7f8f5; }
+      .panel { fill: #ffffff; stroke: #d8ded8; stroke-width: 2; }
+      .primary { fill: #e4f3ef; stroke: #0b6f64; stroke-width: 2; }
+      .warn { fill: #fff6df; stroke: #b7791f; stroke-width: 2; }
+      .ink { fill: #18201d; font-family: Segoe UI, Arial, sans-serif; }
+      .muted { fill: #69736e; font-family: Segoe UI, Arial, sans-serif; }
+      .title { font-size: 26px; font-weight: 800; }
+      .label { font-size: 19px; font-weight: 700; }
+      .small { font-size: 15px; }
+      .line { stroke: #0b6f64; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .softline { stroke: #8aa39c; stroke-width: 2; fill: none; stroke-dasharray: 8 7; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect class="bg" width="1040" height="520" rx="0"/>
+  <text class="ink title" x="44" y="56">Python standalone 中的具身智能闭环</text>
+  <text class="muted small" x="44" y="84">从 Isaac Sim 应用启动，到观测、动作、仿真步进和 episode 记录</text>
+
+  <rect class="panel" x="44" y="126" width="194" height="96" rx="8"/>
+  <text class="ink label" x="68" y="164">SimulationApp</text>
+  <text class="muted small" x="68" y="192">启动 Kit / 渲染 / 物理</text>
+
+  <rect class="panel" x="308" y="126" width="194" height="96" rx="8"/>
+  <text class="ink label" x="348" y="164">USD Stage</text>
+  <text class="muted small" x="334" y="192">场景树与 prim 路径</text>
+
+  <rect class="panel" x="572" y="126" width="194" height="96" rx="8"/>
+  <text class="ink label" x="626" y="164">World</text>
+  <text class="muted small" x="604" y="192">reset / step / scene</text>
+
+  <rect class="primary" x="308" y="286" width="194" height="104" rx="8"/>
+  <text class="ink label" x="356" y="324">Sensors</text>
+  <text class="muted small" x="334" y="352">RGB / depth / state</text>
+  <text class="muted small" x="334" y="374">object pose / contact</text>
+
+  <rect class="primary" x="572" y="286" width="194" height="104" rx="8"/>
+  <text class="ink label" x="624" y="324">Policy</text>
+  <text class="muted small" x="604" y="352">controller / model</text>
+  <text class="muted small" x="604" y="374">rule / replay</text>
+
+  <rect class="warn" x="836" y="286" width="160" height="104" rx="8"/>
+  <text class="ink label" x="884" y="324">Log</text>
+  <text class="muted small" x="858" y="352">action / state</text>
+  <text class="muted small" x="858" y="374">success / evidence</text>
+
+  <path class="line" d="M238 174 H308"/>
+  <path class="line" d="M502 174 H572"/>
+  <path class="line" d="M669 222 V286"/>
+  <path class="line" d="M572 338 H502"/>
+  <path class="line" d="M405 286 V222"/>
+  <path class="line" d="M502 338 H572"/>
+  <path class="line" d="M766 338 H836"/>
+  <path class="softline" d="M916 286 C916 244 845 214 766 196"/>
+
+  <text class="muted small" x="520" y="424">核心节奏：read observation → choose action → apply action → world.step() → write log</text>
+</svg>

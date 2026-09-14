@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="320" viewBox="0 0 1080 320" role="img" aria-labelledby="title desc">
+  <title id="title">Isaac Lab training pipeline</title>
+  <desc id="desc">GPU Hardware, Isaac Sim, Isaac Lab, RL Library, Trained Policy.</desc>
+  <defs>
+    <style>
+      text { font-family: "Noto Sans CJK SC", "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", Inter, system-ui, sans-serif; }
+      .bg { fill: #f6f3ed; }
+      .card { rx: 16; stroke-width: 2; }
+      .ink { fill: #24312b; }
+      .muted { fill: #66736c; }
+      .arrow { stroke: #9caa9f; stroke-width: 3; fill: none; stroke-linecap: round; }
+      .arrow-head { fill: #9caa9f; }
+    </style>
+  </defs>
+  <rect class="bg" width="1080" height="320"/>
+
+  <rect class="card" x="64" y="40" width="176" height="108" fill="#f4eeee" stroke="#d6bfbd"/>
+  <text class="ink" x="100" y="76" font-size="20" font-weight="800">GPU Hardware</text>
+  <text class="muted" x="88" y="102" font-size="14">PhysX CUDA 内核</text>
+  <text class="muted" x="96" y="122" font-size="14">RTX 光线追踪</text>
+
+  <rect class="card" x="296" y="40" width="176" height="108" fill="#eef5ee" stroke="#bfd0c2"/>
+  <text class="ink" x="312" y="76" font-size="20" font-weight="800">Isaac Sim</text>
+  <text class="muted" x="312" y="102" font-size="14">物理仿真 + 渲染</text>
+  <text class="muted" x="312" y="122" font-size="14">USD 场景管理</text>
+
+  <rect class="card" x="528" y="24" width="192" height="140" fill="#e4f3ef" stroke="#0b6f64"/>
+  <text x="556" y="62" font-size="21" font-weight="800" fill="#0b6f64">Isaac Lab</text>
+  <text class="muted" x="548" y="88" font-size="14">场景配置 / 观测定义</text>
+  <text class="muted" x="548" y="108" font-size="14">奖励计算 / 域随机化</text>
+  <text class="muted" x="548" y="128" font-size="14">Gymnasium 标准接口</text>
+  <text class="muted" x="548" y="148" font-size="14">reset() / step()</text>
+
+  <rect class="card" x="776" y="40" width="176" height="108" fill="#fff6df" stroke="#b7791f"/>
+  <text class="ink" x="812" y="76" font-size="20" font-weight="800">RL Library</text>
+  <text class="muted" x="800" y="102" font-size="14">PPO / SAC / AMP</text>
+  <text class="muted" x="800" y="122" font-size="14">读观测 · 写动作</text>
+
+  <path class="arrow" d="M240 94 H296"/>
+  <polygon class="arrow-head" points="293,88 303,94 293,100"/>
+  <path class="arrow" d="M472 94 H528"/>
+  <polygon class="arrow-head" points="525,88 535,94 525,100"/>
+  <path class="arrow" d="M720 94 H776"/>
+  <polygon class="arrow-head" points="773,88 783,94 773,100"/>
+
+  <rect class="card" x="528" y="212" width="192" height="72" fill="#e9f1fb" stroke="#33658a"/>
+  <text class="ink" x="556" y="248" font-size="20" font-weight="800">Trained Policy</text>
+  <text class="muted" x="556" y="268" font-size="14">导出模型 → 部署真机</text>
+
+  <path class="arrow" d="M864 148 V248 H720"/>
+  <polygon class="arrow-head" points="724,242 714,248 724,254"/>
+</svg>

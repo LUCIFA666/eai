@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="560" viewBox="0 0 1040 560" role="img" aria-labelledby="title desc">
+  <title id="title">USD versus URDF</title>
+  <desc id="desc">A side-by-side comparison showing URDF as robot structure description and USD as full scene description in Isaac Sim.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f7f8f5; }
+      .urdf { fill: #e9f1fb; stroke: #33658a; stroke-width: 2; }
+      .usd { fill: #e4f3ef; stroke: #0b6f64; stroke-width: 2; }
+      .shared { fill: #fff6df; stroke: #b7791f; stroke-width: 2; }
+      .ink { fill: #18201d; font-family: Segoe UI, Arial, sans-serif; }
+      .muted { fill: #69736e; font-family: Segoe UI, Arial, sans-serif; }
+      .title { font-size: 26px; font-weight: 800; }
+      .head { font-size: 21px; font-weight: 800; }
+      .label { font-size: 16px; font-weight: 700; }
+      .small { font-size: 14px; }
+      .line { stroke: #8aa39c; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#8aa39c"/>
+    </marker>
+  </defs>
+  <rect class="bg" width="1040" height="560"/>
+  <text class="ink title" x="44" y="56">URDF 与 USD 不是同一层东西</text>
+  <text class="muted small" x="44" y="84">URDF 更像机器人结构说明书，USD 更像完整仿真世界的舞台文件</text>
+
+  <rect class="urdf" x="64" y="132" width="396" height="292" rx="8"/>
+  <text class="ink head" x="96" y="172">URDF</text>
+  <text class="muted small" x="96" y="198">Robot description</text>
+
+  <rect class="shared" x="96" y="232" width="300" height="42" rx="6"/>
+  <text class="ink label" x="118" y="258">links / joints / kinematic tree</text>
+  <rect class="shared" x="96" y="288" width="300" height="42" rx="6"/>
+  <text class="ink label" x="118" y="314">visual / collision / inertial</text>
+  <rect class="shared" x="96" y="344" width="300" height="42" rx="6"/>
+  <text class="ink label" x="118" y="370">ROS-friendly robot model</text>
+
+  <rect class="usd" x="580" y="132" width="396" height="292" rx="8"/>
+  <text class="ink head" x="612" y="172">USD</text>
+  <text class="muted small" x="612" y="198">Scene description</text>
+
+  <rect class="shared" x="612" y="232" width="300" height="42" rx="6"/>
+  <text class="ink label" x="634" y="258">stage / prim tree / references</text>
+  <rect class="shared" x="612" y="288" width="300" height="42" rx="6"/>
+  <text class="ink label" x="634" y="314">materials / lights / cameras</text>
+  <rect class="shared" x="612" y="344" width="300" height="42" rx="6"/>
+  <text class="ink label" x="634" y="370">physics / sensors / full scene</text>
+
+  <path class="line" d="M460 278 C500 278 536 278 580 278"/>
+  <text class="muted small" x="474" y="254">import / convert</text>
+
+  <rect class="shared" x="216" y="462" width="608" height="56" rx="8"/>
+  <text class="ink label" x="250" y="496">Isaac Sim 中常见流程：URDF 描述机器人结构 → 转成 USD → 放进 Stage 与场景交互</text>
+</svg>

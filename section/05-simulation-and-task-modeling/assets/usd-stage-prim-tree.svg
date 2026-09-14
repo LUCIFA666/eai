@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="620" viewBox="0 0 1040 620" role="img" aria-labelledby="title desc">
+  <title id="title">USD Stage and Prim Tree</title>
+  <desc id="desc">A tree diagram showing a USD Stage with World, Robot, Table, Objects, Camera, Looks, and PhysicsScene prim paths.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f7f8f5; }
+      .root { fill: #e4f3ef; stroke: #0b6f64; stroke-width: 2; }
+      .node { fill: #ffffff; stroke: #d8ded8; stroke-width: 2; }
+      .asset { fill: #fff6df; stroke: #b7791f; stroke-width: 2; }
+      .sensor { fill: #e9f1fb; stroke: #33658a; stroke-width: 2; }
+      .ink { fill: #18201d; font-family: Segoe UI, Arial, sans-serif; }
+      .muted { fill: #69736e; font-family: Segoe UI, Arial, sans-serif; }
+      .title { font-size: 26px; font-weight: 800; }
+      .label { font-size: 17px; font-weight: 800; }
+      .small { font-size: 14px; }
+      .path { font-size: 14px; font-family: Consolas, Menlo, monospace; }
+      .line { stroke: #8aa39c; stroke-width: 2; fill: none; }
+    </style>
+  </defs>
+  <rect class="bg" width="1040" height="620"/>
+  <text class="ink title" x="44" y="56">USD Stage 可以理解成一棵场景树</text>
+  <text class="muted small" x="44" y="84">代码通过 prim path 找到机器人、物体、相机、材质和物理场景</text>
+
+  <rect class="root" x="64" y="122" width="196" height="70" rx="8"/>
+  <text class="ink label" x="92" y="152">Stage</text>
+  <text class="muted path" x="92" y="174">current world</text>
+
+  <path class="line" d="M260 157 H330"/>
+  <rect class="root" x="330" y="122" width="196" height="70" rx="8"/>
+  <text class="ink label" x="358" y="152">/World</text>
+  <text class="muted small" x="358" y="174">default scene root</text>
+
+  <path class="line" d="M428 192 V238"/>
+  <path class="line" d="M428 238 H246"/>
+  <path class="line" d="M428 238 H610"/>
+  <path class="line" d="M428 238 V292"/>
+
+  <rect class="asset" x="124" y="270" width="244" height="78" rx="8"/>
+  <text class="ink label" x="152" y="300">/World/Robot</text>
+  <text class="muted small" x="152" y="322">articulation root</text>
+
+  <rect class="asset" x="388" y="270" width="244" height="78" rx="8"/>
+  <text class="ink label" x="416" y="300">/World/Table</text>
+  <text class="muted small" x="416" y="322">object or xform root</text>
+
+  <rect class="asset" x="652" y="270" width="244" height="78" rx="8"/>
+  <text class="ink label" x="680" y="300">/World/Objects</text>
+  <text class="muted small" x="680" y="322">task objects group</text>
+
+  <path class="line" d="M246 348 V394"/>
+  <path class="line" d="M246 394 H122"/>
+  <path class="line" d="M246 394 H370"/>
+
+  <rect class="node" x="56" y="424" width="214" height="64" rx="8"/>
+  <text class="ink path" x="80" y="454">/World/Robot/base_link</text>
+  <text class="muted small" x="80" y="474">link / collision / visual</text>
+
+  <rect class="sensor" x="298" y="424" width="238" height="64" rx="8"/>
+  <text class="ink path" x="322" y="454">/World/Robot/wrist_camera</text>
+  <text class="muted small" x="322" y="474">camera prim</text>
+
+  <path class="line" d="M774 348 V394"/>
+  <path class="line" d="M774 394 H650"/>
+  <path class="line" d="M774 394 H898"/>
+
+  <rect class="node" x="584" y="424" width="214" height="64" rx="8"/>
+  <text class="ink path" x="608" y="454">/World/Objects/beaker_1</text>
+  <text class="muted small" x="608" y="474">movable object root</text>
+
+  <rect class="node" x="826" y="424" width="178" height="64" rx="8"/>
+  <text class="ink path" x="850" y="454">/World/Objects/bottle_1</text>
+  <text class="muted small" x="850" y="474">xform + mesh</text>
+
+  <rect class="node" x="56" y="522" width="248" height="58" rx="8"/>
+  <text class="ink path" x="80" y="555">/World/Looks</text>
+  <text class="muted small" x="174" y="555">materials</text>
+
+  <rect class="node" x="334" y="522" width="248" height="58" rx="8"/>
+  <text class="ink path" x="358" y="555">/World/PhysicsScene</text>
+  <text class="muted small" x="514" y="555">physics</text>
+
+  <rect class="sensor" x="612" y="522" width="320" height="58" rx="8"/>
+  <text class="ink path" x="636" y="555">/World/Camera/front_camera</text>
+  <text class="muted small" x="836" y="555">sensor</text>
+</svg>
