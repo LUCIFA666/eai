@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="500" viewBox="0 0 1280 500" role="img" aria-labelledby="title desc">
+  <title id="title">SimpleVLA-RL Rollout 蛇形流程</title>
+  <desc id="desc">Rollout 从机器人任务索引开始，创建环境，读取图像和语言指令，让 VLA 生成动作，送入环境执行，最后收集 complete、finish_step 和 responses。</desc>
+  <defs>
+    <filter id="shadow" x="-10%" y="-25%" width="120%" height="160%">
+      <feDropShadow dx="0" dy="7" stdDeviation="8" flood-color="#102033" flood-opacity="0.14"/>
+    </filter>
+    <marker id="arrow" markerWidth="11" markerHeight="11" refX="8.5" refY="5.5" orient="auto">
+      <path d="M1,1 L10,5.5 L1,10 Z" fill="#526070"/>
+    </marker>
+    <linearGradient id="final" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#1E5B78"/>
+      <stop offset="1" stop-color="#2E7D6B"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="500" fill="#F7F9FB"/>
+  <rect x="34" y="30" width="1212" height="440" rx="18" fill="#FFFFFF" stroke="#DDE5EC"/>
+
+  <text x="64" y="72" font-family="Inter, Arial, 'Microsoft YaHei', sans-serif" font-size="28" font-weight="700" fill="#163243">
+    Rollout 环境交互流程
+  </text>
+  <text x="64" y="103" font-family="Inter, Arial, 'Microsoft YaHei', sans-serif" font-size="15" fill="#627386">
+    generate_sequences 在机器人任务中不是普通文本生成，而是让 VLA 观察环境、生成动作并收集轨迹
+  </text>
+
+  <g font-family="Inter, Arial, 'Microsoft YaHei', sans-serif">
+    <!-- 第一排：任务索引到 VLA 输入 -->
+    <g filter="url(#shadow)" transform="translate(94 150)">
+      <rect x="0" y="0" width="210" height="112" rx="14" fill="#EAF4F8" stroke="#B9D4E0"/>
+      <text x="105" y="34" text-anchor="middle" font-size="18" font-weight="700" fill="#17445A">机器人任务索引</text>
+      <text x="105" y="61" text-anchor="middle" font-size="14" fill="#48616E">task_id / trial_id</text>
+      <text x="105" y="86" text-anchor="middle" font-size="13" fill="#6B7C87">确定要评估的任务实例</text>
+    </g>
+
+    <line x1="318" y1="206" x2="382" y2="206" stroke="#526070" stroke-width="2.8" marker-end="url(#arrow)"/>
+
+    <g filter="url(#shadow)" transform="translate(396 150)">
+      <rect x="0" y="0" width="210" height="112" rx="14" fill="#EDF7EF" stroke="#BBD8C1"/>
+      <text x="105" y="34" text-anchor="middle" font-size="18" font-weight="700" fill="#275E37">创建环境</text>
+      <text x="105" y="61" text-anchor="middle" font-size="14" fill="#496B51">LIBERO / RoboTwin</text>
+      <text x="105" y="86" text-anchor="middle" font-size="13" fill="#708077">reset 到指定初始状态</text>
+    </g>
+
+    <line x1="620" y1="206" x2="684" y2="206" stroke="#526070" stroke-width="2.8" marker-end="url(#arrow)"/>
+
+    <g filter="url(#shadow)" transform="translate(698 150)">
+      <rect x="0" y="0" width="210" height="112" rx="14" fill="#FFF5E8" stroke="#E9C99D"/>
+      <text x="105" y="34" text-anchor="middle" font-size="18" font-weight="700" fill="#805220">读取 Observation</text>
+      <text x="105" y="61" text-anchor="middle" font-size="14" fill="#745A35">图像 + 语言指令</text>
+      <text x="105" y="86" text-anchor="middle" font-size="13" fill="#8A7660">可选 proprio 状态</text>
+    </g>
+
+    <line x1="922" y1="206" x2="986" y2="206" stroke="#526070" stroke-width="2.8" marker-end="url(#arrow)"/>
+
+    <g filter="url(#shadow)" transform="translate(1000 150)">
+      <rect x="0" y="0" width="210" height="112" rx="14" fill="#F2EEF9" stroke="#CCBDE2"/>
+      <text x="105" y="34" text-anchor="middle" font-size="18" font-weight="700" fill="#573D7B">构造 VLA 输入</text>
+      <text x="105" y="61" text-anchor="middle" font-size="14" fill="#66527E">process_input(...)</text>
+      <text x="105" y="86" text-anchor="middle" font-size="13" fill="#766C82">tokens / image tensor</text>
+    </g>
+
+    <!-- 转向第二排 -->
+    <path d="M1105 268 C1105 300, 1105 312, 1105 333" fill="none" stroke="#526070" stroke-width="2.8" marker-end="url(#arrow)"/>
+
+    <!-- 第二排：从右往左 -->
+    <g filter="url(#shadow)" transform="translate(1000 345)">
+      <rect x="0" y="0" width="210" height="96" rx="14" fill="#EEF3FF" stroke="#BFCDF2"/>
+      <text x="105" y="31" text-anchor="middle" font-size="18" font-weight="700" fill="#314E90">VLA 生成 Action</text>
+      <text x="105" y="56" text-anchor="middle" font-size="14" fill="#53668F">action chunk</text>
+      <text x="105" y="78" text-anchor="middle" font-size="13" fill="#69778E">token + 连续动作</text>
+    </g>
+
+    <line x1="986" y1="393" x2="922" y2="393" stroke="#526070" stroke-width="2.8" marker-end="url(#arrow)"/>
+
+    <g filter="url(#shadow)" transform="translate(698 345)">
+      <rect x="0" y="0" width="210" height="96" rx="14" fill="#EAF7F5" stroke="#B7D9D2"/>
+      <text x="105" y="31" text-anchor="middle" font-size="18" font-weight="700" fill="#20665F">环境执行 Action</text>
+      <text x="105" y="56" text-anchor="middle" font-size="14" fill="#426F69">env.step(action)</text>
+      <text x="105" y="78" text-anchor="middle" font-size="13" fill="#667F7A">推进仿真状态</text>
+    </g>
+
+    <line x1="684" y1="393" x2="620" y2="393" stroke="#526070" stroke-width="2.8" marker-end="url(#arrow)"/>
+
+    <g filter="url(#shadow)" transform="translate(396 345)">
+      <rect x="0" y="0" width="210" height="96" rx="14" fill="#F8F0E8" stroke="#E0C7B0"/>
+      <text x="105" y="31" text-anchor="middle" font-size="18" font-weight="700" fill="#6C492C">循环直到结束</text>
+      <text x="105" y="56" text-anchor="middle" font-size="14" fill="#7D6959">done / max_steps</text>
+      <text x="105" y="78" text-anchor="middle" font-size="13" fill="#806F62">统计 finish_step</text>
+    </g>
+
+    <line x1="382" y1="393" x2="318" y2="393" stroke="#526070" stroke-width="2.8" marker-end="url(#arrow)"/>
+
+    <g filter="url(#shadow)" transform="translate(94 345)">
+      <rect x="0" y="0" width="210" height="96" rx="14" fill="url(#final)" stroke="#1E5B78"/>
+      <text x="105" y="31" text-anchor="middle" font-size="18" font-weight="700" fill="#FFFFFF">打包 Trajectory</text>
+      <text x="105" y="56" text-anchor="middle" font-size="13" fill="#EAF6F3">complete / finish_step</text>
+      <text x="105" y="78" text-anchor="middle" font-size="13" fill="#EAF6F3">responses / actions</text>
+    </g>
+  </g>
+</svg>

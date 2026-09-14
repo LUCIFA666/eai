@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1050" height="560" viewBox="0 0 1050 560">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#243042}.axis{stroke:#46515f;stroke-width:1.4}.grid{stroke:#d8dee8;stroke-width:1;stroke-dasharray:4 5}.title{font-size:18px;font-weight:700}.small{font-size:13px}.tick{font-size:12px;fill:#4b5563}</style>
+<text x="525.0" y="32" text-anchor="middle" class="title">SimpleVLA-RL LIBERO10 Training Accuracy</text>
+<text x="525.0" y="54" text-anchor="middle" class="small">train_verify_score/all over training steps</text>
+<line x1="78" y1="454.1" x2="1014" y2="454.1" class="grid"/>
+<text x="66" y="458.1" text-anchor="end" class="tick">0.3</text>
+<line x1="78" y1="394.4" x2="1014" y2="394.4" class="grid"/>
+<text x="66" y="398.4" text-anchor="end" class="tick">0.4</text>
+<line x1="78" y1="334.7" x2="1014" y2="334.7" class="grid"/>
+<text x="66" y="338.7" text-anchor="end" class="tick">0.5</text>
+<line x1="78" y1="275.0" x2="1014" y2="275.0" class="grid"/>
+<text x="66" y="279.0" text-anchor="end" class="tick">0.6</text>
+<line x1="78" y1="215.3" x2="1014" y2="215.3" class="grid"/>
+<text x="66" y="219.3" text-anchor="end" class="tick">0.7</text>
+<line x1="78" y1="155.6" x2="1014" y2="155.6" class="grid"/>
+<text x="66" y="159.6" text-anchor="end" class="tick">0.8</text>
+<line x1="78" y1="95.9" x2="1014" y2="95.9" class="grid"/>
+<text x="66" y="99.9" text-anchor="end" class="tick">0.9</text>
+<line x1="78.0" y1="66" x2="78.0" y2="484" class="grid"/>
+<text x="78.0" y="506" text-anchor="middle" class="tick">0</text>
+<line x1="148.6" y1="66" x2="148.6" y2="484" class="grid"/>
+<text x="148.6" y="506" text-anchor="middle" class="tick">4</text>
+<line x1="219.3" y1="66" x2="219.3" y2="484" class="grid"/>
+<text x="219.3" y="506" text-anchor="middle" class="tick">8</text>
+<line x1="289.9" y1="66" x2="289.9" y2="484" class="grid"/>
+<text x="289.9" y="506" text-anchor="middle" class="tick">12</text>
+<line x1="360.6" y1="66" x2="360.6" y2="484" class="grid"/>
+<text x="360.6" y="506" text-anchor="middle" class="tick">16</text>
+<line x1="431.2" y1="66" x2="431.2" y2="484" class="grid"/>
+<text x="431.2" y="506" text-anchor="middle" class="tick">20</text>
+<line x1="501.8" y1="66" x2="501.8" y2="484" class="grid"/>
+<text x="501.8" y="506" text-anchor="middle" class="tick">24</text>
+<line x1="572.5" y1="66" x2="572.5" y2="484" class="grid"/>
+<text x="572.5" y="506" text-anchor="middle" class="tick">28</text>
+<line x1="643.1" y1="66" x2="643.1" y2="484" class="grid"/>
+<text x="643.1" y="506" text-anchor="middle" class="tick">32</text>
+<line x1="713.8" y1="66" x2="713.8" y2="484" class="grid"/>
+<text x="713.8" y="506" text-anchor="middle" class="tick">36</text>
+<line x1="784.4" y1="66" x2="784.4" y2="484" class="grid"/>
+<text x="784.4" y="506" text-anchor="middle" class="tick">40</text>
+<line x1="855.1" y1="66" x2="855.1" y2="484" class="grid"/>
+<text x="855.1" y="506" text-anchor="middle" class="tick">44</text>
+<line x1="925.7" y1="66" x2="925.7" y2="484" class="grid"/>
+<text x="925.7" y="506" text-anchor="middle" class="tick">48</text>
+<line x1="996.3" y1="66" x2="996.3" y2="484" class="grid"/>
+<text x="996.3" y="506" text-anchor="middle" class="tick">52</text>
+<line x1="78" y1="484" x2="1014" y2="484" class="axis"/>
+<line x1="78" y1="66" x2="78" y2="484" class="axis"/>
+<text x="546.0" y="536" text-anchor="middle" class="small">Training step</text>
+<text x="22" y="275.0" text-anchor="middle" class="small" transform="rotate(-90 22 275.0)">train_verify_score/all</text>
+<polyline points="78.0,445.2 95.7,457.7 113.3,447.0 131.0,410.6 148.6,389.7 166.3,385.5 184.0,435.0 201.6,313.8 219.3,325.2 236.9,317.4 254.6,301.9 272.3,307.8 289.9,283.4 307.6,319.2 325.2,270.2 342.9,260.7 360.6,259.5 378.2,276.2 395.9,246.9 413.5,238.6 431.2,239.8 448.9,226.0 466.5,220.1 484.2,202.7 501.8,183.0 519.5,182.4 537.2,180.7 554.8,171.7 572.5,162.7 590.2,178.3 607.8,158.0 625.5,141.8 643.1,148.4 660.8,132.3 678.5,139.4 696.1,146.6 713.8,114.4 731.4,141.8 749.1,147.2 766.8,129.3 784.4,120.9 802.1,121.5 819.7,123.9 837.4,112.0 855.1,112.0 872.7,98.2 890.4,126.9 908.0,103.6 925.7,100.0 943.4,94.7 961.0,88.1 978.7,97.1 996.3,90.5 1014.0,94.7" fill="none" stroke="#2563EB" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="78.0" cy="445.2" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 0: 0.315 (original)</title></circle>
+<circle cx="95.7" cy="457.7" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 1: 0.294 (original)</title></circle>
+<circle cx="113.3" cy="447.0" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 2: 0.312 (original)</title></circle>
+<circle cx="131.0" cy="410.6" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 3: 0.373 (original)</title></circle>
+<circle cx="148.6" cy="389.7" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 4: 0.408 (original)</title></circle>
+<circle cx="166.3" cy="385.5" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 5: 0.415 (original)</title></circle>
+<circle cx="184.0" cy="435.0" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 6: 0.332 (original)</title></circle>
+<circle cx="201.6" cy="313.8" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 7: 0.535 (original)</title></circle>
+<circle cx="219.3" cy="325.2" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 8: 0.516 (original)</title></circle>
+<circle cx="236.9" cy="317.4" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 9: 0.529 (original)</title></circle>
+<circle cx="254.6" cy="301.9" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 10: 0.555 (original)</title></circle>
+<circle cx="272.3" cy="307.8" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 11: 0.545 (original)</title></circle>
+<circle cx="289.9" cy="283.4" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 12: 0.586 (resume_gs11)</title></circle>
+<circle cx="307.6" cy="319.2" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 13: 0.526 (resume_gs11)</title></circle>
+<circle cx="325.2" cy="270.2" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 14: 0.608 (resume_gs11)</title></circle>
+<circle cx="342.9" cy="260.7" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 15: 0.624 (resume_gs11)</title></circle>
+<circle cx="360.6" cy="259.5" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 16: 0.626 (resume_gs11)</title></circle>
+<circle cx="378.2" cy="276.2" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 17: 0.598 (resume_gs11)</title></circle>
+<circle cx="395.9" cy="246.9" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 18: 0.647 (resume_gs11)</title></circle>
+<circle cx="413.5" cy="238.6" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 19: 0.661 (resume_gs11)</title></circle>
+<circle cx="431.2" cy="239.8" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 20: 0.659 (resume_gs11)</title></circle>
+<circle cx="448.9" cy="226.0" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 21: 0.682 (resume_gs11)</title></circle>
+<circle cx="466.5" cy="220.1" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 22: 0.692 (resume_gs11)</title></circle>
+<circle cx="484.2" cy="202.7" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 23: 0.721 (resume_gs11)</title></circle>
+<circle cx="501.8" cy="183.0" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 24: 0.754 (resume_gs11)</title></circle>
+<circle cx="519.5" cy="182.4" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 25: 0.755 (resume_gs11)</title></circle>
+<circle cx="537.2" cy="180.7" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 26: 0.758 (resume_gs11)</title></circle>
+<circle cx="554.8" cy="171.7" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 27: 0.773 (resume_gs11)</title></circle>
+<circle cx="572.5" cy="162.7" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 28: 0.788 (resume_gs11)</title></circle>
+<circle cx="590.2" cy="178.3" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 29: 0.762 (resume_gs11)</title></circle>
+<circle cx="607.8" cy="158.0" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 30: 0.796 (resume_gs11)</title></circle>
+<circle cx="625.5" cy="141.8" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 31: 0.823 (resume_gs11)</title></circle>
+<circle cx="643.1" cy="148.4" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 32: 0.812 (resume_gs11)</title></circle>
+<circle cx="660.8" cy="132.3" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 33: 0.839 (resume_gs11)</title></circle>
+<circle cx="678.5" cy="139.4" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 34: 0.827 (resume_gs11)</title></circle>
+<circle cx="696.1" cy="146.6" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 35: 0.815 (resume_gs11)</title></circle>
+<circle cx="713.8" cy="114.4" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 36: 0.869 (resume_gs11)</title></circle>
+<circle cx="731.4" cy="141.8" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 37: 0.823 (resume_gs11)</title></circle>
+<circle cx="749.1" cy="147.2" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 38: 0.814 (resume_gs11)</title></circle>
+<circle cx="766.8" cy="129.3" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 39: 0.844 (resume_gs11)</title></circle>
+<circle cx="784.4" cy="120.9" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 40: 0.858 (resume_gs11)</title></circle>
+<circle cx="802.1" cy="121.5" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 41: 0.857 (resume_gs11)</title></circle>
+<circle cx="819.7" cy="123.9" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 42: 0.853 (resume_gs11)</title></circle>
+<circle cx="837.4" cy="112.0" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 43: 0.873 (resume_gs11)</title></circle>
+<circle cx="855.1" cy="112.0" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 44: 0.873 (resume_gs11)</title></circle>
+<circle cx="872.7" cy="98.2" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 45: 0.896 (resume_gs11)</title></circle>
+<circle cx="890.4" cy="126.9" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 46: 0.848 (resume_gs11)</title></circle>
+<circle cx="908.0" cy="103.6" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 47: 0.887 (resume_gs11)</title></circle>
+<circle cx="925.7" cy="100.0" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 48: 0.893 (resume_gs11)</title></circle>
+<circle cx="943.4" cy="94.7" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 49: 0.902 (resume_gs11)</title></circle>
+<circle cx="961.0" cy="88.1" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 50: 0.913 (resume_gs11)</title></circle>
+<circle cx="978.7" cy="97.1" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 51: 0.898 (resume_gs11)</title></circle>
+<circle cx="996.3" cy="90.5" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 52: 0.909 (resume_gs11)</title></circle>
+<circle cx="1014.0" cy="94.7" r="4.1" fill="#2563EB" stroke="#fff" stroke-width="1.2"><title>step 53: 0.902 (resume_gs11)</title></circle>
+<text x="86.0" y="435.2" class="small">start 0.315</text>
+<text x="894.0" y="82.7" class="small">latest 0.902 @ step 53</text>
+<text x="841.0" y="114.1" class="small">best 0.913 @ step 50</text>
+<line x1="754" y1="526" x2="796" y2="526" stroke="#2563EB" stroke-width="3" stroke-linecap="round"/>
+<circle cx="775" cy="526" r="4" fill="#2563EB" stroke="#fff" stroke-width="1"/>
+<text x="806" y="530" class="small">train_verify_score/all</text>
+</svg>

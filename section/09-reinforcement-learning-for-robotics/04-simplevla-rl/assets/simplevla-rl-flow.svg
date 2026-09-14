@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="880" viewBox="0 0 1280 880" role="img" aria-labelledby="title desc">
+  <title id="title">SimpleVLA-RL training flow</title>
+  <desc id="desc">A flow diagram showing SimpleVLA-RL from SFT checkpoint to scripts, Hydra config, task dataset, RayTrainer, rollout, reward, GRPO advantage, PPO actor update, and checkpoint loop.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#334155" />
+    </marker>
+    <marker id="arrow-blue" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#2563eb" />
+    </marker>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <style>
+      .bg { fill: #f8fafc; }
+      .title { font: 700 34px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 17px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #475569; }
+      .stage { font: 700 15px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #ffffff; letter-spacing: .3px; }
+      .box-title { font: 700 21px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .box-text { font: 400 15px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #475569; }
+      .small { font: 400 13px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #64748b; }
+      .pill { font: 700 13px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #334155; }
+      .card { fill: #ffffff; stroke: #dbe4f0; stroke-width: 1.4; filter: url(#shadow); }
+      .card-blue { fill: #eff6ff; stroke: #bfdbfe; stroke-width: 1.4; filter: url(#shadow); }
+      .card-green { fill: #ecfdf5; stroke: #bbf7d0; stroke-width: 1.4; filter: url(#shadow); }
+      .card-amber { fill: #fffbeb; stroke: #fde68a; stroke-width: 1.4; filter: url(#shadow); }
+      .card-purple { fill: #f5f3ff; stroke: #ddd6fe; stroke-width: 1.4; filter: url(#shadow); }
+      .lane { fill: #ffffff; stroke: #e2e8f0; stroke-width: 1.2; }
+      .arrow { stroke: #334155; stroke-width: 2.4; fill: none; marker-end: url(#arrow); }
+      .arrow-blue { stroke: #2563eb; stroke-width: 2.8; fill: none; marker-end: url(#arrow-blue); }
+      .loop { stroke: #2563eb; stroke-width: 2.6; fill: none; stroke-dasharray: 8 7; marker-end: url(#arrow-blue); }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1280" height="880" rx="0"/>
+  <text class="title" x="64" y="68">SimpleVLA-RL 训练流程</text>
+  <text class="subtitle" x="64" y="100">从 SFT 后的 VLA 模型出发，通过机器人环境在线交互，用成功/失败奖励继续优化策略。</text>
+
+  <rect x="64" y="132" width="1152" height="654" rx="22" class="lane"/>
+
+  <rect x="88" y="156" width="226" height="34" rx="17" fill="#1d4ed8"/>
+  <text class="stage" x="201" y="179" text-anchor="middle">准备与配置</text>
+
+  <rect x="352" y="156" width="226" height="34" rx="17" fill="#047857"/>
+  <text class="stage" x="465" y="179" text-anchor="middle">在线采样</text>
+
+  <rect x="616" y="156" width="226" height="34" rx="17" fill="#b45309"/>
+  <text class="stage" x="729" y="179" text-anchor="middle">奖励与优势</text>
+
+  <rect x="880" y="156" width="226" height="34" rx="17" fill="#7c3aed"/>
+  <text class="stage" x="993" y="179" text-anchor="middle">策略更新</text>
+
+  <rect x="92" y="230" width="218" height="112" rx="14" class="card-blue"/>
+  <text class="box-title" x="201" y="265" text-anchor="middle">SFT VLA</text>
+  <text class="box-text" x="201" y="294" text-anchor="middle">OpenVLA / OpenVLA-OFT</text>
+  <text class="small" x="201" y="319" text-anchor="middle">已做监督微调的起点模型</text>
+
+  <rect x="92" y="398" width="218" height="122" rx="14" class="card-blue"/>
+  <text class="box-title" x="201" y="433" text-anchor="middle">启动脚本</text>
+  <text class="box-text" x="201" y="462" text-anchor="middle">LIBERO / RoboTwin</text>
+  <text class="small" x="201" y="487" text-anchor="middle">选择任务、GPU、模型路径</text>
+
+  <rect x="92" y="576" width="218" height="112" rx="14" class="card-blue"/>
+  <text class="box-title" x="201" y="611" text-anchor="middle">Hydra 配置</text>
+  <text class="box-text" x="201" y="640" text-anchor="middle">覆盖 trainer 参数</text>
+  <text class="small" x="201" y="665" text-anchor="middle">rollout、actor、algorithm</text>
+
+  <rect x="380" y="230" width="236" height="112" rx="14" class="card-green"/>
+  <text class="box-title" x="498" y="265" text-anchor="middle">Dataset</text>
+  <text class="box-text" x="498" y="294" text-anchor="middle">task_id / trial_id / seed</text>
+  <text class="small" x="498" y="319" text-anchor="middle">不是静态 image-action 数据</text>
+
+  <rect x="380" y="398" width="236" height="122" rx="14" class="card-green"/>
+  <text class="box-title" x="498" y="433" text-anchor="middle">RayTrainer.fit</text>
+  <text class="box-text" x="498" y="462" text-anchor="middle">组织训练主循环</text>
+  <text class="small" x="498" y="487" text-anchor="middle">rollout → reward → update</text>
+
+  <rect x="380" y="576" width="236" height="112" rx="14" class="card-green"/>
+  <text class="box-title" x="498" y="611" text-anchor="middle">Rollout Worker</text>
+  <text class="box-text" x="498" y="640" text-anchor="middle">进入机器人环境采样</text>
+  <text class="small" x="498" y="665" text-anchor="middle">并行生成 trajectory</text>
+
+  <rect x="668" y="230" width="240" height="112" rx="14" class="card-amber"/>
+  <text class="box-title" x="788" y="265" text-anchor="middle">Observation</text>
+  <text class="box-text" x="788" y="294" text-anchor="middle">图像 + 语言指令</text>
+  <text class="small" x="788" y="319" text-anchor="middle">RoboTwin 可加入 proprio</text>
+
+  <rect x="668" y="398" width="240" height="122" rx="14" class="card-amber"/>
+  <text class="box-title" x="788" y="433" text-anchor="middle">VLA 生成动作</text>
+  <text class="box-text" x="788" y="462" text-anchor="middle">action token / chunk</text>
+  <text class="small" x="788" y="487" text-anchor="middle">环境执行后得到 complete</text>
+
+  <rect x="668" y="576" width="240" height="112" rx="14" class="card-amber"/>
+  <text class="box-title" x="788" y="611" text-anchor="middle">RobRewardManager</text>
+  <text class="box-text" x="788" y="640" text-anchor="middle">成功/失败 → token reward</text>
+  <text class="small" x="788" y="665" text-anchor="middle">奖励放在最后有效动作 token</text>
+
+  <rect x="958" y="230" width="226" height="112" rx="14" class="card-purple"/>
+  <text class="box-title" x="1071" y="265" text-anchor="middle">GRPO advantage</text>
+  <text class="box-text" x="1071" y="294" text-anchor="middle">同组轨迹相对比较</text>
+  <text class="small" x="1071" y="319" text-anchor="middle">把成功差异转成优势</text>
+
+  <rect x="958" y="398" width="226" height="122" rx="14" class="card-purple"/>
+  <text class="box-title" x="1071" y="433" text-anchor="middle">Actor update</text>
+  <text class="box-text" x="1071" y="462" text-anchor="middle">old logprob + PPO loss</text>
+  <text class="small" x="1071" y="487" text-anchor="middle">FSDP worker 更新 VLA 参数</text>
+
+  <rect x="958" y="576" width="226" height="112" rx="14" class="card-purple"/>
+  <text class="box-title" x="1071" y="611" text-anchor="middle">Checkpoint</text>
+  <text class="box-text" x="1071" y="640" text-anchor="middle">保存可继续训练的模型</text>
+  <text class="small" x="1071" y="665" text-anchor="middle">用于评估或恢复训练</text>
+
+  <path class="arrow" d="M201 342 L201 390"/>
+  <path class="arrow" d="M201 520 L201 568"/>
+  <path class="arrow" d="M310 632 C338 632 348 286 372 286"/>
+  <path class="arrow" d="M498 342 L498 390"/>
+  <path class="arrow" d="M498 520 L498 568"/>
+  <path class="arrow" d="M616 632 C642 632 642 286 660 286"/>
+  <path class="arrow" d="M788 342 L788 390"/>
+  <path class="arrow" d="M788 520 L788 568"/>
+  <path class="arrow" d="M908 632 C936 632 932 286 950 286"/>
+  <path class="arrow" d="M1071 342 L1071 390"/>
+  <path class="arrow" d="M1071 520 L1071 568"/>
+
+  <path class="loop" d="M958 632 C850 760 628 810 498 704"/>
+  <text class="small" x="698" y="786" text-anchor="middle" fill="#2563eb">保存后回到 Trainer，进入下一轮 rollout 和优化</text>
+
+  <rect x="88" y="812" width="1096" height="42" rx="12" fill="#e0f2fe" stroke="#bae6fd"/>
+  <text class="pill" x="636" y="838" text-anchor="middle">关键区别：Dataset 只给任务索引；真正的图像、动作、奖励和训练样本都在在线 rollout 中产生。</text>
+</svg>

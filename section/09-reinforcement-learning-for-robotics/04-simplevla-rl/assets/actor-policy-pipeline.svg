@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="520" viewBox="0 0 1280 520" role="img" aria-labelledby="title desc">
+  <title id="title">SimpleVLA-RL Actor 策略优化蛇形流程</title>
+  <desc id="desc">Actor 策略优化从 rollout 产生 action token 开始，记录 old logprob，计算 reward 和 advantage，重算 current logprob，通过 PPO clipped loss、反向传播和 optimizer step 更新 VLA 参数，最后保存 checkpoint。</desc>
+  <defs>
+    <filter id="shadow" x="-10%" y="-25%" width="120%" height="160%">
+      <feDropShadow dx="0" dy="7" stdDeviation="8" flood-color="#102033" flood-opacity="0.14"/>
+    </filter>
+    <marker id="arrow" markerWidth="11" markerHeight="11" refX="8.5" refY="5.5" orient="auto">
+      <path d="M1,1 L10,5.5 L1,10 Z" fill="#526070"/>
+    </marker>
+    <linearGradient id="final" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#1E5B78"/>
+      <stop offset="1" stop-color="#2E7D6B"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="520" fill="#F7F9FB"/>
+  <rect x="34" y="30" width="1212" height="460" rx="18" fill="#FFFFFF" stroke="#DDE5EC"/>
+
+  <text x="64" y="72" font-family="Inter, Arial, 'Microsoft YaHei', sans-serif" font-size="28" font-weight="700" fill="#163243">
+    Actor 策略优化流程
+  </text>
+  <text x="64" y="103" font-family="Inter, Arial, 'Microsoft YaHei', sans-serif" font-size="15" fill="#627386">
+    PPO 用 old logprob、current logprob 和 advantage 判断动作 token 应该被加强还是压低
+  </text>
+
+  <g font-family="Inter, Arial, 'Microsoft YaHei', sans-serif">
+    <!-- 第一排：采样记录到 current logprob -->
+    <g filter="url(#shadow)" transform="translate(94 150)">
+      <rect x="0" y="0" width="210" height="112" rx="14" fill="#EAF4F8" stroke="#B9D4E0"/>
+      <text x="105" y="34" text-anchor="middle" font-size="18" font-weight="700" fill="#17445A">Rollout</text>
+      <text x="105" y="61" text-anchor="middle" font-size="14" fill="#48616E">产生 action token</text>
+      <text x="105" y="86" text-anchor="middle" font-size="13" fill="#6B7C87">responses / actions</text>
+    </g>
+
+    <line x1="318" y1="206" x2="382" y2="206" stroke="#526070" stroke-width="2.8" marker-end="url(#arrow)"/>
+
+    <g filter="url(#shadow)" transform="translate(396 150)">
+      <rect x="0" y="0" width="210" height="112" rx="14" fill="#EDF7EF" stroke="#BBD8C1"/>
+      <text x="105" y="34" text-anchor="middle" font-size="18" font-weight="700" fill="#275E37">Old Logprob</text>
+      <text x="105" y="61" text-anchor="middle" font-size="14" fill="#496B51">记录采样时概率</text>
+      <text x="105" y="86" text-anchor="middle" font-size="13" fill="#708077">old_log_probs 固定</text>
+    </g>
+
+    <line x1="620" y1="206" x2="684" y2="206" stroke="#526070" stroke-width="2.8" marker-end="url(#arrow)"/>
+
+    <g filter="url(#shadow)" transform="translate(698 150)">
+      <rect x="0" y="0" width="210" height="112" rx="14" fill="#FFF5E8" stroke="#E9C99D"/>
+      <text x="105" y="34" text-anchor="middle" font-size="18" font-weight="700" fill="#805220">Reward + Advantage</text>
+      <text x="105" y="61" text-anchor="middle" font-size="14" fill="#745A35">成功 / 失败信号</text>
+      <text x="105" y="86" text-anchor="middle" font-size="13" fill="#8A7660">advantages 决定方向</text>
+    </g>
+
+    <line x1="922" y1="206" x2="986" y2="206" stroke="#526070" stroke-width="2.8" marker-end="url(#arrow)"/>
+
+    <g filter="url(#shadow)" transform="translate(1000 150)">
+      <rect x="0" y="0" width="210" height="112" rx="14" fill="#F2EEF9" stroke="#CCBDE2"/>
+      <text x="105" y="34" text-anchor="middle" font-size="18" font-weight="700" fill="#573D7B">Current Logprob</text>
+      <text x="105" y="61" text-anchor="middle" font-size="14" fill="#66527E">当前参数重算</text>
+      <text x="105" y="86" text-anchor="middle" font-size="13" fill="#766C82">log_prob</text>
+    </g>
+
+    <!-- 转向第二排 -->
+    <path d="M1105 268 C1105 300, 1105 312, 1105 333" fill="none" stroke="#526070" stroke-width="2.8" marker-end="url(#arrow)"/>
+
+    <!-- 第二排：从右往左 -->
+    <g filter="url(#shadow)" transform="translate(1000 345)">
+      <rect x="0" y="0" width="210" height="96" rx="14" fill="#EEF3FF" stroke="#BFCDF2"/>
+      <text x="105" y="31" text-anchor="middle" font-size="18" font-weight="700" fill="#314E90">PPO Clipped Loss</text>
+      <text x="105" y="56" text-anchor="middle" font-size="14" fill="#53668F">比较 current / old</text>
+      <text x="105" y="78" text-anchor="middle" font-size="13" fill="#69778E">限制更新幅度</text>
+    </g>
+
+    <line x1="986" y1="393" x2="922" y2="393" stroke="#526070" stroke-width="2.8" marker-end="url(#arrow)"/>
+
+    <g filter="url(#shadow)" transform="translate(698 345)">
+      <rect x="0" y="0" width="210" height="96" rx="14" fill="#EAF7F5" stroke="#B7D9D2"/>
+      <text x="105" y="31" text-anchor="middle" font-size="18" font-weight="700" fill="#20665F">Backward</text>
+      <text x="105" y="56" text-anchor="middle" font-size="14" fill="#426F69">loss.backward()</text>
+      <text x="105" y="78" text-anchor="middle" font-size="13" fill="#667F7A">计算梯度</text>
+    </g>
+
+    <line x1="684" y1="393" x2="620" y2="393" stroke="#526070" stroke-width="2.8" marker-end="url(#arrow)"/>
+
+    <g filter="url(#shadow)" transform="translate(396 345)">
+      <rect x="0" y="0" width="210" height="96" rx="14" fill="#F8F0E8" stroke="#E0C7B0"/>
+      <text x="105" y="31" text-anchor="middle" font-size="18" font-weight="700" fill="#6C492C">Optimizer Step</text>
+      <text x="105" y="56" text-anchor="middle" font-size="14" fill="#7D6959">更新 VLA 参数</text>
+      <text x="105" y="78" text-anchor="middle" font-size="13" fill="#806F62">optimizer.step()</text>
+    </g>
+
+    <line x1="382" y1="393" x2="318" y2="393" stroke="#526070" stroke-width="2.8" marker-end="url(#arrow)"/>
+
+    <g filter="url(#shadow)" transform="translate(94 345)">
+      <rect x="0" y="0" width="210" height="96" rx="14" fill="url(#final)" stroke="#1E5B78"/>
+      <text x="105" y="31" text-anchor="middle" font-size="18" font-weight="700" fill="#FFFFFF">Checkpoint</text>
+      <text x="105" y="56" text-anchor="middle" font-size="13" fill="#EAF6F3">保存更新后的模型</text>
+      <text x="105" y="78" text-anchor="middle" font-size="13" fill="#EAF6F3">用于评测 / 续训</text>
+    </g>
+  </g>
+</svg>

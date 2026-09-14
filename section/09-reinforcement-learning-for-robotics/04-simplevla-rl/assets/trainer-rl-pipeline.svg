@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="520" viewBox="0 0 1280 520" role="img" aria-labelledby="title desc">
+  <title id="title">SimpleVLA-RL Trainer 流水线</title>
+  <desc id="desc">从任务索引开始，经过 rollout、reward、filter、GRPO、PPO 更新、WandB 记录，最后定期 validation 和保存 checkpoint。</desc>
+  <defs>
+    <filter id="shadow" x="-10%" y="-25%" width="120%" height="160%">
+      <feDropShadow dx="0" dy="7" stdDeviation="8" flood-color="#102033" flood-opacity="0.14"/>
+    </filter>
+    <marker id="arrow" markerWidth="11" markerHeight="11" refX="8.5" refY="5.5" orient="auto">
+      <path d="M1,1 L10,5.5 L1,10 Z" fill="#526070"/>
+    </marker>
+    <linearGradient id="header" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#1E5B78"/>
+      <stop offset="1" stop-color="#2E7D6B"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="520" fill="#F7F9FB"/>
+  <rect x="34" y="30" width="1212" height="460" rx="18" fill="#FFFFFF" stroke="#DDE5EC"/>
+
+  <text x="64" y="72" font-family="Inter, Arial, 'Microsoft YaHei', sans-serif" font-size="28" font-weight="700" fill="#163243">
+    Trainer 训练流水线
+  </text>
+  <text x="64" y="103" font-family="Inter, Arial, 'Microsoft YaHei', sans-serif" font-size="15" fill="#627386">
+    RayTrainer.fit() 按顺序调度数据、环境采样、奖励、过滤、优势估计、策略更新和实验记录
+  </text>
+
+  <g font-family="Inter, Arial, 'Microsoft YaHei', sans-serif">
+    <!-- 第一排：从任务索引到 Accuracy filter -->
+    <g filter="url(#shadow)" transform="translate(82 150)">
+      <rect x="0" y="0" width="190" height="112" rx="14" fill="#EAF4F8" stroke="#B9D4E0"/>
+      <text x="95" y="34" text-anchor="middle" font-size="18" font-weight="700" fill="#17445A">任务索引</text>
+      <text x="95" y="61" text-anchor="middle" font-size="14" fill="#48616E">dataset</text>
+      <text x="95" y="86" text-anchor="middle" font-size="13" fill="#6B7C87">task / trial / seed</text>
+    </g>
+
+    <line x1="286" y1="206" x2="348" y2="206" stroke="#526070" stroke-width="2.8" marker-end="url(#arrow)"/>
+
+    <g filter="url(#shadow)" transform="translate(362 150)">
+      <rect x="0" y="0" width="190" height="112" rx="14" fill="#EDF7EF" stroke="#BBD8C1"/>
+      <text x="95" y="32" text-anchor="middle" font-size="18" font-weight="700" fill="#275E37">Rollout Worker</text>
+      <text x="95" y="59" text-anchor="middle" font-size="14" fill="#496B51">机器人环境采样</text>
+      <text x="95" y="85" text-anchor="middle" font-size="13" fill="#708077">生成 action / trajectory</text>
+    </g>
+
+    <line x1="566" y1="206" x2="628" y2="206" stroke="#526070" stroke-width="2.8" marker-end="url(#arrow)"/>
+
+    <g filter="url(#shadow)" transform="translate(642 150)">
+      <rect x="0" y="0" width="190" height="112" rx="14" fill="#FFF5E8" stroke="#E9C99D"/>
+      <text x="95" y="32" text-anchor="middle" font-size="18" font-weight="700" fill="#805220">Reward Manager</text>
+      <text x="95" y="59" text-anchor="middle" font-size="14" fill="#745A35">判断成功 / 失败</text>
+      <text x="95" y="85" text-anchor="middle" font-size="13" fill="#8A7660">complete -> reward</text>
+    </g>
+
+    <line x1="846" y1="206" x2="908" y2="206" stroke="#526070" stroke-width="2.8" marker-end="url(#arrow)"/>
+
+    <g filter="url(#shadow)" transform="translate(922 150)">
+      <rect x="0" y="0" width="190" height="112" rx="14" fill="#F2EEF9" stroke="#CCBDE2"/>
+      <text x="95" y="32" text-anchor="middle" font-size="18" font-weight="700" fill="#573D7B">Accuracy Filter</text>
+      <text x="95" y="59" text-anchor="middle" font-size="14" fill="#66527E">过滤样本组</text>
+      <text x="95" y="85" text-anchor="middle" font-size="13" fill="#766C82">保留有对比信号的组</text>
+    </g>
+
+    <!-- 转向第二排 -->
+    <path d="M1017 268 C1017 305, 1017 315, 1017 340" fill="none" stroke="#526070" stroke-width="2.8" marker-end="url(#arrow)"/>
+
+    <!-- 第二排：从右往左 -->
+    <g filter="url(#shadow)" transform="translate(922 352)">
+      <rect x="0" y="0" width="190" height="96" rx="14" fill="#EEF3FF" stroke="#BFCDF2"/>
+      <text x="95" y="31" text-anchor="middle" font-size="18" font-weight="700" fill="#314E90">GRPO</text>
+      <text x="95" y="56" text-anchor="middle" font-size="14" fill="#53668F">计算 advantage</text>
+      <text x="95" y="78" text-anchor="middle" font-size="13" fill="#69778E">组内相对比较</text>
+    </g>
+
+    <line x1="908" y1="400" x2="846" y2="400" stroke="#526070" stroke-width="2.8" marker-end="url(#arrow)"/>
+
+    <g filter="url(#shadow)" transform="translate(642 352)">
+      <rect x="0" y="0" width="190" height="96" rx="14" fill="#EAF7F5" stroke="#B7D9D2"/>
+      <text x="95" y="31" text-anchor="middle" font-size="18" font-weight="700" fill="#20665F">Actor Worker</text>
+      <text x="95" y="56" text-anchor="middle" font-size="14" fill="#426F69">PPO 更新</text>
+      <text x="95" y="78" text-anchor="middle" font-size="13" fill="#667F7A">调整 VLA 策略</text>
+    </g>
+
+    <line x1="628" y1="400" x2="566" y2="400" stroke="#526070" stroke-width="2.8" marker-end="url(#arrow)"/>
+
+    <g filter="url(#shadow)" transform="translate(362 352)">
+      <rect x="0" y="0" width="190" height="96" rx="14" fill="#F8F0E8" stroke="#E0C7B0"/>
+      <text x="95" y="34" text-anchor="middle" font-size="18" font-weight="700" fill="#6C492C">WandB 日志</text>
+      <text x="95" y="61" text-anchor="middle" font-size="13" fill="#7D6959">记录 score / reward / loss</text>
+    </g>
+
+    <line x1="348" y1="400" x2="286" y2="400" stroke="#526070" stroke-width="2.8" marker-end="url(#arrow)"/>
+
+    <g filter="url(#shadow)" transform="translate(82 352)">
+      <rect x="0" y="0" width="190" height="96" rx="14" fill="url(#header)" stroke="#1E5B78"/>
+      <text x="95" y="34" text-anchor="middle" font-size="17" font-weight="700" fill="#FFFFFF">Validation</text>
+      <text x="95" y="61" text-anchor="middle" font-size="13" fill="#EAF6F3">保存 checkpoint</text>
+    </g>
+  </g>
+</svg>
