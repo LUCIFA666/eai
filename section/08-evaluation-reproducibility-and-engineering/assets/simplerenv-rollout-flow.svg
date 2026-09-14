@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="230" viewBox="0 0 900 230">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#333" />
+    </marker>
+    <style>
+      .box{fill:#fbfbfb;stroke:#333;stroke-width:1.3;rx:10;}
+      .title{font:700 15px sans-serif;fill:#111;}
+      .text{font:13px sans-serif;fill:#333;}
+      .arrow{stroke:#333;stroke-width:1.5;marker-end:url(#arrow);fill:none;}
+    </style>
+  </defs>
+  <rect x="25" y="70" width="135" height="80" class="box"/>
+  <text x="45" y="102" class="title">创建环境</text><text x="45" y="126" class="text">simpler_env.make</text>
+  <rect x="200" y="70" width="135" height="80" class="box"/>
+  <text x="222" y="102" class="title">重置场景</text><text x="222" y="126" class="text">env.reset</text>
+  <rect x="375" y="70" width="135" height="80" class="box"/>
+  <text x="396" y="102" class="title">读取图像</text><text x="396" y="126" class="text">保存 frame</text>
+  <rect x="550" y="70" width="135" height="80" class="box"/>
+  <text x="574" y="102" class="title">执行动作</text><text x="574" y="126" class="text">env.step</text>
+  <rect x="725" y="70" width="145" height="80" class="box"/>
+  <text x="746" y="102" class="title">保存证据</text><text x="746" y="126" class="text">mp4 / json</text>
+  <path d="M160 110 L200 110" class="arrow"/><path d="M335 110 L375 110" class="arrow"/>
+  <path d="M510 110 L550 110" class="arrow"/><path d="M685 110 L725 110" class="arrow"/>
+  <text x="25" y="35" class="title">本节实验闭环：不是训练策略，而是确认 SimplerEnv 的 I/O 与渲染流程可靠</text>
+</svg>
