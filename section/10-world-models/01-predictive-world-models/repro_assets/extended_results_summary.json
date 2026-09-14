@@ -1,0 +1,30 @@
+{
+  "PushT": {
+    "successes": 43,
+    "total": 50,
+    "success_rate": 0.86,
+    "wilson_95": [
+      0.7381380628941446,
+      0.9304916657298371
+    ],
+    "mean_state_dist": 33.14219665527344,
+    "mean_visual_dist": 2.628123405612245,
+    "mean_proprio_dist": 10.993437767028809,
+    "mpc_steps": 5,
+    "run_dir": "dino_wm/plan_outputs/20260709_pusht_ne50_ns300_os10_mi5_seed99"
+  },
+  "Wall": {
+    "successes": 47,
+    "total": 50,
+    "success_rate": 0.94,
+    "wilson_95": [
+      0.8378290831116182,
+      0.979385029651026
+    ],
+    "mean_state_dist": 2.692488223061446,
+    "mean_visual_dist": 0.6271273493766785,
+    "mean_proprio_dist": 1.6947840452194214,
+    "mpc_steps": 5,
+    "run_dir": "dino_wm/plan_outputs/20260709_wall_ne50_ns300_os10_mi5_seed99"
+  }
+}

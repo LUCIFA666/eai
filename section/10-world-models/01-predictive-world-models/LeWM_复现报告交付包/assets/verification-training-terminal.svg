@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="590" viewBox="0 0 1200 590" role="img" aria-labelledby="title desc">
+  <title id="title">LeWM synthetic HDF5 training verification</title>
+  <desc id="desc">Actual validation metrics and checkpoint saved after a two-batch synthetic HDF5 training run.</desc>
+  <rect width="1200" height="590" rx="22" fill="#111827"/>
+  <rect x="0" y="0" width="1200" height="54" rx="22" fill="#1f2937"/>
+  <circle cx="34" cy="27" r="8" fill="#fb7185"/><circle cx="60" cy="27" r="8" fill="#fbbf24"/><circle cx="86" cy="27" r="8" fill="#34d399"/>
+  <text x="115" y="34" fill="#d1d5db" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="18">artifacts/verification/synthetic_train_metrics.csv</text>
+  <text x="44" y="105" fill="#93c5fd" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="20">$ python train.py … +trainer.limit_train_batches=2 +trainer.limit_val_batches=1</text>
+  <g font-family="Inter,Arial,sans-serif">
+    <g transform="translate(44 148)">
+      <rect width="340" height="160" rx="18" fill="#1e3a5f"/>
+      <text x="28" y="42" fill="#bfdbfe" font-size="20">Final fit loss</text>
+      <text x="28" y="102" fill="#ffffff" font-size="48" font-weight="700">0.404233</text>
+      <text x="28" y="136" fill="#93c5fd" font-size="17">second training batch</text>
+    </g>
+    <g transform="translate(430 148)">
+      <rect width="340" height="160" rx="18" fill="#3b256d"/>
+      <text x="28" y="42" fill="#ddd6fe" font-size="20">Validation loss</text>
+      <text x="28" y="102" fill="#ffffff" font-size="48" font-weight="700">0.209932</text>
+      <text x="28" y="136" fill="#c4b5fd" font-size="17">epoch 0 · finite</text>
+    </g>
+    <g transform="translate(816 148)">
+      <rect width="340" height="160" rx="18" fill="#5b3411"/>
+      <text x="28" y="42" fill="#fde68a" font-size="20">SIGReg loss</text>
+      <text x="28" y="102" fill="#ffffff" font-size="48" font-weight="700">1.687500</text>
+      <text x="28" y="136" fill="#fcd34d" font-size="17">random projections</text>
+    </g>
+  </g>
+  <g font-family="ui-monospace,Menlo,Consolas,monospace" font-size="21">
+    <text x="44" y="370" fill="#86efac">✓ 2/2 training batches completed</text>
+    <text x="44" y="410" fill="#86efac">✓ 297 / 297 parameter tensors received gradients</text>
+    <text x="44" y="450" fill="#86efac">✓ weights_epoch_1.pt saved (72,298,121 bytes)</text>
+    <text x="44" y="490" fill="#86efac">✓ checkpoint reloaded with load_pretrained</text>
+  </g>
+  <rect x="44" y="520" width="1112" height="35" rx="10" fill="#064e3b"/>
+  <text x="70" y="545" fill="#d1fae5" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="700">PASS · synthetic HDF5 engineering smoke test — not a paper benchmark result</text>
+</svg>

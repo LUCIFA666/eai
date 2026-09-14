@@ -1,0 +1,16 @@
+dataset:
+  num_steps: ${eval:'${num_preds} + ${history_size}'}
+  frameskip: 5
+  # The public Hugging Face artifact and the README use HDF5. The previous
+  # .lance value refers to an unpublished local conversion and cannot be used
+  # for a clean public reproduction.
+  name: pusht_expert_train.h5
+  keys_to_load:
+    - pixels
+    - action
+    - proprio
+    - state
+  keys_to_cache:
+    - action
+    - proprio
+    - state

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="690" viewBox="0 0 1200 690" role="img" aria-labelledby="title desc">
+  <title id="title">LeWM smoke test actual terminal output</title>
+  <desc id="desc">Actual strict checkpoint loading, forward pass, two loader APIs, and MPC cost verification output.</desc>
+  <rect width="1200" height="690" rx="22" fill="#111827"/>
+  <rect x="0" y="0" width="1200" height="54" rx="22" fill="#1f2937"/>
+  <circle cx="34" cy="27" r="8" fill="#fb7185"/><circle cx="60" cy="27" r="8" fill="#fbbf24"/><circle cx="86" cy="27" r="8" fill="#34d399"/>
+  <text x="115" y="34" fill="#d1d5db" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="18">artifacts/verification/smoke_test.log</text>
+  <g font-family="ui-monospace,Menlo,Consolas,monospace" font-size="22">
+    <text x="44" y="102" fill="#93c5fd">$ CUDA_VISIBLE_DEVICES=1 python repro_smoke.py --device cuda</text>
+    <text x="44" y="150" fill="#86efac">strict_load=ok</text>
+    <text x="44" y="188" fill="#e5e7eb">device=cuda</text>
+    <text x="44" y="226" fill="#e5e7eb">parameters=18034478</text>
+    <text x="44" y="264" fill="#e5e7eb">embedding_shape=(2, 4, 192)</text>
+    <text x="44" y="302" fill="#e5e7eb">prediction_shape=(2, 3, 192)</text>
+    <text x="44" y="340" fill="#fcd34d">prediction_loss=0.192614</text>
+    <text x="44" y="378" fill="#fcd34d">sigreg_loss=1.360714</text>
+    <text x="44" y="432" fill="#86efac">stable_worldmodel_loader=ok</text>
+    <text x="44" y="470" fill="#86efac">auto_cost_model_loader=ok</text>
+    <text x="44" y="508" fill="#e5e7eb">mpc_cost_shape=(1, 2)</text>
+    <text x="44" y="546" fill="#86efac">mpc_cost=ok</text>
+  </g>
+  <rect x="44" y="582" width="1112" height="68" rx="12" fill="#064e3b"/>
+  <text x="70" y="625" fill="#d1fae5" font-family="Inter,Arial,sans-serif" font-size="25" font-weight="700">PASS · strict weights · forward/losses · two loaders · MPC cost</text>
+</svg>

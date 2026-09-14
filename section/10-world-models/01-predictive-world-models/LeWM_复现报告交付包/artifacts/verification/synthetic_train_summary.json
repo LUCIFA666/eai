@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "run_id": "3111bfb2b679",
+  "run_dir": "/home/xuyidong/.cache/stable-pretraining/runs/20260710/171237/3111bfb2b679",
+  "updated_at": 1783703562.441146,
+  "step": 1,
+  "epoch": 0,
+  "metrics": {
+    "fit/pred_loss": {
+      "last": 0.2870456874370575,
+      "min": 0.2644548714160919,
+      "max": 0.2870456874370575,
+      "count": 2
+    },
+    "fit/sigreg_loss": {
+      "last": 1.3046875,
+      "min": 1.28125,
+      "max": 1.3046875,
+      "count": 2
+    },
+    "fit/loss": {
+      "last": 0.4042331874370575,
+      "min": 0.3796892464160919,
+      "max": 0.4042331874370575,
+      "count": 2
+    },
+    "hparams/lr_model_opt": {
+      "last": 0.0,
+      "min": 0.0,
+      "max": 4.999999873689376e-05,
+      "count": 2
+    },
+    "hardware/cpu_percent": {
+      "last": 38.900001525878906,
+      "min": 38.900001525878906,
+      "max": 38.900001525878906,
+      "count": 2
+    },
+    "hardware/ram_used_pct": {
+      "last": 4.900000095367432,
+      "min": 4.900000095367432,
+      "max": 4.900000095367432,
+      "count": 2
+    },
+    "hardware/ram_used_gb": {
+      "last": 49.105384826660156,
+      "min": 49.105384826660156,
+      "max": 49.105384826660156,
+      "count": 2
+    },
+    "hardware/disk_read_mb_s": {
+      "last": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "count": 2
+    },
+    "hardware/disk_write_mb_s": {
+      "last": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "count": 2
+    },
+    "hardware/net_recv_mb_s": {
+      "last": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "count": 2
+    },
+    "hardware/net_sent_mb_s": {
+      "last": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "count": 2
+    },
+    "epoch": {
+      "last": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "count": 3
+    },
+    "validate/pred_loss_step": {
+      "last": 0.057587988674640656,
+      "min": 0.057587988674640656,
+      "max": 0.057587988674640656,
+      "count": 1
+    },
+    "validate/sigreg_loss_step": {
+      "last": 1.6875,
+      "min": 1.6875,
+      "max": 1.6875,
+      "count": 1
+    },
+    "validate/loss_step": {
+      "last": 0.20993173122406006,
+      "min": 0.20993173122406006,
+      "max": 0.20993173122406006,
+      "count": 1
+    },
+    "validate/pred_loss_epoch": {
+      "last": 0.057587988674640656,
+      "min": 0.057587988674640656,
+      "max": 0.057587988674640656,
+      "count": 1
+    },
+    "validate/sigreg_loss_epoch": {
+      "last": 1.6875,
+      "min": 1.6875,
+      "max": 1.6875,
+      "count": 1
+    },
+    "validate/loss_epoch": {
+      "last": 0.20993173122406006,
+      "min": 0.20993173122406006,
+      "max": 0.20993173122406006,
+      "count": 1
+    }
+  }
+}

@@ -1,0 +1,10 @@
+# The upstream extras are intentionally broad. These pins capture the versions
+# that matter for loading the released LeWM checkpoints reproducibly.
+stable-worldmodel[train,env]==0.1.1
+stable-pretraining==0.1.8
+torch==2.13.0
+torchvision==0.28.0
+transformers==4.57.6
+hdf5plugin==6.0.0
+huggingface-hub[hf-xet]>=0.34,<1
+swig==4.4.1

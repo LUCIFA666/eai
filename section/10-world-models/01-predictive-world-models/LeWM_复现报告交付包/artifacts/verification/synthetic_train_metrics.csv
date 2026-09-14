@@ -1,0 +1,5 @@
+epoch,fit/loss,fit/pred_loss,fit/sigreg_loss,hardware/cpu_percent,hardware/disk_read_mb_s,hardware/disk_write_mb_s,hardware/net_recv_mb_s,hardware/net_sent_mb_s,hardware/ram_used_gb,hardware/ram_used_pct,hparams/lr_model_opt,step,validate/loss_step,validate/pred_loss_step,validate/sigreg_loss_step,validate/loss_epoch,validate/pred_loss_epoch,validate/sigreg_loss_epoch
+0,0.3796892464160919,0.2644548714160919,1.28125,38.900001525878906,0.0,0.0,0.0,0.0,49.105384826660156,4.900000095367432,4.999999873689376e-05,0,,,,,,
+0,0.4042331874370575,0.2870456874370575,1.3046875,38.900001525878906,0.0,0.0,0.0,0.0,49.105384826660156,4.900000095367432,0.0,1,,,,,,
+,,,,,,,,,,,,0,0.20993173122406006,0.057587988674640656,1.6875,,,
+0,,,,,,,,,,,,1,,,,0.20993173122406006,0.057587988674640656,1.6875

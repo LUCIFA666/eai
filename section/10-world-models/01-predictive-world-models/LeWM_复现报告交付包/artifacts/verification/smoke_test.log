@@ -1,0 +1,19 @@
+17:09:24 | INFO  | __init__.py | JAX version 0.6.2 available.
+17:09:24 | INFO  | atomic_chec~| [atomic_save] installed crash-safe checkpoint plugin (write to sibling .tmp + fsync + atomic rename)
+17:09:26 | INFO  | utils.py    | Created ViT-tiny from scratch with config: {'hidden_size': 192, 'num_hidden_layers': 12, 'num_attention_heads': 3, 'intermediate_size': 768, 'image_size': 224, 'patch_size': 14}
+strict_load=ok
+device=cuda
+parameters=18034478
+embedding_shape=(2, 4, 192)
+prediction_shape=(2, 3, 192)
+prediction_loss=0.192614
+sigreg_loss=1.360714
+checkpoint_dir=/home/xuyidong/.stable-wm/checkpoints/pusht/lewm
+object_checkpoint=/home/xuyidong/.stable-wm/checkpoints/pusht/lewm/lewm_object.ckpt
+17:09:28 | INFO  | utils.py    | Loading checkpoint from folder /home/xuyidong/.stable-wm/checkpoints/pusht/lewm...
+17:09:29 | INFO  | utils.py    | Created ViT-tiny from scratch with config: {'hidden_size': 192, 'num_hidden_layers': 12, 'num_attention_heads': 3, 'intermediate_size': 768, 'image_size': 224, 'patch_size': 14}
+stable_worldmodel_loader=ok
+17:09:29 | INFO  | policy.py   | Loading model from checkpoint: /home/xuyidong/.stable-wm/checkpoints/pusht/lewm/lewm_object.ckpt
+auto_cost_model_loader=ok
+mpc_cost_shape=(1, 2)
+mpc_cost=ok
