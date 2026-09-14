@@ -1,0 +1,184 @@
+{
+  "task": "google_robot_pick_coke_can",
+  "seed": 0,
+  "instruction": "pick coke can",
+  "action_mode": "small-random",
+  "action_scale": 0.02,
+  "action_space": "Box([-1.        -1.        -1.        -1.5707964 -1.5707964 -1.5707964\n -1.       ], [1.        1.        1.        1.5707964 1.5707964 1.5707964 1.       ], (7,), float32)",
+  "reset_info": "{'scene_name': 'google_pick_coke_can_1_v4', 'scene_offset': None, 'scene_pose': None, 'scene_table_height': 0.87, 'urdf_version': 'recolor_tabletop_visual_matching_1', 'rgb_overlay_path': '/home/hndx/SimplerEnv/ManiSkill2_real2sim/data/real_inpainting/google_coke_can_real_eval_1.png', 'rgb_overlay_cameras': ['overhead_camera'], 'rgb_overlay_mode': 'background', 'disable_bad_material': False, 'model_id': 'opened_coke_can', 'model_scale': 1.0, 'distractor_model_ids': None, 'distractor_model_scales': None, 'obj_init_pose_wrt_robot_base': Pose([0.587925, -0.0238302, 0.840576], [0.707052, -0.0081018, -0.01162, -0.70702]), 'orientation': 'laid_vertically'}",
+  "num_frames": 11,
+  "video": "runs/11-eval/simplerenv_rollout_video_small/rollout.mp4",
+  "frames_dir": "runs/11-eval/simplerenv_rollout_video_small/frames",
+  "records": [
+    {
+      "step": 0,
+      "action": [
+        0.0054784673266112804,
+        -0.009208531118929386,
+        -0.018361059948801994,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "reward": 0.0,
+      "terminated": false,
+      "truncated": false,
+      "success": false,
+      "episode_stats": "OrderedDict([('n_lift_significant', 0), ('consec_grasp', False), ('grasped', False)])"
+    },
+    {
+      "step": 1,
+      "action": [
+        -0.01933889463543892,
+        0.01253080926835537,
+        0.01651022396981716,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "reward": 0.0,
+      "terminated": false,
+      "truncated": false,
+      "success": false,
+      "episode_stats": "OrderedDict([('n_lift_significant', 0), ('consec_grasp', False), ('grasped', False)])"
+    },
+    {
+      "step": 2,
+      "action": [
+        0.004265430849045515,
+        0.009179862216114998,
+        0.001744999666698277,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "reward": 0.0,
+      "terminated": false,
+      "truncated": false,
+      "success": false,
+      "episode_stats": "OrderedDict([('n_lift_significant', 0), ('consec_grasp', False), ('grasped', False)])"
+    },
+    {
+      "step": 3,
+      "action": [
+        0.017402896657586098,
+        0.01263414230197668,
+        -0.01989045925438404,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "reward": 0.0,
+      "terminated": false,
+      "truncated": false,
+      "success": false,
+      "episode_stats": "OrderedDict([('n_lift_significant', 0), ('consec_grasp', False), ('grasped', False)])"
+    },
+    {
+      "step": 4,
+      "action": [
+        0.014296171255409718,
+        -0.018656577914953232,
+        0.009186217561364174,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "reward": 0.0,
+      "terminated": false,
+      "truncated": false,
+      "success": false,
+      "episode_stats": "OrderedDict([('n_lift_significant', 0), ('consec_grasp', False), ('grasped', False)])"
+    },
+    {
+      "step": 5,
+      "action": [
+        -0.012973775155842304,
+        0.014527156949043274,
+        0.001658448833040893,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "reward": 0.0,
+      "terminated": false,
+      "truncated": false,
+      "success": false,
+      "episode_stats": "OrderedDict([('n_lift_significant', 0), ('consec_grasp', False), ('grasped', False)])"
+    },
+    {
+      "step": 6,
+      "action": [
+        -0.008011524565517902,
+        -0.0030925110913813114,
+        -0.018867213279008865,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "reward": 0.0,
+      "terminated": false,
+      "truncated": false,
+      "success": false,
+      "episode_stats": "OrderedDict([('n_lift_significant', 0), ('consec_grasp', False), ('grasped', False)])"
+    },
+    {
+      "step": 7,
+      "action": [
+        -0.015028668567538261,
+        0.00682497676461935,
+        0.005887580569833517,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "reward": 0.0,
+      "terminated": false,
+      "truncated": false,
+      "success": false,
+      "episode_stats": "OrderedDict([('n_lift_significant', 0), ('consec_grasp', False), ('grasped', False)])"
+    },
+    {
+      "step": 8,
+      "action": [
+        0.0046154046431183815,
+        -0.0046528978273272514,
+        0.019888397306203842,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "reward": 0.0,
+      "terminated": false,
+      "truncated": false,
+      "success": false,
+      "episode_stats": "OrderedDict([('n_lift_significant', 0), ('consec_grasp', False), ('grasped', False)])"
+    },
+    {
+      "step": 9,
+      "action": [
+        0.01923341304063797,
+        0.007421679329127073,
+        0.006018370855599642,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "reward": 0.0,
+      "terminated": false,
+      "truncated": false,
+      "success": false,
+      "episode_stats": "OrderedDict([('n_lift_significant', 0), ('consec_grasp', False), ('grasped', False)])"
+    }
+  ]
+}

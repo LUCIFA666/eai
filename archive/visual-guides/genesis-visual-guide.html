@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Genesis：新一代多物理仿真平台</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", sans-serif;
+    background: #fff; color: #1a1a2e; line-height: 1.8;
+    max-width: 960px; margin: 0 auto; padding: 40px 24px 80px;
+  }
+  h1 { font-size: 2em; font-weight: 700; margin-bottom: 8px; }
+  h2 { font-size: 1.5em; font-weight: 600; margin: 56px 0 16px; padding-bottom: 8px; border-bottom: 2px solid #e8e8e8; }
+  h3 { font-size: 1.15em; font-weight: 600; margin: 32px 0 12px; }
+  p { margin: 12px 0; }
+  .subtitle { color: #666; font-size: 1.05em; margin-bottom: 32px; }
+  a { color: #2563eb; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .callout { background: #f0f7ff; border-left: 4px solid #2563eb; padding: 16px 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+  .callout.warn { background: #fffbeb; border-left-color: #f59e0b; }
+  .callout.green { background: #f0fdf4; border-left-color: #22c55e; }
+  .callout.purple { background: #faf5ff; border-left-color: #a855f7; }
+  .callout-title { font-weight: 600; margin-bottom: 4px; }
+  pre { background: #f8f9fa; border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px 20px; overflow-x: auto; font-size: 0.85em; line-height: 1.6; margin: 16px 0; }
+  code { font-family: "SF Mono", "Fira Code", "Consolas", monospace; }
+  .inline-code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.92em; }
+  th { background: #f8f9fa; font-weight: 600; text-align: left; }
+  th, td { padding: 10px 14px; border: 1px solid #e5e7eb; }
+  tr:nth-child(even) { background: #fafafa; }
+  .diagram-container { margin: 28px 0; text-align: center; }
+  .diagram-container svg { max-width: 100%; height: auto; }
+  .diagram-caption { color: #666; font-size: 0.88em; margin-top: 8px; text-align: center; }
+  .nav-breadcrumb { font-size: 0.88em; color: #94a3b8; margin-bottom: 24px; }
+  .nav-breadcrumb a { color: #64748b; }
+  .concept-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .concept-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; }
+  .concept-card h4 { margin-bottom: 6px; }
+  @media (max-width: 700px) { .concept-grid { grid-template-columns: 1fr; } }
+  .terminal { background: #1e1b2e; color: #e2e8f0; border-radius: 10px; padding: 18px 20px; margin: 16px 0; font-size: 0.85em; line-height: 1.6; overflow-x: auto; }
+  .terminal .prompt { color: #22c55e; }
+  .terminal .comment { color: #64748b; }
+  .terminal .output { color: #94a3b8; }
+  .terminal .highlight { color: #fbbf24; }
+</style>
+</head>
+<body>
+
+<div class="nav-breadcrumb">
+  <a href="README.md">06 仿真建模</a> &gt; <a href="06-other-simulation-ecosystems.md">其他仿真生态</a> &gt; Genesis 图解指南
+</div>
+
+<h1>Genesis：新一代多物理仿真平台</h1>
+<p class="subtitle">高速 GPU 并行、多物理求解器、一统的仿真框架</p>
+
+<p>前面我们学了 MuJoCo（轻量快速、适合 RL）和 Isaac Sim/Lab（高保真渲染、大规模并行）。但它们都有局限：MuJoCo 主要处理刚体，而 Isaac Sim 需要 NVIDIA 显卡。</p>
+
+<p><strong>Genesis</strong> 是 2024 年开源的新一代仿真平台，它的核心卖点是：<strong>一个框架支持多种物理</strong>——刚体、柔体、流体、布料、颗粒都能在同一个场景里交互。而且跑得非常快——单张 RTX 4090 上，Franka 机械臂仿真可达 4300 万 FPS，比实时快 43 万倍。</p>
+
+<!-- ===== 1. Architecture ===== -->
+<h2>1. Genesis 架构：一个框架，多种物理</h2>
+
+<div class="diagram-container">
+<svg viewBox="0 0 780 360" xmlns="http://www.w3.org/2000/svg" style="max-width:780px">
+  <defs>
+    <marker id="arrD" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#475569"/></marker>
+  </defs>
+
+  <!-- Top: User API -->
+  <rect x="180" y="15" width="420" height="45" rx="10" fill="#22c55e" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="390" y="43" text-anchor="middle" font-size="14" fill="#fff" font-weight="700">Python API（用户接口）</text>
+
+  <!-- Arrow -->
+  <line x1="390" y1="60" x2="390" y2="90" stroke="#475569" stroke-width="1.5" marker-end="url(#arrD)"/>
+
+  <!-- Scene layer -->
+  <rect x="120" y="90" width="540" height="50" rx="10" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5"/>
+  <text x="390" y="115" text-anchor="middle" font-size="13" fill="#1e40af" font-weight="600">Scene（场景管理器）</text>
+  <text x="390" y="132" text-anchor="middle" font-size="10" fill="#6b7280">实体、相机、光照、build() / step() / reset()</text>
+
+  <!-- Arrow -->
+  <line x1="390" y1="140" x2="390" y2="165" stroke="#475569" stroke-width="1.5" marker-end="url(#arrD)"/>
+
+  <!-- Physics Solvers row -->
+  <rect x="20" y="165" width="740" height="90" rx="10" fill="#faf5ff" stroke="#c4b5fd" stroke-width="1.5"/>
+  <text x="390" y="185" text-anchor="middle" font-size="12" fill="#6b21a8" font-weight="600">物理求解器（可在同一场景中混用）</text>
+
+  <!-- Individual solvers -->
+  <rect x="35" y="195" width="90" height="48" rx="6" fill="#ede9fe" stroke="#a78bfa" stroke-width="1"/>
+  <text x="80" y="215" text-anchor="middle" font-size="10" fill="#5b21b6" font-weight="600">XPB Rigid</text>
+  <text x="80" y="232" text-anchor="middle" font-size="8" fill="#7c3aed">刚体碰撞</text>
+
+  <rect x="140" y="195" width="90" height="48" rx="6" fill="#ede9fe" stroke="#a78bfa" stroke-width="1"/>
+  <text x="185" y="215" text-anchor="middle" font-size="10" fill="#5b21b6" font-weight="600">FEM</text>
+  <text x="185" y="232" text-anchor="middle" font-size="8" fill="#7c3aed">弹性体/肌肉</text>
+
+  <rect x="245" y="195" width="90" height="48" rx="6" fill="#ede9fe" stroke="#a78bfa" stroke-width="1"/>
+  <text x="290" y="215" text-anchor="middle" font-size="10" fill="#5b21b6" font-weight="600">MPM</text>
+  <text x="290" y="232" text-anchor="middle" font-size="8" fill="#7c3aed">沙/泥/弹塑</text>
+
+  <rect x="350" y="195" width="90" height="48" rx="6" fill="#ede9fe" stroke="#a78bfa" stroke-width="1"/>
+  <text x="395" y="215" text-anchor="middle" font-size="10" fill="#5b21b6" font-weight="600">SPH</text>
+  <text x="395" y="232" text-anchor="middle" font-size="8" fill="#7c3aed">液体流体</text>
+
+  <rect x="455" y="195" width="90" height="48" rx="6" fill="#ede9fe" stroke="#a78bfa" stroke-width="1"/>
+  <text x="500" y="215" text-anchor="middle" font-size="10" fill="#5b21b6" font-weight="600">PBD</text>
+  <text x="500" y="232" text-anchor="middle" font-size="8" fill="#7c3aed">布料/绳索</text>
+
+  <rect x="560" y="195" width="90" height="48" rx="6" fill="#ede9fe" stroke="#a78bfa" stroke-width="1"/>
+  <text x="605" y="215" text-anchor="middle" font-size="10" fill="#5b21b6" font-weight="600">IPC</text>
+  <text x="605" y="232" text-anchor="middle" font-size="8" fill="#7c3aed">接触耦合</text>
+
+  <rect x="665" y="195" width="90" height="48" rx="6" fill="#fef3c7" stroke="#f59e0b" stroke-width="1"/>
+  <text x="710" y="215" text-anchor="middle" font-size="10" fill="#92400e" font-weight="600">Coupler</text>
+  <text x="710" y="232" text-anchor="middle" font-size="8" fill="#b45309">跨求解器耦合</text>
+
+  <!-- Arrow -->
+  <line x1="390" y1="255" x2="390" y2="280" stroke="#475569" stroke-width="1.5" marker-end="url(#arrD)"/>
+
+  <!-- Backend -->
+  <rect x="120" y="280" width="540" height="50" rx="10" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+  <text x="390" y="305" text-anchor="middle" font-size="13" fill="#166534" font-weight="600">计算后端</text>
+  <text x="200" y="322" text-anchor="middle" font-size="10" fill="#6b7280">CPU</text>
+  <text x="310" y="322" text-anchor="middle" font-size="10" fill="#6b7280">CUDA (NVIDIA)</text>
+  <text x="430" y="322" text-anchor="middle" font-size="10" fill="#6b7280">AMD GPU</text>
+  <text x="540" y="322" text-anchor="middle" font-size="10" fill="#6b7280">Apple Metal</text>
+
+  <!-- Rendering on the right -->
+  <rect x="680" y="90" width="90" height="165" rx="8" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5"/>
+  <text x="725" y="115" text-anchor="middle" font-size="10" fill="#9a3412" font-weight="600">渲染</text>
+  <text x="725" y="140" text-anchor="middle" font-size="9" fill="#6b7280">Rasterizer</text>
+  <text x="725" y="158" text-anchor="middle" font-size="9" fill="#6b7280">RayTracer</text>
+  <text x="725" y="176" text-anchor="middle" font-size="9" fill="#6b7280">Batch</text>
+  <text x="725" y="194" text-anchor="middle" font-size="9" fill="#6b7280">Renderer</text>
+  <text x="725" y="220" text-anchor="middle" font-size="8" fill="#94a3b8">RGB / Depth</text>
+  <text x="725" y="236" text-anchor="middle" font-size="8" fill="#94a3b8">Seg / Normal</text>
+</svg>
+<p class="diagram-caption">Genesis 架构——多种物理求解器共存于统一框架中</p>
+</div>
+
+<div class="callout">
+  <div class="callout-title">和 MuJoCo / Isaac Sim 的区别</div>
+  MuJoCo 像一把精密的手术刀——刚体物理做得极好，但不处理流体和布料。Isaac Sim 像一个完整的工厂——功能全面但需要 NVIDIA 硬件。Genesis 的定位是<strong>通用物理引擎</strong>——刚体、柔体、液体、布料、颗粒都用同一套 API，而且不绑定硬件厂商。
+</div>
+
+<!-- ===== 2. Getting Started ===== -->
+<h2>2. 环境搭建与第一个仿真</h2>
+
+<h3>安装</h3>
+
+<div class="terminal">
+<span class="comment"># 需要 Python >= 3.10，先确认 PyTorch 已安装</span><br>
+<span class="prompt">$</span> conda create -n labgenesis python=3.11<br>
+<span class="prompt">$</span> conda activate labgenesis<br>
+<span class="prompt">$</span> pip install genesis-world<br>
+<br>
+<span class="comment"># 验证安装</span><br>
+<span class="prompt">$</span> python -c "import genesis as gs; print(gs.__version__)"<br>
+<span class="output">0.4.7</span>
+</div>
+
+<h3>Hello Genesis：21 行代码跑通仿真</h3>
+
+<pre><code>import genesis as gs
+
+gs.init(backend=gs.cpu)            # 选择计算后端
+
+scene = gs.Scene(                   # 创建场景
+    sim_options=gs.options.SimOptions(dt=0.01),
+    show_viewer=False,              # headless 模式
+)
+
+plane = scene.add_entity(           # 添加地面
+    gs.morphs.Plane()
+)
+franka = scene.add_entity(          # 加载 Franka 机械臂（MJCF 格式）
+    gs.morphs.MJCF(file="xml/franka_emika_panda/panda.xml")
+)
+
+scene.build()                       # 编译物理核心
+
+for i in range(200):                # 推进仿真 200 步
+    scene.step()</code></pre>
+
+<p>这段代码做了四件事：初始化后端、创建场景、添加实体、编译并运行。<strong>每一个 Genesis 程序都是这个结构。</strong></p>
+
+<div class="diagram-container">
+<svg viewBox="0 0 780 80" xmlns="http://www.w3.org/2000/svg" style="max-width:700px">
+  <rect x="10" y="20" width="130" height="40" rx="8" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5"/>
+  <text x="75" y="44" text-anchor="middle" font-size="11" fill="#1e40af" font-weight="600">gs.init()</text>
+
+  <text x="152" y="44" font-size="16" fill="#94a3b8">→</text>
+
+  <rect x="170" y="20" width="140" height="40" rx="8" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+  <text x="240" y="44" text-anchor="middle" font-size="11" fill="#166534" font-weight="600">gs.Scene()</text>
+
+  <text x="322" y="44" font-size="16" fill="#94a3b8">→</text>
+
+  <rect x="340" y="20" width="140" height="40" rx="8" fill="#faf5ff" stroke="#c4b5fd" stroke-width="1.5"/>
+  <text x="410" y="44" text-anchor="middle" font-size="11" fill="#6b21a8" font-weight="600">add_entity()</text>
+
+  <text x="492" y="44" font-size="16" fill="#94a3b8">→</text>
+
+  <rect x="510" y="20" width="120" height="40" rx="8" fill="#fefce8" stroke="#facc15" stroke-width="1.5"/>
+  <text x="570" y="44" text-anchor="middle" font-size="11" fill="#854d0e" font-weight="600">scene.build()</text>
+
+  <text x="642" y="44" font-size="16" fill="#94a3b8">→</text>
+
+  <rect x="660" y="20" width="110" height="40" rx="8" fill="#22c55e"/>
+  <text x="715" y="44" text-anchor="middle" font-size="11" fill="#fff" font-weight="600">scene.step()</text>
+</svg>
+<p class="diagram-caption">Genesis 仿真的 5 步流程</p>
+</div>
+
+<!-- ===== 3. Lab: PD Control ===== -->
+<h2>3. 实战：PD 控制 Franka 机械臂</h2>
+
+<p>只是让机器人在重力下自由落体没什么意思。让我们用 PD 控制把关节驱动到一个目标位置。</p>
+
+<pre><code>import genesis as gs
+import numpy as np
+
+gs.init(backend=gs.cpu)
+scene = gs.Scene(
+    sim_options=gs.options.SimOptions(dt=0.01),
+    show_viewer=False,
+)
+scene.add_entity(gs.morphs.Plane())
+franka = scene.add_entity(
+    gs.morphs.MJCF(file="xml/franka_emika_panda/panda.xml")
+)
+scene.build()
+
+# 设定目标关节角度 (7 个臂关节 + 2 个手指)
+target = np.array([0.0, -0.3, 0.0, -1.5, 0.0, 1.2, 0.8, 0.04, 0.04])
+
+# 设置 PD 增益
+franka.set_dofs_kp(np.array([4500, 4500, 3500, 3500, 2000, 2000, 2000, 100, 100]))
+franka.set_dofs_kv(np.array([450,  450,  350,  350,  200,  200,  200,  10,  10]))
+
+# 运行 500 步 PD 控制
+for step in range(500):
+    franka.control_dofs_position(target)
+    scene.step()
+
+# 检查最终位置
+qpos = franka.get_dofs_position().cpu().numpy()
+print("Joint positions:", qpos)
+print("Target:         ", target)</code></pre>
+
+<p>完整脚本在 <code>labs/04-simulation/genesis_hello.py</code>，运行后的实际输出：</p>
+
+<div class="terminal">
+<span class="prompt">$</span> python labs/04-simulation/genesis_hello.py<br>
+<span class="output">=== Genesis Hello World ===</span><br>
+<span class="output">Genesis version : 0.4.7</span><br>
+<span class="output">Scene entities  : 2</span><br>
+<span class="output">DoFs            : 9</span><br>
+<span class="output">Joint names     : ['joint1', ..., 'joint7', 'finger_joint1', 'finger_joint2']</span><br>
+<br>
+<span class="output">--- Final joint positions ---</span><br>
+<span class="output">  joint1          = <span class="highlight">-0.0000</span>  (target +0.0000, err 0.0000)</span><br>
+<span class="output">  joint2          = <span class="highlight">-0.2964</span>  (target -0.3000, err 0.0036)</span><br>
+<span class="output">  joint4          = <span class="highlight">-1.5054</span>  (target -1.5000, err 0.0054)</span><br>
+<span class="output">  joint6          = <span class="highlight">+1.1989</span>  (target +1.2000, err 0.0011)</span><br>
+<span class="output">  finger_joint1   = <span class="highlight">+0.0400</span>  (target +0.0400, err 0.0000)</span><br>
+<span class="comment"># 所有关节误差 < 0.006 rad，PD 控制收敛</span>
+</div>
+
+<div class="callout green">
+  <div class="callout-title">关键 API 速查</div>
+  <table style="margin:8px 0;">
+    <tr><th>操作</th><th>API</th></tr>
+    <tr><td>读取关节位置</td><td><code>entity.get_dofs_position()</code></td></tr>
+    <tr><td>读取关节速度</td><td><code>entity.get_dofs_velocity()</code></td></tr>
+    <tr><td>设置 PD 增益</td><td><code>entity.set_dofs_kp(kp) / set_dofs_kv(kv)</code></td></tr>
+    <tr><td>位置控制</td><td><code>entity.control_dofs_position(target)</code></td></tr>
+    <tr><td>速度控制</td><td><code>entity.control_dofs_velocity(target)</code></td></tr>
+    <tr><td>力矩控制</td><td><code>entity.control_dofs_force(target)</code></td></tr>
+    <tr><td>逆运动学</td><td><code>entity.inverse_kinematics(link, pos, quat)</code></td></tr>
+  </table>
+</div>
+
+<!-- ===== 4. Loading Assets ===== -->
+<h2>4. 加载资产：支持多种格式</h2>
+
+<p>Genesis 的一大优势是格式兼容性——不需要手动转换格式。</p>
+
+<pre><code># MJCF (MuJoCo XML)
+franka = scene.add_entity(gs.morphs.MJCF(file="xml/franka_emika_panda/panda.xml"))
+
+# URDF
+go2 = scene.add_entity(gs.morphs.URDF(
+    file="urdf/go2/urdf/go2.urdf",
+    pos=(0.0, 0.0, 0.42),
+))
+
+# 基础几何体
+box = scene.add_entity(gs.morphs.Box(size=(0.1, 0.1, 0.1), pos=(0.5, 0, 0.5)))
+sphere = scene.add_entity(gs.morphs.Sphere(radius=0.05, pos=(0.3, 0, 0.5)))
+
+# OBJ/GLB/STL 网格
+mug = scene.add_entity(gs.morphs.Mesh(file="meshes/mug.obj", scale=0.1))
+
+# USD 场景
+room = scene.add_entity(gs.morphs.USD(file="scenes/kitchen.usd"))</code></pre>
+
+<div class="concept-grid">
+  <div class="concept-card">
+    <h4>支持的格式</h4>
+    <table style="font-size:0.88em; margin:4px 0;">
+      <tr><td><strong>MJCF</strong></td><td>MuJoCo 的 XML 格式</td></tr>
+      <tr><td><strong>URDF</strong></td><td>ROS 标准机器人描述</td></tr>
+      <tr><td><strong>USD</strong></td><td>Pixar 通用场景描述</td></tr>
+      <tr><td><strong>OBJ/GLB/STL/PLY</strong></td><td>常见网格格式</td></tr>
+    </table>
+  </div>
+  <div class="concept-card">
+    <h4>内置基础几何体</h4>
+    <table style="font-size:0.88em; margin:4px 0;">
+      <tr><td><code>gs.morphs.Box</code></td><td>长方体</td></tr>
+      <tr><td><code>gs.morphs.Sphere</code></td><td>球体</td></tr>
+      <tr><td><code>gs.morphs.Cylinder</code></td><td>圆柱</td></tr>
+      <tr><td><code>gs.morphs.Plane</code></td><td>无限平面</td></tr>
+      <tr><td><code>gs.morphs.Terrain</code></td><td>高度图地形</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ===== 5. Multi-Physics ===== -->
+<h2>5. 多物理材质：同一场景中混合不同物理</h2>
+
+<p>Genesis 最有特色的能力：同一个场景里，不同物体可以用不同的物理求解器。比如刚体盒子可以和 FEM 柔体球在桌上碰撞。</p>
+
+<pre><code># 刚体方块 —— 普通碰撞
+box = scene.add_entity(gs.morphs.Box(size=(0.1, 0.1, 0.1), pos=(0, 0, 0.5)))
+
+# FEM 弹性体 —— 有限元软体
+soft_ball = scene.add_entity(
+    gs.morphs.Sphere(pos=(0.2, 0, 0.8), radius=0.06),
+    material=gs.materials.FEM.Elastic(E=1e4, nu=0.3, rho=1000),
+)
+
+# MPM 沙堆 —— 物质点法
+sand = scene.add_entity(
+    gs.morphs.Box(pos=(0.4, 0, 0.5), size=(0.1, 0.1, 0.1)),
+    material=gs.materials.MPM.Sand(E=1e5, nu=0.2, rho=1500),
+)
+
+# SPH 液体 —— 光滑粒子法
+water = scene.add_entity(
+    gs.morphs.Box(pos=(-0.2, 0, 0.3), size=(0.15, 0.15, 0.15)),
+    material=gs.materials.SPH.Liquid(mu=0.001, rho=1000),
+)</code></pre>
+
+<div class="diagram-container">
+<svg viewBox="0 0 780 200" xmlns="http://www.w3.org/2000/svg" style="max-width:780px">
+  <!-- Ground -->
+  <rect x="40" y="155" width="700" height="10" rx="2" fill="#d1d5db"/>
+
+  <!-- Rigid box -->
+  <rect x="100" y="105" width="50" height="50" rx="3" fill="#3b82f6" opacity="0.8"/>
+  <text x="125" y="135" text-anchor="middle" font-size="10" fill="#fff" font-weight="600">Rigid</text>
+  <text x="125" y="185" text-anchor="middle" font-size="9" fill="#3b82f6">刚体碰撞</text>
+
+  <!-- FEM soft ball -->
+  <circle cx="260" cy="125" r="28" fill="#a855f7" opacity="0.6"/>
+  <ellipse cx="260" cy="150" rx="32" ry="10" fill="#a855f7" opacity="0.3"/>
+  <text x="260" y="130" text-anchor="middle" font-size="10" fill="#fff" font-weight="600">FEM</text>
+  <text x="260" y="185" text-anchor="middle" font-size="9" fill="#7c3aed">弹性变形</text>
+
+  <!-- MPM sand pile -->
+  <g transform="translate(400, 130)">
+    <circle cx="0" cy="0" r="3" fill="#f59e0b" opacity="0.7"/>
+    <circle cx="8" cy="-5" r="3" fill="#f59e0b" opacity="0.6"/>
+    <circle cx="-6" cy="-3" r="3" fill="#f59e0b" opacity="0.5"/>
+    <circle cx="4" cy="8" r="3" fill="#f59e0b" opacity="0.7"/>
+    <circle cx="-8" cy="6" r="3" fill="#f59e0b" opacity="0.6"/>
+    <circle cx="12" cy="5" r="3" fill="#f59e0b" opacity="0.5"/>
+    <circle cx="-4" cy="10" r="3" fill="#f59e0b" opacity="0.7"/>
+    <circle cx="6" cy="12" r="3" fill="#f59e0b" opacity="0.6"/>
+    <circle cx="-2" cy="-8" r="3" fill="#f59e0b" opacity="0.5"/>
+    <circle cx="10" cy="-2" r="3" fill="#f59e0b" opacity="0.7"/>
+    <circle cx="-10" cy="0" r="3" fill="#f59e0b" opacity="0.6"/>
+    <circle cx="2" cy="15" r="3" fill="#f59e0b" opacity="0.5"/>
+  </g>
+  <text x="400" y="105" text-anchor="middle" font-size="10" fill="#92400e" font-weight="600">MPM</text>
+  <text x="400" y="185" text-anchor="middle" font-size="9" fill="#f59e0b">颗粒/沙/泥</text>
+
+  <!-- SPH water -->
+  <g transform="translate(540, 130)">
+    <circle cx="0" cy="0" r="3.5" fill="#06b6d4" opacity="0.5"/>
+    <circle cx="7" cy="-4" r="3.5" fill="#06b6d4" opacity="0.4"/>
+    <circle cx="-5" cy="-2" r="3.5" fill="#06b6d4" opacity="0.5"/>
+    <circle cx="3" cy="7" r="3.5" fill="#06b6d4" opacity="0.4"/>
+    <circle cx="-7" cy="5" r="3.5" fill="#06b6d4" opacity="0.5"/>
+    <circle cx="10" cy="4" r="3.5" fill="#06b6d4" opacity="0.4"/>
+    <circle cx="-3" cy="9" r="3.5" fill="#06b6d4" opacity="0.5"/>
+    <circle cx="5" cy="11" r="3.5" fill="#06b6d4" opacity="0.4"/>
+    <circle cx="-1" cy="-7" r="3.5" fill="#06b6d4" opacity="0.5"/>
+    <circle cx="8" cy="-1" r="3.5" fill="#06b6d4" opacity="0.4"/>
+  </g>
+  <text x="540" y="105" text-anchor="middle" font-size="10" fill="#0e7490" font-weight="600">SPH</text>
+  <text x="540" y="185" text-anchor="middle" font-size="9" fill="#06b6d4">液体流体</text>
+
+  <!-- PBD cloth -->
+  <g transform="translate(680, 110)">
+    <path d="M-25,0 Q-15,10 0,5 Q15,0 25,8 L25,30 Q15,35 0,32 Q-15,38 -25,30 Z" fill="#ec4899" opacity="0.4" stroke="#ec4899" stroke-width="1"/>
+  </g>
+  <text x="680" y="105" text-anchor="middle" font-size="10" fill="#be185d" font-weight="600">PBD</text>
+  <text x="680" y="185" text-anchor="middle" font-size="9" fill="#ec4899">布料/绳索</text>
+
+  <!-- Title -->
+  <text x="390" y="30" text-anchor="middle" font-size="13" fill="#374151" font-weight="700">同一个 scene 中的不同物理材质</text>
+</svg>
+<p class="diagram-caption">Genesis 的核心优势：一个 Scene 中混合多种物理求解器</p>
+</div>
+
+<!-- ===== 6. GPU Parallelism ===== -->
+<h2>6. GPU 大规模并行：数千环境同时跑</h2>
+
+<p>训练 RL 策略时，需要同时运行成千上万个环境。Genesis 原生支持批量仿真——只需要在 <code>build()</code> 时传入 <code>n_envs</code>：</p>
+
+<pre><code>scene.build(n_envs=2048, env_spacing=(0.5, 0.5))
+
+# 所有 API 返回的 tensor 自动变成 [n_envs, ...] 形状
+qpos = franka.get_dofs_position()   # shape: [2048, 9]
+target = torch.zeros(2048, 9)
+franka.control_dofs_position(target)
+scene.step()  # 2048 个环境同步推进一步</code></pre>
+
+<div class="diagram-container">
+<svg viewBox="0 0 780 160" xmlns="http://www.w3.org/2000/svg" style="max-width:780px">
+  <!-- Multiple env boxes -->
+  <rect x="20" y="30" width="70" height="50" rx="4" fill="#eff6ff" stroke="#93c5fd" stroke-width="1"/>
+  <text x="55" y="50" text-anchor="middle" font-size="8" fill="#1e40af" font-weight="600">Env #0</text>
+  <text x="55" y="66" text-anchor="middle" font-size="7" fill="#6b7280">Franka+Box</text>
+
+  <rect x="100" y="30" width="70" height="50" rx="4" fill="#eff6ff" stroke="#93c5fd" stroke-width="1"/>
+  <text x="135" y="50" text-anchor="middle" font-size="8" fill="#1e40af" font-weight="600">Env #1</text>
+  <text x="135" y="66" text-anchor="middle" font-size="7" fill="#6b7280">Franka+Box</text>
+
+  <rect x="180" y="30" width="70" height="50" rx="4" fill="#eff6ff" stroke="#93c5fd" stroke-width="1"/>
+  <text x="215" y="50" text-anchor="middle" font-size="8" fill="#1e40af" font-weight="600">Env #2</text>
+  <text x="215" y="66" text-anchor="middle" font-size="7" fill="#6b7280">Franka+Sphere</text>
+
+  <text x="270" y="60" font-size="14" fill="#94a3b8">…</text>
+
+  <rect x="300" y="30" width="80" height="50" rx="4" fill="#eff6ff" stroke="#93c5fd" stroke-width="1"/>
+  <text x="340" y="50" text-anchor="middle" font-size="8" fill="#1e40af" font-weight="600">Env #2047</text>
+  <text x="340" y="66" text-anchor="middle" font-size="7" fill="#6b7280">Franka+Cylinder</text>
+
+  <!-- Arrow -->
+  <text x="405" y="58" font-size="18" fill="#22c55e" font-weight="700">→</text>
+
+  <!-- GPU -->
+  <rect x="440" y="20" width="180" height="70" rx="10" fill="#22c55e" stroke="#16a34a" stroke-width="2"/>
+  <text x="530" y="48" text-anchor="middle" font-size="14" fill="#fff" font-weight="700">GPU</text>
+  <text x="530" y="68" text-anchor="middle" font-size="10" fill="#dcfce7">一次 step() 同步推进全部</text>
+
+  <!-- Speed label -->
+  <rect x="640" y="28" width="130" height="55" rx="8" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="705" y="48" text-anchor="middle" font-size="10" fill="#92400e" font-weight="600">4300 万 FPS</text>
+  <text x="705" y="66" text-anchor="middle" font-size="9" fill="#6b7280">单 RTX 4090 Franka</text>
+
+  <!-- Heterogeneous note -->
+  <rect x="20" y="100" width="750" height="40" rx="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="390" y="118" text-anchor="middle" font-size="10" fill="#374151">
+    <tspan font-weight="600">异构仿真：</tspan>不同环境可以有不同的物体变体（大小、形状不同），用于域随机化 (Domain Randomization)
+  </text>
+  <text x="390" y="134" text-anchor="middle" font-size="9" fill="#6b7280">
+    传入 morph 列表而不是单个 morph，Genesis 会自动把每个 env 分配不同变体
+  </text>
+</svg>
+<p class="diagram-caption">n_envs=2048：所有环境在 GPU 上并行运行</p>
+</div>
+
+<!-- ===== 7. Camera & Observation ===== -->
+<h2>7. 相机与观测</h2>
+
+<pre><code># 添加相机
+cam = scene.add_camera(
+    res=(640, 480),
+    pos=(2.0, 0.0, 1.5),
+    lookat=(0, 0, 0.5),
+    fov=40,
+    GUI=False,
+)
+scene.build()
+
+# 渲染多种模态
+cam.render(rgb=True, depth=True, segmentation=True, normal=True)
+
+# 录制视频
+cam.start_recording()
+for i in range(100):
+    scene.step()
+cam.stop_recording(save_to_filename="output.mp4")</code></pre>
+
+<table>
+  <tr><th>输出模态</th><th>格式</th><th>用途</th></tr>
+  <tr><td>RGB</td><td>H × W × 3 uint8</td><td>视觉策略输入</td></tr>
+  <tr><td>Depth</td><td>H × W float32</td><td>点云重建</td></tr>
+  <tr><td>Segmentation</td><td>H × W int</td><td>物体 mask</td></tr>
+  <tr><td>Normal</td><td>H × W × 3 float32</td><td>表面法线</td></tr>
+</table>
+
+<!-- ===== 8. Config ===== -->
+<h2>8. 配置系统</h2>
+
+<p>Genesis 用 Python 对象（不是 YAML 文件）做配置，所有参数在创建 Scene 时传入：</p>
+
+<pre><code>scene = gs.Scene(
+    sim_options=gs.options.SimOptions(
+        dt=0.01,             # 时间步长
+        substeps=1,          # 每步子步数
+        gravity=(0, 0, -9.81),
+    ),
+    rigid_options=gs.options.RigidOptions(
+        enable_collision=True,
+        box_box_detection=True,
+    ),
+    viewer_options=gs.options.ViewerOptions(
+        camera_pos=(3.5, 0.0, 2.5),
+        camera_fov=40,
+        res=(960, 640),
+    ),
+    vis_options=gs.options.VisOptions(
+        show_world_frame=True,
+    ),
+    show_viewer=False,
+)</code></pre>
+
+<!-- ===== 9. Comparison ===== -->
+<h2>9. Genesis vs MuJoCo vs Isaac Sim</h2>
+
+<table>
+  <tr><th>对比维度</th><th>Genesis</th><th>MuJoCo</th><th>Isaac Sim/Lab</th></tr>
+  <tr><td>物理求解</td><td>刚体 + FEM + MPM + SPH + PBD + IPC</td><td>刚体为主</td><td>刚体 + PhysX 柔体</td></tr>
+  <tr><td>GPU 并行速度</td><td>4300 万 FPS (Franka)</td><td>~10 万 FPS</td><td>~50 万 FPS</td></tr>
+  <tr><td>资产格式</td><td>MJCF / URDF / USD / Mesh</td><td>MJCF</td><td>USD / Mesh</td></tr>
+  <tr><td>硬件要求</td><td>CPU / CUDA / AMD / Metal</td><td>CPU / CUDA</td><td>NVIDIA 显卡必须</td></tr>
+  <tr><td>渲染质量</td><td>光栅化 + 光线追踪</td><td>基础渲染</td><td>高保真 RTX 渲染</td></tr>
+  <tr><td>可微分</td><td>MPM/Tool solver 支持</td><td>不支持</td><td>部分支持</td></tr>
+  <tr><td>生态成熟度</td><td>新兴 (2024)，API 还在变</td><td>成熟稳定</td><td>成熟，NVIDIA 支持</td></tr>
+  <tr><td>适合场景</td><td>多物理实验、快速原型</td><td>RL 训练、动力学研究</td><td>高保真场景、Sim2Real</td></tr>
+</table>
+
+<div class="callout warn">
+  <div class="callout-title">选择建议</div>
+  Genesis 适合两类人：(1) 需要刚体之外的物理（布料、液体、柔体）的研究者；(2) 想要一个跨平台、统一 API 的快速实验框架。但如果你只做刚体操作任务或 RL 训练，MuJoCo 更成熟稳定；如果你追求最高保真度的 Sim2Real，Isaac Sim 的渲染和物理都更可靠。
+</div>
+
+<!-- ===== 10. Lab script ===== -->
+<h2>10. 动手实践</h2>
+
+<p>本节配套了两个可运行的 lab 脚本：</p>
+
+<table>
+  <tr><th>脚本</th><th>内容</th><th>运行命令</th></tr>
+  <tr>
+    <td><code>labs/04-simulation/genesis_hello.py</code></td>
+    <td>加载 Franka、PD 控制到目标位姿、输出关节轨迹</td>
+    <td><code>python labs/04-simulation/genesis_hello.py</code></td>
+  </tr>
+  <tr>
+    <td><code>labs/04-simulation/genesis_multiphysics.py</code></td>
+    <td>多刚体自由下落、碰撞检测和沉降验证</td>
+    <td><code>python labs/04-simulation/genesis_multiphysics.py</code></td>
+  </tr>
+</table>
+
+<div class="callout green">
+  <div class="callout-title">运行前提</div>
+  <code>conda activate labgenesis && pip install genesis-world</code>，需要 Python ≥ 3.10 和 PyTorch。输出文件保存在 <code>runs/</code> 目录。
+</div>
+
+<p style="margin-top:40px; color:#94a3b8; font-size:0.88em;">
+  参考：<a href="https://genesis-world.readthedocs.io/">Genesis 文档</a> · <a href="https://github.com/Genesis-Embodied-AI/Genesis">GitHub</a>
+  <br>
+  返回：<a href="06-other-simulation-ecosystems.md">其他仿真生态</a> · <a href="README.md">06 仿真建模</a>
+</p>
+
+</body>
+</html>

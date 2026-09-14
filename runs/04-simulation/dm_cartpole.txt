@@ -1,0 +1,13 @@
+domain=cartpole task=swingup
+action_spec: shape=(1,) low=[-1.] high=[1.]
+observation keys: ['position', 'velocity']
+step=  0  reward=0.0000  obs_dim=5
+step=  1  reward=0.0000  obs_dim=5
+step=  2  reward=0.0000  obs_dim=5
+step=  3  reward=0.0000  obs_dim=5
+step=  4  reward=0.0000  obs_dim=5
+step= 25  reward=0.0000  obs_dim=5
+step= 50  reward=0.0013  obs_dim=5
+step= 75  reward=0.0001  obs_dim=5
+100-step total reward (random) = 0.042
+wrote runs/04-simulation/dm_cartpole.mp4 (100 frames @ 50 fps)

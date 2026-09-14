@@ -1,0 +1,29 @@
+observation_space: Box(-inf, inf, (16, 42), float32)
+action_space: Box(-1.0, 1.0, (16, 7), float32)
+single_observation_space: Box(-inf, inf, (42,), float32)
+single_action_space: Box(-1.0, 1.0, (7,), float32)
+
+{
+  "num_envs": 16,
+  "obs_shape": [
+    16,
+    42
+  ],
+  "reward_shape": [
+    16
+  ],
+  "done_shape": [
+    16
+  ],
+  "reward_device": "cuda:0",
+  "reward_sample": [
+    0.062172483652830124,
+    0.05131111294031143,
+    0.047509681433439255,
+    0.06572888046503067,
+    0.06654217094182968,
+    0.0450308583676815,
+    0.055900394916534424,
+    0.08024444431066513
+  ]
+}

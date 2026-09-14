@@ -1,0 +1,15 @@
+MJX put_model() outcome on menagerie robots:
+
+robot                     status        notes
+--------------------------------------------------------------------------------
+franka_emika_panda        mjx_ok        
+universal_robots_ur5e     mjx_ok        
+kuka_iiwa_14              mjx_ok        
+unitree_a1                mjx_ok        
+unitree_go2               mjx_failed    NotImplementedError: (mjtGeom.mjGEOM_CYLINDER, mjtGeom.mjGEO
+anybotics_anymal_b        mjx_failed    NotImplementedError: (mjtGeom.mjGEOM_CYLINDER, mjtGeom.mjGEO
+anybotics_anymal_c        mjx_failed    NotImplementedError: (mjtGeom.mjGEOM_CYLINDER, mjtGeom.mjGEO
+robotis_op3               mjx_ok        
+aloha                     mjx_ok        
+google_robot              mjx_failed    NotImplementedError: (mjtGeom.mjGEOM_CYLINDER, mjtGeom.mjGEO
+trs_so_arm100             mjx_ok        

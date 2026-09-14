@@ -1,0 +1,28 @@
+{
+  "schema": "ppt-master.source_to_md.profile.v1",
+  "converter": "pdf_to_md.py",
+  "conversion_type": "pdf",
+  "source": {
+    "path": "C:/Users/17355/Desktop/VSCODE/dive-into-embodied-ai/section/10-world-models/01-predictive-world-models/tdmpc_tdmpc2_study.pdf",
+    "name": "tdmpc_tdmpc2_study.pdf",
+    "suffix": ".pdf",
+    "kind": "file",
+    "exists": true,
+    "size_bytes": 266527
+  },
+  "outputs": {
+    "markdown": "tdmpc_tdmpc2_study.md",
+    "asset_dir": "",
+    "image_manifest": "",
+    "image_count": 0
+  },
+  "markdown": {
+    "line_count": 515,
+    "char_count": 14665,
+    "heading_count": 37,
+    "table_count": 0,
+    "image_ref_count": 0,
+    "link_count": 0
+  },
+  "warnings": []
+}

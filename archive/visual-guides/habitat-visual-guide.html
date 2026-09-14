@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Habitat：室内导航与场景智能体平台</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", sans-serif;
+    background: #fff; color: #1a1a2e; line-height: 1.8;
+    max-width: 960px; margin: 0 auto; padding: 40px 24px 80px;
+  }
+  h1 { font-size: 2em; font-weight: 700; margin-bottom: 8px; }
+  h2 { font-size: 1.5em; font-weight: 600; margin: 56px 0 16px; padding-bottom: 8px; border-bottom: 2px solid #e8e8e8; }
+  h3 { font-size: 1.15em; font-weight: 600; margin: 32px 0 12px; }
+  p { margin: 12px 0; }
+  .subtitle { color: #666; font-size: 1.05em; margin-bottom: 32px; }
+  a { color: #2563eb; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .callout { background: #f0f7ff; border-left: 4px solid #2563eb; padding: 16px 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+  .callout.warn { background: #fffbeb; border-left-color: #f59e0b; }
+  .callout.green { background: #f0fdf4; border-left-color: #22c55e; }
+  .callout.purple { background: #faf5ff; border-left-color: #a855f7; }
+  .callout-title { font-weight: 600; margin-bottom: 4px; }
+  pre { background: #f8f9fa; border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px 20px; overflow-x: auto; font-size: 0.85em; line-height: 1.6; margin: 16px 0; }
+  code { font-family: "SF Mono", "Fira Code", "Consolas", monospace; }
+  .inline-code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.92em; }
+  th { background: #f8f9fa; font-weight: 600; text-align: left; }
+  th, td { padding: 10px 14px; border: 1px solid #e5e7eb; }
+  tr:nth-child(even) { background: #fafafa; }
+  .diagram-container { margin: 28px 0; text-align: center; }
+  .diagram-container svg { max-width: 100%; height: auto; }
+  .diagram-caption { color: #666; font-size: 0.88em; margin-top: 8px; text-align: center; }
+  .nav-breadcrumb { font-size: 0.88em; color: #94a3b8; margin-bottom: 24px; }
+  .nav-breadcrumb a { color: #64748b; }
+  .concept-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .concept-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; }
+  .concept-card h4 { margin-bottom: 6px; }
+  @media (max-width: 700px) { .concept-grid { grid-template-columns: 1fr; } }
+  .data-record { background: #f8fafc; border: 1px solid #d1d5db; border-radius: 12px; padding: 20px 24px; margin: 20px 0; font-size: 0.92em; }
+  .data-record .field { display: flex; gap: 8px; padding: 4px 0; border-bottom: 1px dashed #e5e7eb; }
+  .data-record .field:last-child { border-bottom: none; }
+  .data-record .field-name { font-weight: 600; color: #2563eb; min-width: 140px; font-family: "SF Mono", "Fira Code", monospace; font-size: 0.92em; }
+  .data-record .field-value { color: #374151; }
+  .data-record .field-note { color: #6b7280; font-size: 0.88em; margin-left: 4px; }
+  .terminal { background: #1e1b2e; color: #e2e8f0; border-radius: 10px; padding: 18px 20px; margin: 16px 0; font-size: 0.85em; line-height: 1.6; overflow-x: auto; }
+  .terminal .prompt { color: #22c55e; }
+  .terminal .comment { color: #64748b; }
+  .terminal .output { color: #94a3b8; }
+</style>
+</head>
+<body>
+
+<div class="nav-breadcrumb">
+  <a href="README.md">06 仿真建模</a> &gt; <a href="06-other-simulation-ecosystems.md">其他仿真生态</a> &gt; Habitat 图解指南
+</div>
+
+<h1>Habitat：室内导航与场景智能体平台</h1>
+<p class="subtitle">逼真 3D 室内场景、导航任务、标准化评测——具身智能体的"训练场"</p>
+
+<p>前面学的仿真平台——MuJoCo、Isaac Sim、Genesis——主要面向<strong>桌面操作</strong>（抓、放、装配）。但具身 AI 还有另一大类任务：<strong>在室内场景中导航和交互</strong>。"走到厨房拿一瓶水"这种任务，需要理解房间布局、避开家具、找到目标物体。</p>
+
+<p><strong>Habitat</strong> 是 Meta（Facebook）推出的具身 AI 仿真平台，专门为这类任务设计。它的核心优势是：拥有数千个高保真 3D 室内场景（真实房屋扫描），以及一套标准化的导航任务和评测协议。</p>
+
+<!-- ===== 1. Habitat vs Others ===== -->
+<h2>1. Habitat 在仿真生态中的位置</h2>
+
+<div class="diagram-container">
+<svg viewBox="0 0 780 220" xmlns="http://www.w3.org/2000/svg" style="max-width:780px">
+  <!-- Axis labels -->
+  <text x="390" y="20" text-anchor="middle" font-size="12" fill="#374151" font-weight="600">具身 AI 仿真平台的分工</text>
+
+  <!-- MuJoCo -->
+  <rect x="30" y="50" width="160" height="80" rx="10" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5"/>
+  <text x="110" y="75" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">MuJoCo / Isaac Lab</text>
+  <text x="110" y="95" text-anchor="middle" font-size="10" fill="#6b7280">桌面操作任务</text>
+  <text x="110" y="112" text-anchor="middle" font-size="9" fill="#94a3b8">抓取、放置、装配</text>
+  <text x="110" y="125" text-anchor="middle" font-size="9" fill="#94a3b8">精确力学仿真</text>
+
+  <!-- Habitat -->
+  <rect x="220" y="50" width="160" height="80" rx="10" fill="#f0fdf4" stroke="#22c55e" stroke-width="2"/>
+  <text x="300" y="75" text-anchor="middle" font-size="12" fill="#166534" font-weight="700">Habitat</text>
+  <text x="300" y="95" text-anchor="middle" font-size="10" fill="#166534">室内导航任务</text>
+  <text x="300" y="112" text-anchor="middle" font-size="9" fill="#6b7280">PointNav、ObjectNav</text>
+  <text x="300" y="125" text-anchor="middle" font-size="9" fill="#6b7280">逼真 3D 室内场景</text>
+
+  <!-- Genesis -->
+  <rect x="410" y="50" width="160" height="80" rx="10" fill="#faf5ff" stroke="#c4b5fd" stroke-width="1.5"/>
+  <text x="490" y="75" text-anchor="middle" font-size="12" fill="#6b21a8" font-weight="600">Genesis</text>
+  <text x="490" y="95" text-anchor="middle" font-size="10" fill="#6b7280">多物理通用仿真</text>
+  <text x="490" y="112" text-anchor="middle" font-size="9" fill="#94a3b8">刚体+柔体+流体</text>
+  <text x="490" y="125" text-anchor="middle" font-size="9" fill="#94a3b8">快速原型实验</text>
+
+  <!-- Overlap: Rearrange -->
+  <rect x="600" y="50" width="160" height="80" rx="10" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5"/>
+  <text x="680" y="75" text-anchor="middle" font-size="12" fill="#9a3412" font-weight="600">Habitat + 操作</text>
+  <text x="680" y="95" text-anchor="middle" font-size="10" fill="#6b7280">移动操作任务</text>
+  <text x="680" y="112" text-anchor="middle" font-size="9" fill="#94a3b8">"走到厨房拿杯子"</text>
+  <text x="680" y="125" text-anchor="middle" font-size="9" fill="#94a3b8">导航 + 交互结合</text>
+
+  <!-- Key message -->
+  <rect x="130" y="155" width="520" height="35" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="390" y="177" text-anchor="middle" font-size="11" fill="#374151">
+    <tspan font-weight="600">选择原则：</tspan>桌面操作 → MuJoCo/Isaac · 室内导航 → Habitat · 多物理实验 → Genesis
+  </text>
+</svg>
+<p class="diagram-caption">不同仿真平台擅长不同类型的任务</p>
+</div>
+
+<!-- ===== 2. Architecture ===== -->
+<h2>2. Habitat 的三层架构</h2>
+
+<p>Habitat 由三个组件构成，从底层到上层：</p>
+
+<div class="diagram-container">
+<svg viewBox="0 0 780 320" xmlns="http://www.w3.org/2000/svg" style="max-width:780px">
+  <defs>
+    <marker id="arrUp" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#475569"/></marker>
+  </defs>
+
+  <!-- Habitat-Sim (bottom) -->
+  <rect x="100" y="220" width="580" height="80" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="390" y="250" text-anchor="middle" font-size="15" fill="#1e40af" font-weight="700">Habitat-Sim（仿真器）</text>
+  <text x="390" y="275" text-anchor="middle" font-size="11" fill="#6b7280">C++ 渲染引擎 · 场景加载 · 物理碰撞 · 导航网格 (NavMesh)</text>
+  <text x="390" y="293" text-anchor="middle" font-size="10" fill="#94a3b8">输出 RGB、Depth、Semantic 图像 · 支持 HM3D / MP3D / Gibson 场景</text>
+
+  <!-- Arrow up -->
+  <line x1="390" y1="220" x2="390" y2="195" stroke="#475569" stroke-width="1.5" marker-end="url(#arrUp)"/>
+
+  <!-- Habitat-Lab (middle) -->
+  <rect x="100" y="120" width="580" height="75" rx="12" fill="#f0fdf4" stroke="#22c55e" stroke-width="2"/>
+  <text x="390" y="148" text-anchor="middle" font-size="15" fill="#166534" font-weight="700">Habitat-Lab（任务框架）</text>
+  <text x="390" y="170" text-anchor="middle" font-size="11" fill="#6b7280">Task 定义 · Sensor 组合 · Measure 评测 · Episode 数据集 · Config (Hydra)</text>
+  <text x="390" y="188" text-anchor="middle" font-size="10" fill="#94a3b8">PointNav · ObjectNav · VLN · EQA · Rearrange 等预定义任务</text>
+
+  <!-- Arrow up -->
+  <line x1="390" y1="120" x2="390" y2="95" stroke="#475569" stroke-width="1.5" marker-end="url(#arrUp)"/>
+
+  <!-- Gym API (top) -->
+  <rect x="200" y="30" width="380" height="65" rx="12" fill="#22c55e" stroke="#16a34a" stroke-width="2"/>
+  <text x="390" y="58" text-anchor="middle" font-size="15" fill="#fff" font-weight="700">Gym API（用户接口）</text>
+  <text x="390" y="80" text-anchor="middle" font-size="11" fill="#dcfce7">gym.make("HabitatRenderPick-v0") · reset() · step() · obs/reward</text>
+
+  <!-- Side annotations -->
+  <text x="55" y="260" text-anchor="middle" font-size="10" fill="#3b82f6" transform="rotate(-90, 55, 260)">C++ / GPU</text>
+  <text x="55" y="157" text-anchor="middle" font-size="10" fill="#22c55e" transform="rotate(-90, 55, 157)">Python</text>
+</svg>
+<p class="diagram-caption">Habitat 三层：Sim（渲染+物理） → Lab（任务+评测） → Gym（标准接口）</p>
+</div>
+
+<!-- ===== 3. Scenes ===== -->
+<h2>3. 场景数据集：真实房屋的数字孪生</h2>
+
+<p>Habitat 最有价值的资产是<strong>数千个真实室内 3D 场景扫描</strong>。这些不是手工建模的虚拟房间，而是用 3D 扫描仪对真实房屋进行重建的结果，包含逼真的家具、墙壁、光照和语义标注。</p>
+
+<table>
+  <tr><th>数据集</th><th>场景数</th><th>来源</th><th>特点</th></tr>
+  <tr><td><strong>HM3D</strong></td><td>1,000+</td><td>Matterport 扫描</td><td>高质量纹理、语义标注、官方推荐</td></tr>
+  <tr><td><strong>MP3D</strong></td><td>90</td><td>Matterport3D</td><td>经典数据集、多层建筑</td></tr>
+  <tr><td><strong>Gibson</strong></td><td>572</td><td>Gibson 环境</td><td>早期数据集、部分质量较低</td></tr>
+  <tr><td><strong>HSSD</strong></td><td>211</td><td>Habitat 合成</td><td>可交互物体、适合 Rearrange 任务</td></tr>
+</table>
+
+<div class="callout">
+  <div class="callout-title">为什么用真实场景而不是手工建模？</div>
+  手工建模的虚拟房间往往"太整洁"——家具摆放规则、没有杂物、走廊宽度一致。真实扫描的场景充满了不规则性：窄走廊、堆满杂物的角落、不同房间的光照差异。在这种环境中训练的智能体，迁移到真实世界时表现更好。
+</div>
+
+<!-- ===== 4. Task Types ===== -->
+<h2>4. 任务类型：从"走到那里"到"回答问题"</h2>
+
+<div class="diagram-container">
+<svg viewBox="0 0 780 360" xmlns="http://www.w3.org/2000/svg" style="max-width:780px">
+  <!-- PointNav -->
+  <rect x="20" y="20" width="230" height="140" rx="10" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5"/>
+  <text x="135" y="45" text-anchor="middle" font-size="13" fill="#1e40af" font-weight="600">PointNav（点目标导航）</text>
+  <!-- Room sketch -->
+  <rect x="40" y="60" width="90" height="70" rx="4" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1"/>
+  <circle cx="60" cy="85" r="6" fill="#3b82f6"/>
+  <text x="60" y="88" text-anchor="middle" font-size="7" fill="#fff" font-weight="600">A</text>
+  <circle cx="110" cy="110" r="6" fill="#ef4444"/>
+  <text x="110" y="113" text-anchor="middle" font-size="7" fill="#fff" font-weight="600">B</text>
+  <path d="M66,85 Q90,80 104,110" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4,3"/>
+  <text x="155" y="80" font-size="9" fill="#374151" font-weight="600">给坐标 (x, y, z)</text>
+  <text x="155" y="96" font-size="9" fill="#6b7280">走到目标点</text>
+  <text x="155" y="112" font-size="9" fill="#6b7280">不需要看到什么</text>
+  <text x="155" y="128" font-size="9" fill="#6b7280">只需到达位置</text>
+  <text x="135" y="152" text-anchor="middle" font-size="9" fill="#94a3b8">输入：GPS + Compass + 目标坐标</text>
+
+  <!-- ObjectNav -->
+  <rect x="275" y="20" width="230" height="140" rx="10" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+  <text x="390" y="45" text-anchor="middle" font-size="13" fill="#166534" font-weight="600">ObjectNav（物体目标导航）</text>
+  <rect x="295" y="60" width="90" height="70" rx="4" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1"/>
+  <circle cx="315" cy="85" r="6" fill="#3b82f6"/>
+  <text x="315" y="88" text-anchor="middle" font-size="7" fill="#fff" font-weight="600">A</text>
+  <text x="362" y="105" font-size="14" fill="#ef4444">🪑</text>
+  <path d="M321,85 Q345,80 358,98" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4,3"/>
+  <text x="410" y="80" font-size="9" fill="#374151" font-weight="600">给类别名称 "chair"</text>
+  <text x="410" y="96" font-size="9" fill="#6b7280">找到并走到那个物体</text>
+  <text x="410" y="112" font-size="9" fill="#6b7280">需要识别+导航</text>
+  <text x="410" y="128" font-size="9" fill="#6b7280">更接近真实需求</text>
+  <text x="390" y="152" text-anchor="middle" font-size="9" fill="#94a3b8">输入：RGB-D + 目标类别 ID</text>
+
+  <!-- VLN -->
+  <rect x="530" y="20" width="230" height="140" rx="10" fill="#faf5ff" stroke="#c4b5fd" stroke-width="1.5"/>
+  <text x="645" y="45" text-anchor="middle" font-size="13" fill="#6b21a8" font-weight="600">VLN（视觉语言导航）</text>
+  <rect x="550" y="60" width="90" height="70" rx="4" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1"/>
+  <circle cx="570" cy="85" r="6" fill="#3b82f6"/>
+  <path d="M576,85 L600,80 L610,100 L625,110" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4,3"/>
+  <circle cx="625" cy="110" r="4" fill="#ef4444"/>
+  <text x="665" y="80" font-size="9" fill="#374151" font-weight="600">给自然语言指令</text>
+  <text x="665" y="96" font-size="9" fill="#6b7280">"走出卧室，左转</text>
+  <text x="665" y="112" font-size="9" fill="#6b7280">  进厨房"</text>
+  <text x="665" y="128" font-size="9" fill="#6b7280">理解空间指代</text>
+  <text x="645" y="152" text-anchor="middle" font-size="9" fill="#94a3b8">输入：RGB + 语言指令序列</text>
+
+  <!-- Rearrange (bottom row) -->
+  <rect x="120" y="190" width="260" height="140" rx="10" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5"/>
+  <text x="250" y="215" text-anchor="middle" font-size="13" fill="#9a3412" font-weight="600">Rearrange（整理任务）</text>
+  <rect x="140" y="230" width="90" height="70" rx="4" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1"/>
+  <text x="185" y="265" text-anchor="middle" font-size="20">📦→🗄️</text>
+  <text x="255" y="250" font-size="9" fill="#374151" font-weight="600">导航 + 拿取 + 放置</text>
+  <text x="255" y="266" font-size="9" fill="#6b7280">"把厨房台面上的苹果</text>
+  <text x="255" y="282" font-size="9" fill="#6b7280">  放进冰箱"</text>
+  <text x="255" y="298" font-size="9" fill="#6b7280">最接近真实机器人任务</text>
+  <text x="250" y="322" text-anchor="middle" font-size="9" fill="#94a3b8">输入：RGB-D + 手臂状态 + 目标配置</text>
+
+  <!-- EQA -->
+  <rect x="420" y="190" width="260" height="140" rx="10" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.5"/>
+  <text x="550" y="215" text-anchor="middle" font-size="13" fill="#991b1b" font-weight="600">EQA（具身问答）</text>
+  <rect x="440" y="230" width="90" height="70" rx="4" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1"/>
+  <text x="485" y="265" text-anchor="middle" font-size="20">🔍❓</text>
+  <text x="555" y="250" font-size="9" fill="#374151" font-weight="600">导航 + 观察 + 回答</text>
+  <text x="555" y="266" font-size="9" fill="#6b7280">"卧室里的床是什么</text>
+  <text x="555" y="282" font-size="9" fill="#6b7280">  颜色的？"</text>
+  <text x="555" y="298" font-size="9" fill="#6b7280">需要主动探索场景</text>
+  <text x="550" y="322" text-anchor="middle" font-size="9" fill="#94a3b8">输入：RGB + 自然语言问题</text>
+</svg>
+<p class="diagram-caption">Habitat 支持的主要任务类型——从简单的点导航到复杂的移动操作</p>
+</div>
+
+<!-- ===== 5. Episode ===== -->
+<h2>5. Episode 结构：一次任务的完整定义</h2>
+
+<p>在 Habitat 中，每次导航任务叫一个 <strong>Episode</strong>。一个 episode 完整定义了"在哪个场景、从哪出发、去哪里"。</p>
+
+<div class="data-record">
+  <div style="font-weight:700; margin-bottom:12px; font-size:1.05em; color:#1e40af;">NavigationEpisode — PointNav 示例</div>
+
+  <div class="field">
+    <span class="field-name">episode_id</span>
+    <span class="field-value">"ep_001"</span>
+    <span class="field-note">← 唯一标识符，用于复现</span>
+  </div>
+  <div class="field">
+    <span class="field-name">scene_id</span>
+    <span class="field-value">"data/scene_datasets/hm3d/00801/00801.basis.glb"</span>
+    <span class="field-note">← 在哪个 3D 场景中</span>
+  </div>
+  <div class="field">
+    <span class="field-name">start_position</span>
+    <span class="field-value">[3.14, 0.17, -1.82]</span>
+    <span class="field-note">← 智能体出生点 (x, y, z)</span>
+  </div>
+  <div class="field">
+    <span class="field-name">start_rotation</span>
+    <span class="field-value">[0, 0.38, 0, 0.92]</span>
+    <span class="field-note">← 初始朝向 (quaternion)</span>
+  </div>
+  <div class="field">
+    <span class="field-name">goals[0].position</span>
+    <span class="field-value">[5.62, 0.17, -3.41]</span>
+    <span class="field-note">← 目标位置</span>
+  </div>
+  <div class="field">
+    <span class="field-name">goals[0].radius</span>
+    <span class="field-value">0.2</span>
+    <span class="field-note">← 到达阈值（米），走到 0.2m 内算成功</span>
+  </div>
+  <div class="field">
+    <span class="field-name">shortest_path_length</span>
+    <span class="field-value">4.37</span>
+    <span class="field-note">← 最优路径长度（米），用于计算 SPL</span>
+  </div>
+  <div class="field">
+    <span class="field-name">info.geodesic_distance</span>
+    <span class="field-value">4.37</span>
+    <span class="field-note">← 测地距离（沿 NavMesh 的最短距离）</span>
+  </div>
+</div>
+
+<p>对于 ObjectNav，episode 还包含 <code>object_category</code>（如 "chair"）字段，不直接给坐标——智能体必须自己找到目标物体。</p>
+
+<!-- ===== 6. Sensors ===== -->
+<h2>6. 传感器套件：智能体的"感官"</h2>
+
+<div class="diagram-container">
+<svg viewBox="0 0 780 220" xmlns="http://www.w3.org/2000/svg" style="max-width:780px">
+  <!-- Agent in center -->
+  <circle cx="390" cy="110" r="30" fill="#3b82f6" stroke="#1e40af" stroke-width="2"/>
+  <text x="390" y="115" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">Agent</text>
+
+  <!-- RGB sensor -->
+  <rect x="30" y="25" width="130" height="65" rx="8" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.5"/>
+  <text x="95" y="48" text-anchor="middle" font-size="11" fill="#991b1b" font-weight="600">RGB 相机</text>
+  <text x="95" y="68" text-anchor="middle" font-size="9" fill="#6b7280">256×256 或 640×480</text>
+  <text x="95" y="82" text-anchor="middle" font-size="9" fill="#94a3b8">第一人称视角</text>
+  <line x1="160" y1="57" x2="360" y2="100" stroke="#fca5a5" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <!-- Depth sensor -->
+  <rect x="30" y="120" width="130" height="65" rx="8" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+  <text x="95" y="143" text-anchor="middle" font-size="11" fill="#166534" font-weight="600">Depth 深度</text>
+  <text x="95" y="163" text-anchor="middle" font-size="9" fill="#6b7280">每像素深度值</text>
+  <text x="95" y="177" text-anchor="middle" font-size="9" fill="#94a3b8">用于避障和点云</text>
+  <line x1="160" y1="152" x2="360" y2="115" stroke="#86efac" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <!-- GPS -->
+  <rect x="510" y="25" width="130" height="65" rx="8" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5"/>
+  <text x="575" y="48" text-anchor="middle" font-size="11" fill="#1e40af" font-weight="600">GPS</text>
+  <text x="575" y="68" text-anchor="middle" font-size="9" fill="#6b7280">(x, y) 相对位置</text>
+  <text x="575" y="82" text-anchor="middle" font-size="9" fill="#94a3b8">相对 episode 起点</text>
+  <line x1="510" y1="57" x2="420" y2="100" stroke="#93c5fd" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <!-- Compass -->
+  <rect x="510" y="120" width="130" height="65" rx="8" fill="#faf5ff" stroke="#c4b5fd" stroke-width="1.5"/>
+  <text x="575" y="143" text-anchor="middle" font-size="11" fill="#6b21a8" font-weight="600">Compass</text>
+  <text x="575" y="163" text-anchor="middle" font-size="9" fill="#6b7280">朝向角 θ</text>
+  <text x="575" y="177" text-anchor="middle" font-size="9" fill="#94a3b8">相对 episode 起点</text>
+  <line x1="510" y1="152" x2="420" y2="115" stroke="#c4b5fd" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <!-- PointGoal -->
+  <rect x="620" y="70" width="150" height="80" rx="8" fill="#fefce8" stroke="#facc15" stroke-width="1.5"/>
+  <text x="695" y="96" text-anchor="middle" font-size="11" fill="#854d0e" font-weight="600">PointGoal Sensor</text>
+  <text x="695" y="116" text-anchor="middle" font-size="9" fill="#6b7280">目标的极坐标</text>
+  <text x="695" y="132" text-anchor="middle" font-size="9" fill="#6b7280">(距离, 角度)</text>
+  <text x="695" y="146" text-anchor="middle" font-size="9" fill="#94a3b8">GPS + Compass 计算得出</text>
+</svg>
+<p class="diagram-caption">PointNav 智能体的传感器套件——不是所有任务都需要全部传感器</p>
+</div>
+
+<!-- ===== 7. Metrics ===== -->
+<h2>7. 评测指标：怎么判断导航好不好</h2>
+
+<p>光看"到了没有"不够——还要看走了多远、有没有绕路。Habitat 定义了标准化的评测指标：</p>
+
+<div class="concept-grid">
+  <div class="concept-card" style="border-left: 3px solid #22c55e;">
+    <h4>Success（成功率）</h4>
+    <p>智能体主动调用 <code>STOP</code> 动作，且此时距离目标 &lt; <code>success_distance</code>（通常 0.2m）。</p>
+    <p style="font-size:0.88em; color:#6b7280">注意：走到了但没喊停 = 失败，喊停了但太远 = 也失败。</p>
+  </div>
+  <div class="concept-card" style="border-left: 3px solid #3b82f6;">
+    <h4>SPL（Success weighted by Path Length）</h4>
+    <p>成功时，最优路径长度和实际路径长度的比值。走到了但绕了大弯 → SPL 低。</p>
+    <pre style="margin:8px 0; font-size:0.82em; padding:8px;">SPL = success × (optimal_dist / max(optimal_dist, agent_dist))</pre>
+  </div>
+</div>
+
+<pre><code># Habitat 内部计算 SPL 的核心逻辑（简化版）
+def compute_spl(success, optimal_distance, agent_distance):
+    if not success:
+        return 0.0
+    return optimal_distance / max(optimal_distance, agent_distance)
+
+# 示例：
+# 最优路径 4.0m，智能体走了 5.2m，成功到达
+# SPL = 4.0 / 5.2 = 0.77（不错，轻微绕路）
+
+# 最优路径 4.0m，智能体走了 15.0m，成功到达
+# SPL = 4.0 / 15.0 = 0.27（绕了很多路）</code></pre>
+
+<div class="callout warn">
+  <div class="callout-title">SPL 的直觉</div>
+  SPL = 1.0 表示走了最短路径并成功到达——完美导航。SPL = 0.5 表示成功但实际路径是最优的 2 倍。SPL = 0.0 表示失败（没到或走的路太长）。<strong>研究论文中 SPL 是最重要的指标</strong>，因为它同时衡量了"能不能到"和"走得好不好"。
+</div>
+
+<!-- ===== 8. Code ===== -->
+<h2>8. 代码实战</h2>
+
+<h3>安装</h3>
+
+<div class="terminal">
+<span class="comment"># Habitat-Sim 需要 conda 安装（不支持 pip）</span><br>
+<span class="prompt">$</span> conda create -n habitat python=3.9<br>
+<span class="prompt">$</span> conda activate habitat<br>
+<span class="prompt">$</span> conda install habitat-sim withbullet -c conda-forge -c aihabitat<br>
+<br>
+<span class="comment"># Habitat-Lab</span><br>
+<span class="prompt">$</span> pip install habitat-lab<br>
+<br>
+<span class="comment"># 下载测试场景（约 150MB）</span><br>
+<span class="prompt">$</span> python -m habitat_sim.utils.datasets_download --uids habitat_test_scenes --data-path data/
+</div>
+
+<h3>最简示例：Gym 接口</h3>
+
+<pre><code>import gym
+import habitat.gym   # 注册 Habitat 的 Gym 环境
+
+env = gym.make("HabitatRenderPick-v0")
+obs = env.reset()
+
+done = False
+total_reward = 0
+steps = 0
+
+while not done:
+    action = env.action_space.sample()    # 随机动作
+    obs, reward, done, info = env.step(action)
+    total_reward += reward
+    steps += 1
+
+print(f"Episode 结束：{steps} 步, 总奖励 {total_reward:.2f}")
+env.close()</code></pre>
+
+<h3>使用 Config 自定义任务</h3>
+
+<pre><code>import habitat
+
+# 加载 PointNav 配置（Hydra 风格 YAML）
+config = habitat.get_config(
+    "benchmark/nav/pointnav/pointnav_habitat_test.yaml",
+    overrides=[
+        "habitat.environment.max_episode_steps=500",
+        "habitat.simulator.agents.main_agent.sim_sensors.rgb_sensor.width=256",
+        "habitat.simulator.agents.main_agent.sim_sensors.rgb_sensor.height=256",
+    ],
+)
+
+# 创建环境
+env = habitat.Env(config=config)
+obs = env.reset()
+
+# 查看观测空间
+print("Observation keys:", obs.keys())
+# 输出: dict_keys(['rgb', 'depth', 'pointgoal_with_gps_compass'])
+
+print("RGB shape:", obs["rgb"].shape)         # (256, 256, 3)
+print("Depth shape:", obs["depth"].shape)       # (256, 256, 1)
+print("Goal (dist, angle):", obs["pointgoal_with_gps_compass"])  # [4.37, 0.82]
+
+# 执行动作
+obs = env.step("move_forward")    # 前进 0.25m
+obs = env.step("turn_left")       # 左转 10°
+obs = env.step("stop")            # 宣布到达
+
+# 获取评测指标
+metrics = env.get_metrics()
+print(f"Success: {metrics['success']}")
+print(f"SPL: {metrics['spl']:.3f}")
+print(f"Distance to goal: {metrics['distance_to_goal']:.2f}m")</code></pre>
+
+<h3>注册自定义传感器</h3>
+
+<pre><code>import habitat
+import numpy as np
+from gym import spaces
+
+@habitat.registry.register_sensor(name="agent_height_sensor")
+class AgentHeightSensor(habitat.Sensor):
+    def _get_uuid(self):
+        return "agent_height"
+
+    def _get_sensor_type(self):
+        return habitat.SensorTypes.POSITION
+
+    def _get_observation_space(self):
+        return spaces.Box(low=0, high=5, shape=(1,), dtype=np.float32)
+
+    def get_observation(self, observations, episode, **kwargs):
+        agent_state = self._sim.get_agent_state()
+        return np.array([agent_state.position[1]], dtype=np.float32)</code></pre>
+
+<!-- ===== 9. Habitat vs Genesis ===== -->
+<h2>9. Habitat vs Genesis 速查</h2>
+
+<table>
+  <tr><th>对比维度</th><th>Habitat</th><th>Genesis</th></tr>
+  <tr><td>核心任务</td><td>室内导航、场景交互</td><td>操作、多物理实验</td></tr>
+  <tr><td>场景来源</td><td>真实扫描（HM3D/MP3D）</td><td>程序化生成或导入</td></tr>
+  <tr><td>物理引擎</td><td>Bullet（碰撞检测）</td><td>刚体+FEM+MPM+SPH+PBD</td></tr>
+  <tr><td>渲染质量</td><td>高（真实纹理）</td><td>高（光线追踪可选）</td></tr>
+  <tr><td>评测标准</td><td>SPL、Success 等成熟指标</td><td>无标准化评测</td></tr>
+  <tr><td>社区生态</td><td>成熟、大量论文使用</td><td>新兴、快速发展</td></tr>
+  <tr><td>安装难度</td><td>较高（conda + 下载场景）</td><td>低（pip install）</td></tr>
+  <tr><td>适合课程章节</td><td>第 10 章导航、VLM/VLA</td><td>第 4 章仿真、第 8 章 RL</td></tr>
+</table>
+
+<div class="callout green">
+  <div class="callout-title">一句话总结</div>
+  Habitat 是室内导航的"ImageNet"——标准化的场景、任务和评测指标，让不同方法可以公平比较。如果你的研究涉及"在室内找东西"或"按指令移动"，Habitat 是事实标准。
+</div>
+
+<p style="margin-top:40px; color:#94a3b8; font-size:0.88em;">
+  参考：<a href="https://aihabitat.org/docs/">Habitat 文档</a> · <a href="https://github.com/facebookresearch/habitat-lab">GitHub</a>
+  <br>
+  返回：<a href="06-other-simulation-ecosystems.md">其他仿真生态</a> · <a href="README.md">06 仿真建模</a>
+  <br>
+  对比阅读：<a href="genesis-visual-guide.html">Genesis 图解指南</a>
+</p>
+
+</body>
+</html>

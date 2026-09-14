@@ -1,0 +1,28 @@
+{
+  "schema": "ppt-master.source_to_md.profile.v1",
+  "converter": "pdf_to_md.py",
+  "conversion_type": "pdf",
+  "source": {
+    "path": "D:/xwechat_files/wxid_htp6h423qjl912_e01c/temp/RWTemp/2026-07/446f386085ed4599b3e0cb8d02df4377/徐亦栋_夏令营简历_最终版(3).pdf",
+    "name": "徐亦栋_夏令营简历_最终版(3).pdf",
+    "suffix": ".pdf",
+    "kind": "file",
+    "exists": true,
+    "size_bytes": 338956
+  },
+  "outputs": {
+    "markdown": "xu_yidong_resume_ppt_source.md",
+    "asset_dir": "",
+    "image_manifest": "",
+    "image_count": 0
+  },
+  "markdown": {
+    "line_count": 106,
+    "char_count": 2296,
+    "heading_count": 14,
+    "table_count": 0,
+    "image_ref_count": 0,
+    "link_count": 0
+  },
+  "warnings": []
+}

@@ -1,0 +1,57 @@
+# Embodied AI 任务难度阶梯
+
+## L1: PointNav
+- 描述: 导航到 (Δx, Δy) 给定的目标点
+- obs: rgb, depth, gps, compass
+- action: discrete (forward/left/right/stop)
+- benchmarks: Habitat PointNav v1/v2, Gibson
+- 指标: Success, SPL
+- 数据: HM3D, Matterport3D
+- 典型 baseline: PPO 30M steps ≈ 80%
+
+## L2: ObjectNav
+- 描述: 导航到 «沙发 / 床 / 椅子» 等语义类别
+- obs: rgb, depth, category
+- action: discrete (forward/left/right/stop)
+- benchmarks: Habitat ObjectNav 2022/2023
+- 指标: Success, SPL
+- 数据: HM3D-Semantics, Gibson
+- 典型 baseline: PPO + ImageNav 30M ≈ 35-40%
+
+## L3: Tabletop PickPlace
+- 描述: 从桌面抓取一个物体放到目标位置
+- obs: rgb, depth, joint_state
+- action: continuous (delta EE pose, 7D)
+- benchmarks: ManiSkill PickCube, robomimic Lift/Can
+- 指标: Success
+- 数据: demonstration data (200-2000 demos)
+- 典型 baseline: BC + Diffusion Policy 80-95%
+
+## L4: Language-conditioned PickPlace
+- 描述: «把红方块放到蓝盘子里» 等模板指令
+- obs: rgb, depth, joint_state, instruction
+- action: continuous + language
+- benchmarks: LIBERO (4 suites), CALVIN, Meta-World ML10/45
+- 指标: Success per task / suite
+- 数据: LIBERO 4*10*50 demos; CALVIN 6h play data
+- 典型 baseline: OpenVLA 75-85%, π0.5 95%+
+
+## L5: Mobile Manipulation
+- 描述: 在家庭场景中导航 + 操作
+- obs: multi-view rgb, depth, base pose, ee pose
+- action: base velocity + arm pose + gripper
+- benchmarks: Habitat Rearrangement, ManiSkill 3 Mobile
+- 指标: Sub-task success rates
+- 数据: scripted + RL fine-tune
+- 典型 baseline: 末端组合 30-50%
+
+## L6: Open-Vocabulary Mobile Manipulation (OVMM)
+- 描述: 用文本指定任意目标物体类别 + 移动操作
+- obs: multi-view rgb, depth, base pose, instruction
+- action: navigation + manipulation + skill switching
+- benchmarks: HomeRobot OVMM Challenge, BEHAVIOR-1K, RoboCasa
+- 指标: Total success, partial success, sub-task SR
+- 数据: HSSD, HomeRobot training scenes
+- 典型 baseline: HomeRobot baseline ~ 0-10% total
+
+wrote runs/10-comprehensive/task_ladder.json

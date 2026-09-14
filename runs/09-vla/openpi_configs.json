@@ -1,0 +1,91 @@
+{
+  "source_file": "reference/openpi/src/openpi/training/config.py",
+  "openpi_commit": "c23745b5ad24",
+  "num_configs": 21,
+  "configs": [
+    {
+      "name": "pi0_aloha",
+      "checkpoint": "(no CheckpointWeightLoader — train from scratch)"
+    },
+    {
+      "name": "pi05_aloha",
+      "checkpoint": "(no CheckpointWeightLoader — train from scratch)"
+    },
+    {
+      "name": "pi0_aloha_towel",
+      "checkpoint": "(no CheckpointWeightLoader — train from scratch)"
+    },
+    {
+      "name": "pi0_aloha_tupperware",
+      "checkpoint": "(no CheckpointWeightLoader — train from scratch)"
+    },
+    {
+      "name": "pi0_droid",
+      "checkpoint": "(no CheckpointWeightLoader — train from scratch)"
+    },
+    {
+      "name": "pi0_fast_droid",
+      "checkpoint": "(no CheckpointWeightLoader — train from scratch)"
+    },
+    {
+      "name": "pi05_droid",
+      "checkpoint": "(no CheckpointWeightLoader — train from scratch)"
+    },
+    {
+      "name": "pi0_libero",
+      "checkpoint": "gs://openpi-assets/checkpoints/pi0_base/params"
+    },
+    {
+      "name": "pi0_libero_low_mem_finetune",
+      "checkpoint": "gs://openpi-assets/checkpoints/pi0_base/params"
+    },
+    {
+      "name": "pi0_fast_libero",
+      "checkpoint": "gs://openpi-assets/checkpoints/pi0_fast_base/params"
+    },
+    {
+      "name": "pi0_fast_libero_low_mem_finetune",
+      "checkpoint": "gs://openpi-assets/checkpoints/pi0_fast_base/params"
+    },
+    {
+      "name": "pi05_libero",
+      "checkpoint": "gs://openpi-assets/checkpoints/pi05_base/params"
+    },
+    {
+      "name": "pi0_aloha_pen_uncap",
+      "checkpoint": "gs://openpi-assets/checkpoints/pi0_base/params"
+    },
+    {
+      "name": "pi05_aloha_pen_uncap",
+      "checkpoint": "gs://openpi-assets/checkpoints/pi05_base/params"
+    },
+    {
+      "name": "pi0_fast_full_droid_finetune",
+      "checkpoint": "gs://openpi-assets/checkpoints/pi0_fast_base/params"
+    },
+    {
+      "name": "pi05_full_droid_finetune",
+      "checkpoint": "gs://openpi-assets/checkpoints/pi05_base/params"
+    },
+    {
+      "name": "pi05_droid_finetune",
+      "checkpoint": "gs://openpi-assets/checkpoints/pi05_droid/params"
+    },
+    {
+      "name": "pi0_aloha_sim",
+      "checkpoint": "gs://openpi-assets/checkpoints/pi0_base/params"
+    },
+    {
+      "name": "debug",
+      "checkpoint": "(no CheckpointWeightLoader — train from scratch)"
+    },
+    {
+      "name": "debug_restore",
+      "checkpoint": "./checkpoints/debug/debug/9/params"
+    },
+    {
+      "name": "debug_pi05",
+      "checkpoint": "(no CheckpointWeightLoader — train from scratch)"
+    }
+  ]
+}

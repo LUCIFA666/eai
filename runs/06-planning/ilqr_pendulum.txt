@@ -1,0 +1,14 @@
+x0 = [3.14159265 0.        ], T = 200, dt = 0.04, u in [-3.0, 3.0]
+
+iLQR finished after 52 iterations, final cost J = 588.9998
+final state: theta = 6.2841 rad (0.05 deg from upright), theta_dot = 0.0011
+max torque applied = 3.000 Nm (limit 3.0)
+
+iLQR cost log (every 20 iters):
+  iter 000  cost =  4487.2838  reg = 0.00e+00  alpha = 1.0
+  iter 020  cost =   589.7341  reg = 1.91e-01  alpha = 0.003
+  iter 040  cost =   589.0008  reg = 9.09e+01  alpha = 0.5
+  iter 051  cost =   588.9998  reg = 4.44e+02  alpha = 1.0
+
+wrote /data/rbc/hands-on-embodied-ai/runs/06-planning/ilqr_pendulum.csv
+>>> PASS: pendulum swings up to within 5 deg of upright with bounded torque.

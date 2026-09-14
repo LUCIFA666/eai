@@ -1,0 +1,83 @@
+{
+  "model": "openai/clip-vit-base-patch32",
+  "device": "cuda",
+  "num_images": 3,
+  "num_correct_top1": 3,
+  "top1_accuracy": 1.0,
+  "labels": [
+    "a red circle",
+    "a blue square",
+    "a green triangle",
+    "a red square",
+    "a blue circle",
+    "a green circle",
+    "a yellow star",
+    "a black rectangle",
+    "an empty white image"
+  ],
+  "records": [
+    {
+      "image": "runs/09-vla/synthetic_shapes/red_circle.png",
+      "ground_truth": "a red circle",
+      "top1": "a red circle",
+      "top1_prob": 0.6635,
+      "top3": [
+        [
+          "a red circle",
+          0.6635
+        ],
+        [
+          "an empty white image",
+          0.1165
+        ],
+        [
+          "a blue circle",
+          0.1152
+        ]
+      ],
+      "correct_top1": true
+    },
+    {
+      "image": "runs/09-vla/synthetic_shapes/blue_square.png",
+      "ground_truth": "a blue square",
+      "top1": "a blue square",
+      "top1_prob": 0.949,
+      "top3": [
+        [
+          "a blue square",
+          0.949
+        ],
+        [
+          "a blue circle",
+          0.0291
+        ],
+        [
+          "a black rectangle",
+          0.0133
+        ]
+      ],
+      "correct_top1": true
+    },
+    {
+      "image": "runs/09-vla/synthetic_shapes/green_triangle.png",
+      "ground_truth": "a green triangle",
+      "top1": "a green triangle",
+      "top1_prob": 0.9972,
+      "top3": [
+        [
+          "a green triangle",
+          0.9972
+        ],
+        [
+          "a green circle",
+          0.0026
+        ],
+        [
+          "a black rectangle",
+          0.0001
+        ]
+      ],
+      "correct_top1": true
+    }
+  ]
+}

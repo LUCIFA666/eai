@@ -1,0 +1,44 @@
+# Verified package set for the curriculum (2026-05-20).
+# To reproduce the verification environment:
+#   conda create -n embodied python=3.10
+#   conda activate embodied
+#   pip install --index-url https://mirrors.aliyun.com/pypi/simple/ -r requirements.txt
+# A full freeze (with pinned versions) lives at runs/check_env.md.
+
+# Core scientific stack
+numpy>=2.0
+scipy>=1.15
+matplotlib
+opencv-python-headless
+
+# Deep learning
+torch>=2.7
+
+# Robotics + Sim
+mujoco>=3.8
+dm_control>=1.0
+gymnasium>=1.2
+gymnasium-robotics
+minigrid>=3.0
+stable-baselines3>=2.8
+imageio[ffmpeg]
+
+# Perception
+open3d>=0.19
+
+# VLM / HF stack
+transformers
+datasets
+huggingface_hub
+accelerate
+diffusers
+
+# LeRobot (datasets + policies + teleop)
+lerobot>=0.4
+
+
+ultralytics
+
+open_clip_torch
+
+open3d

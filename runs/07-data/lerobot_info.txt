@@ -1,0 +1,13 @@
+- LeRobot version: 0.4.4
+- Platform: Linux-5.15.0-83-generic-x86_64-with-glibc2.35
+- Python version: 3.10.20
+- Huggingface Hub version: 1.15.0
+- Datasets version: 4.1.1
+- Numpy version: 2.2.6
+- FFmpeg version: N/A
+- PyTorch version: 2.7.1+cu126
+- Is PyTorch built with CUDA support?: True
+- Cuda version: 12.6
+- GPU model: NVIDIA GeForce RTX 4090
+- Using GPU in script?: <fill in>
+- lerobot scripts: ['lerobot-calibrate', 'lerobot-dataset-viz', 'lerobot-edit-dataset', 'lerobot-eval', 'lerobot-find-cameras', 'lerobot-find-joint-limits', 'lerobot-find-port', 'lerobot-imgtransform-viz', 'lerobot-info', 'lerobot-record', 'lerobot-replay', 'lerobot-setup-motors', 'lerobot-teleoperate', 'lerobot-train', 'lerobot-train-tokenizer']

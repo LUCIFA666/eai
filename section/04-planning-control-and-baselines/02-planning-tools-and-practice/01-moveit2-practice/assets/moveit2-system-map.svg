@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="520" viewBox="0 0 1180 520" role="img" aria-labelledby="title desc">
+  <title id="title">MoveIt 2 系统地图</title>
+  <desc id="desc">展示应用入口、MoveIt 2 核心、规划器插件、轨迹处理和控制器之间的关系。</desc>
+  <defs>
+    <style>
+      .bg{fill:#fbf8f0}.box{fill:#fff;stroke:#cfc7b8;stroke-width:2;rx:18}.green{fill:#dfeee6;stroke:#0e6b50}.orange{fill:#f6e4d6;stroke:#d46b32}.blue{fill:#e1ebf4;stroke:#2d5f91}.dark{fill:#123529}.t1{font:700 24px "Microsoft YaHei",Arial,sans-serif;fill:#17211d}.t2{font:600 17px "Microsoft YaHei",Arial,sans-serif;fill:#33423b}.small{font:14px "Microsoft YaHei",Arial,sans-serif;fill:#5f6d67}.white{fill:#fff}.arrow{stroke:#d46b32;stroke-width:4;fill:none;marker-end:url(#arrow)}
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#d46b32"/>
+    </marker>
+  </defs>
+  <rect class="bg" width="1180" height="520"/>
+  <text x="42" y="50" class="t1">MoveIt 2：从目标请求到可执行轨迹</text>
+  <rect x="40" y="88" width="250" height="132" class="box green"/>
+  <text x="70" y="125" class="t2">用户入口</text>
+  <text x="70" y="158" class="small">RViz MotionPlanning</text>
+  <text x="70" y="182" class="small">MoveGroupInterface / moveit_py</text>
+  <text x="70" y="206" class="small">MoveItCpp / MTC / Servo</text>
+  <rect x="395" y="88" width="360" height="132" class="box orange"/>
+  <text x="425" y="125" class="t2">MoveIt 2 运行时</text>
+  <text x="425" y="158" class="small">move_group</text>
+  <text x="425" y="182" class="small">PlanningSceneMonitor</text>
+  <text x="425" y="206" class="small">PlanningPipeline / TrajectoryExecution</text>
+  <rect x="890" y="88" width="250" height="132" class="box blue"/>
+  <text x="920" y="125" class="t2">执行端</text>
+  <text x="920" y="158" class="small">FollowJointTrajectory</text>
+  <text x="920" y="182" class="small">ros2_control</text>
+  <text x="920" y="206" class="small">仿真或真实硬件</text>
+  <path d="M290 154 H390" class="arrow"/>
+  <path d="M755 154 H885" class="arrow"/>
+  <rect x="75" y="302" width="210" height="94" class="box"/>
+  <text x="104" y="338" class="t2">RobotModel</text>
+  <text x="104" y="366" class="small">URDF / SRDF / limits</text>
+  <rect x="330" y="302" width="210" height="94" class="box"/>
+  <text x="360" y="338" class="t2">Planning Scene</text>
+  <text x="360" y="366" class="small">state / objects / collision</text>
+  <rect x="585" y="302" width="210" height="94" class="box"/>
+  <text x="615" y="338" class="t2">Planners</text>
+  <text x="615" y="366" class="small">OMPL / Pilz / CHOMP / STOMP</text>
+  <rect x="840" y="302" width="250" height="94" class="box"/>
+  <text x="870" y="338" class="t2">Trajectory Processing</text>
+  <text x="870" y="366" class="small">time parameterization / smoothing</text>
+  <path d="M180 302 V238 H575 V224" class="arrow"/>
+  <path d="M435 302 V238 H575 V224" class="arrow"/>
+  <path d="M690 302 V238 H575 V224" class="arrow"/>
+  <path d="M965 302 V238 H575 V224" class="arrow"/>
+  <rect x="40" y="444" width="1100" height="42" class="dark" rx="12"/>
+  <text x="66" y="471" class="white" style="font:600 16px 'Microsoft YaHei',Arial,sans-serif">教学主线：先用 RViz 看见规划，再用 C++ 创建请求，再加入场景和配置，最后进入 MTC / Servo 与工程排错。</text>
+</svg>

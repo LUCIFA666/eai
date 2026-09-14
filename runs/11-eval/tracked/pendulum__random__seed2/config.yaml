@@ -1,0 +1,13 @@
+env: pendulum
+policy: random
+seed: 2
+n_episodes: 5
+env_cfg:
+  name: Pendulum-v1
+  max_steps: 200
+  obs_dim: 3
+  act_dim: 1
+policy_cfg:
+  kind: Random
+  noise: 1.0
+  params_count: 0

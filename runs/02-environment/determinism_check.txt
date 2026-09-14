@@ -1,0 +1,3 @@
+steps per run    : 85
+identical traces : True
+OK — two seeded runs produced byte-identical (action, reward, obs, term, trunc) traces.

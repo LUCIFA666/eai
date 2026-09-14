@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="360" viewBox="0 0 1180 360" role="img" aria-labelledby="title desc">
+  <title id="title">运动规划请求生命周期</title>
+  <desc id="desc">从用户设置目标，到规划请求、规划管线、轨迹处理和执行端的流程。</desc>
+  <defs>
+    <style>
+      .bg{fill:#fbf8f0}.box{fill:#fff;stroke:#cfc7b8;stroke-width:2;rx:18}.a{fill:#dfeee6;stroke:#0e6b50}.b{fill:#f6e4d6;stroke:#d46b32}.c{fill:#e1ebf4;stroke:#2d5f91}.t{font:700 20px "Microsoft YaHei",Arial,sans-serif;fill:#17211d}.s{font:14px "Microsoft YaHei",Arial,sans-serif;fill:#5d6b65}.arrow{stroke:#d46b32;stroke-width:4;fill:none;marker-end:url(#arrow)}
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#d46b32"/></marker>
+  </defs>
+  <rect class="bg" width="1180" height="360"/>
+  <text x="42" y="52" class="t">一次 MoveIt 2 规划请求的生命周期</text>
+  <rect x="45" y="105" width="190" height="120" class="box a"/>
+  <text x="72" y="145" class="t">设置目标</text>
+  <text x="72" y="176" class="s">RViz marker</text>
+  <text x="72" y="198" class="s">pose / joint goal</text>
+  <path d="M235 165 H300" class="arrow"/>
+  <rect x="305" y="105" width="190" height="120" class="box"/>
+  <text x="332" y="145" class="t">Planning Request</text>
+  <text x="332" y="176" class="s">group / start / goal</text>
+  <text x="332" y="198" class="s">constraints / scaling</text>
+  <path d="M495 165 H560" class="arrow"/>
+  <rect x="565" y="105" width="190" height="120" class="box b"/>
+  <text x="592" y="145" class="t">Planning Pipeline</text>
+  <text x="592" y="176" class="s">planner + adapters</text>
+  <text x="592" y="198" class="s">collision checking</text>
+  <path d="M755 165 H820" class="arrow"/>
+  <rect x="825" y="105" width="190" height="120" class="box c"/>
+  <text x="852" y="145" class="t">Trajectory</text>
+  <text x="852" y="176" class="s">waypoints + timing</text>
+  <text x="852" y="198" class="s">velocity / accel</text>
+  <path d="M1015 165 H1080" class="arrow"/>
+  <rect x="45" y="270" width="1090" height="48" class="box"/>
+  <text x="72" y="301" class="s">如果 Plan 成功但 Execute 失败，问题通常已经从规划层转移到 trajectory execution、controller 或硬件接口层。</text>
+</svg>

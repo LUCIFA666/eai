@@ -1,0 +1,22 @@
+local repo present: True  (found 3 candidate files)
+first few:
+  reference/open_x_embodiment/models/rt1.py
+  reference/open_x_embodiment/models/rt1_inference_example.py
+  reference/open_x_embodiment/README.md
+
+dataset                                           robot                       a_dim  cameras
+------------------------------------------------------------------------------------------------------------------------
+fractal20220817_data                              Everyday Robots (mobile manipulator)      7  image
+kuka                                              Kuka iiwa                       7  image
+bridge                                            WidowX 250                      7  image,image_1
+taco_play                                         Franka Panda                    7  rgb_static,rgb_gripper
+jaco_play                                         Kinova Jaco 2                   7  image,image_wrist
+berkeley_cable_routing                            Franka Panda                    7  image,top_image,wrist45_image,wrist225_image
+nyu_door_opening_surprising_effectiveness         Hello Stretch                   7  image
+stanford_hydra_dataset_converted_externally_to_rlds  Franka Panda                    7  image,wrist_image
+berkeley_autolab_ur5                              UR5                             7  image,hand_image
+robo_set                                          Franka Panda                    7  image_left,image_right,image_wrist,image_top
+droid                                             Franka Panda + Robotiq          7  exterior_image_1_left,exterior_image_2_left,wrist_image_left
+viola                                             Franka Panda                    7  agentview_rgb,eye_in_hand_rgb
+
+wrote runs/09-vla/rlds_catalog.json

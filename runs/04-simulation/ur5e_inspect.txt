@@ -1,0 +1,11 @@
+model: scene.xml
+  nq=6  nv=6  nu=6  na=0
+  nbody=8  njnt=6  ngeom=30
+
+JOINTS (id  name                          type)
+    0  shoulder_pan_joint              hinge
+    1  shoulder_lift_joint             hinge
+    2  elbow_joint                     hinge
+    3  wrist_1_joint                   hinge
+    4  wrist_2_joint                   hinge
+    5  wrist_3_joint                   hinge

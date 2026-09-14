@@ -1,0 +1,6 @@
+truth          : length=0.5500  damping=0.1800
+coarse fit (r=0.0107): length=0.5600  damping=0.1800
+fine fit   (r=0.0101): length=0.5500  damping=0.1825
+abs error: dL=0.0000m (0.00%), dc=0.0025 (1.39%)
+
+wrote runs/12-safety/sysid_pendulum.json and sysid_trace.csv

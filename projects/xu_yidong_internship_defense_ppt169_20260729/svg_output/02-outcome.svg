@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="content" font-family="SimSun, Georgia, serif">
+  <rect id="paper-background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#F5F0E6"/>
+  <g id="page-title" data-pptx-bounds="48 32 1180 76">
+    <text x="48" y="78" font-family="DengXian, Impact, sans-serif" font-size="38" font-weight="bold" fill="#111111">实习的核心产出，是一套可验证的世界模型复现方法</text>
+    <path d="M49 92 C352 83 693 99 1016 90" fill="none" stroke="#D94841" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <g id="outcome-thesis" data-pptx-bounds="55 145 382 420">
+    <text x="55" y="190" font-family="DengXian, Impact, sans-serif" font-size="24" font-weight="bold" fill="#2D5B8A">结论先行</text>
+    <text x="55" y="245" font-family="DengXian, Impact, sans-serif" font-size="44" font-weight="bold" fill="#111111">不只是跑代码，</text>
+    <text x="55" y="302" font-family="DengXian, Impact, sans-serif" font-size="44" font-weight="bold" fill="#111111">而是把结论变成</text>
+    <text x="55" y="359" font-family="DengXian, Impact, sans-serif" font-size="44" font-weight="bold" fill="#D94841">可复核的证据。</text>
+    <path d="M66 390 C176 374 290 390 378 381" fill="none" stroke="#D94841" stroke-width="8" stroke-linecap="round" stroke-opacity="0.72"/>
+    <text x="55" y="444" font-size="32" fill="#191919">论文理解 → 环境搭建</text>
+    <text x="55" y="490" font-size="32" fill="#191919">训练评测 → 问题定位</text>
+    <text x="55" y="536" font-size="32" fill="#191919">证据交付 → 个人判断</text>
+  </g>
+  <g id="four-deliverables" data-pptx-bounds="476 126 752 454">
+    <path d="M494 145 C645 131 799 139 911 151 C920 208 916 249 900 286 C755 295 619 291 492 279 C482 233 482 188 494 145 Z" fill="#E4DED2" fill-opacity="0.58" stroke="#111111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="525" y="190" font-family="DengXian, Impact, sans-serif" font-size="32" font-weight="bold" fill="#2D5B8A">① 知识地图</text>
+    <text x="525" y="236" font-size="24" fill="#191919">梳理四类预测对象与决策接口</text>
+    <path d="M942 143 C1062 132 1171 146 1210 164 C1208 217 1201 252 1186 286 C1095 294 1012 288 941 276 C929 231 931 183 942 143 Z" fill="#F5F0E6" stroke="#111111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="970" y="190" font-family="DengXian, Impact, sans-serif" font-size="32" font-weight="bold" fill="#2D5B8A">② 复现链路</text>
+    <text x="970" y="236" font-size="24" fill="#191919">DINO-WM · LeWM</text>
+    <text x="970" y="268" font-size="24" fill="#191919">Δ-IRIS · TD-MPC2</text>
+    <path d="M493 327 C638 312 782 321 909 337 C918 398 912 466 896 523 C756 533 624 525 494 510 C481 449 482 382 493 327 Z" fill="#F5F0E6" stroke="#111111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="525" y="376" font-family="DengXian, Impact, sans-serif" font-size="32" font-weight="bold" fill="#D94841">③ 实验结果</text>
+    <text x="525" y="421" font-size="24" fill="#191919">成功率 · 回报 · 训练进度</text>
+    <text x="525" y="455" font-size="24" fill="#191919">MAE / PSNR · 评估边界</text>
+    <path d="M940 329 C1055 314 1171 330 1209 348 C1211 405 1203 469 1184 521 C1094 532 1012 522 940 507 C927 450 929 384 940 329 Z" fill="#E4DED2" fill-opacity="0.58" stroke="#111111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="970" y="376" font-family="DengXian, Impact, sans-serif" font-size="32" font-weight="bold" fill="#2F7D5C">④ 证据交付</text>
+    <text x="970" y="421" font-size="24" fill="#191919">提交 · 环境 · 脚本</text>
+    <text x="970" y="455" font-size="24" fill="#191919">日志 · 哈希 · 报告</text>
+  </g>
+  <g id="profile-strip" data-pptx-bounds="55 606 1172 62">
+    <path d="M57 610 C363 601 763 615 1222 607" fill="none" stroke="#C8C0B3" stroke-width="3" stroke-linecap="round"/>
+    <text x="58" y="650" font-family="DengXian, Impact, sans-serif" font-size="24" font-weight="bold" fill="#191919">徐亦栋｜同济大学自动化｜GPA 4.83 / 5.00｜专业排名 1 / 69</text>
+    <text x="720" y="650" font-size="18" fill="#625E57">研究兴趣：具身智能 · VLA / WAM · 机器人系统</text>
+  </g>
+  <text id="page-number" data-pptx-role="page-number" x="1230" y="688" text-anchor="end" font-family="DengXian, Impact, sans-serif" font-size="18" fill="#625E57">02</text>
+</svg>

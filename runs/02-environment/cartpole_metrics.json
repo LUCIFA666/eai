@@ -1,0 +1,96 @@
+{
+  "env_id": "CartPole-v1",
+  "policy": "random",
+  "seed_base": 0,
+  "episodes": 10,
+  "gymnasium_version": "1.2.3",
+  "numpy_version": "2.2.6",
+  "length_mean": 25.6,
+  "length_std": 15.226293048539425,
+  "length_min": 12,
+  "length_max": 60,
+  "return_mean": 25.6,
+  "return_std": 15.226293048539425,
+  "per_episode": [
+    {
+      "episode": 0,
+      "seed": 0,
+      "return": 18.0,
+      "length": 18,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "seed": 1,
+      "return": 14.0,
+      "length": 14,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "episode": 2,
+      "seed": 2,
+      "return": 12.0,
+      "length": 12,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "episode": 3,
+      "seed": 3,
+      "return": 18.0,
+      "length": 18,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "episode": 4,
+      "seed": 4,
+      "return": 23.0,
+      "length": 23,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "episode": 5,
+      "seed": 5,
+      "return": 60.0,
+      "length": 60,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "episode": 6,
+      "seed": 6,
+      "return": 15.0,
+      "length": 15,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "episode": 7,
+      "seed": 7,
+      "return": 37.0,
+      "length": 37,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "episode": 8,
+      "seed": 8,
+      "return": 44.0,
+      "length": 44,
+      "terminated": true,
+      "truncated": false
+    },
+    {
+      "episode": 9,
+      "seed": 9,
+      "return": 15.0,
+      "length": 15,
+      "terminated": true,
+      "truncated": false
+    }
+  ]
+}

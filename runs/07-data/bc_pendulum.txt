@@ -1,0 +1,7 @@
+params           : 4481
+final train MSE  : 8.5831e-04
+final val   MSE  : 8.7044e-04
+closed-loop |err| deg  mean=15.61  median=9.04  p95=47.30
+success@2deg     : 10%
+success@5deg     : 10%
+wrote runs/07-data/bc_metrics.json

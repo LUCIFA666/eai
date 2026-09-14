@@ -1,0 +1,3 @@
+CartPole random  return=22.90  len=22.90
+CartPole rule    return=40.90  len=40.90
+MiniGrid         SKIPPED: ModuleNotFoundError: No module named 'minigrid'

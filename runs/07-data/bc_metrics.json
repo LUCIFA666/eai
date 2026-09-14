@@ -1,0 +1,12 @@
+{
+  "n_params": 4481,
+  "n_train": 24000,
+  "n_val": 6000,
+  "train_mse_final": 0.000858308104030352,
+  "val_mse_final": 0.0008704363717697561,
+  "closed_loop_final_err_deg_mean": 15.613986011711111,
+  "closed_loop_final_err_deg_median": 9.036322392669652,
+  "closed_loop_final_err_deg_p95": 47.30352347377683,
+  "closed_loop_success_rate@2deg": 0.1,
+  "closed_loop_success_rate@5deg": 0.1
+}

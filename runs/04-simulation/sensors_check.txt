@@ -1,0 +1,21 @@
+nsensor = 6
+
+=== Method 1: sensor_adr + sensor_dim ===
+  sensor[0] j1_pos           adr=0  dim=1  value=[0.]
+  sensor[1] j2_pos           adr=1  dim=1  value=[0.]
+  sensor[2] j1_vel           adr=2  dim=1  value=[0.]
+  sensor[3] j2_vel           adr=3  dim=1  value=[0.]
+  sensor[4] tip_pos          adr=4  dim=3  value=[0.  0.  0.5]
+  sensor[5] tip_touch        adr=7  dim=1  value=[0.]
+
+=== Method 2: data.sensor('name').data ===
+  j1_pos           = [0.]
+  j2_pos           = [0.]
+  j1_vel           = [0.]
+  j2_vel           = [0.]
+  tip_pos          = [0.  0.  0.5]
+  tip_touch        = [0.]
+
+=== Cross-check: sensor vs data.qpos ===
+  data.qpos      = [0.     0.     0.2    0.     0.3218 1.     0.     0.     0.    ]
+  [OK] jointpos sensor values match data.qpos

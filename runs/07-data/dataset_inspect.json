@@ -1,0 +1,1236 @@
+{
+  "repo_id": "lerobot/pusht",
+  "status": "offline_ok",
+  "root": "/home/rbc/.cache/huggingface/lerobot/lerobot/pusht",
+  "files_listed": [
+    ".cache/huggingface/.gitignore",
+    ".cache/huggingface/CACHEDIR.TAG",
+    ".cache/huggingface/download/.gitattributes.metadata",
+    ".cache/huggingface/download/README.md.metadata",
+    ".cache/huggingface/download/data/chunk-000/file-000.parquet.metadata",
+    ".cache/huggingface/download/meta/episodes/chunk-000/file-000.parquet.metadata",
+    ".cache/huggingface/download/meta/info.json.metadata",
+    ".cache/huggingface/download/meta/stats.json.metadata",
+    ".cache/huggingface/download/meta/tasks.parquet.metadata",
+    ".cache/huggingface/download/videos/observation.image/chunk-000/file-000.mp4.metadata",
+    ".gitattributes",
+    "README.md",
+    "data/chunk-000/file-000.parquet",
+    "meta/episodes/chunk-000/file-000.parquet",
+    "meta/info.json",
+    "meta/stats.json",
+    "meta/tasks.parquet",
+    "videos/observation.image/chunk-000/file-000.mp4"
+  ],
+  "info_json": {
+    "codebase_version": "v3.0",
+    "fps": 10,
+    "total_episodes": 206,
+    "total_frames": 25650,
+    "total_videos": null,
+    "feature_keys": [
+      "observation.image",
+      "observation.state",
+      "action",
+      "episode_index",
+      "frame_index",
+      "timestamp",
+      "next.reward",
+      "next.done",
+      "next.success",
+      "index",
+      "task_index"
+    ],
+    "features_sample": {
+      "observation.image": {
+        "dtype": "video",
+        "shape": [
+          96,
+          96,
+          3
+        ],
+        "names": [
+          "height",
+          "width",
+          "channel"
+        ]
+      },
+      "observation.state": {
+        "dtype": "float32",
+        "shape": [
+          2
+        ],
+        "names": {
+          "motors": [
+            "motor_0",
+            "motor_1"
+          ]
+        }
+      },
+      "action": {
+        "dtype": "float32",
+        "shape": [
+          2
+        ],
+        "names": {
+          "motors": [
+            "motor_0",
+            "motor_1"
+          ]
+        }
+      },
+      "episode_index": {
+        "dtype": "int64",
+        "shape": [
+          1
+        ],
+        "names": null
+      },
+      "frame_index": {
+        "dtype": "int64",
+        "shape": [
+          1
+        ],
+        "names": null
+      },
+      "timestamp": {
+        "dtype": "float32",
+        "shape": [
+          1
+        ],
+        "names": null
+      }
+    }
+  },
+  "stats_json_keys": [
+    "index",
+    "next.success",
+    "observation.state",
+    "next.done",
+    "observation.image",
+    "timestamp",
+    "episode_index",
+    "frame_index"
+  ],
+  "data_parquet": {
+    "path": "data/chunk-000/file-000.parquet",
+    "num_rows": 25650,
+    "columns": [
+      {
+        "name": "observation.state",
+        "type": "fixed_size_list<element: float>[2]"
+      },
+      {
+        "name": "action",
+        "type": "fixed_size_list<element: float>[2]"
+      },
+      {
+        "name": "episode_index",
+        "type": "int64"
+      },
+      {
+        "name": "frame_index",
+        "type": "int64"
+      },
+      {
+        "name": "timestamp",
+        "type": "float"
+      },
+      {
+        "name": "next.reward",
+        "type": "float"
+      },
+      {
+        "name": "next.done",
+        "type": "bool"
+      },
+      {
+        "name": "next.success",
+        "type": "bool"
+      },
+      {
+        "name": "index",
+        "type": "int64"
+      },
+      {
+        "name": "task_index",
+        "type": "int64"
+      }
+    ],
+    "sample_rows_first3": [
+      {
+        "observation.state": [
+          222.0,
+          97.0
+        ],
+        "action": [
+          233.0,
+          71.0
+        ],
+        "episode_index": 0,
+        "frame_index": 0,
+        "timestamp": 0.0,
+        "next.reward": 0.19029748439788818,
+        "next.done": false,
+        "next.success": false,
+        "index": 0,
+        "task_index": 0
+      },
+      {
+        "observation.state": [
+          225.2523956298828,
+          89.31253051757812
+        ],
+        "action": [
+          229.0,
+          83.0
+        ],
+        "episode_index": 0,
+        "frame_index": 1,
+        "timestamp": 0.10000000149011612,
+        "next.reward": 0.19029748439788818,
+        "next.done": false,
+        "next.success": false,
+        "index": 1,
+        "task_index": 0
+      },
+      {
+        "observation.state": [
+          227.5923309326172,
+          84.53437805175781
+        ],
+        "action": [
+          229.0,
+          86.0
+        ],
+        "episode_index": 0,
+        "frame_index": 2,
+        "timestamp": 0.20000000298023224,
+        "next.reward": 0.19029748439788818,
+        "next.done": false,
+        "next.success": false,
+        "index": 2,
+        "task_index": 0
+      }
+    ]
+  },
+  "episodes_parquet": {
+    "path": "meta/episodes/chunk-000/file-000.parquet",
+    "num_rows": 206,
+    "columns": [
+      {
+        "name": "episode_index",
+        "type": "int64"
+      },
+      {
+        "name": "data/chunk_index",
+        "type": "int64"
+      },
+      {
+        "name": "data/file_index",
+        "type": "int64"
+      },
+      {
+        "name": "dataset_from_index",
+        "type": "int64"
+      },
+      {
+        "name": "dataset_to_index",
+        "type": "int64"
+      },
+      {
+        "name": "videos/observation.image/chunk_index",
+        "type": "int64"
+      },
+      {
+        "name": "videos/observation.image/file_index",
+        "type": "int64"
+      },
+      {
+        "name": "videos/observation.image/from_timestamp",
+        "type": "double"
+      },
+      {
+        "name": "videos/observation.image/to_timestamp",
+        "type": "double"
+      },
+      {
+        "name": "tasks",
+        "type": "list<element: string>"
+      },
+      {
+        "name": "length",
+        "type": "int64"
+      },
+      {
+        "name": "stats/observation.image/min",
+        "type": "list<element: list<element: list<element: double>>>"
+      },
+      {
+        "name": "stats/observation.image/max",
+        "type": "list<element: list<element: list<element: double>>>"
+      },
+      {
+        "name": "stats/observation.image/mean",
+        "type": "list<element: list<element: list<element: double>>>"
+      },
+      {
+        "name": "stats/observation.image/std",
+        "type": "list<element: list<element: list<element: double>>>"
+      },
+      {
+        "name": "stats/observation.image/count",
+        "type": "list<element: int64>"
+      },
+      {
+        "name": "stats/observation.state/min",
+        "type": "list<element: double>"
+      },
+      {
+        "name": "stats/observation.state/max",
+        "type": "list<element: double>"
+      },
+      {
+        "name": "stats/observation.state/mean",
+        "type": "list<element: double>"
+      },
+      {
+        "name": "stats/observation.state/std",
+        "type": "list<element: double>"
+      },
+      {
+        "name": "stats/observation.state/count",
+        "type": "list<element: int64>"
+      },
+      {
+        "name": "stats/action/min",
+        "type": "list<element: double>"
+      },
+      {
+        "name": "stats/action/max",
+        "type": "list<element: double>"
+      },
+      {
+        "name": "stats/action/mean",
+        "type": "list<element: double>"
+      },
+      {
+        "name": "stats/action/std",
+        "type": "list<element: double>"
+      },
+      {
+        "name": "stats/action/count",
+        "type": "list<element: int64>"
+      },
+      {
+        "name": "stats/episode_index/min",
+        "type": "list<element: int64>"
+      },
+      {
+        "name": "stats/episode_index/max",
+        "type": "list<element: int64>"
+      },
+      {
+        "name": "stats/episode_index/mean",
+        "type": "list<element: double>"
+      },
+      {
+        "name": "stats/episode_index/std",
+        "type": "list<element: double>"
+      },
+      {
+        "name": "stats/episode_index/count",
+        "type": "list<element: int64>"
+      },
+      {
+        "name": "stats/frame_index/min",
+        "type": "list<element: int64>"
+      },
+      {
+        "name": "stats/frame_index/max",
+        "type": "list<element: int64>"
+      },
+      {
+        "name": "stats/frame_index/mean",
+        "type": "list<element: double>"
+      },
+      {
+        "name": "stats/frame_index/std",
+        "type": "list<element: double>"
+      },
+      {
+        "name": "stats/frame_index/count",
+        "type": "list<element: int64>"
+      },
+      {
+        "name": "stats/timestamp/min",
+        "type": "list<element: double>"
+      },
+      {
+        "name": "stats/timestamp/max",
+        "type": "list<element: double>"
+      },
+      {
+        "name": "stats/timestamp/mean",
+        "type": "list<element: double>"
+      },
+      {
+        "name": "stats/timestamp/std",
+        "type": "list<element: double>"
+      },
+      {
+        "name": "stats/timestamp/count",
+        "type": "list<element: int64>"
+      },
+      {
+        "name": "stats/next.reward/min",
+        "type": "list<element: double>"
+      },
+      {
+        "name": "stats/next.reward/max",
+        "type": "list<element: double>"
+      },
+      {
+        "name": "stats/next.reward/mean",
+        "type": "list<element: double>"
+      },
+      {
+        "name": "stats/next.reward/std",
+        "type": "list<element: double>"
+      },
+      {
+        "name": "stats/next.reward/count",
+        "type": "list<element: int64>"
+      },
+      {
+        "name": "stats/next.done/min",
+        "type": "list<element: bool>"
+      },
+      {
+        "name": "stats/next.done/max",
+        "type": "list<element: bool>"
+      },
+      {
+        "name": "stats/next.done/mean",
+        "type": "list<element: double>"
+      },
+      {
+        "name": "stats/next.done/std",
+        "type": "list<element: double>"
+      },
+      {
+        "name": "stats/next.done/count",
+        "type": "list<element: int64>"
+      },
+      {
+        "name": "stats/next.success/min",
+        "type": "list<element: bool>"
+      },
+      {
+        "name": "stats/next.success/max",
+        "type": "list<element: bool>"
+      },
+      {
+        "name": "stats/next.success/mean",
+        "type": "list<element: double>"
+      },
+      {
+        "name": "stats/next.success/std",
+        "type": "list<element: double>"
+      },
+      {
+        "name": "stats/next.success/count",
+        "type": "list<element: int64>"
+      },
+      {
+        "name": "stats/index/min",
+        "type": "list<element: int64>"
+      },
+      {
+        "name": "stats/index/max",
+        "type": "list<element: int64>"
+      },
+      {
+        "name": "stats/index/mean",
+        "type": "list<element: double>"
+      },
+      {
+        "name": "stats/index/std",
+        "type": "list<element: double>"
+      },
+      {
+        "name": "stats/index/count",
+        "type": "list<element: int64>"
+      },
+      {
+        "name": "stats/task_index/min",
+        "type": "list<element: int64>"
+      },
+      {
+        "name": "stats/task_index/max",
+        "type": "list<element: int64>"
+      },
+      {
+        "name": "stats/task_index/mean",
+        "type": "list<element: double>"
+      },
+      {
+        "name": "stats/task_index/std",
+        "type": "list<element: double>"
+      },
+      {
+        "name": "stats/task_index/count",
+        "type": "list<element: int64>"
+      },
+      {
+        "name": "meta/episodes/chunk_index",
+        "type": "int64"
+      },
+      {
+        "name": "meta/episodes/file_index",
+        "type": "int64"
+      }
+    ],
+    "sample_rows_first3": [
+      {
+        "episode_index": 0,
+        "data/chunk_index": 0,
+        "data/file_index": 0,
+        "dataset_from_index": 0,
+        "dataset_to_index": 161,
+        "videos/observation.image/chunk_index": 0,
+        "videos/observation.image/file_index": 0,
+        "videos/observation.image/from_timestamp": 0.0,
+        "videos/observation.image/to_timestamp": 16.1,
+        "tasks": [
+          "Push the T-shaped block onto the T-shaped target."
+        ],
+        "length": 161,
+        "stats/observation.image/min": [
+          [
+            [
+              0.08235294371843338
+            ]
+          ],
+          [
+            [
+              0.25882354378700256
+            ]
+          ],
+          [
+            [
+              0.3137255012989044
+            ]
+          ]
+        ],
+        "stats/observation.image/max": [
+          [
+            [
+              1.0
+            ]
+          ],
+          [
+            [
+              1.0
+            ]
+          ],
+          [
+            [
+              1.0
+            ]
+          ]
+        ],
+        "stats/observation.image/mean": [
+          [
+            [
+              0.9722164869308472
+            ]
+          ],
+          [
+            [
+              0.9805479645729065
+            ]
+          ],
+          [
+            [
+              0.9778355360031128
+            ]
+          ]
+        ],
+        "stats/observation.image/std": [
+          [
+            [
+              0.09947369992733002
+            ]
+          ],
+          [
+            [
+              0.07264722138643265
+            ]
+          ],
+          [
+            [
+              0.07705691456794739
+            ]
+          ]
+        ],
+        "stats/observation.image/count": [
+          100
+        ],
+        "stats/observation.state/min": [
+          93.70186614990234,
+          84.27986145019531
+        ],
+        "stats/observation.state/max": [
+          373.7308044433594,
+          448.178466796875
+        ],
+        "stats/observation.state/mean": [
+          209.93540954589844,
+          284.32806396484375
+        ],
+        "stats/observation.state/std": [
+          87.79725646972656,
+          98.46099090576172
+        ],
+        "stats/observation.state/count": [
+          161
+        ],
+        "stats/action/min": [
+          93.0,
+          71.0
+        ],
+        "stats/action/max": [
+          375.0,
+          449.0
+        ],
+        "stats/action/mean": [
+          209.00621032714844,
+          288.310546875
+        ],
+        "stats/action/std": [
+          88.38482666015625,
+          96.69656372070312
+        ],
+        "stats/action/count": [
+          161
+        ],
+        "stats/episode_index/min": [
+          0
+        ],
+        "stats/episode_index/max": [
+          0
+        ],
+        "stats/episode_index/mean": [
+          0.0
+        ],
+        "stats/episode_index/std": [
+          0.0
+        ],
+        "stats/episode_index/count": [
+          161
+        ],
+        "stats/frame_index/min": [
+          0
+        ],
+        "stats/frame_index/max": [
+          160
+        ],
+        "stats/frame_index/mean": [
+          80.0
+        ],
+        "stats/frame_index/std": [
+          46.475800154489
+        ],
+        "stats/frame_index/count": [
+          161
+        ],
+        "stats/timestamp/min": [
+          0.0
+        ],
+        "stats/timestamp/max": [
+          16.0
+        ],
+        "stats/timestamp/mean": [
+          8.0
+        ],
+        "stats/timestamp/std": [
+          4.647580146789551
+        ],
+        "stats/timestamp/count": [
+          161
+        ],
+        "stats/next.reward/min": [
+          0.17368531227111816
+        ],
+        "stats/next.reward/max": [
+          0.8732566833496094
+        ],
+        "stats/next.reward/mean": [
+          0.3168571889400482
+        ],
+        "stats/next.reward/std": [
+          0.14425012469291687
+        ],
+        "stats/next.reward/count": [
+          161
+        ],
+        "stats/next.done/min": [
+          false
+        ],
+        "stats/next.done/max": [
+          true
+        ],
+        "stats/next.done/mean": [
+          0.012422360248447204
+        ],
+        "stats/next.done/std": [
+          0.11076120807532304
+        ],
+        "stats/next.done/count": [
+          161
+        ],
+        "stats/next.success/min": [
+          false
+        ],
+        "stats/next.success/max": [
+          false
+        ],
+        "stats/next.success/mean": [
+          0.0
+        ],
+        "stats/next.success/std": [
+          0.0
+        ],
+        "stats/next.success/count": [
+          161
+        ],
+        "stats/index/min": [
+          0
+        ],
+        "stats/index/max": [
+          160
+        ],
+        "stats/index/mean": [
+          80.0
+        ],
+        "stats/index/std": [
+          46.475800154489
+        ],
+        "stats/index/count": [
+          161
+        ],
+        "stats/task_index/min": [
+          0
+        ],
+        "stats/task_index/max": [
+          0
+        ],
+        "stats/task_index/mean": [
+          0.0
+        ],
+        "stats/task_index/std": [
+          0.0
+        ],
+        "stats/task_index/count": [
+          161
+        ],
+        "meta/episodes/chunk_index": 0,
+        "meta/episodes/file_index": 0
+      },
+      {
+        "episode_index": 1,
+        "data/chunk_index": 0,
+        "data/file_index": 0,
+        "dataset_from_index": 161,
+        "dataset_to_index": 279,
+        "videos/observation.image/chunk_index": 0,
+        "videos/observation.image/file_index": 0,
+        "videos/observation.image/from_timestamp": 16.1,
+        "videos/observation.image/to_timestamp": 27.900000000000002,
+        "tasks": [
+          "Push the T-shaped block onto the T-shaped target."
+        ],
+        "length": 118,
+        "stats/observation.image/min": [
+          [
+            [
+              0.11764705926179886
+            ]
+          ],
+          [
+            [
+              0.2078431397676468
+            ]
+          ],
+          [
+            [
+              0.3019607961177826
+            ]
+          ]
+        ],
+        "stats/observation.image/max": [
+          [
+            [
+              1.0
+            ]
+          ],
+          [
+            [
+              1.0
+            ]
+          ],
+          [
+            [
+              1.0
+            ]
+          ]
+        ],
+        "stats/observation.image/mean": [
+          [
+            [
+              0.9732098579406738
+            ]
+          ],
+          [
+            [
+              0.9809653759002686
+            ]
+          ],
+          [
+            [
+              0.9788656830787659
+            ]
+          ]
+        ],
+        "stats/observation.image/std": [
+          [
+            [
+              0.0971686914563179
+            ]
+          ],
+          [
+            [
+              0.07148362696170807
+            ]
+          ],
+          [
+            [
+              0.07445240765810013
+            ]
+          ]
+        ],
+        "stats/observation.image/count": [
+          100
+        ],
+        "stats/observation.state/min": [
+          44.42692184448242,
+          164.6827850341797
+        ],
+        "stats/observation.state/max": [
+          357.2509765625,
+          450.07659912109375
+        ],
+        "stats/observation.state/mean": [
+          179.6053466796875,
+          317.8025817871094
+        ],
+        "stats/observation.state/std": [
+          89.84634399414062,
+          73.70496368408203
+        ],
+        "stats/observation.state/count": [
+          118
+        ],
+        "stats/action/min": [
+          44.0,
+          158.0
+        ],
+        "stats/action/max": [
+          359.0,
+          453.0
+        ],
+        "stats/action/mean": [
+          182.94915771484375,
+          318.3474426269531
+        ],
+        "stats/action/std": [
+          90.00563049316406,
+          74.5209732055664
+        ],
+        "stats/action/count": [
+          118
+        ],
+        "stats/episode_index/min": [
+          1
+        ],
+        "stats/episode_index/max": [
+          1
+        ],
+        "stats/episode_index/mean": [
+          1.0
+        ],
+        "stats/episode_index/std": [
+          0.0
+        ],
+        "stats/episode_index/count": [
+          118
+        ],
+        "stats/frame_index/min": [
+          0
+        ],
+        "stats/frame_index/max": [
+          117
+        ],
+        "stats/frame_index/mean": [
+          58.5
+        ],
+        "stats/frame_index/std": [
+          34.0624426605022
+        ],
+        "stats/frame_index/count": [
+          118
+        ],
+        "stats/timestamp/min": [
+          0.0
+        ],
+        "stats/timestamp/max": [
+          11.699999809265137
+        ],
+        "stats/timestamp/mean": [
+          5.849999904632568
+        ],
+        "stats/timestamp/std": [
+          3.4062445163726807
+        ],
+        "stats/timestamp/count": [
+          118
+        ],
+        "stats/next.reward/min": [
+          0.0006754898349754512
+        ],
+        "stats/next.reward/max": [
+          0.9001520872116089
+        ],
+        "stats/next.reward/mean": [
+          0.380736768245697
+        ],
+        "stats/next.reward/std": [
+          0.3031660318374634
+        ],
+        "stats/next.reward/count": [
+          118
+        ],
+        "stats/next.done/min": [
+          false
+        ],
+        "stats/next.done/max": [
+          true
+        ],
+        "stats/next.done/mean": [
+          0.01694915254237288
+        ],
+        "stats/next.done/std": [
+          0.12908090009938827
+        ],
+        "stats/next.done/count": [
+          118
+        ],
+        "stats/next.success/min": [
+          false
+        ],
+        "stats/next.success/max": [
+          false
+        ],
+        "stats/next.success/mean": [
+          0.0
+        ],
+        "stats/next.success/std": [
+          0.0
+        ],
+        "stats/next.success/count": [
+          118
+        ],
+        "stats/index/min": [
+          161
+        ],
+        "stats/index/max": [
+          278
+        ],
+        "stats/index/mean": [
+          219.5
+        ],
+        "stats/index/std": [
+          34.0624426605022
+        ],
+        "stats/index/count": [
+          118
+        ],
+        "stats/task_index/min": [
+          0
+        ],
+        "stats/task_index/max": [
+          0
+        ],
+        "stats/task_index/mean": [
+          0.0
+        ],
+        "stats/task_index/std": [
+          0.0
+        ],
+        "stats/task_index/count": [
+          118
+        ],
+        "meta/episodes/chunk_index": 0,
+        "meta/episodes/file_index": 0
+      },
+      {
+        "episode_index": 2,
+        "data/chunk_index": 0,
+        "data/file_index": 0,
+        "dataset_from_index": 279,
+        "dataset_to_index": 420,
+        "videos/observation.image/chunk_index": 0,
+        "videos/observation.image/file_index": 0,
+        "videos/observation.image/from_timestamp": 27.900000000000002,
+        "videos/observation.image/to_timestamp": 42.0,
+        "tasks": [
+          "Push the T-shaped block onto the T-shaped target."
+        ],
+        "length": 141,
+        "stats/observation.image/min": [
+          [
+            [
+              0.16470588743686676
+            ]
+          ],
+          [
+            [
+              0.2666666805744171
+            ]
+          ],
+          [
+            [
+              0.3019607961177826
+            ]
+          ]
+        ],
+        "stats/observation.image/max": [
+          [
+            [
+              1.0
+            ]
+          ],
+          [
+            [
+              1.0
+            ]
+          ],
+          [
+            [
+              1.0
+            ]
+          ]
+        ],
+        "stats/observation.image/mean": [
+          [
+            [
+              0.9723849892616272
+            ]
+          ],
+          [
+            [
+              0.9806620478630066
+            ]
+          ],
+          [
+            [
+              0.9779199957847595
+            ]
+          ]
+        ],
+        "stats/observation.image/std": [
+          [
+            [
+              0.09891094267368317
+            ]
+          ],
+          [
+            [
+              0.07234590500593185
+            ]
+          ],
+          [
+            [
+              0.07680479437112808
+            ]
+          ]
+        ],
+        "stats/observation.image/count": [
+          100
+        ],
+        "stats/observation.state/min": [
+          85.97830200195312,
+          59.068504333496094
+        ],
+        "stats/observation.state/max": [
+          243.020751953125,
+          370.3690490722656
+        ],
+        "stats/observation.state/mean": [
+          142.91183471679688,
+          226.8919677734375
+        ],
+        "stats/observation.state/std": [
+          39.9742317199707,
+          90.14198303222656
+        ],
+        "stats/observation.state/count": [
+          141
+        ],
+        "stats/action/min": [
+          85.0,
+          56.0
+        ],
+        "stats/action/max": [
+          247.0,
+          374.0
+        ],
+        "stats/action/mean": [
+          142.31915283203125,
+          229.4964599609375
+        ],
+        "stats/action/std": [
+          39.80970001220703,
+          88.01905059814453
+        ],
+        "stats/action/count": [
+          141
+        ],
+        "stats/episode_index/min": [
+          2
+        ],
+        "stats/episode_index/max": [
+          2
+        ],
+        "stats/episode_index/mean": [
+          2.0
+        ],
+        "stats/episode_index/std": [
+          0.0
+        ],
+        "stats/episode_index/count": [
+          141
+        ],
+        "stats/frame_index/min": [
+          0
+        ],
+        "stats/frame_index/max": [
+          140
+        ],
+        "stats/frame_index/mean": [
+          70.0
+        ],
+        "stats/frame_index/std": [
+          40.702170294305766
+        ],
+        "stats/frame_index/count": [
+          141
+        ],
+        "stats/timestamp/min": [
+          0.0
+        ],
+        "stats/timestamp/max": [
+          14.0
+        ],
+        "stats/timestamp/mean": [
+          7.0
+        ],
+        "stats/timestamp/std": [
+          4.070217132568359
+        ],
+        "stats/timestamp/count": [
+          141
+        ],
+        "stats/next.reward/min": [
+          0.0
+        ],
+        "stats/next.reward/max": [
+          0.9080862998962402
+        ],
+        "stats/next.reward/mean": [
+          0.33944469690322876
+        ],
+        "stats/next.reward/std": [
+          0.3654443621635437
+        ],
+        "stats/next.reward/count": [
+          141
+        ],
+        "stats/next.done/min": [
+          false
+        ],
+        "stats/next.done/max": [
+          true
+        ],
+        "stats/next.done/mean": [
+          0.014184397163120567
+        ],
+        "stats/next.done/std": [
+          0.1182505815640643
+        ],
+        "stats/next.done/count": [
+          141
+        ],
+        "stats/next.success/min": [
+          false
+        ],
+        "stats/next.success/max": [
+          false
+        ],
+        "stats/next.success/mean": [
+          0.0
+        ],
+        "stats/next.success/std": [
+          0.0
+        ],
+        "stats/next.success/count": [
+          141
+        ],
+        "stats/index/min": [
+          279
+        ],
+        "stats/index/max": [
+          419
+        ],
+        "stats/index/mean": [
+          349.0
+        ],
+        "stats/index/std": [
+          40.702170294305766
+        ],
+        "stats/index/count": [
+          141
+        ],
+        "stats/task_index/min": [
+          0
+        ],
+        "stats/task_index/max": [
+          0
+        ],
+        "stats/task_index/mean": [
+          0.0
+        ],
+        "stats/task_index/std": [
+          0.0
+        ],
+        "stats/task_index/count": [
+          141
+        ],
+        "meta/episodes/chunk_index": 0,
+        "meta/episodes/file_index": 0
+      }
+    ]
+  },
+  "online_error": "RuntimeError('Could not load libtorchcodec. Likely causes:\\n          1. FFmpeg is not properly installed in your environment. We support\\n             versions 4, 5, 6 and 7.\\n          2. The PyTorch version (2.7.1+cu126) is not compatible with\\n             this version of TorchCodec. Refer to the version compatibility\\n             table:\\n             https://github.com/pytorch/torchcodec?tab=readme-ov-file#installing-torchcodec.\\n          3. Another runtime dependency; see exceptions below.\\n        The following exceptions were raised as we tried to load libtorchcodec:\\n        \\n[start of libtorchcodec loading traceback]\\nFFmpeg version 7: libavutil.so.59: cannot open shared object file: No such file or directory\\nFFmpeg version 6: libavutil.so.58: cannot open shared object file: No such file or directory\\nFFmpeg version 5: libavutil.so.57: cannot open shared object file: No such file or directory\\nFFmpeg version 4: libavutil.so.56: cannot open shared object file: No such file or directory\\n[end of libtorchcodec loading traceback].')"
+}

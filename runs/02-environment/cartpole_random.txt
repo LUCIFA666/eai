@@ -1,0 +1,7 @@
+env_id           : CartPole-v1
+policy           : random
+episodes         : 10, seeds=0..9
+length mean/std  : 25.60 / 15.23
+length min/max   : 12 / 60
+return mean/std  : 25.60 / 15.23
+wrote            : runs/02-environment/cartpole_metrics.json

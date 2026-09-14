@@ -1,0 +1,11 @@
+world = (10.0, 10.0), start = (0.5, 0.5), goal = (9.0, 9.0), obstacles = 5
+
+--- vanilla RRT ---
+  tree size = 193, iterations = 258, time = 19.48 ms
+  path waypoints = 35, length = 16.3124 m
+
+--- RRT* (rewiring) ---
+  tree size = 3277, iterations = 4000, time = 10534.84 ms
+  path waypoints = 17, length = 12.6522 m
+
+>>> PASS: RRT and RRT* both reach goal; RRT* path is no worse than RRT.

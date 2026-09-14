@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="content" font-family="SimSun, Georgia, serif">
+  <rect id="paper-background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#F5F0E6"/>
+  <g id="page-title" data-pptx-bounds="46 24 1186 76">
+    <text x="46" y="70" font-family="DengXian, Impact, sans-serif" font-size="38" font-weight="bold" fill="#111111">Δ-IRIS：未来不是一张最好看的图，而是一组条件分布</text>
+    <path d="M49 87 C306 76 662 95 1080 83" fill="none" stroke="#D94841" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <g id="tokenizer-evidence" data-pptx-bounds="48 112 900 240">
+    <path d="M53 117 C295 108 625 113 941 120 C948 185 946 273 940 345 C623 354 312 351 53 342 C46 276 47 183 53 117 Z" fill="#FFFFFF" stroke="#111111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <image href="../images/tokenizer_reconstruction.png" x="70" y="132" width="860" height="174" preserveAspectRatio="xMidYMid meet"/>
+    <text x="72" y="334" font-family="DengXian, Impact, sans-serif" font-size="18" fill="#625E57">Tokenizer 条件重建｜MAE 0.00043786 · PSNR 57.5892 dB</text>
+  </g>
+  <g id="tokenizer-judgment" data-pptx-bounds="976 112 254 240">
+    <path d="M989 126 C1056 109 1160 116 1213 143 C1218 210 1210 278 1190 329 C1111 346 1034 334 991 307 C974 248 976 178 989 126 Z" fill="#E4DED2" fill-opacity="0.66" stroke="#D94841" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="1008" y="171" font-family="DengXian, Impact, sans-serif" font-size="24" font-weight="bold" fill="#D94841">重建 ≠ 预测</text>
+    <text x="1008" y="214" font-size="18" fill="#191919">编码器看到了</text>
+    <text x="1008" y="250" font-size="18" fill="#191919">真实下一帧，</text>
+    <text x="1008" y="286" font-size="18" fill="#191919">只验证压缩质量。</text>
+  </g>
+  <g id="prediction-evidence" data-pptx-bounds="48 382 900 240">
+    <path d="M53 387 C296 377 627 383 941 391 C948 458 946 541 940 615 C624 624 313 620 53 612 C46 545 47 455 53 387 Z" fill="#FFFFFF" stroke="#111111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <image href="../images/world_model_prediction.png" x="70" y="402" width="860" height="174" preserveAspectRatio="xMidYMid meet"/>
+    <text x="72" y="604" font-family="DengXian, Impact, sans-serif" font-size="18" fill="#625E57">World model 单步想象｜MAE 0.00358743 · PSNR 30.4654 dB</text>
+  </g>
+  <g id="prediction-judgment" data-pptx-bounds="976 382 254 240">
+    <path d="M989 397 C1062 380 1163 388 1212 415 C1218 484 1209 553 1188 606 C1111 621 1034 611 991 582 C974 522 976 451 989 397 Z" fill="#E4DED2" fill-opacity="0.66" stroke="#2D5B8A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="1008" y="442" font-family="DengXian, Impact, sans-serif" font-size="24" font-weight="bold" fill="#2D5B8A">我的理解</text>
+    <text x="1008" y="484" font-size="18" fill="#191919">随机实体误差</text>
+    <text x="1008" y="520" font-size="18" fill="#191919">应按条件分布解释；</text>
+    <text x="1008" y="556" font-size="18" fill="#191919">报告典型误差，</text>
+    <text x="1008" y="592" font-size="18" fill="#191919">而非只挑最好样本。</text>
+  </g>
+  <text id="page-number" data-pptx-role="page-number" x="1230" y="688" text-anchor="end" font-family="DengXian, Impact, sans-serif" font-size="18" fill="#625E57">07</text>
+</svg>

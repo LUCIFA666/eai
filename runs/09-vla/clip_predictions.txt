@@ -1,0 +1,9 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[clip] device = cuda; model = openai/clip-vit-base-patch32
+[clip] loading processor + model (first time downloads ~600MB)...
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights: 100%|██████████| 398/398 [00:00<00:00, 38494.94it/s]
+[clip]       red_circle  gt='a red circle'  top1='a red circle' (0.663)  ok=True
+[clip]      blue_square  gt='a blue square'  top1='a blue square' (0.949)  ok=True
+[clip]   green_triangle  gt='a green triangle'  top1='a green triangle' (0.997)  ok=True
+[clip] top-1 accuracy = 3/3 = 100.00%
+[clip] wrote runs/09-vla/clip_predictions.json

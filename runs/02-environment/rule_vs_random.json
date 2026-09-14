@@ -1,0 +1,26 @@
+{
+  "cartpole": [
+    {
+      "policy": "random",
+      "episodes": 20,
+      "length_mean": 22.9,
+      "length_std": 13.356271934937533,
+      "return_mean": 22.9,
+      "return_std": 13.356271934937533,
+      "success_rate": 0.0
+    },
+    {
+      "policy": "rule",
+      "episodes": 20,
+      "length_mean": 40.9,
+      "length_std": 7.381734213584231,
+      "return_mean": 40.9,
+      "return_std": 7.381734213584231,
+      "success_rate": 0.0
+    }
+  ],
+  "minigrid": {
+    "status": "skipped",
+    "reason": "ModuleNotFoundError: No module named 'minigrid'"
+  }
+}

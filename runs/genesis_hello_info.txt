@@ -1,0 +1,32 @@
+=== Genesis Hello World ===
+Genesis version : 0.4.7
+Backend         : cpu
+Scene entities  : 2
+Robot name      : franka_emika_panda
+DoFs            : 9
+Joint names     : ['joint1', 'joint2', 'joint3', 'joint4', 'joint5', 'joint6', 'joint7', 'finger_joint1', 'finger_joint2']
+
+--- Initial joint positions ---
+  joint1                         = 0.0000
+  joint2                         = 0.0000
+  joint3                         = 0.0000
+  joint4                         = 0.0000
+  joint5                         = 0.0000
+  joint6                         = 0.0000
+  joint7                         = 0.0000
+  finger_joint1                  = 0.0000
+  finger_joint2                  = 0.0000
+
+--- PD control to target (500 steps, dt=0.01) ---
+Target: [0.0, -0.3, 0.0, -1.5, 0.0, 1.2, 0.8, 0.04, 0.04]
+
+--- Final joint positions ---
+  joint1                         = -0.0000  (target +0.0000, err 0.0000)
+  joint2                         = -0.2964  (target -0.3000, err 0.0036)
+  joint3                         = +0.0001  (target +0.0000, err 0.0001)
+  joint4                         = -1.5054  (target -1.5000, err 0.0054)
+  joint5                         = -0.0003  (target +0.0000, err 0.0003)
+  joint6                         = +1.1989  (target +1.2000, err 0.0011)
+  joint7                         = +0.8000  (target +0.8000, err 0.0000)
+  finger_joint1                  = +0.0400  (target +0.0400, err 0.0000)
+  finger_joint2                  = +0.0400  (target +0.0400, err 0.0000)

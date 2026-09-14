@@ -1,0 +1,973 @@
+/data/rbc/miniconda3/envs/rlinf/lib/python3.11/site-packages/hydra/_internal/defaults_list.py:251: UserWarning: In 'maniskill_ppo_openvla_local': Defaults list is missing `_self_`. See https://hydra.cc/docs/1.2/upgrades/1.0_to_1.1/default_composition_order for more information
+  warnings.warn(msg, UserWarning)
+/data/rbc/miniconda3/envs/rlinf/lib/python3.11/site-packages/hydra/_internal/hydra.py:119: UserWarning: Future Hydra versions will no longer change working directory at job runtime by default.
+See https://hydra.cc/docs/1.2/upgrades/1.1_to_1.2/changes_to_job_working_dir/ for more information.
+  ret = run_job(
+2026-05-26 02:21:18,908	INFO worker.py:2003 -- Started a local Ray instance. View the dashboard at [1m[32mhttp://127.0.0.1:8265 [39m[22m
+[INFO 02:21:21 RLinf] RLinf is running on a cluster with 1 node and 8 accelerators. The nodes' details are: 
+node_labels: []
+node_rank: 0
+ray_id: 9a70ebb4da6e88bc03dd34814295e917790a653586b5034095178c55
+node_ip: 192.168.120.74
+num_cpus: 128
+python_interpreter_path: /data/rbc/miniconda3/envs/rlinf/bin/python
+hardware_resources:
+- type: Accelerator
+  infos:
+  - type: Accelerator
+    model: NV_GPU:A100-SXM4-80GB
+  - type: Accelerator
+    model: NV_GPU:A100-SXM4-80GB
+  - type: Accelerator
+    model: NV_GPU:A100-SXM4-80GB
+  - type: Accelerator
+    model: NV_GPU:A100-SXM4-80GB
+  - type: Accelerator
+    model: NV_GPU:A100-SXM4-80GB
+  - type: Accelerator
+    model: NV_GPU:A100-SXM4-80GB
+  - type: Accelerator
+    model: NV_GPU:A100-SXM4-80GB
+  - type: Accelerator
+    model: NV_GPU:A100-SXM4-80GB
+
+Node groups' details are: 
+label: cluster
+nodes: '0'
+hardware_type: Accelerator
+ignore_hardware: false
+env_configs: null
+
+label: node
+nodes: '0'
+hardware_type: null
+ignore_hardware: true
+env_configs: null
+
+[INFO 02:21:21 FlexiblePlacementStrategy] 
+[INFO 02:21:21 FlexiblePlacementStrategy] Using flexible placement with hardware ranks: [[0], [1]], node groups: ['cluster'].
+[INFO 02:21:21 FlexiblePlacementStrategy] 
+[INFO 02:21:21 FlexiblePlacementStrategy] Using flexible placement with hardware ranks: [[0], [1]], node groups: ['cluster'].
+[INFO 02:21:21 FlexiblePlacementStrategy] 
+[INFO 02:21:21 FlexiblePlacementStrategy] Using flexible placement with hardware ranks: [[0], [1]], node groups: ['cluster'].
+[INFO 02:21:21 FlexiblePlacementStrategy] Generated 2 placements: [Placement(rank=0, cluster_node_rank=0, placement_node_rank=0, local_accelerator_rank=0, accelerator_type='NV_GPU', local_rank=0, local_world_size=2, visible_accelerators=['0'], isolate_accelerator=True, local_hardware_ranks=[0], node_group_label='cluster'), Placement(rank=1, cluster_node_rank=0, placement_node_rank=0, local_accelerator_rank=1, accelerator_type='NV_GPU', local_rank=1, local_world_size=2, visible_accelerators=['1'], isolate_accelerator=True, local_hardware_ranks=[1], node_group_label='cluster')].
+[INFO 02:21:22 FlexiblePlacementStrategy] Generated 2 placements: [Placement(rank=0, cluster_node_rank=0, placement_node_rank=0, local_accelerator_rank=0, accelerator_type='NV_GPU', local_rank=0, local_world_size=2, visible_accelerators=['0'], isolate_accelerator=True, local_hardware_ranks=[0], node_group_label='cluster'), Placement(rank=1, cluster_node_rank=0, placement_node_rank=0, local_accelerator_rank=1, accelerator_type='NV_GPU', local_rank=1, local_world_size=2, visible_accelerators=['1'], isolate_accelerator=True, local_hardware_ranks=[1], node_group_label='cluster')].
+[INFO 02:21:22 FlexiblePlacementStrategy] Generated 2 placements: [Placement(rank=0, cluster_node_rank=0, placement_node_rank=0, local_accelerator_rank=0, accelerator_type='NV_GPU', local_rank=0, local_world_size=2, visible_accelerators=['0'], isolate_accelerator=True, local_hardware_ranks=[0], node_group_label='cluster'), Placement(rank=1, cluster_node_rank=0, placement_node_rank=0, local_accelerator_rank=1, accelerator_type='NV_GPU', local_rank=1, local_world_size=2, visible_accelerators=['1'], isolate_accelerator=True, local_hardware_ranks=[1], node_group_label='cluster')].
+[INFO 02:21:22 NodePlacementStrategy] 
+[INFO 02:21:22 NodePlacementStrategy] Using node placement with node ranks: [0], node groups: ['node'].
+[INFO 02:21:22 NodePlacementStrategy] Generated 1 placements: [Placement(rank=0, cluster_node_rank=0, placement_node_rank=0, local_accelerator_rank='0', accelerator_type='NV_GPU', local_rank=0, local_world_size=1, visible_accelerators=['0', '1', '2', '3', '4', '5', '6', '7'], isolate_accelerator=True, local_hardware_ranks=[], node_group_label='cluster')].
+[INFO 02:21:22 NodePlacementStrategy] 
+[INFO 02:21:22 NodePlacementStrategy] Using node placement with node ranks: [0], node groups: ['node'].
+[INFO 02:21:22 NodePlacementStrategy] Generated 1 placements: [Placement(rank=0, cluster_node_rank=0, placement_node_rank=0, local_accelerator_rank='0', accelerator_type='NV_GPU', local_rank=0, local_world_size=1, visible_accelerators=['0', '1', '2', '3', '4', '5', '6', '7'], isolate_accelerator=True, local_hardware_ranks=[], node_group_label='cluster')].
+[INFO 02:21:22 NodePlacementStrategy] 
+[INFO 02:21:22 NodePlacementStrategy] Using node placement with node ranks: [0], node groups: ['node'].
+[INFO 02:21:22 NodePlacementStrategy] Generated 1 placements: [Placement(rank=0, cluster_node_rank=0, placement_node_rank=0, local_accelerator_rank='0', accelerator_type='NV_GPU', local_rank=0, local_world_size=1, visible_accelerators=['0', '1', '2', '3', '4', '5', '6', '7'], isolate_accelerator=True, local_hardware_ranks=[], node_group_label='cluster')].
+[33m(raylet)[0m [2026-05-26 02:21:23,827 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2817 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[36m(MultiStepRolloutWorker pid=2060378)[0m [INFO 02:21:27 FlexiblePlacementStrategy] 
+[36m(MultiStepRolloutWorker pid=2060378)[0m [INFO 02:21:27 FlexiblePlacementStrategy] Using flexible placement with hardware ranks: [[0], [1]], node groups: ['cluster'].
+[36m(MultiStepRolloutWorker pid=2060389)[0m [INFO 02:21:27 FlexiblePlacementStrategy] 
+[36m(MultiStepRolloutWorker pid=2060389)[0m [INFO 02:21:27 FlexiblePlacementStrategy] Using flexible placement with hardware ranks: [[0], [1]], node groups: ['cluster'].
+[36m(EnvWorker pid=2060393)[0m [INFO 02:21:28 FlexiblePlacementStrategy] 
+[36m(EnvWorker pid=2060393)[0m [INFO 02:21:28 FlexiblePlacementStrategy] Using flexible placement with hardware ranks: [[0], [1]], node groups: ['cluster'].
+[36m(EnvWorker pid=2060395)[0m [INFO 02:21:28 FlexiblePlacementStrategy] 
+[36m(EnvWorker pid=2060395)[0m [INFO 02:21:28 FlexiblePlacementStrategy] Using flexible placement with hardware ranks: [[0], [1]], node groups: ['cluster'].
+[36m(EnvGroup(rank=0) pid=2060393)[0m [W526 02:21:28.879580455 ProcessGroupNCCL.cpp:924] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[36m(EnvGroup(rank=1) pid=2060395)[0m [W526 02:21:28.879510491 ProcessGroupNCCL.cpp:924] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[36m(EmbodiedFSDPActor pid=2060374)[0m [W526 02:21:28.332971430 ProcessGroupNCCL.cpp:924] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[36m(EmbodiedFSDPActor pid=2060372)[0m [W526 02:21:28.333173814 ProcessGroupNCCL.cpp:924] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[36m(RolloutGroup(rank=0) pid=2060378)[0m The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[36m(RolloutGroup(rank=1) pid=2060389)[0m The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[36m(RolloutGroup(rank=0) pid=2060378)[0m PrismaticForConditionalGeneration has generative capabilities, as `prepare_inputs_for_generation` is explicitly overwritten. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+[36m(RolloutGroup(rank=0) pid=2060378)[0m   - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+[36m(RolloutGroup(rank=0) pid=2060378)[0m   - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+[36m(RolloutGroup(rank=0) pid=2060378)[0m   - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+[36m(RolloutGroup(rank=0) pid=2060378)[0m WARNING:prismatic.extern.hf.modeling_prismatic:Expected `transformers==4.40.1` and `tokenizers==0.19.1` but got `transformers==4.51.1` and `tokenizers==0.21.4`; there might be inference-time regressions due to dependency changes. If in doubt, pleaseuse the above versions.
+[36m(RolloutGroup(rank=1) pid=2060389)[0m PrismaticForConditionalGeneration has generative capabilities, as `prepare_inputs_for_generation` is explicitly overwritten. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+[36m(RolloutGroup(rank=1) pid=2060389)[0m   - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+[36m(RolloutGroup(rank=1) pid=2060389)[0m   - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+[36m(RolloutGroup(rank=1) pid=2060389)[0m   - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+[36m(RolloutGroup(rank=1) pid=2060389)[0m WARNING:prismatic.extern.hf.modeling_prismatic:Expected `transformers==4.40.1` and `tokenizers==0.19.1` but got `transformers==4.51.1` and `tokenizers==0.21.4`; there might be inference-time regressions due to dependency changes. If in doubt, pleaseuse the above versions.
+[36m(RolloutGroup(rank=0) pid=2060378)[0m Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]
+[36m(RolloutGroup(rank=1) pid=2060389)[0m Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]
+[36m(RolloutGroup(rank=0) pid=2060378)[0m Loading checkpoint shards:  75%|███████▌  | 3/4 [00:00<00:00, 28.16it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 37.37it/s]
+[36m(RolloutGroup(rank=0) pid=2060378)[0m Some weights of OpenVLAForRLActionPrediction were not initialized from the model checkpoint at /data/rbc/Embodied_models/openvla-7b-rlvla-warmup and are newly initialized: ['value_head.mlp.0.bias', 'value_head.mlp.0.weight', 'value_head.mlp.2.bias', 'value_head.mlp.2.weight', 'value_head.mlp.4.weight']
+[36m(RolloutGroup(rank=0) pid=2060378)[0m You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+[36m(RolloutGroup(rank=0) pid=2060378)[0m /data/rbc/miniconda3/envs/rlinf/lib/python3.11/site-packages/transformers/models/auto/image_processing_auto.py:604: FutureWarning: The image_processor_class argument is deprecated and will be removed in v4.42. Please use `slow_image_processor_class`, or `fast_image_processor_class` instead
+[36m(RolloutGroup(rank=0) pid=2060378)[0m   warnings.warn(
+[36m(RolloutGroup(rank=1) pid=2060389)[0m Loading checkpoint shards:  25%|██▌       | 1/4 [00:00<00:00,  9.77it/s]
+[36m(RolloutGroup(rank=0) pid=2060378)[0m Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+[36m(RolloutGroup(rank=1) pid=2060389)[0m Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 30.51it/s]
+[36m(RolloutGroup(rank=1) pid=2060389)[0m Some weights of OpenVLAForRLActionPrediction were not initialized from the model checkpoint at /data/rbc/Embodied_models/openvla-7b-rlvla-warmup and are newly initialized: ['value_head.mlp.0.bias', 'value_head.mlp.0.weight', 'value_head.mlp.2.bias', 'value_head.mlp.2.weight', 'value_head.mlp.4.weight']
+[36m(RolloutGroup(rank=1) pid=2060389)[0m You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+[36m(RolloutGroup(rank=1) pid=2060389)[0m /data/rbc/miniconda3/envs/rlinf/lib/python3.11/site-packages/transformers/models/auto/image_processing_auto.py:604: FutureWarning: The image_processor_class argument is deprecated and will be removed in v4.42. Please use `slow_image_processor_class`, or `fast_image_processor_class` instead
+[36m(RolloutGroup(rank=1) pid=2060389)[0m   warnings.warn(
+[36m(RolloutGroup(rank=1) pid=2060389)[0m Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+[33m(raylet)[0m [2026-05-26 02:21:33,839 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2816 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[36m(EmbodiedFSDPActor pid=2060374)[0m [INFO 02:21:35 FlexiblePlacementStrategy] 
+[36m(EmbodiedFSDPActor pid=2060374)[0m [INFO 02:21:35 FlexiblePlacementStrategy] Using flexible placement with hardware ranks: [[0], [1]], node groups: ['cluster'].
+[36m(EmbodiedFSDPActor pid=2060372)[0m [INFO 02:21:37 FlexiblePlacementStrategy] 
+[36m(EmbodiedFSDPActor pid=2060372)[0m [INFO 02:21:37 FlexiblePlacementStrategy] Using flexible placement with hardware ranks: [[0], [1]], node groups: ['cluster'].
+[33m(raylet)[0m [2026-05-26 02:21:43,855 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2816 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[36m(EnvGroup(rank=0) pid=2060393)[0m [33;1m2026-05-26 02:21:53,399 - mani_skill  - WARNING - Mimic targets dictionary is missing for controller config for widowx250s_bridgedataset_flat_table. Assuming the first joint is the control joint and the second joint is the mimic joint[0m
+[36m(EnvGroup(rank=0) pid=2060393)[0m [33;1m2026-05-26 02:21:53,604 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_carrot_generated_modified, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[36m(EnvGroup(rank=0) pid=2060393)[0m [33;1m2026-05-26 02:21:53,624 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_plate_objaverse_larger, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[33m(raylet)[0m [2026-05-26 02:21:53,872 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2816 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+{
+  "env": {
+    "train": {
+      "env_type": "maniskill",
+      "total_num_envs": 32,
+      "auto_reset": true,
+      "ignore_terminations": true,
+      "use_rel_reward": true,
+      "seed": 0,
+      "group_size": 1,
+      "use_fixed_reset_state_ids": false,
+      "max_steps_per_rollout_epoch": 80,
+      "max_episode_steps": 80,
+      "video_cfg": {
+        "save_video": false,
+        "info_on_video": true,
+        "video_base_dir": "/data/rbc/hands-on-embodied-ai/runs/rlinf_quickstart/video/train"
+      },
+      "enable_offload": true,
+      "init_params": {
+        "id": "PutCarrotOnPlateInScene-v2",
+        "num_envs": null,
+        "obs_mode": "rgb+segmentation",
+        "control_mode": "arm_pd_ee_target_delta_pose_align2_gripper_pd_joint_pos",
+        "sim_backend": "gpu",
+        "sim_config": {
+          "sim_freq": 500,
+          "control_freq": 5
+        },
+        "max_episode_steps": 80,
+        "sensor_configs": {
+          "shader_pack": "default"
+        },
+        "render_mode": "all"
+      }
+    },
+    "eval": {
+      "env_type": "maniskill",
+      "total_num_envs": 32,
+      "auto_reset": true,
+      "ignore_terminations": true,
+      "use_rel_reward": true,
+      "seed": 0,
+      "group_size": 1,
+      "use_fixed_reset_state_ids": true,
+      "max_steps_per_rollout_epoch": 80,
+      "max_episode_steps": 80,
+      "video_cfg": {
+        "save_video": true,
+        "info_on_video": true,
+        "video_base_dir": "/data/rbc/hands-on-embodied-ai/runs/rlinf_quickstart/video/eval"
+      },
+      "enable_offload": true,
+      "init_params": {
+        "id": "PutCarrotOnPlateInScene-v2",
+        "num_envs": null,
+        "obs_mode": "rgb+segmentation",
+        "control_mode": "arm_pd_ee_target_delta_pose_align2_gripper_pd_joint_pos",
+        "sim_backend": "gpu",
+        "sim_config": {
+          "sim_freq": 500,
+          "control_freq": 5
+        },
+        "max_episode_steps": 80,
+        "sensor_configs": {
+          "shader_pack": "default"
+        },
+        "render_mode": "all"
+      }
+    },
+    "group_name": "EnvGroup"
+  },
+  "actor": {
+    "model": {
+      "model_type": "openvla",
+      "model_path": "/data/rbc/Embodied_models/openvla-7b-rlvla-warmup",
+      "precision": "bf16",
+      "action_dim": 7,
+      "num_action_chunks": 1,
+      "use_proprio": false,
+      "unnorm_key": "bridge_orig",
+      "center_crop": true,
+      "add_bias_linear": false,
+      "add_qkv_bias": true,
+      "vocab_size": 32000,
+      "hidden_size": 4096,
+      "policy_setup": "widowx_bridge",
+      "add_value_head": true,
+      "image_size": [
+        224,
+        224
+      ],
+      "max_prompt_length": 30,
+      "is_lora": true,
+      "lora_rank": 32,
+      "attn_implementation": "sdpa",
+      "low_cpu_mem_usage": true,
+      "trust_remote_code": true
+    },
+    "fsdp_config": {
+      "strategy": "fsdp",
+      "sharding_strategy": "full_shard",
+      "gradient_checkpointing": false,
+      "cpu_offload": false,
+      "offload_pin_memory": false,
+      "reshard_after_forward": true,
+      "enable_gradient_accumulation": true,
+      "forward_prefetch": false,
+      "limit_all_gathers": false,
+      "backward_prefetch": null,
+      "use_orig_params": false,
+      "use_liger_kernel": false,
+      "mixed_precision": {
+        "param_dtype": "bf16",
+        "reduce_dtype": "bf16",
+        "buffer_dtype": "bf16"
+      },
+      "amp_autocast": {
+        "enabled": false,
+        "precision": "bf16"
+      },
+      "grad_scaler": {
+        "enabled": false,
+        "init_scale": null,
+        "growth_interval": null
+      }
+    },
+    "group_name": "ActorGroup",
+    "training_backend": "fsdp",
+    "micro_batch_size": 20,
+    "global_batch_size": 160,
+    "seed": 1234,
+    "enable_offload": true,
+    "optim": {
+      "lr": 0.0001,
+      "value_lr": 0.003,
+      "adam_beta1": 0.9,
+      "adam_beta2": 0.95,
+      "adam_eps": 1e-08,
+      "weight_decay": 0.01,
+      "clip_grad": 1.0,
+      "critic_warmup_steps": 0
+    }
+  },
+  "weight_syncer": {
+    "type": "patch",
+    "patch": {
+      "snapshot_device": "cpu",
+      "delta_encoding": true,
+      "compression": "none",
+      "init_sync": {
+        "enabled": true,
+        "prefixes": null,
+        "bucket_size": 134217728
+      }
+    }
+  },
+  "cluster": {
+    "num_nodes": 1,
+    "component_placement": {
+      "actor,env,rollout": "0-1"
+    }
+  },
+  "runner": {
+    "task_type": "embodied",
+    "logger": {
+      "log_path": "/data/rbc/hands-on-embodied-ai/runs/rlinf_quickstart",
+      "project_name": "rlinf",
+      "experiment_name": "maniskill_ppo_openvla_local",
+      "logger_backends": [
+        "tensorboard"
+      ]
+    },
+    "max_epochs": 5,
+    "max_steps": -1,
+    "only_eval": false,
+    "val_check_interval": -1,
+    "save_interval": 40,
+    "resume_dir": null,
+    "ckpt_path": null,
+    "per_worker_log": false,
+    "per_worker_log_path": null,
+    "nsight_output_path": null,
+    "weight_sync_interval": 1,
+    "overlap_env_bootstrap": false
+  },
+  "algorithm": {
+    "normalize_advantages": true,
+    "kl_penalty": "kl",
+    "group_size": 1,
+    "rollout_epoch": 1,
+    "eval_rollout_epoch": 1,
+    "reward_type": "action_level",
+    "logprob_type": "action_level",
+    "entropy_type": "action_level",
+    "adv_type": "gae",
+    "loss_type": "actor_critic",
+    "loss_agg_func": "token-mean",
+    "bootstrap_type": "always",
+    "kl_beta": 0.0,
+    "ratio_clip_eps": 0.2,
+    "entropy_bonus": 0,
+    "clip_ratio_high": 0.2,
+    "clip_ratio_low": 0.2,
+    "clip_ratio_c": 3.0,
+    "value_clip": 0.2,
+    "huber_delta": 10.0,
+    "gamma": 0.99,
+    "gae_lambda": 0.95,
+    "sampling_params": {
+      "do_sample": true,
+      "temperature_train": 1.0,
+      "temperature_eval": 0.6,
+      "top_k": 50,
+      "top_p": 1.0,
+      "repetition_penalty": 1.0
+    },
+    "length_params": {
+      "max_new_token": 7,
+      "max_length": 1024,
+      "min_length": 1
+    }
+  },
+  "rollout": {
+    "group_name": "RolloutGroup",
+    "backend": "huggingface",
+    "gpu_memory_utilization": 0.5,
+    "enforce_eager": true,
+    "enable_offload": true,
+    "pipeline_stage_num": 2,
+    "model": {
+      "model_path": "/data/rbc/Embodied_models/openvla-7b-rlvla-warmup",
+      "precision": "bf16"
+    }
+  },
+  "reward": {
+    "use_reward_model": false
+  },
+  "critic": {
+    "use_critic_model": false
+  }
+}
+[36m(MultiStepRolloutWorker pid=2060378)[0m self._sync_weight_comm_options: None
+[36m(MultiStepRolloutWorker pid=2060389)[0m self._sync_weight_comm_options: None
+[36m(EnvGroup(rank=0) pid=2060393)[0m [INFO 02:21:28 EnvGroup-Rank-0][env_worker.py:136] Env worker initialized with dst_rank_map: {'rollout_train': [(0, 8)]}
+[36m(EnvGroup(rank=0) pid=2060393)[0m [INFO 02:21:28 EnvGroup-Rank-0][env_worker.py:137] Env worker initialized with src_rank_map: {'rollout_train': [(0, 8)]}
+[36m(EnvGroup(rank=1) pid=2060395)[0m [INFO 02:21:28 EnvGroup-Rank-1][env_worker.py:136] Env worker initialized with dst_rank_map: {'rollout_train': [(1, 8)]}
+[36m(EnvGroup(rank=1) pid=2060395)[0m [INFO 02:21:28 EnvGroup-Rank-1][env_worker.py:137] Env worker initialized with src_rank_map: {'rollout_train': [(1, 8)]}
+[36m(EnvGroup(rank=0) pid=2060393)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(EnvGroup(rank=0) pid=2060393)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(EnvGroup(rank=0) pid=2060393)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(EnvGroup(rank=1) pid=2060395)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(EnvGroup(rank=1) pid=2060395)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(EnvGroup(rank=1) pid=2060395)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(EmbodiedFSDPActor pid=2060374)[0m [INFO 02:21:35 ActorGroup-Rank-1][fsdp_model_manager.py:115] [FSDP] AMP is disabled.
+[36m(EmbodiedFSDPActor pid=2060372)[0m [INFO 02:21:37 ActorGroup-Rank-0][fsdp_model_manager.py:115] [FSDP] AMP is disabled.
+[36m(RolloutGroup(rank=1) pid=2060389)[0m [INFO 02:21:54 RolloutGroup-Rank-1][huggingface_worker.py:153] Rollout worker initialized with dst_ranks: {'train': [(1, 8)]}[36m(EnvGroup(rank=1) pid=2060395)[0m [33;1m2026-05-26 02:21:55,725 - mani_skill  - WARNING - Mimic targets dictionary is missing for controller config for widowx250s_bridgedataset_flat_table. Assuming the first joint is the control joint and the second joint is the mimic joint[0m
+[36m(EnvGroup(rank=1) pid=2060395)[0m [33;1m2026-05-26 02:21:55,932 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_carrot_generated_modified, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[36m(EnvGroup(rank=1) pid=2060395)[0m [33;1m2026-05-26 02:21:55,953 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_plate_objaverse_larger, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[33m(raylet)[0m [2026-05-26 02:22:03,889 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2812 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[36m(EnvGroup(rank=0) pid=2060393)[0m [33;1m2026-05-26 02:22:10,463 - mani_skill  - WARNING - Mimic targets dictionary is missing for controller config for widowx250s_bridgedataset_flat_table. Assuming the first joint is the control joint and the second joint is the mimic joint[0m
+[36m(EnvGroup(rank=0) pid=2060393)[0m [33;1m2026-05-26 02:22:10,657 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_carrot_generated_modified, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[36m(EnvGroup(rank=0) pid=2060393)[0m [33;1m2026-05-26 02:22:10,679 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_plate_objaverse_larger, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[36m(EnvGroup(rank=1) pid=2060395)[0m [33;1m2026-05-26 02:22:11,785 - mani_skill  - WARNING - Mimic targets dictionary is missing for controller config for widowx250s_bridgedataset_flat_table. Assuming the first joint is the control joint and the second joint is the mimic joint[0m
+[36m(EnvGroup(rank=1) pid=2060395)[0m [33;1m2026-05-26 02:22:11,995 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_carrot_generated_modified, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[36m(EnvGroup(rank=1) pid=2060395)[0m [33;1m2026-05-26 02:22:12,016 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_plate_objaverse_larger, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[33m(raylet)[0m [2026-05-26 02:22:13,903 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2808 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[36m(ActorGroup(rank=1) pid=2060374)[0m The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[36m(ActorGroup(rank=0) pid=2060372)[0m The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[36m(ActorGroup(rank=1) pid=2060374)[0m PrismaticForConditionalGeneration has generative capabilities, as `prepare_inputs_for_generation` is explicitly overwritten. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+[36m(ActorGroup(rank=1) pid=2060374)[0m   - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+[36m(ActorGroup(rank=1) pid=2060374)[0m   - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+[36m(ActorGroup(rank=1) pid=2060374)[0m   - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+[36m(ActorGroup(rank=1) pid=2060374)[0m WARNING:prismatic.extern.hf.modeling_prismatic:Expected `transformers==4.40.1` and `tokenizers==0.19.1` but got `transformers==4.51.1` and `tokenizers==0.21.4`; there might be inference-time regressions due to dependency changes. If in doubt, pleaseuse the above versions.
+[36m(ActorGroup(rank=0) pid=2060372)[0m PrismaticForConditionalGeneration has generative capabilities, as `prepare_inputs_for_generation` is explicitly overwritten. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+[36m(ActorGroup(rank=0) pid=2060372)[0m   - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+[36m(ActorGroup(rank=0) pid=2060372)[0m   - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+[36m(ActorGroup(rank=0) pid=2060372)[0m   - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+[36m(ActorGroup(rank=0) pid=2060372)[0m WARNING:prismatic.extern.hf.modeling_prismatic:Expected `transformers==4.40.1` and `tokenizers==0.19.1` but got `transformers==4.51.1` and `tokenizers==0.21.4`; there might be inference-time regressions due to dependency changes. If in doubt, pleaseuse the above versions.
+[36m(ActorGroup(rank=1) pid=2060374)[0m Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]
+[36m(ActorGroup(rank=1) pid=2060374)[0m Loading checkpoint shards:  25%|██▌       | 1/4 [00:00<00:00,  8.86it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 27.45it/s]
+[36m(ActorGroup(rank=1) pid=2060374)[0m Some weights of OpenVLAForRLActionPrediction were not initialized from the model checkpoint at /data/rbc/Embodied_models/openvla-7b-rlvla-warmup and are newly initialized: ['value_head.mlp.0.bias', 'value_head.mlp.0.weight', 'value_head.mlp.2.bias', 'value_head.mlp.2.weight', 'value_head.mlp.4.weight']
+[36m(ActorGroup(rank=1) pid=2060374)[0m You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+[36m(ActorGroup(rank=1) pid=2060374)[0m /data/rbc/miniconda3/envs/rlinf/lib/python3.11/site-packages/transformers/models/auto/image_processing_auto.py:604: FutureWarning: The image_processor_class argument is deprecated and will be removed in v4.42. Please use `slow_image_processor_class`, or `fast_image_processor_class` instead
+[36m(ActorGroup(rank=1) pid=2060374)[0m   warnings.warn(
+[36m(ActorGroup(rank=0) pid=2060372)[0m Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]
+[36m(ActorGroup(rank=1) pid=2060374)[0m Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+[36m(ActorGroup(rank=0) pid=2060372)[0m Loading checkpoint shards:  25%|██▌       | 1/4 [00:00<00:00,  8.98it/s]
+[36m(ActorGroup(rank=0) pid=2060372)[0m Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 27.82it/s]
+[36m(ActorGroup(rank=0) pid=2060372)[0m Some weights of OpenVLAForRLActionPrediction were not initialized from the model checkpoint at /data/rbc/Embodied_models/openvla-7b-rlvla-warmup and are newly initialized: ['value_head.mlp.0.bias', 'value_head.mlp.0.weight', 'value_head.mlp.2.bias', 'value_head.mlp.2.weight', 'value_head.mlp.4.weight']
+[36m(ActorGroup(rank=0) pid=2060372)[0m You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+[36m(ActorGroup(rank=0) pid=2060372)[0m /data/rbc/miniconda3/envs/rlinf/lib/python3.11/site-packages/transformers/models/auto/image_processing_auto.py:604: FutureWarning: The image_processor_class argument is deprecated and will be removed in v4.42. Please use `slow_image_processor_class`, or `fast_image_processor_class` instead
+[36m(ActorGroup(rank=0) pid=2060372)[0m   warnings.warn(
+[36m(ActorGroup(rank=0) pid=2060372)[0m Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+[33m(raylet)[0m [2026-05-26 02:22:23,919 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2796 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:22:33,933 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2796 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[36m(RolloutGroup(rank=0) pid=2060378)[0m [W526 02:22:36.904578129 ProcessGroupNCCL.cpp:924] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[36m(RolloutGroup(rank=1) pid=2060389)[0m [W526 02:22:37.968599817 ProcessGroupNCCL.cpp:924] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[33m(raylet)[0m [2026-05-26 02:22:43,949 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2796 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[36m(Rollout(rank=0) pid=2060405)[0m [W526 02:22:48.196656772 ProcessGroupNCCL.cpp:924] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[36m(RolloutGroup(rank=0) pid=2060378)[0m Generating Rollout Epochs:   0%|          | 0/1 [00:00<?, ?it/s]
+[36m(Env(rank=0) pid=2060399)[0m [W526 02:22:52.097401413 ProcessGroupNCCL.cpp:924] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+
+[36m(RolloutGroup(rank=1) pid=2060389)[0m [INFO 02:21:54 RolloutGroup-Rank-1][huggingface_worker.py:154] Rollout worker initialized with src_ranks: {'train': [(1, 8)]}
+[36m(RolloutGroup(rank=0) pid=2060378)[0m [INFO 02:21:54 RolloutGroup-Rank-0][huggingface_worker.py:153] Rollout worker initialized with dst_ranks: {'train': [(0, 8)]}
+[36m(RolloutGroup(rank=0) pid=2060378)[0m [INFO 02:21:54 RolloutGroup-Rank-0][huggingface_worker.py:154] Rollout worker initialized with src_ranks: {'train': [(0, 8)]}
+[36m(ActorGroup(rank=1) pid=2060374)[0m [INFO 02:22:23 ActorGroup-Rank-1][fsdp_model_manager.py:273] [FSDP] Gradient checkpointing is disabled
+[36m(ActorGroup(rank=0) pid=2060372)[0m [INFO 02:22:23 ActorGroup-Rank-0][fsdp_model_manager.py:273] [FSDP] Gradient checkpointing is disabled
+[36m(ActorGroup(rank=0) pid=2060372)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(ActorGroup(rank=0) pid=2060372)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(ActorGroup(rank=0) pid=2060372)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(RolloutGroup(rank=0) pid=2060378)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(RolloutGroup(rank=0) pid=2060378)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(RolloutGroup(rank=0) pid=2060378)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(ActorGroup(rank=0) pid=2060372)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(ActorGroup(rank=0) pid=2060372)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(ActorGroup(rank=0) pid=2060372)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(ActorGroup(rank=1) pid=2060374)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(ActorGroup(rank=1) pid=2060374)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(ActorGroup(rank=1) pid=2060374)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(ActorGroup(rank=0) pid=2060372)[0m [Gloo] Rank 0 is connected to 2 peer ranks. Expected number of connected peer ranks is : 2
+[36m(ActorGroup(rank=0) pid=2060372)[0m [Gloo] Rank 0 is connected to 2 peer ranks. Expected number of connected peer ranks is : 2
+[36m(RolloutGroup(rank=0) pid=2060378)[0m [Gloo] Rank 1 is connected to 2 peer ranks. Expected number of connected peer ranks is : 2
+[36m(RolloutGroup(rank=0) pid=2060378)[0m [Gloo] Rank 1 is connected to 2 peer ranks. Expected number of connected peer ranks is : 2
+[36m(RolloutGroup(rank=0) pid=2060378)[0m [Gloo] Rank 1 is connected to 2 peer ranks. Expected number of connected peer ranks is : 2
+[36m(RolloutGroup(rank=1) pid=2060389)[0m [Gloo] Rank 2 is connected to 2 peer ranks. Expected number of connected peer ranks is : 2
+[36m(RolloutGroup(rank=1) pid=2060389)[0m [Gloo] Rank 2 is connected to 2 peer ranks. Expected number of connected peer ranks is : 2
+[36m(RolloutGroup(rank=1) pid=2060389)[0m [Gloo] Rank 2 is connected to 2 peer ranks. Expected number of connected peer ranks is : 2
+[36m(ActorGroup(rank=0) pid=2060372)[0m [Gloo] Rank 0 is connected to 2 peer ranks. Expected number of connected peer ranks is : 2
+[36m(ActorGroup(rank=0) pid=2060372)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(ActorGroup(rank=0) pid=2060372)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(ActorGroup(rank=0) pid=2060372)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(RolloutGroup(rank=1) pid=2060389)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(RolloutGroup(rank=1) pid=2060389)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(RolloutGroup(rank=1) pid=2060389)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(EnvGroup(rank=0) pid=2060393)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(EnvGroup(rank=0) pid=2060393)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(EnvGroup(rank=0) pid=2060393)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(Rollout(rank=0) pid=2060405)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(Rollout(rank=0) pid=2060405)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(Rollout(rank=0) pid=2060405)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(EnvGroup(rank=1) pid=2060395)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(EnvGroup(rank=1) pid=2060395)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(EnvGroup(rank=1) pid=2060395)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(Rollout(rank=0) pid=2060405)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(Rollout(rank=0) pid=2060405)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(Rollout(rank=0) pid=2060405)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(RolloutGroup(rank=0) pid=2060378)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(RolloutGroup(rank=0) pid=2060378)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(RolloutGroup(rank=0) pid=2060378)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(Rollout(rank=0) pid=2060405)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(Rollout(rank=0) pid=2060405)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(Rollout(rank=0) pid=2060405)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(RolloutGroup(rank=1) pid=2060389)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(RolloutGroup(rank=1) pid=2060389)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(RolloutGroup(rank=1) pid=2060389)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(Rollout(rank=0) pid=2060405)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(Rollout(rank=0) pid=2060405)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(Rollout(rank=0) pid=2060405)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(RolloutGroup(rank=0) pid=2060378)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(RolloutGroup(rank=0) pid=2060378)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(RolloutGroup(rank=0) pid=2060378)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(Env(rank=0) pid=2060399)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(Env(rank=0) pid=2060399)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1[33m(raylet)[0m [2026-05-26 02:22:53,965 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2795 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:23:03,980 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2795 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[36m(EnvGroup(rank=1) pid=2060395)[0m [33;1m2026-05-26 02:23:08,485 - mani_skill  - WARNING - Mimic targets dictionary is missing for controller config for widowx250s_bridgedataset_flat_table. Assuming the first joint is the control joint and the second joint is the mimic joint[0m
+[36m(EnvGroup(rank=1) pid=2060395)[0m [33;1m2026-05-26 02:23:08,689 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_carrot_generated_modified, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[36m(EnvGroup(rank=1) pid=2060395)[0m [33;1m2026-05-26 02:23:08,710 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_plate_objaverse_larger, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[36m(EnvGroup(rank=0) pid=2060393)[0m [33;1m2026-05-26 02:23:08,893 - mani_skill  - WARNING - Mimic targets dictionary is missing for controller config for widowx250s_bridgedataset_flat_table. Assuming the first joint is the control joint and the second joint is the mimic joint[0m
+[36m(EnvGroup(rank=0) pid=2060393)[0m [33;1m2026-05-26 02:23:09,094 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_carrot_generated_modified, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[36m(EnvGroup(rank=0) pid=2060393)[0m [33;1m2026-05-26 02:23:09,114 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_plate_objaverse_larger, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[33m(raylet)[0m [2026-05-26 02:23:13,998 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2795 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:23:24,015 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2789 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[36m(EnvGroup(rank=1) pid=2060395)[0m [33;1m2026-05-26 02:23:25,918 - mani_skill  - WARNING - Mimic targets dictionary is missing for controller config for widowx250s_bridgedataset_flat_table. Assuming the first joint is the control joint and the second joint is the mimic joint[0m
+[36m(EnvGroup(rank=1) pid=2060395)[0m [33;1m2026-05-26 02:23:26,099 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_carrot_generated_modified, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[36m(EnvGroup(rank=1) pid=2060395)[0m [33;1m2026-05-26 02:23:26,119 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_plate_objaverse_larger, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[36m(EnvGroup(rank=0) pid=2060393)[0m [33;1m2026-05-26 02:23:27,935 - mani_skill  - WARNING - Mimic targets dictionary is missing for controller config for widowx250s_bridgedataset_flat_table. Assuming the first joint is the control joint and the second joint is the mimic joint[0m
+[36m(EnvGroup(rank=0) pid=2060393)[0m [33;1m2026-05-26 02:23:28,116 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_carrot_generated_modified, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[36m(EnvGroup(rank=0) pid=2060393)[0m [33;1m2026-05-26 02:23:28,136 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_plate_objaverse_larger, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[33m(raylet)[0m [2026-05-26 02:23:34,033 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2789 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:23:44,051 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2789 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:23:54,068 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2789 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:24:04,083 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2788 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:24:14,097 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2788 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:24:24,109 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2782 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:24:34,119 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2782 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:24:44,130 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2782 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:24:54,140 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2781 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:25:04,150 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2781 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:25:14,163 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2781 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:25:24,174 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2775 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:25:34,188 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2769 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:25:44,207 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2769 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:25:54,227 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2769 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:26:04,246 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2769 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:26:14,264 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2769 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:26:24,283 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2763 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[36m(RolloutGroup(rank=0) pid=2060378)[0m Generating Rollout Epochs: 100%|██████████| 1/1 [03:38<00:00, 218.51s/it]Generating Rollout Epochs: 100%|██████████| 1/1 [03:38<00:00, 218.51s/it]
+[36m(Actor(rank=0) pid=2060510)[0m [W526 02:26:29.690071174 ProcessGroupNCCL.cpp:924] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[33m(raylet)[0m [2026-05-26 02:26:34,301 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2762 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:26:44,314 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2762 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:26:54,330 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2762 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:27:04,347 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2762 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:27:14,363 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2762 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:27:24,377 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2756 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:27:34,391 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2756 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:27:44,405 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2756 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:27:54,419 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2756 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:28:04,433 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2756 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:28:14,446 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2755 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:28:24,460 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2749 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:28:34,474 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2748 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:28:44,488 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2748 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:28:54,502 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2748 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+
+[36m(Env(rank=0) pid=2060399)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(RolloutGroup(rank=1) pid=2060389)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(RolloutGroup(rank=1) pid=2060389)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(RolloutGroup(rank=1) pid=2060389)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(EnvGroup(rank=0) pid=2060393)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(EnvGroup(rank=0) pid=2060393)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(EnvGroup(rank=0) pid=2060393)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(Env(rank=0) pid=2060399)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(Env(rank=0) pid=2060399)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(Env(rank=0) pid=2060399)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(Env(rank=0) pid=2060399)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(Env(rank=0) pid=2060399)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(Env(rank=0) pid=2060399)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(EnvGroup(rank=1) pid=2060395)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(EnvGroup(rank=1) pid=2060395)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(EnvGroup(rank=1) pid=2060395)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(Env(rank=0) pid=2060399)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(Env(rank=0) pid=2060399)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(Env(rank=0) pid=2060399)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(EnvGroup(rank=0) pid=2060393)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(Actor(rank=0) pid=2060510)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(EnvGroup(rank=0) pid=2060393)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(Actor(rank=0) pid=2060510)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(EnvGroup(rank=0) pid=2060393)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(Actor(rank=0) pid=2060510)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(ActorGroup(rank=0) pid=2060372)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(ActorGroup(rank=0) pid=2060372)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(ActorGroup(rank=0) pid=2060372)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(Actor(rank=0) pid=2060510)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(Actor(rank=0) pid=2060510)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(Actor(rank=0) pid=2060510)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(EnvGroup(rank=1) pid=2060395)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(EnvGroup(rank=1) pid=2060395)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(EnvGroup(rank=1) pid=2060395)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(Actor(rank=0) pid=2060510)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(Actor(rank=0) pid=2060510)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(Actor(rank=0) pid=2060510)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(ActorGroup(rank=1) pid=2060374)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(Actor(rank=0) pid=2060510)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(Actor(rank=0) pid=2060510)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(ActorGroup(rank=1) pid=2060374)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(ActorGroup(rank=1) pid=2060374)[0m [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+[36m(Actor(rank=0) pid=2060510)[0m [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+
+╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+├──────────────────────────────────────────────────── Metric Table ────────────────────────────────────────────────────┤
+│ Global Step:    1/5 │ Progress: ████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │  20.0%                                    │
+│ Elapsed: 06:23 │ ETA: 25:32 │ Step Time: 383.015s                                                                    │
+├──────────────────────────────────────────────────────── Time ────────────────────────────────────────────────────────┤
+│                                                                                                                      │
+│actor/run_training=133.9               │cal_adv_and_returns=0.021              │env/compute_bootstrap_rewards=0.015   │
+│env/env_interact_step=203.0            │env/interact=225.8                     │env/recv_rollout_results=10.164       │
+│env/run_interact_once=224.0            │generate_rollouts=234.5                │rollout/generate_one_epoch=219.0      │
+│rollout/predict=142.9                  │step=383.0                             │sync_weights=14.622                   │
+│                                                                                                                      │
+├──────────────────────────────────────────────────── Environment ─────────────────────────────────────────────────────┤
+│                                                                                                                      │
+│episode_len=80.0                       │num_trajectories=32                    │return=0.69375                        │[33m(raylet)[0m [2026-05-26 02:29:04,518 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2748 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[36m(RolloutGroup(rank=0) pid=2060378)[0m Generating Rollout Epochs:   0%|          | 0/1 [00:00<?, ?it/s]
+[33m(raylet)[0m [2026-05-26 02:29:14,535 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2748 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[36m(EnvGroup(rank=1) pid=2060395)[0m [33;1m2026-05-26 02:29:21,211 - mani_skill  - WARNING - Mimic targets dictionary is missing for controller config for widowx250s_bridgedataset_flat_table. Assuming the first joint is the control joint and the second joint is the mimic joint[0m
+[36m(EnvGroup(rank=1) pid=2060395)[0m [33;1m2026-05-26 02:29:21,396 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_carrot_generated_modified, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[36m(EnvGroup(rank=1) pid=2060395)[0m [33;1m2026-05-26 02:29:21,416 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_plate_objaverse_larger, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[36m(EnvGroup(rank=0) pid=2060393)[0m [33;1m2026-05-26 02:29:23,409 - mani_skill  - WARNING - Mimic targets dictionary is missing for controller config for widowx250s_bridgedataset_flat_table. Assuming the first joint is the control joint and the second joint is the mimic joint[0m
+[36m(EnvGroup(rank=0) pid=2060393)[0m [33;1m2026-05-26 02:29:23,562 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_carrot_generated_modified, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[36m(EnvGroup(rank=0) pid=2060393)[0m [33;1m2026-05-26 02:29:23,577 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_plate_objaverse_larger, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[33m(raylet)[0m [2026-05-26 02:29:24,553 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2737 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:29:34,570 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2737 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[36m(EnvGroup(rank=1) pid=2060395)[0m [33;1m2026-05-26 02:29:38,382 - mani_skill  - WARNING - Mimic targets dictionary is missing for controller config for widowx250s_bridgedataset_flat_table. Assuming the first joint is the control joint and the second joint is the mimic joint[0m
+[36m(EnvGroup(rank=1) pid=2060395)[0m [33;1m2026-05-26 02:29:38,565 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_carrot_generated_modified, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[36m(EnvGroup(rank=1) pid=2060395)[0m [33;1m2026-05-26 02:29:38,585 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_plate_objaverse_larger, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[36m(EnvGroup(rank=0) pid=2060393)[0m [33;1m2026-05-26 02:29:40,482 - mani_skill  - WARNING - Mimic targets dictionary is missing for controller config for widowx250s_bridgedataset_flat_table. Assuming the first joint is the control joint and the second joint is the mimic joint[0m
+[36m(EnvGroup(rank=0) pid=2060393)[0m [33;1m2026-05-26 02:29:40,667 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_carrot_generated_modified, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[36m(EnvGroup(rank=0) pid=2060393)[0m [33;1m2026-05-26 02:29:40,685 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_plate_objaverse_larger, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[33m(raylet)[0m [2026-05-26 02:29:44,589 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2737 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:29:54,606 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2737 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:30:04,625 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2737 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:30:14,644 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2736 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:30:24,658 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.273 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:30:34,667 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.273 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:30:44,676 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.273 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:30:54,685 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.273 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:31:04,694 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.273 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:31:14,703 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2729 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:31:24,712 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2723 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:31:34,721 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2723 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:31:44,731 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2723 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:31:54,741 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2723 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:32:04,753 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2723 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:32:14,764 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2723 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:32:24,773 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2716 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:32:34,783 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2716 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[36m(RolloutGroup(rank=0) pid=2060378)[0m Generating Rollout Epochs: 100%|██████████| 1/1 [03:29<00:00, 209.28s/it]Generating Rollout Epochs: 100%|██████████| 1/1 [03:29<00:00, 209.28s/it]
+[33m(raylet)[0m [2026-05-26 02:32:44,792 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2716 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:32:54,808 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2716 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:33:04,824 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2716 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:33:14,838 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2716 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:33:24,851 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2709 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:33:34,865 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2709 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:33:44,879 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2709 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:33:54,892 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2709 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:34:04,906 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2709 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:34:14,920 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2709 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:34:24,933 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2702 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:34:34,947 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2702 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:34:44,960 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2702 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+
+│reward=0.008671874                     │success_at_end=0.53125                 │success_once=0.5625                   │
+│                                                                                                                      │
+├────────────────────────────────────────────────────── Rollout ───────────────────────────────────────────────────────┤
+│                                                                                                                      │
+│advantages_max=4.108                   │advantages_mean=2.35e-08               │advantages_min=-4.272                 │
+│returns_max=1.033                      │returns_mean=0.143                     │returns_min=-0.979                    │
+│rewards=0.0090                         │                                       │                                      │
+│                                                                                                                      │
+├─────────────────────────────────────────────────── Training/Actor ───────────────────────────────────────────────────┤
+│                                                                                                                      │
+│actor/approx_kl=inf                    │actor/clip_fraction=0.389              │actor/clipped_ratio=0.937             │
+│actor/dual_cliped_ratio=0.0000         │actor/entropy_loss=0.0000              │actor/grad_norm=20.986                │
+│actor/lr=1.00e-04                      │actor/policy_loss=0.134                │actor/policy_loss_abs=0.701           │
+│actor/ratio=0.955                      │actor/ratio_abs=0.532                  │actor/total_loss=0.063                │
+│                                                                                                                      │
+├────────────────────────────────────────────────── Training/Critic ───────────────────────────────────────────────────┤
+│                                                                                                                      │
+│critic/explained_variance=0.091        │critic/lr=0.0030                       │critic/value_clip_ratio=0.014         │
+│critic/value_loss=0.119                │                                       │                                      │
+│                                                                                                                      │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+
+╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+├──────────────────────────────────────────────────── Metric Table ────────────────────────────────────────────────────┤
+│ Global Step:    2/5 │ Progress: ████████████████░░░░░░░░░░░░░░░░░░░░░░░░ │  40.0%                                    │
+│ Elapsed: 12:21 │ ETA: 18:32 │ Step Time: 370.838s                                                                    │
+├──────────────────────────────────────────────────────── Time ────────────────────────────────────────────────────────┤
+│                                                                                                                      │
+│actor/run_training=130.3               │cal_adv_and_returns=0.020              │env/compute_bootstrap_rewards=0.012   │
+│env/env_interact_step=199.6            │env/interact=215.1                     │env/recv_rollout_results=8.389        │
+│env/run_interact_once=213.7            │generate_rollouts=221.0                │rollout/generate_one_epoch=210.1      │
+│rollout/predict=135.5                  │step=358.6                             │sync_weights=7.259                    │
+│                                                                                                                      │
+├──────────────────────────────────────────────────── Environment ─────────────────────────────────────────────────────┤
+│                                                                                                                      │
+│episode_len=80.0                       │num_trajectories=32                    │return=0.55625004                     │
+│reward=0.006953125                     │success_at_end=0.40625                 │success_once=0.4375                   │
+│                                                                                                                      │
+├────────────────────────────────────────────────────── Rollout ───────────────────────────────────────────────────────┤
+│                                                                                                                      │
+│advantages_max=5.772                   │advantages_mean=-2.01e-08              │advantages_min=-5.165                 │
+│returns_max=0.999                      │returns_mean=0.116                     │returns_min=-1.013                    │
+│rewards=0.0070                         │                                       │                                      │
+│                                                                                                                      │
+├─────────────────────────────────────────────────── Training/Actor ───────────────────────────────────────────────────┤
+│                                                                                                                      │
+│actor/approx_kl=inf                    │actor/clip_fraction=0.305              │actor/clipped_ratio=0.961             │
+│actor/dual_cliped_ratio=0.0000         │actor/entropy_loss=0.0000              │actor/grad_norm=14.886                │[33m(raylet)[0m [2026-05-26 02:34:54,974 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2702 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[36m(RolloutGroup(rank=0) pid=2060378)[0m Generating Rollout Epochs:   0%|          | 0/1 [00:00<?, ?it/s]
+[33m(raylet)[0m [2026-05-26 02:35:04,989 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2702 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:35:15,005 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2702 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[36m(EnvGroup(rank=0) pid=2060393)[0m [33;1m2026-05-26 02:35:17,787 - mani_skill  - WARNING - Mimic targets dictionary is missing for controller config for widowx250s_bridgedataset_flat_table. Assuming the first joint is the control joint and the second joint is the mimic joint[0m
+[36m(EnvGroup(rank=0) pid=2060393)[0m [33;1m2026-05-26 02:35:17,977 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_carrot_generated_modified, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[36m(EnvGroup(rank=0) pid=2060393)[0m [33;1m2026-05-26 02:35:17,996 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_plate_objaverse_larger, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[36m(EnvGroup(rank=1) pid=2060395)[0m [33;1m2026-05-26 02:35:19,995 - mani_skill  - WARNING - Mimic targets dictionary is missing for controller config for widowx250s_bridgedataset_flat_table. Assuming the first joint is the control joint and the second joint is the mimic joint[0m
+[36m(EnvGroup(rank=1) pid=2060395)[0m [33;1m2026-05-26 02:35:20,187 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_carrot_generated_modified, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[36m(EnvGroup(rank=1) pid=2060395)[0m [33;1m2026-05-26 02:35:20,207 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_plate_objaverse_larger, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[33m(raylet)[0m [2026-05-26 02:35:25,022 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2691 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[36m(EnvGroup(rank=0) pid=2060393)[0m [33;1m2026-05-26 02:35:34,933 - mani_skill  - WARNING - Mimic targets dictionary is missing for controller config for widowx250s_bridgedataset_flat_table. Assuming the first joint is the control joint and the second joint is the mimic joint[0m
+[33m(raylet)[0m [2026-05-26 02:35:35,037 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2691 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[36m(EnvGroup(rank=0) pid=2060393)[0m [33;1m2026-05-26 02:35:35,119 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_carrot_generated_modified, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[36m(EnvGroup(rank=0) pid=2060393)[0m [33;1m2026-05-26 02:35:35,139 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_plate_objaverse_larger, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[36m(EnvGroup(rank=1) pid=2060395)[0m [33;1m2026-05-26 02:35:37,006 - mani_skill  - WARNING - Mimic targets dictionary is missing for controller config for widowx250s_bridgedataset_flat_table. Assuming the first joint is the control joint and the second joint is the mimic joint[0m
+[36m(EnvGroup(rank=1) pid=2060395)[0m [33;1m2026-05-26 02:35:37,182 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_carrot_generated_modified, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[36m(EnvGroup(rank=1) pid=2060395)[0m [33;1m2026-05-26 02:35:37,201 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_plate_objaverse_larger, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[33m(raylet)[0m [2026-05-26 02:35:45,055 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2691 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:35:55,073 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.269 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:36:05,084 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.269 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:36:15,093 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.269 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:36:25,102 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2684 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:36:35,111 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2684 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:36:45,122 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2684 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:36:55,131 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2684 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:37:05,140 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2684 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:37:15,149 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2683 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:37:25,159 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2677 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:37:35,168 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2677 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:37:45,178 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2677 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:37:55,187 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2677 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:38:05,197 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2677 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:38:15,209 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2676 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:38:25,218 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.267 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[36m(RolloutGroup(rank=0) pid=2060378)[0m Generating Rollout Epochs: 100%|██████████| 1/1 [03:23<00:00, 203.48s/it]Generating Rollout Epochs: 100%|██████████| 1/1 [03:23<00:00, 203.48s/it]
+[33m(raylet)[0m [2026-05-26 02:38:35,229 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.267 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:38:45,245 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.267 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:38:55,261 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.267 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:39:05,278 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.267 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:39:15,295 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.267 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:39:25,309 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2663 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:39:35,322 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2662 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:39:45,337 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2662 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:39:55,352 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2662 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:40:05,365 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2662 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:40:15,379 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2661 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:40:25,393 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2651 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:40:35,406 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2651 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:40:45,420 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2651 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:40:55,436 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2651 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[36m(RolloutGroup(rank=0) pid=2060378)[0m Generating Rollout Epochs:   0%|          | 0/1 [00:00<?, ?it/s]
+[33m(raylet)[0m [2026-05-26 02:41:05,451 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2651 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[36m(EnvGroup(rank=1) pid=2060395)[0m [33;1m2026-05-26 02:41:14,023 - mani_skill  - WARNING - Mimic targets dictionary is missing for controller config for widowx250s_bridgedataset_flat_table. Assuming the first joint is the control joint and the second joint is the mimic joint[0m
+[36m(EnvGroup(rank=1) pid=2060395)[0m [33;1m2026-05-26 02:41:14,214 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_carrot_generated_modified, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[36m(EnvGroup(rank=1) pid=2060395)[0m [33;1m2026-05-26 02:41:14,233 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_plate_objaverse_larger, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[33m(raylet)[0m [2026-05-26 02:41:15,468 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2651 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[36m(EnvGroup(rank=0) pid=2060393)[0m [33;1m2026-05-26 02:41:16,324 - mani_skill  - WARNING - Mimic targets dictionary is missing for controller config for widowx250s_bridgedataset_flat_table. Assuming the first joint is the control joint and the second joint is the mimic joint[0m
+[36m(EnvGroup(rank=0) pid=2060393)[0m [33;1m2026-05-26 02:41:16,529 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_carrot_generated_modified, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[36m(EnvGroup(rank=0) pid=2060393)[0m [33;1m2026-05-26 02:41:16,551 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_plate_objaverse_larger, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[33m(raylet)[0m [2026-05-26 02:41:25,485 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2643 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[36m(EnvGroup(rank=1) pid=2060395)[0m [33;1m2026-05-26 02:41:30,958 - mani_skill  - WARNING - Mimic targets dictionary is missing for controller config for widowx250s_bridgedataset_flat_table. Assuming the first joint is the control joint and the second joint is the mimic joint[0m
+[36m(EnvGroup(rank=1) pid=2060395)[0m [33;1m2026-05-26 02:41:31,149 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_carrot_generated_modified, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[36m(EnvGroup(rank=1) pid=2060395)[0m [33;1m2026-05-26 02:41:31,169 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_plate_objaverse_larger, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[36m(EnvGroup(rank=0) pid=2060393)[0m [33;1m2026-05-26 02:41:33,560 - mani_skill  - WARNING - Mimic targets dictionary is missing for controller config for widowx250s_bridgedataset_flat_table. Assuming the first joint is the control joint and the second joint is the mimic joint[0m
+[36m(EnvGroup(rank=0) pid=2060393)[0m [33;1m2026-05-26 02:41:33,760 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_carrot_generated_modified, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[36m(EnvGroup(rank=0) pid=2060393)[0m [33;1m2026-05-26 02:41:33,782 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_plate_objaverse_larger, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[33m(raylet)[0m [2026-05-26 02:41:35,500 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2643 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:41:45,518 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2643 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:41:55,535 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2643 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:42:05,546 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2642 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:42:15,557 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2642 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:42:25,568 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2636 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:42:35,577 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2636 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:42:45,586 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2636 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:42:55,594 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2636 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:43:05,604 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2636 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:43:15,613 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2635 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:43:25,624 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2629 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:43:35,633 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2629 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:43:45,642 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2629 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:43:55,651 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2629 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:44:05,660 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2629 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:44:15,671 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2629 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:44:25,680 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2622 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[36m(RolloutGroup(rank=0) pid=2060378)[0m Generating Rollout Epochs: 100%|██████████| 1/1 [03:27<00:00, 207.02s/it]Generating Rollout Epochs: 100%|██████████| 1/1 [03:27<00:00, 207.02s/it]
+[33m(raylet)[0m [2026-05-26 02:44:35,689 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2622 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:44:45,705 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2622 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:44:55,719 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2622 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:45:05,734 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2622 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:45:15,747 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2622 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:45:25,759 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2616 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:45:35,773 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2615 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:45:45,786 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2615 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:45:55,800 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2615 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:46:05,813 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2615 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:46:15,827 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2615 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:46:25,840 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2604 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:46:35,854 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2604 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+
+│actor/lr=1.00e-04                      │actor/policy_loss=0.071                │actor/policy_loss_abs=0.651           │
+│actor/ratio=0.959                      │actor/ratio_abs=0.345                  │actor/total_loss=0.022                │
+│                                                                                                                      │
+├────────────────────────────────────────────────── Training/Critic ───────────────────────────────────────────────────┤
+│                                                                                                                      │
+│critic/explained_variance=0.489        │critic/lr=0.0030                       │critic/value_clip_ratio=0.025         │
+│critic/value_loss=0.016                │                                       │                                      │
+│                                                                                                                      │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+
+╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+├──────────────────────────────────────────────────── Metric Table ────────────────────────────────────────────────────┤
+│ Global Step:    3/5 │ Progress: ████████████████████████░░░░░░░░░░░░░░░░ │  60.0%                                    │
+│ Elapsed: 18:17 │ ETA: 12:11 │ Step Time: 365.736s                                                                    │
+├──────────────────────────────────────────────────────── Time ────────────────────────────────────────────────────────┤
+│                                                                                                                      │
+│actor/run_training=133.6               │cal_adv_and_returns=0.018              │env/compute_bootstrap_rewards=0.012   │
+│env/env_interact_step=194.5            │env/interact=210.1                     │env/recv_rollout_results=8.577        │
+│env/run_interact_once=208.9            │generate_rollouts=216.3                │rollout/generate_one_epoch=204.4      │
+│rollout/predict=131.9                  │step=355.5                             │sync_weights=5.623                    │
+│                                                                                                                      │
+├──────────────────────────────────────────────────── Environment ─────────────────────────────────────────────────────┤
+│                                                                                                                      │
+│episode_len=80.0                       │num_trajectories=32                    │return=0.68125004                     │
+│reward=0.008515625                     │success_at_end=0.53125                 │success_once=0.53125                  │
+│                                                                                                                      │
+├────────────────────────────────────────────────────── Rollout ───────────────────────────────────────────────────────┤
+│                                                                                                                      │
+│advantages_max=4.548                   │advantages_mean=-5.96e-09              │advantages_min=-4.197                 │
+│returns_max=1.325                      │returns_mean=0.191                     │returns_min=-0.085                    │
+│rewards=0.0090                         │                                       │                                      │
+│                                                                                                                      │
+├─────────────────────────────────────────────────── Training/Actor ───────────────────────────────────────────────────┤
+│                                                                                                                      │
+│actor/approx_kl=inf                    │actor/clip_fraction=0.294              │actor/clipped_ratio=0.970             │
+│actor/dual_cliped_ratio=0.0000         │actor/entropy_loss=0.0000              │actor/grad_norm=15.241                │
+│actor/lr=1.00e-04                      │actor/policy_loss=0.081                │actor/policy_loss_abs=0.743           │
+│actor/ratio=0.994                      │actor/ratio_abs=0.360                  │actor/total_loss=0.025                │
+│                                                                                                                      │
+├────────────────────────────────────────────────── Training/Critic ───────────────────────────────────────────────────┤
+│                                                                                                                      │
+│critic/explained_variance=0.547        │critic/lr=0.0030                       │critic/value_clip_ratio=0.025         │
+│critic/value_loss=0.017                │                                       │                                      │
+│                                                                                                                      │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+
+╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮[33m(raylet)[0m [2026-05-26 02:46:45,868 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2604 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[36m(RolloutGroup(rank=0) pid=2060378)[0m Generating Rollout Epochs:   0%|          | 0/1 [00:00<?, ?it/s]
+[33m(raylet)[0m [2026-05-26 02:46:55,885 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2603 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:47:05,900 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2603 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[36m(EnvGroup(rank=0) pid=2060393)[0m [33;1m2026-05-26 02:47:07,466 - mani_skill  - WARNING - Mimic targets dictionary is missing for controller config for widowx250s_bridgedataset_flat_table. Assuming the first joint is the control joint and the second joint is the mimic joint[0m
+[36m(EnvGroup(rank=0) pid=2060393)[0m [33;1m2026-05-26 02:47:07,667 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_carrot_generated_modified, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[36m(EnvGroup(rank=0) pid=2060393)[0m [33;1m2026-05-26 02:47:07,686 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_plate_objaverse_larger, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[36m(EnvGroup(rank=1) pid=2060395)[0m [33;1m2026-05-26 02:47:09,457 - mani_skill  - WARNING - Mimic targets dictionary is missing for controller config for widowx250s_bridgedataset_flat_table. Assuming the first joint is the control joint and the second joint is the mimic joint[0m
+[36m(EnvGroup(rank=1) pid=2060395)[0m [33;1m2026-05-26 02:47:09,653 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_carrot_generated_modified, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[36m(EnvGroup(rank=1) pid=2060395)[0m [33;1m2026-05-26 02:47:09,674 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_plate_objaverse_larger, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[33m(raylet)[0m [2026-05-26 02:47:15,917 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2603 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[36m(EnvGroup(rank=0) pid=2060393)[0m [33;1m2026-05-26 02:47:24,885 - mani_skill  - WARNING - Mimic targets dictionary is missing for controller config for widowx250s_bridgedataset_flat_table. Assuming the first joint is the control joint and the second joint is the mimic joint[0m
+[36m(EnvGroup(rank=0) pid=2060393)[0m [33;1m2026-05-26 02:47:25,043 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_carrot_generated_modified, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[36m(EnvGroup(rank=0) pid=2060393)[0m [33;1m2026-05-26 02:47:25,057 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_plate_objaverse_larger, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[33m(raylet)[0m [2026-05-26 02:47:25,933 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2597 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[36m(EnvGroup(rank=1) pid=2060395)[0m [33;1m2026-05-26 02:47:26,989 - mani_skill  - WARNING - Mimic targets dictionary is missing for controller config for widowx250s_bridgedataset_flat_table. Assuming the first joint is the control joint and the second joint is the mimic joint[0m
+[36m(EnvGroup(rank=1) pid=2060395)[0m [33;1m2026-05-26 02:47:27,179 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_carrot_generated_modified, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[36m(EnvGroup(rank=1) pid=2060395)[0m [33;1m2026-05-26 02:47:27,200 - mani_skill  - WARNING - No initial pose set for actor builder of bridge_plate_objaverse_larger, setting to default pose q=[1,0,0,0], p=[0,0,0]. Not setting reasonable initial poses may slow down simulation, see https://github.com/haosulab/ManiSkill/issues/421.[0m
+[33m(raylet)[0m [2026-05-26 02:47:35,952 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2597 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:47:45,969 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2597 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:47:55,986 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2597 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:48:06,005 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2597 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:48:16,017 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2596 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:48:26,028 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.259 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:48:36,038 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.259 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:48:46,050 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.259 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:48:56,061 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.259 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:49:06,073 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.259 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:49:16,084 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2589 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:49:26,095 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2583 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:49:36,105 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2583 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:49:46,114 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2583 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:49:56,124 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2583 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:50:06,133 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2583 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[36m(RolloutGroup(rank=0) pid=2060378)[0m Generating Rollout Epochs: 100%|██████████| 1/1 [03:23<00:00, 203.60s/it]Generating Rollout Epochs: 100%|██████████| 1/1 [03:23<00:00, 203.60s/it]
+[33m(raylet)[0m [2026-05-26 02:50:16,142 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2583 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:50:26,152 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2576 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:50:36,162 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2576 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:50:46,179 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2576 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:50:56,195 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2576 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:51:06,212 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2576 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:51:16,229 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2576 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:51:26,246 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2569 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:51:36,261 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2569 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:51:46,276 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2569 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:51:56,291 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2569 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:52:06,304 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2569 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:52:16,317 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2569 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:52:26,330 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2558 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:52:36,343 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2558 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:52:46,355 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2557 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[INFO 02:52:53 RLinf] Saving checkpoint at step 5.
+[36m(ActorGroup(rank=0) pid=2060372)[0m /data/rbc/miniconda3/envs/rlinf/lib/python3.11/site-packages/torch/distributed/distributed_c10d.py:4876: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+[36m(ActorGroup(rank=0) pid=2060372)[0m   warnings.warn(  # warn only once
+[33m(raylet)[0m [2026-05-26 02:52:56,367 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2557 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[36m(ActorGroup(rank=1) pid=2060374)[0m /data/rbc/miniconda3/envs/rlinf/lib/python3.11/site-packages/torch/distributed/distributed_c10d.py:860: UserWarning: `_get_pg_default_device` will be deprecated, it only stays for backward-compatiblity reason. If you need to find a device for object collectives, please use `_get_object_coll_device`. If you need to query the device types supported by group, please use `_device_capability(group)`. 
+[36m(ActorGroup(rank=1) pid=2060374)[0m   warnings.warn(
+[36m(ActorGroup(rank=0) pid=2060372)[0m /data/rbc/miniconda3/envs/rlinf/lib/python3.11/site-packages/torch/distributed/distributed_c10d.py:860: UserWarning: `_get_pg_default_device` will be deprecated, it only stays for backward-compatiblity reason. If you need to find a device for object collectives, please use `_get_object_coll_device`. If you need to query the device types supported by group, please use `_device_capability(group)`. 
+[36m(ActorGroup(rank=0) pid=2060372)[0m   warnings.warn(
+[33m(raylet)[0m [2026-05-26 02:53:06,380 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2557 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[36m(ActorGroup(rank=0) pid=2060372)[0m /data/rbc/miniconda3/envs/rlinf/lib/python3.11/site-packages/torch/distributed/distributed_c10d.py:4876: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+[36m(ActorGroup(rank=0) pid=2060372)[0m   warnings.warn(  # warn only once
+[33m(raylet)[0m [2026-05-26 02:53:16,395 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2557 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:53:26,409 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2551 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:53:36,423 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2551 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+[33m(raylet)[0m [2026-05-26 02:53:46,436 E 2052860 2052896] (raylet) file_system_monitor.cc:116: /tmp/ray/session_2026-05-26_02-21-09_711975_2051736 is over 95% full, available space: 33.2551 GB; capacity: 876.137 GB. Object creation will fail if spilling is required.
+
+├──────────────────────────────────────────────────── Metric Table ────────────────────────────────────────────────────┤
+│ Global Step:    4/5 │ Progress: ████████████████████████████████░░░░░░░░ │  80.0%                                    │
+│ Elapsed: 24:10 │ ETA: 06:02 │ Step Time: 362.689s                                                                    │
+├──────────────────────────────────────────────────────── Time ────────────────────────────────────────────────────────┤
+│                                                                                                                      │
+│actor/run_training=129.5               │cal_adv_and_returns=0.018              │env/compute_bootstrap_rewards=0.011   │
+│env/env_interact_step=197.3            │env/interact=212.5                     │env/recv_rollout_results=8.311        │
+│env/run_interact_once=211.4            │generate_rollouts=218.2                │rollout/generate_one_epoch=207.0      │
+│rollout/predict=131.3                  │step=353.5                             │sync_weights=5.839                    │
+│                                                                                                                      │
+├──────────────────────────────────────────────────── Environment ─────────────────────────────────────────────────────┤
+│                                                                                                                      │
+│episode_len=80.0                       │num_trajectories=32                    │return=0.859375                       │
+│reward=0.0107421875                    │success_at_end=0.6875                  │success_once=0.6875                   │
+│                                                                                                                      │
+├────────────────────────────────────────────────────── Rollout ───────────────────────────────────────────────────────┤
+│                                                                                                                      │
+│advantages_max=4.330                   │advantages_mean=-7.45e-09              │advantages_min=-3.761                 │
+│returns_max=1.224                      │returns_mean=0.284                     │returns_min=-0.053                    │
+│rewards=0.011                          │                                       │                                      │
+│                                                                                                                      │
+├─────────────────────────────────────────────────── Training/Actor ───────────────────────────────────────────────────┤
+│                                                                                                                      │
+│actor/approx_kl=inf                    │actor/clip_fraction=0.280              │actor/clipped_ratio=0.966             │
+│actor/dual_cliped_ratio=0.0000         │actor/entropy_loss=0.0000              │actor/grad_norm=18.269                │
+│actor/lr=1.00e-04                      │actor/policy_loss=0.095                │actor/policy_loss_abs=0.765           │
+│actor/ratio=0.987                      │actor/ratio_abs=0.357                  │actor/total_loss=0.028                │
+│                                                                                                                      │
+├────────────────────────────────────────────────── Training/Critic ───────────────────────────────────────────────────┤
+│                                                                                                                      │
+│critic/explained_variance=0.653        │critic/lr=0.0030                       │critic/value_clip_ratio=0.040         │
+│critic/value_loss=0.018                │                                       │                                      │
+│                                                                                                                      │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+
+╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+├──────────────────────────────────────────────────── Metric Table ────────────────────────────────────────────────────┤
+│ Global Step:    5/5 │ Progress: ████████████████████████████████████████ │ 100.0%                                    │
+│ Elapsed: 31:18 │ ETA: 00:00 │ Step Time: 375.781s                                                                    │
+├──────────────────────────────────────────────────────── Time ────────────────────────────────────────────────────────┤
+│                                                                                                                      │
+│actor/run_training=140.1               │cal_adv_and_returns=0.018              │env/compute_bootstrap_rewards=0.013   │
+│env/env_interact_step=203.4            │env/interact=218.7                     │env/recv_rollout_results=8.350        │
+│env/run_interact_once=217.5            │generate_rollouts=224.0                │rollout/generate_one_epoch=213.7      │
+│rollout/predict=135.8                  │step=428.1                             │sync_weights=5.788                    │
+│                                                                                                                      │
+├──────────────────────────────────────────────────── Environment ─────────────────────────────────────────────────────┤[36m(ActorGroup(rank=0) pid=2060372)[0m /data/rbc/miniconda3/envs/rlinf/lib/python3.11/site-packages/torch/distributed/distributed_c10d.py:4876: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+[36m(ActorGroup(rank=0) pid=2060372)[0m   warnings.warn(  # warn only once
+
+│                                                                                                                      │
+│episode_len=80.0                       │num_trajectories=32                    │return=0.7218751                      │
+│reward=0.009023437                     │success_at_end=0.5625                  │success_once=0.5625                   │
+│                                                                                                                      │
+├────────────────────────────────────────────────────── Rollout ───────────────────────────────────────────────────────┤
+│                                                                                                                      │
+│advantages_max=6.398                   │advantages_mean=-1.64e-08              │advantages_min=-5.992                 │
+│returns_max=1.103                      │returns_mean=0.275                     │returns_min=-0.089                    │
+│rewards=0.0099                         │                                       │                                      │
+│                                                                                                                      │
+├─────────────────────────────────────────────────── Training/Actor ───────────────────────────────────────────────────┤
+│                                                                                                                      │
+│actor/approx_kl=inf                    │actor/clip_fraction=0.276              │actor/clipped_ratio=0.967             │
+│actor/dual_cliped_ratio=0.0000         │actor/entropy_loss=0.0000              │actor/grad_norm=17.547                │
+│actor/lr=1.00e-04                      │actor/policy_loss=0.067                │actor/policy_loss_abs=0.662           │
+│actor/ratio=0.994                      │actor/ratio_abs=0.325                  │actor/total_loss=0.020                │
+│                                                                                                                      │
+├────────────────────────────────────────────────── Training/Critic ───────────────────────────────────────────────────┤
+│                                                                                                                      │
+│critic/explained_variance=0.749        │critic/lr=0.0030                       │critic/value_clip_ratio=0.022         │
+│critic/value_loss=0.012                │                                       │                                      │
+│                                                                                                                      │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+

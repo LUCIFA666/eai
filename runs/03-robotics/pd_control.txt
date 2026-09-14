@@ -1,0 +1,7 @@
+target = 45.0 deg
+    kp     kd  rise(s)      OS%  settle(s)   final_err(rad)   peak_tau
+   5.0    0.1    0.480    -8.09        nan      -4.4159e-01      3.000
+  15.0    0.6    0.405     4.37      0.445      -1.8172e-01      3.000
+  30.0    0.2    0.395    12.58      0.425      -2.1518e-01      3.000
+
+wrote runs/03-robotics/pd_curve.csv

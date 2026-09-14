@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="620" viewBox="0 0 1180 620" role="img" aria-labelledby="title desc">
+  <title id="title">MoveIt 2 仓库模块地图</title>
+  <desc id="desc">展示 moveit_core、moveit_ros、moveit_planners、moveit_py、moveit_setup_assistant 等目录职责。</desc>
+  <defs>
+    <style>
+      .bg{fill:#fbf8f0}.root{fill:#123529}.box{fill:#fff;stroke:#d2c8b9;stroke-width:2;rx:16}.core{fill:#dfeee6;stroke:#0e6b50}.ros{fill:#f6e4d6;stroke:#d46b32}.py{fill:#e1ebf4;stroke:#2d5f91}.txt{font:700 22px "Microsoft YaHei",Arial,sans-serif;fill:#17211d}.small{font:15px "Microsoft YaHei",Arial,sans-serif;fill:#52615b}.mono{font:700 18px Consolas,monospace;fill:#17211d}.white{fill:#fff}.line{stroke:#b9ad9d;stroke-width:2}
+    </style>
+  </defs>
+  <rect class="bg" width="1180" height="620"/>
+  <rect x="40" y="32" width="1100" height="64" class="root" rx="16"/>
+  <text x="70" y="73" class="white" style="font:700 25px 'Microsoft YaHei',Arial,sans-serif">moveit/moveit2：先按职责读，不要从随机源码文件开始</text>
+  <line x1="590" y1="96" x2="590" y2="130" class="line"/>
+  <g>
+    <rect x="55" y="140" width="320" height="150" class="box core"/>
+    <text x="83" y="180" class="mono">moveit_core/</text>
+    <text x="83" y="214" class="small">核心数据结构与算法接口</text>
+    <text x="83" y="240" class="small">robot_model / robot_state</text>
+    <text x="83" y="264" class="small">planning_scene / collision / trajectory</text>
+  </g>
+  <g>
+    <rect x="430" y="140" width="320" height="150" class="box ros"/>
+    <text x="458" y="180" class="mono">moveit_ros/</text>
+    <text x="458" y="214" class="small">ROS 2 节点、接口和可视化</text>
+    <text x="458" y="240" class="small">move_group / planning_interface</text>
+    <text x="458" y="264" class="small">visualization / moveit_servo</text>
+  </g>
+  <g>
+    <rect x="805" y="140" width="320" height="150" class="box"/>
+    <text x="833" y="180" class="mono">moveit_planners/</text>
+    <text x="833" y="214" class="small">规划管线与规划器插件</text>
+    <text x="833" y="240" class="small">OMPL / Pilz / CHOMP / STOMP</text>
+    <text x="833" y="264" class="small">planner id 与 pipeline 配置</text>
+  </g>
+  <g>
+    <rect x="55" y="340" width="320" height="130" class="box"/>
+    <text x="83" y="380" class="mono">moveit_kinematics/</text>
+    <text x="83" y="414" class="small">IK / FK 插件接口</text>
+    <text x="83" y="440" class="small">与 kinematics.yaml 配合使用</text>
+  </g>
+  <g>
+    <rect x="430" y="340" width="320" height="130" class="box py"/>
+    <text x="458" y="380" class="mono">moveit_py/</text>
+    <text x="458" y="414" class="small">Python 规划接口</text>
+    <text x="458" y="440" class="small">适合原型、多 pipeline、脚本测试</text>
+  </g>
+  <g>
+    <rect x="805" y="340" width="320" height="130" class="box"/>
+    <text x="833" y="380" class="mono">moveit_setup_assistant/</text>
+    <text x="833" y="414" class="small">从 URDF 生成配置包</text>
+    <text x="833" y="440" class="small">SRDF / groups / controllers</text>
+  </g>
+  <text x="55" y="530" class="txt">配套仓库</text>
+  <text x="55" y="565" class="small">moveit2_tutorials：教程代码与 launch；moveit_resources：官方机器人描述和配置；moveit_task_constructor：多阶段任务规划。</text>
+</svg>

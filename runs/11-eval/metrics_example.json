@@ -1,0 +1,20 @@
+{
+  "task": "CartPole-v1",
+  "policy": "random",
+  "n_seeds": 3,
+  "n_episodes_per_seed": 10,
+  "metrics": {
+    "return_mean":   22.90,
+    "return_std":     8.40,
+    "length_mean":   22.90,
+    "success_rate":   0.00,
+    "wall_clock_s":   1.84
+  },
+  "per_seed": [
+    {"seed": 0, "return_mean": 25.6, "return_std": 15.23, "min": 12, "max": 60},
+    {"seed": 1, "return_mean": 22.1, "return_std": 11.50, "min": 10, "max": 47},
+    {"seed": 2, "return_mean": 21.0, "return_std":  9.80, "min":  9, "max": 42}
+  ],
+  "video_path": "runs/11-eval/episode_0.mp4",
+  "ci_95": [16.4, 29.5]
+}

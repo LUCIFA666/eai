@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="cover" font-family="SimSun, Georgia, serif">
+  <rect id="paper-background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#F5F0E6" />
+  <path id="paper-rule-top" data-pptx-role="decoration" d="M45 38 C342 34 621 41 915 36 C1048 34 1156 37 1236 35" fill="none" stroke="#C8C0B3" stroke-width="2" stroke-linecap="round" />
+  <g id="cover-title" data-pptx-bounds="64 68 728 268">
+    <text x="64" y="128" font-family="DengXian, Impact, sans-serif" font-size="24" font-weight="bold" fill="#2D5B8A">INTERNSHIP DEFENSE · WORLD MODELS</text>
+    <text x="64" y="208" font-family="DengXian, Impact, sans-serif" font-size="56" font-weight="bold" fill="#111111">从复现到研究</text>
+    <text x="64" y="276" font-family="DengXian, Impact, sans-serif" font-size="44" font-weight="bold" fill="#111111">预测式世界模型实习答辩</text>
+    <path d="M66 301 C236 292 416 309 605 298 C652 296 701 297 750 301" fill="none" stroke="#D94841" stroke-width="7" stroke-linecap="round" stroke-opacity="0.82" />
+  </g>
+  <g id="cover-thesis-note" data-pptx-bounds="828 78 382 246">
+    <path d="M850 95 C936 81 1089 84 1177 101 C1192 149 1191 230 1172 283 C1075 299 934 291 846 270 C833 214 837 146 850 95 Z" fill="#E4DED2" fill-opacity="0.72" stroke="#111111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="878" y="145" font-family="DengXian, Impact, sans-serif" font-size="24" font-weight="bold" fill="#D94841">我的核心判断</text>
+    <text font-size="32" font-weight="bold" fill="#191919" x="878" y="191">把论文跑通，</text><text font-size="32" font-weight="bold" fill="#191919" x="878" y="231">不等于把问题想清楚。</text><path d="M1029 245 C1079 238 1121 242 1158 251" fill="none" stroke="#D94841" stroke-width="5" stroke-linecap="round" />
+  </g>
+  <g id="research-chain" data-pptx-bounds="78 388 1124 162">
+    <path d="M94 462 C248 445 359 469 481 451 C612 432 725 474 847 451 C953 431 1047 446 1168 435" fill="none" stroke="#111111" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M1147 421 L1171 435 L1149 453" fill="none" stroke="#111111" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+    <circle cx="124" cy="460" r="29" fill="#F5F0E6" stroke="#2D5B8A" stroke-width="4" />
+    <circle cx="350" cy="459" r="29" fill="#F5F0E6" stroke="#2D5B8A" stroke-width="4" />
+    <circle cx="576" cy="452" r="29" fill="#F5F0E6" stroke="#D94841" stroke-width="4" />
+    <circle cx="802" cy="454" r="29" fill="#F5F0E6" stroke="#D94841" stroke-width="4" />
+    <circle cx="1030" cy="443" r="34" fill="#F5F0E6" stroke="#2F7D5C" stroke-width="5" />
+    <text x="124" y="468" text-anchor="middle" font-family="DengXian, Impact, sans-serif" font-size="22" font-weight="bold" fill="#2D5B8A">论文</text>
+    <text x="350" y="467" text-anchor="middle" font-family="DengXian, Impact, sans-serif" font-size="22" font-weight="bold" fill="#2D5B8A">代码</text>
+    <text x="576" y="460" text-anchor="middle" font-family="DengXian, Impact, sans-serif" font-size="22" font-weight="bold" fill="#D94841">指标</text>
+    <text x="802" y="462" text-anchor="middle" font-family="DengXian, Impact, sans-serif" font-size="22" font-weight="bold" fill="#D94841">判断</text>
+    <text x="1030" y="451" text-anchor="middle" font-family="DengXian, Impact, sans-serif" font-size="21" font-weight="bold" fill="#2F7D5C">闭环</text>
+    <text x="87" y="530" font-family="DengXian, Impact, sans-serif" font-size="22" fill="#625E57">DINO-WM · LeWM · Δ-IRIS · TD-MPC2</text>
+    <text x="775" y="526" font-family="DengXian, Impact, sans-serif" font-size="22" font-weight="bold" fill="#2F7D5C">→ 真实机器人预测—规划—控制</text>
+  </g>
+  <g id="cover-identity" data-pptx-bounds="64 585 760 78">
+    <text x="64" y="621" font-family="DengXian, Impact, sans-serif" font-size="32" font-weight="bold" fill="#191919">徐亦栋</text>
+    <text x="176" y="621" font-size="24" fill="#625E57">同济大学 · 自动化</text>
+    <text x="64" y="653" font-size="20" fill="#625E57">实习成果｜复现证据｜个人理解｜未来规划</text>
+  </g>
+  <text id="page-number" data-pptx-role="page-number" x="1214" y="674" text-anchor="end" font-family="DengXian, Impact, sans-serif" font-size="18" fill="#625E57">01</text>
+</svg>

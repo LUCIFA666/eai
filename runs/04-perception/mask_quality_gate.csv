@@ -1,0 +1,5 @@
+object_id,area_px,valid_depth_ratio,temporal_iou,component_count,edge_contact_ratio,action,failure_code
+mug_clean,28431,0.94,0.87,1,0.79,execute,
+mug_depth_hole,27120,0.51,0.83,1,0.74,reobserve,depth_inconsistent
+box_flicker,19840,0.92,0.41,1,0.72,reobserve,temporal_flicker
+fragmented_cloth,960,0.88,0.66,5,0.31,reject,mask_too_small

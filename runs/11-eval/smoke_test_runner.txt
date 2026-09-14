@@ -1,0 +1,6 @@
+               check   rc   ok  detail
+      se3_transforms    0    Y  round_trip_err=2.436e-16 threshold=1e-12
+      two_link_fk_ik    0    Y  targets=15 successes=11
+          pd_control    0    Y  csv_exists=True csv_size_bytes=71187
+
+wrote /data/rbc/hands-on-embodied-ai/runs/11-eval/smoke_test_report.json

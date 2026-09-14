@@ -1,0 +1,50 @@
+NN backend: scipy.cKDTree
+source: (3000, 3), target: (3000, 3)
+ground-truth T =
+ [[ 0.9606 -0.2652 -0.0827  0.05  ]
+ [ 0.2574  0.9617 -0.0944 -0.03  ]
+ [ 0.1045  0.0694  0.9921  0.02  ]
+ [ 0.      0.      0.      1.    ]]
+estimated T =
+ [[ 0.9606 -0.2653 -0.0834  0.05  ]
+ [ 0.2574  0.9617 -0.0943 -0.03  ]
+ [ 0.1052  0.0691  0.992   0.0199]
+ [ 0.      0.      0.      1.    ]]
+residual rotation error  = 0.0401 deg
+residual translation err = 0.142 mm
+ICP RMSE per iteration:
+  iter 00  rmse = 38.059 mm
+  iter 01  rmse = 29.001 mm
+  iter 02  rmse = 26.283 mm
+  iter 03  rmse = 24.674 mm
+  iter 04  rmse = 23.286 mm
+  iter 05  rmse = 21.908 mm
+  iter 06  rmse = 20.800 mm
+  iter 07  rmse = 19.887 mm
+  iter 08  rmse = 19.097 mm
+  iter 09  rmse = 18.334 mm
+  iter 10  rmse = 17.640 mm
+  iter 11  rmse = 17.019 mm
+  iter 12  rmse = 16.376 mm
+  iter 13  rmse = 15.708 mm
+  iter 14  rmse = 15.174 mm
+  iter 15  rmse = 14.708 mm
+  iter 16  rmse = 14.201 mm
+  iter 17  rmse = 13.660 mm
+  iter 18  rmse = 13.136 mm
+  iter 19  rmse = 12.690 mm
+  iter 20  rmse = 12.182 mm
+  iter 21  rmse = 11.580 mm
+  iter 22  rmse = 10.760 mm
+  iter 23  rmse = 9.541 mm
+  iter 24  rmse = 7.666 mm
+  iter 25  rmse = 5.586 mm
+  iter 26  rmse = 4.759 mm
+  iter 27  rmse = 4.676 mm
+  iter 28  rmse = 4.671 mm
+  iter 29  rmse = 4.671 mm
+  iter 30  rmse = 4.671 mm
+open3d ICP fitness = 1.0
+open3d ICP RMSE    = 0.004671206992372085
+open3d residual rot err = 0.0414 deg, trans err = 0.147 mm
+>>> PASS: ICP recovered transform within 1 deg, 10 mm.

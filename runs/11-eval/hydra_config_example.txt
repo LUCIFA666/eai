@@ -1,0 +1,43 @@
+resolved config -> runs/11-eval/tracked/cartpole__pd__seed0/config.yaml
+env: cartpole
+policy: pd
+seed: 0
+n_episodes: 5
+env_cfg:
+  name: CartPole-v1
+  max_steps: 200
+  obs_dim: 4
+  act_dim: 2
+policy_cfg:
+  kind: PD
+  kp: 15.0
+  kd: 0.6
+  params_count: 2
+metrics         -> runs/11-eval/tracked/cartpole__pd__seed0/metrics.json
+{
+  "success_rate": 0.8,
+  "episodes": 5,
+  "env": "CartPole-v1",
+  "policy": "PD"
+}
+resolved config -> runs/11-eval/tracked/pendulum__random__seed2/config.yaml
+env: pendulum
+policy: random
+seed: 2
+n_episodes: 5
+env_cfg:
+  name: Pendulum-v1
+  max_steps: 200
+  obs_dim: 3
+  act_dim: 1
+policy_cfg:
+  kind: Random
+  noise: 1.0
+  params_count: 0
+metrics         -> runs/11-eval/tracked/pendulum__random__seed2/metrics.json
+{
+  "success_rate": 0.48,
+  "episodes": 5,
+  "env": "Pendulum-v1",
+  "policy": "Random"
+}

@@ -1,0 +1,15 @@
+=== panda.urdf ===
+nq=7 nv=7 nu=0 nbody=8
+
+Joints:
+  [0] panda_joint1             type=hinge range=[-2.897, 2.897]
+  [1] panda_joint2             type=hinge range=[-1.763, 1.763]
+  [2] panda_joint3             type=hinge range=[-2.897, 2.897]
+  [3] panda_joint4             type=hinge range=[-3.072, -0.070]
+  [4] panda_joint5             type=hinge range=[-2.897, 2.897]
+  [5] panda_joint6             type=hinge range=[-0.018, 3.752]
+  [6] panda_joint7             type=hinge range=[-2.897, 2.897]
+
+Actuators:
+
+Sensors:

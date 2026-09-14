@@ -1,0 +1,19 @@
+===== OS =====
+NAME="Linux Mint"
+VERSION="22.1 (Xia)"
+ID=linuxmint
+ID_LIKE="ubuntu debian"
+PRETTY_NAME="Linux Mint 22.1"
+
+===== GPU / CUDA =====
+NVIDIA-SMI 595.58.03
+Driver Version: 595.58.03
+CUDA Version: 13.2
+GPU: NVIDIA GeForce RTX 5090
+Memory: 32607 MiB
+
+===== Python packages =====
+Python: /home/hndx/anaconda3/envs/simpler_env_clean/bin/python
+NumPy: 1.24.4
+OpenCV: 4.9.0
+Number of tasks: 25

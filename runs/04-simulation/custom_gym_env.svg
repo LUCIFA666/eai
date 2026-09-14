@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+<rect x="0" y="0" width="500" height="500" fill="#fbfcfe" stroke="#d8dee7"/>
+<circle cx="164.3" cy="115.2" r="14" fill="none" stroke="#0f766e" stroke-dasharray="4 3"/>
+<circle cx="271.5" cy="264.8" r="26" fill="#fee2e2" stroke="#b91c1c"/>
+<polyline points="329.1,378.6 315.9,357.4 302.6,336.2 278.7,328.8 256.6,317.2 237.6,300.9 223.6,280.2 215.1,256.7 206.6,233.1 198.2,209.6 189.7,186.1 181.3,162.6 172.8,139.0 164.4,115.5" fill="none" stroke="#0f766e" stroke-width="2"/>
+<circle cx="329.1" cy="378.6" r="5" fill="#0f766e"/>
+<circle cx="397.2" cy="98.2" r="14" fill="none" stroke="#dc2626" stroke-dasharray="4 3"/>
+<circle cx="458.7" cy="221.8" r="26" fill="#fee2e2" stroke="#b91c1c"/>
+<polyline points="472.5,303.1 450.9,290.6 431.8,274.4 416.8,254.4 407.2,231.3 404.0,206.5 402.4,181.6 400.9,156.6 399.3,131.7 397.7,106.7" fill="none" stroke="#dc2626" stroke-width="2"/>
+<circle cx="472.5" cy="303.1" r="5" fill="#dc2626"/>
+<circle cx="235.3" cy="308.3" r="14" fill="none" stroke="#1d4ed8" stroke-dasharray="4 3"/>
+<circle cx="163.1" cy="233.1" r="26" fill="#fee2e2" stroke="#b91c1c"/>
+<polyline points="105.5,187.0 130.5,185.2 155.2,188.6 178.2,198.4" fill="none" stroke="#1d4ed8" stroke-width="2"/>
+<circle cx="105.5" cy="187.0" r="5" fill="#1d4ed8"/>
+<circle cx="226.9" cy="157.6" r="14" fill="none" stroke="#9333ea" stroke-dasharray="4 3"/>
+<circle cx="117.7" cy="223.4" r="26" fill="#fee2e2" stroke="#b91c1c"/>
+<polyline points="28.6,301.4 48.8,286.7 69.1,272.0 71.1,247.1 78.2,223.1" fill="none" stroke="#9333ea" stroke-width="2"/>
+<circle cx="28.6" cy="301.4" r="5" fill="#9333ea"/>
+<text x="14" y="22" font-size="14" fill="#17202a">PointNavEnv greedy baseline (4 episodes)</text>
+</svg>

@@ -1,0 +1,26 @@
+{
+  "trials_per_regime": 200,
+  "regimes": {
+    "nominal_only": {
+      "success_rate": 1.0,
+      "dr_scale": 0.0,
+      "ci95_lo": 0.9811539940816791,
+      "ci95_hi": 1.0,
+      "obs_noise_rad": 0.0
+    },
+    "mild_dr": {
+      "success_rate": 0.995,
+      "dr_scale": 0.5,
+      "ci95_lo": 0.9722256001302286,
+      "ci95_hi": 0.999116854010634,
+      "obs_noise_rad": 0.005
+    },
+    "aggressive_dr": {
+      "success_rate": 0.49,
+      "dr_scale": 1.0,
+      "ci95_lo": 0.4215615528275274,
+      "ci95_hi": 0.5588153672908391,
+      "obs_noise_rad": 0.02
+    }
+  }
+}

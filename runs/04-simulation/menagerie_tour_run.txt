@@ -1,0 +1,15 @@
+menagerie path: reference/mujoco_menagerie
+available robots: 69
+robot                          status     nq   nu   nbody  thumb
+------------------------------------------------------------------------------
+franka_emika_panda             loaded       9   8    12   ok
+universal_robots_ur5e          loaded       6   6     8   ok
+kuka_iiwa_14                   loaded       7   7     9   ok
+unitree_a1                     loaded      19  12    14   ok
+unitree_go2                    loaded      19  12    14   ok
+anybotics_anymal_b             loaded      19  12    14   ok
+anybotics_anymal_c             loaded      19  12    14   ok
+aloha                          loaded      16  14    21   ok
+trs_so_arm100                  loaded       6   6     8   ok
+robotis_op3                    loaded      27  20    22   ok
+google_robot                   loaded       9   9    13   ok

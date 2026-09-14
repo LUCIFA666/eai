@@ -1,0 +1,6 @@
+{
+  "success_rate": 0.48,
+  "episodes": 5,
+  "env": "Pendulum-v1",
+  "policy": "Random"
+}

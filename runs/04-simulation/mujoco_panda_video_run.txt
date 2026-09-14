@@ -1,0 +1,9 @@
+loaded reference/mujoco_menagerie/franka_emika_panda/scene.xml
+model: scene.xml
+nq=9  nv=9  nu=8  nbody=12
+frames written: 200 @ 30 fps -> panda_drop.mp4
+first-frame thumb -> panda_drop.png
+final qpos[:7] = [ 3.26243489e-05 -3.67019963e-03  5.06939336e-05 -1.43634700e-01
+  7.58175731e-05  1.81578347e-01  3.11812499e-02]
+
+wrote runs/04-simulation/panda_drop.mp4, runs/04-simulation/panda_drop.png, runs/04-simulation/panda_drop.txt

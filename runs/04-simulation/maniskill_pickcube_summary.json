@@ -1,0 +1,92 @@
+{
+  "state_smoke": {
+    "task": "PickCube-v1",
+    "obs_mode": "state",
+    "control_mode": "pd_ee_delta_pose",
+    "sapien_version": "3.0.3",
+    "observation_space": "Box(-inf, inf, (1, 42), float32)",
+    "action_space": "Box(-1.0, 1.0, (7,), float32)",
+    "reset_info_keys": [
+      "elapsed_steps",
+      "is_grasped",
+      "is_obj_placed",
+      "is_robot_static",
+      "reconfigure",
+      "success"
+    ],
+    "obs_after_reset": {
+      "shape": [
+        1,
+        42
+      ],
+      "dtype": "float32"
+    },
+    "n_steps": 50,
+    "mean_reward_random": 0.09526116043329239,
+    "max_reward_random": 0.1649441421031952,
+    "last_success": [
+      false
+    ]
+  },
+  "control_modes": {
+    "pd_joint_pos": "Box([-2.8973 -1.7628 -2.8973 -3.0718 -2.8973 -0.0175 -2.8973 -1.    ], [ 2.8973  1.7628  2.8973 -0.0698  2.8973  3.7525  2.8973  1.    ], (8,), float32)",
+    "pd_joint_delta_pos": "Box(-1.0, 1.0, (8,), float32)",
+    "pd_ee_delta_pos": "Box(-1.0, 1.0, (4,), float32)",
+    "pd_ee_delta_pose": "Box(-1.0, 1.0, (7,), float32)"
+  },
+  "cpu_wrapper": {
+    "observation_space": "Box(-inf, inf, (42,), float32)",
+    "action_space": "Box(-1.0, 1.0, (7,), float32)",
+    "obs_type": "ndarray",
+    "obs_shape": [
+      42
+    ],
+    "reward": 0.06842513382434845,
+    "reward_type": "float",
+    "terminated_type": "bool",
+    "truncated_type": "bool",
+    "success": false,
+    "success_type": "bool"
+  },
+  "rgbd": {
+    "observation_space": "Dict('agent': Dict('qpos': Box(-inf, inf, (1, 9), float32), 'qvel': Box(-inf, inf, (1, 9), float32)), 'extra': Dict('is_grasped': Box(False, True, (1,), bool), 'tcp_pose': Box(-inf, inf, (1, 7), float32), 'goal_pos': Box(-inf, inf, (1, 3), float32)), 'sensor_param': Dict('base_camera': Dict('extrinsic_cv': Box(-inf, inf, (1, 3, 4), float32), 'cam2world_gl': Box(-inf, inf, (1, 4, 4), float32), 'intrinsic_cv': Box(-inf, inf, (1, 3, 3), float32))), 'sensor_data': Dict('base_camera': Dict('rgb': Box(0, 255, (1, 512, 512, 3), uint8), 'depth': Box(-32768, 32767, (1, 512, 512, 1), int16))))",
+    "reset_info_keys": [
+      "elapsed_steps",
+      "is_grasped",
+      "is_obj_placed",
+      "is_robot_static",
+      "reconfigure",
+      "success"
+    ],
+    "camera_name": "base_camera",
+    "camera_keys": [
+      "depth",
+      "rgb"
+    ]
+  },
+  "vector": {
+    "num_envs": 16,
+    "obs_shape": [
+      16,
+      42
+    ],
+    "reward_shape": [
+      16
+    ],
+    "done_shape": [
+      16
+    ],
+    "reward_device": "cuda:0",
+    "reward_sample": [
+      0.062172483652830124,
+      0.05131111294031143,
+      0.047509681433439255,
+      0.06572888046503067,
+      0.06654217094182968,
+      0.0450308583676815,
+      0.055900394916534424,
+      0.08024444431066513
+    ]
+  },
+  "errors": {}
+}

@@ -1,0 +1,13 @@
+Isaac Sim 4.5.0 documentation assets used in this chapter
+
+rmpflow-tutorial-ui.webp
+https://docs.isaacsim.omniverse.nvidia.com/4.5.0/_images/isim_4.5_full_tut_gui_rmpflow.webp
+
+robot-description-editor.png
+https://docs.isaacsim.omniverse.nvidia.com/4.5.0/_images/isim_4.5_full_tut_gui_lula_description_editor.png
+
+robot-description-spheres.png
+https://docs.isaacsim.omniverse.nvidia.com/4.5.0/_images/isim_4.5_full_tut_gui_lula_description_editor_spheres.png
+
+lula-test-widget.png
+https://docs.isaacsim.omniverse.nvidia.com/4.5.0/_images/isim_4.5_full_ref_gui_lula_test_widget.png

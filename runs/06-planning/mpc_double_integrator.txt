@@ -1,0 +1,19 @@
+LQR gain K = [16.48554946  6.82347169]
+MPC horizon = 20, prediction matrix shapes: Phi (40, 2), Psi (40, 20)
+
+position RMS error  LQR = 0.2167 m, MPC = 0.1170 m
+final position      LQR = 1.5135 m, MPC = 1.4936 m, ref = 1.4972
+max |u|             LQR = 4.000, MPC = 4.000 (limit 4.0)
+
+step    t      ref       x_lqr    u_lqr     x_mpc    u_mpc
+   0  0.00   0.0000   0.4950  -4.000   0.4950  -4.000
+  20  1.00   0.3587   0.3849   0.086   0.3742   0.092
+  50  2.50   0.4546   0.4648  -0.301   0.4452  -0.289
+  99  4.95  -0.3650  -0.3883   0.244   0.1127   0.646
+ 100  5.00  -0.3784  -0.4017   0.253   0.1643  -0.207
+ 120  6.00   0.5019   0.4168  -1.427   0.5076   0.147
+ 150  7.50   0.8603   0.8697   0.096   0.8795   0.084
+ 199  9.95   1.4972   1.5135  -0.329   1.4936  -0.317
+
+wrote /data/rbc/hands-on-embodied-ai/runs/06-planning/mpc_double_integrator.csv
+>>> PASS: both controllers track sinusoid+step within tolerance with bounded input.

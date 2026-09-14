@@ -1,0 +1,50 @@
+[load] reference/mujoco_menagerie/franka_emika_panda/panda.xml
+model: panda.xml
+  nq=9  nv=9  nu=8  na=0
+  nbody=12  njnt=9  ngeom=81  nsensor=0  ncam=0  nlight=1
+  timestep=0.0020  gravity=[np.float64(0.0), np.float64(0.0), np.float64(-9.81)]
+
+BODIES (id  name                          parent  mass  inertia)
+    0  world                             0   0.0000  [0.0, 0.0, 0.0]
+    1  link0                             0   0.6298  [0.004304650123430994, 0.0038798390919025367, 0.0031305107846664564]
+    2  link1                             1   4.9707  [0.7071370144883009, 0.7034354292338564, 0.00852455627784294]
+    3  link2                             2   0.6469  [0.03103264256517663, 0.02830010693683385, 0.0027342504979895274]
+    4  link3                             3   3.2286  [0.04150138828861061, 0.041479257270665607, 0.0012463544407238245]
+    5  link4                             4   3.5879  [0.03495964042412706, 0.028148276242039156, 0.010620083333833793]
+    6  link5                             5   1.2259  [0.036762538266730406, 0.028853091260661545, 0.008034370472607986]
+    7  link6                             6   1.6666  [0.005842761226567758, 0.004310373704197247, 0.001597865069234999]
+    8  link7                             7   0.7355  [0.012734492874724473, 0.01010547714435622, 0.004518029980919309]
+    9  hand                              8   0.7300  [0.001, 0.0025, 0.0017]
+   10  left_finger                       9   0.0150  [2.375e-06, 2.375e-06, 7.5e-07]
+   11  right_finger                      9   0.0150  [2.375e-06, 2.375e-06, 7.5e-07]
+
+JOINTS (id  name                          type     range[lo, hi])
+    0  joint1                          hinge    [-2.897, +2.897]
+    1  joint2                          hinge    [-1.763, +1.763]
+    2  joint3                          hinge    [-2.897, +2.897]
+    3  joint4                          hinge    [-3.072, -0.070]
+    4  joint5                          hinge    [-2.897, +2.897]
+    5  joint6                          hinge    [-0.018, +3.752]
+    6  joint7                          hinge    [-2.897, +2.897]
+    7  finger_joint1                   slide    [+0.000, +0.040]
+    8  finger_joint2                   slide    [+0.000, +0.040]
+
+ACTUATORS (id  name                          ctrl_range)
+    0  actuator1                       [-2.897, +2.897]
+    1  actuator2                       [-1.763, +1.763]
+    2  actuator3                       [-2.897, +2.897]
+    3  actuator4                       [-3.072, -0.070]
+    4  actuator5                       [-2.897, +2.897]
+    5  actuator6                       [-0.018, +3.752]
+    6  actuator7                       [-2.897, +2.897]
+    7  actuator8                       [+0.000, +255.000]
+
+SENSORS (id  name                          type)
+  (no sensors)
+
+GEOM TYPE COUNTS:
+  box        = 10
+  mesh       = 71
+
+[write] runs/04-simulation/mjcf_inspect.txt
+[write] runs/04-simulation/mjcf_inspect.json

@@ -1,0 +1,4 @@
+observation_space: Box(-inf, inf, (1, 42), float32)
+action_space: Box(-1.0, 1.0, (7,), float32)
+single_observation_space: Box(-inf, inf, (42,), float32)
+single_action_space: Box(-1.0, 1.0, (7,), float32)

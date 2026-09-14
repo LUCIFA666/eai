@@ -1,0 +1,43 @@
+# Snapshot of the verification conda env on 2026-05-20.
+#
+# NOTE: This file documents the package set used to verify every "已验证"
+# badge across the curriculum. It is NOT an exact lockfile — pip resolves
+# transitive deps freshly. To reproduce, prefer:
+#
+#   conda create -n embodied python=3.10
+#   conda activate embodied
+#   pip install -r requirements.txt
+#
+# A pip --freeze export lives at runs/check_env.md.
+name: embodied
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+      # Core scientific stack
+      - numpy>=2.0
+      - scipy>=1.15
+      - matplotlib
+      - opencv-python-headless
+      # Deep learning
+      - torch>=2.7
+      # Robotics + Sim
+      - mujoco>=3.8
+      - dm_control>=1.0
+      - gymnasium>=1.2
+      - gymnasium-robotics
+      - minigrid>=3.0
+      - stable-baselines3>=2.8
+      - imageio[ffmpeg]
+      # Perception
+      - open3d>=0.19
+      # VLM / HF stack
+      - transformers
+      - datasets
+      - huggingface_hub
+      - accelerate
+      - diffusers
+      # LeRobot (datasets + policies + teleop)
+      - lerobot>=0.4

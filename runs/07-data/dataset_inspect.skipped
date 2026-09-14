@@ -1,0 +1,19 @@
+{
+  "repo_id": "lerobot/pusht",
+  "status": "skipped",
+  "error": "RuntimeError('Could not load libtorchcodec. Likely causes:\\n          1. FFmpeg is not properly installed in your environment. We support\\n             versions 4, 5, 6 and 7.\\n          2. The PyTorch version (2.7.1+cu126) is not compatible with\\n             this version of TorchCodec. Refer to the version compatibility\\n             table:\\n             https://github.com/pytorch/torchcodec?tab=readme-ov-file#installing-torchcodec.\\n          3. Another runtime dependency; see exceptions below.\\n        The following exceptions were raised as we tried to load libtorchcodec:\\n        \\n[start of libtorchcodec loading traceback]\\nFFmpeg version 7: libavutil.so.59: cannot open shared object file: No such file or directory\\nFFmpeg version 6: libavutil.so.58: cannot open shared object file: No such file or directory\\nFFmpeg version 5: libavutil.so.57: cannot open shared object file: No such file or directory\\nFFmpeg version 4: libavutil.so.56: cannot open shared object file: No such file or directory\\n[end of libtorchcodec loading traceback].')",
+  "traceback": "Traceback (most recent call last):\n  File \"/data/rbc/hands-on-embodied-ai/labs/07-data/inspect_lerobot_dataset.py\", line 58, in main\n    sample = ds[0]\n  File \"/data/rbc/lerobot/src/lerobot/datasets/lerobot_dataset.py\", line 1067, in __getitem__\n    video_frames = self._query_videos(query_timestamps, ep_idx)\n  File \"/data/rbc/lerobot/src/lerobot/datasets/lerobot_dataset.py\", line 1030, in _query_videos\n    frames = decode_video_frames(video_path, shifted_query_ts, self.tolerance_s, self.video_backend)\nRuntimeError: Could not load libtorchcodec. Likely causes:\n          1. FFmpeg is not properly installed in your environment. We support\n             versions 4, 5, 6 and 7.\n          2. The PyTorch version (2.7.1+cu126) is not compatible with\n             this version of TorchCodec. Refer to the version compatibility\n             table:\n             https://github.com/pytorch/torchcodec?tab=readme-ov-file#installing-torchcodec.\n          3. Another runtime dependency; see exceptions below.\n        The following exceptions were raised as we tried to load libtorchcodec:\n        \n[start of libtorchcodec loading traceback]\nFFmpeg version 7: libavutil.so.59: cannot open shared object file: No such file or directory\nFFmpeg version 6: libavutil.so.58: cannot open shared object file: No such file or directory\nFFmpeg version 5: libavutil.so.57: cannot open shared object file: No such file or directory\nFFmpeg version 4: libavutil.so.56: cannot open shared object file: No such file or directory\n[end of libtorchcodec loading traceback].\n"
+}
+
+Documented LeRobotDataset (v3) layout (from
+  reference/lerobot/src/lerobot/datasets/lerobot_dataset.py docstring):
+.
+├── data/
+│   └── chunk-000/file-000.parquet ...   # action + state columns
+├── meta/
+│   ├── episodes/chunk-000/file-000.parquet  # one row per episode
+│   ├── info.json                            # shapes, fps, codebase_version
+│   ├── stats.json                           # mean/std for normalisation
+│   └── tasks.parquet                        # task descriptions
+└── videos/
+    └── observation.images.<cam>/chunk-000/file-000.mp4

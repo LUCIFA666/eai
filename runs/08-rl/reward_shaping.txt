@@ -1,0 +1,6 @@
+  reward   success%(first 50)    success%(last 20)  first_succ
+  sparse               44.0%               100.0%   [13, 1, 22]
+   dense               86.7%               100.0%   [1, 2, 2]
+  shaped               61.3%               100.0%   [37, 0, 2]
+
+wrote runs/08-rl/reward_shaping.json

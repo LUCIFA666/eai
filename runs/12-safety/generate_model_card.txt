@@ -1,0 +1,6 @@
+wrote synthetic checkpoint meta -> runs/12-safety/fake_ckpt.json
+rendered model card -> runs/12-safety/model_card.md
+  source meta: runs/12-safety/fake_ckpt.json
+  git SHA:     fe1aae4e04
+  metric:      success_rate=0.78 (CI 0.71-0.84, n=50)
+  remaining TODO lines: 13

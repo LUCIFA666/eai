@@ -1,0 +1,158 @@
+{
+  "source": "static fallback (upstream Open X-Embodiment README)",
+  "local_repo_present": true,
+  "num_local_files_with_action_obs_keywords": 3,
+  "local_examples": [
+    "reference/open_x_embodiment/models/rt1.py",
+    "reference/open_x_embodiment/models/rt1_inference_example.py",
+    "reference/open_x_embodiment/README.md"
+  ],
+  "datasets": [
+    {
+      "name": "fractal20220817_data",
+      "alias": "RT-1 / Google Robot",
+      "robot": "Everyday Robots (mobile manipulator)",
+      "control": "delta EE pose",
+      "action_dim": 7,
+      "obs_cameras": [
+        "image"
+      ],
+      "episodes": 73499
+    },
+    {
+      "name": "kuka",
+      "alias": "Kuka iiwa grasping",
+      "robot": "Kuka iiwa",
+      "control": "delta EE pose",
+      "action_dim": 7,
+      "obs_cameras": [
+        "image"
+      ],
+      "episodes": 209880
+    },
+    {
+      "name": "bridge",
+      "alias": "Bridge V2",
+      "robot": "WidowX 250",
+      "control": "delta EE pose",
+      "action_dim": 7,
+      "obs_cameras": [
+        "image",
+        "image_1"
+      ],
+      "episodes": 60096
+    },
+    {
+      "name": "taco_play",
+      "alias": "TACO Play",
+      "robot": "Franka Panda",
+      "control": "joint velocity",
+      "action_dim": 7,
+      "obs_cameras": [
+        "rgb_static",
+        "rgb_gripper"
+      ],
+      "episodes": 3603
+    },
+    {
+      "name": "jaco_play",
+      "alias": "JACO Play",
+      "robot": "Kinova Jaco 2",
+      "control": "delta EE pose",
+      "action_dim": 7,
+      "obs_cameras": [
+        "image",
+        "image_wrist"
+      ],
+      "episodes": 976
+    },
+    {
+      "name": "berkeley_cable_routing",
+      "alias": "Cable routing",
+      "robot": "Franka Panda",
+      "control": "delta EE pose",
+      "action_dim": 7,
+      "obs_cameras": [
+        "image",
+        "top_image",
+        "wrist45_image",
+        "wrist225_image"
+      ],
+      "episodes": 1647
+    },
+    {
+      "name": "nyu_door_opening_surprising_effectiveness",
+      "alias": "NYU door opening",
+      "robot": "Hello Stretch",
+      "control": "delta EE pose",
+      "action_dim": 7,
+      "obs_cameras": [
+        "image"
+      ],
+      "episodes": 435
+    },
+    {
+      "name": "stanford_hydra_dataset_converted_externally_to_rlds",
+      "alias": "Stanford Hydra",
+      "robot": "Franka Panda",
+      "control": "delta EE pose",
+      "action_dim": 7,
+      "obs_cameras": [
+        "image",
+        "wrist_image"
+      ],
+      "episodes": 570
+    },
+    {
+      "name": "berkeley_autolab_ur5",
+      "alias": "Berkeley UR5",
+      "robot": "UR5",
+      "control": "delta EE pose",
+      "action_dim": 7,
+      "obs_cameras": [
+        "image",
+        "hand_image"
+      ],
+      "episodes": 896
+    },
+    {
+      "name": "robo_set",
+      "alias": "RoboSet",
+      "robot": "Franka Panda",
+      "control": "delta EE pose",
+      "action_dim": 7,
+      "obs_cameras": [
+        "image_left",
+        "image_right",
+        "image_wrist",
+        "image_top"
+      ],
+      "episodes": 18250
+    },
+    {
+      "name": "droid",
+      "alias": "DROID",
+      "robot": "Franka Panda + Robotiq",
+      "control": "delta EE pose",
+      "action_dim": 7,
+      "obs_cameras": [
+        "exterior_image_1_left",
+        "exterior_image_2_left",
+        "wrist_image_left"
+      ],
+      "episodes": 76000
+    },
+    {
+      "name": "viola",
+      "alias": "VIOLA",
+      "robot": "Franka Panda",
+      "control": "absolute EE pose",
+      "action_dim": 7,
+      "obs_cameras": [
+        "agentview_rgb",
+        "eye_in_hand_rgb"
+      ],
+      "episodes": 135
+    }
+  ]
+}

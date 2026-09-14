@@ -1,0 +1,29 @@
+{
+  "env_check": "passed gymnasium.utils.env_checker.check_env",
+  "config": {
+    "arena_size": 1.0,
+    "goal_radius": 0.1,
+    "obstacle_radius": 0.18,
+    "max_steps": 200,
+    "dt": 0.05,
+    "action_scale": 0.1,
+    "crash_penalty": -1.0,
+    "success_reward": 1.0
+  },
+  "random": {
+    "policy": "random",
+    "episodes": 20,
+    "success_rate": 0.0,
+    "crash_rate": 0.8,
+    "mean_length": 88.05,
+    "mean_return": -6.004417769834399
+  },
+  "greedy": {
+    "policy": "greedy",
+    "episodes": 20,
+    "success_rate": 0.35,
+    "crash_rate": 0.65,
+    "mean_length": 6.9,
+    "mean_return": -0.5529999775084434
+  }
+}

@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>机器人数据：从一条数据说起</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", sans-serif;
+    background: #fff; color: #1a1a2e; line-height: 1.8;
+    max-width: 960px; margin: 0 auto; padding: 40px 24px 80px;
+  }
+  h1 { font-size: 2em; font-weight: 700; margin-bottom: 8px; }
+  h2 { font-size: 1.5em; font-weight: 600; margin: 56px 0 16px; padding-bottom: 8px; border-bottom: 2px solid #e8e8e8; }
+  h3 { font-size: 1.15em; font-weight: 600; margin: 32px 0 12px; }
+  p { margin: 12px 0; }
+  .subtitle { color: #666; font-size: 1.05em; margin-bottom: 32px; }
+  a { color: #2563eb; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .callout {
+    background: #f0f7ff; border-left: 4px solid #2563eb;
+    padding: 16px 20px; margin: 20px 0; border-radius: 0 8px 8px 0;
+  }
+  .callout.warn {
+    background: #fffbeb; border-left-color: #f59e0b;
+  }
+  .callout.green {
+    background: #f0fdf4; border-left-color: #22c55e;
+  }
+  .callout-title { font-weight: 600; margin-bottom: 4px; }
+
+  pre {
+    background: #f8f9fa; border: 1px solid #e5e7eb; border-radius: 8px;
+    padding: 16px 20px; overflow-x: auto; font-size: 0.88em;
+    line-height: 1.6; margin: 16px 0;
+  }
+  code { font-family: "SF Mono", "Fira Code", "Consolas", monospace; }
+  .inline-code {
+    background: #f1f5f9; padding: 2px 6px; border-radius: 4px;
+    font-size: 0.9em;
+  }
+
+  .data-record {
+    background: #fafafa; border: 1px solid #e2e2e2; border-radius: 12px;
+    padding: 24px; margin: 24px 0; position: relative;
+  }
+  .data-record .badge {
+    position: absolute; top: -12px; left: 20px;
+    background: #2563eb; color: #fff; padding: 2px 12px;
+    border-radius: 12px; font-size: 0.82em; font-weight: 600;
+  }
+  .data-record .field { margin: 6px 0; display: flex; align-items: flex-start; }
+  .data-record .field-name {
+    color: #7c3aed; font-weight: 600; min-width: 260px;
+    font-family: "SF Mono", "Fira Code", monospace; font-size: 0.88em;
+  }
+  .data-record .field-value {
+    color: #334155; font-family: "SF Mono", "Fira Code", monospace; font-size: 0.88em;
+  }
+  .data-record .field-comment {
+    color: #94a3b8; font-size: 0.82em; margin-left: 12px;
+  }
+
+  .diagram-container {
+    margin: 28px 0; text-align: center;
+  }
+  .diagram-container svg { max-width: 100%; height: auto; }
+  .diagram-caption {
+    color: #666; font-size: 0.88em; margin-top: 8px; text-align: center;
+  }
+
+  table {
+    width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.92em;
+  }
+  th { background: #f8f9fa; font-weight: 600; text-align: left; }
+  th, td { padding: 10px 14px; border: 1px solid #e5e7eb; }
+  tr:nth-child(even) { background: #fafafa; }
+
+  .step-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0;
+  }
+  .step-card {
+    background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px;
+    padding: 16px;
+  }
+  .step-card h4 { font-size: 0.95em; color: #475569; margin-bottom: 6px; }
+
+  .nav-breadcrumb {
+    font-size: 0.88em; color: #94a3b8; margin-bottom: 24px;
+  }
+  .nav-breadcrumb a { color: #64748b; }
+
+  .img-placeholder {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 8px; height: 120px; display: flex;
+    align-items: center; justify-content: center; color: #fff;
+    font-weight: 600; font-size: 0.9em;
+  }
+
+  @media (max-width: 700px) {
+    .step-grid { grid-template-columns: 1fr; }
+    .data-record .field { flex-direction: column; }
+    .data-record .field-name { min-width: auto; margin-bottom: 2px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="nav-breadcrumb">
+  <a href="README.md">07 数据与遥操作</a> &gt; 数据可视化指南
+</div>
+
+<h1>机器人数据：从一条数据说起</h1>
+<p class="subtitle">在你训练出第一个策略之前，先看清楚数据长什么样。</p>
+
+<p>想象这样一个场景：你用遥操作手柄控制一台机械臂，花了 8 秒把桌上的红色方块放进篮子里。这 8 秒的操作，被传感器记录下来，变成了硬盘上的一段数据。</p>
+
+<p>这段数据就叫做一条 <strong>episode</strong>（回合）。它是机器人学习的基本单位——模型从成百上千条这样的 episode 中学习"看到什么就做什么"。</p>
+
+<p>但问题是：这段数据到底长什么样？里面有什么字段？一个"时间步"包含哪些信息？</p>
+
+<p>本页用一条真实的数据记录，带你从最小的单位——一个 <strong>step</strong>（时间步）——开始，一层一层看清机器人数据的结构。</p>
+
+<!-- ==================== 一条 Step 数据 ==================== -->
+<h2>一个时间步（Step）里有什么</h2>
+
+<p>机器人以固定频率运行（比如每秒 50 次），每次"滴答"就是一个 step。一个 step 记录了<strong>那一瞬间机器人看到了什么、做了什么</strong>。</p>
+
+<p>下面是一条真实的 step 数据。每个字段都标注了含义：</p>
+
+<div class="data-record">
+  <div class="badge">Step #37 / Episode #12</div>
+  <div class="field">
+    <span class="field-name">index:</span>
+    <span class="field-value">1237</span>
+    <span class="field-comment">// 在整个数据集中的全局编号</span>
+  </div>
+  <div class="field">
+    <span class="field-name">episode_index:</span>
+    <span class="field-value">12</span>
+    <span class="field-comment">// 属于第 12 条示教</span>
+  </div>
+  <div class="field">
+    <span class="field-name">frame_index:</span>
+    <span class="field-value">37</span>
+    <span class="field-comment">// 这条示教中的第 37 帧</span>
+  </div>
+  <div class="field">
+    <span class="field-name">timestamp:</span>
+    <span class="field-value">0.740</span>
+    <span class="field-comment">// 距 episode 开始 0.74 秒（50Hz → 每帧 0.02s）</span>
+  </div>
+  <div class="field" style="margin-top:12px;">
+    <span class="field-name">observation.state:</span>
+    <span class="field-value">[0.12, -0.45, 0.78, 1.23, -0.56, 0.34, 0.8]</span>
+  </div>
+  <div class="field">
+    <span class="field-name" style="color:#94a3b8; font-weight:400;">&nbsp;</span>
+    <span class="field-comment">// 7 个数：6 个关节角度（弧度）+ 1 个夹爪开度（0=闭, 1=开）</span>
+  </div>
+  <div class="field" style="margin-top:12px;">
+    <span class="field-name">observation.images.front:</span>
+    <span class="field-value" style="color:#64748b;">[480 x 640 x 3] uint8 RGB</span>
+  </div>
+  <div class="field">
+    <span class="field-name" style="color:#94a3b8; font-weight:400;">&nbsp;</span>
+    <span class="field-comment">// 正前方相机拍到的图像</span>
+  </div>
+  <div class="field">
+    <span class="field-name">observation.images.wrist:</span>
+    <span class="field-value" style="color:#64748b;">[480 x 640 x 3] uint8 RGB</span>
+  </div>
+  <div class="field">
+    <span class="field-name" style="color:#94a3b8; font-weight:400;">&nbsp;</span>
+    <span class="field-comment">// 腕部相机拍到的图像（近距离看抓取）</span>
+  </div>
+  <div class="field" style="margin-top:12px;">
+    <span class="field-name">action:</span>
+    <span class="field-value">[0.003, -0.012, 0.008, 0.001, -0.005, 0.002, 0.0]</span>
+  </div>
+  <div class="field">
+    <span class="field-name" style="color:#94a3b8; font-weight:400;">&nbsp;</span>
+    <span class="field-comment">// 7 个数：6 个关节目标增量 + 1 个夹爪命令（此刻夹爪不动）</span>
+  </div>
+  <div class="field" style="margin-top:12px;">
+    <span class="field-name">task:</span>
+    <span class="field-value">"pick up the red block and place it in the basket"</span>
+  </div>
+  <div class="field">
+    <span class="field-name">done:</span>
+    <span class="field-value">false</span>
+    <span class="field-comment">// 任务还没结束</span>
+  </div>
+  <div class="field">
+    <span class="field-name">success:</span>
+    <span class="field-value">false</span>
+    <span class="field-comment">// 还没成功（成功只在最后一帧标记）</span>
+  </div>
+</div>
+
+<div class="callout">
+  <div class="callout-title">读懂这条数据</div>
+  <p>这一帧的含义是：在第 12 次示教的第 0.74 秒，机械臂的 6 个关节处于某个角度、夹爪张开到 80%，两个相机各拍了一张图。操作员在这一刻发出的动作指令是"各关节微微调整"——因为方块还在桌上，臂正在慢慢靠近。</p>
+</div>
+
+<p>你可能注意到了：<strong>observation</strong>（观测）是机器人此刻"看到"的世界，<strong>action</strong>（动作）是此刻"要做"的事。训练模型时，目标就是从 observation 预测 action。</p>
+
+<!-- ==================== 观测和动作详解 ==================== -->
+<h2>观测（Observation）：机器人的眼睛和感觉</h2>
+
+<p>观测是策略模型的输入。一个机器人通常有多种"感官"：</p>
+
+<div class="diagram-container">
+<svg viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg">
+  <!-- Camera icons -->
+  <rect x="20" y="30" width="160" height="100" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="100" y="60" text-anchor="middle" font-size="13" fill="#1e40af" font-weight="600">front camera</text>
+  <rect x="40" y="72" width="120" height="48" rx="4" fill="#dbeafe"/>
+  <text x="100" y="100" text-anchor="middle" font-size="11" fill="#3b82f6">640 x 480 RGB</text>
+
+  <rect x="200" y="30" width="160" height="100" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="280" y="60" text-anchor="middle" font-size="13" fill="#1e40af" font-weight="600">wrist camera</text>
+  <rect x="220" y="72" width="120" height="48" rx="4" fill="#dbeafe"/>
+  <text x="280" y="100" text-anchor="middle" font-size="11" fill="#3b82f6">640 x 480 RGB</text>
+
+  <!-- State -->
+  <rect x="380" y="30" width="190" height="100" rx="10" fill="#f0fdf4" stroke="#22c55e" stroke-width="2"/>
+  <text x="475" y="60" text-anchor="middle" font-size="13" fill="#166534" font-weight="600">robot state</text>
+  <text x="475" y="82" text-anchor="middle" font-size="11" fill="#16a34a">joint_1: 0.12 rad</text>
+  <text x="475" y="97" text-anchor="middle" font-size="11" fill="#16a34a">joint_2: -0.45 rad</text>
+  <text x="475" y="112" text-anchor="middle" font-size="11" fill="#16a34a">...</text>
+  <text x="475" y="127" text-anchor="middle" font-size="11" fill="#16a34a">gripper: 0.8 (open)</text>
+
+  <!-- Language -->
+  <rect x="590" y="30" width="190" height="100" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="685" y="60" text-anchor="middle" font-size="13" fill="#92400e" font-weight="600">task instruction</text>
+  <text x="685" y="85" text-anchor="middle" font-size="11" fill="#b45309">"pick up the red</text>
+  <text x="685" y="100" text-anchor="middle" font-size="11" fill="#b45309">block and place it</text>
+  <text x="685" y="115" text-anchor="middle" font-size="11" fill="#b45309">in the basket"</text>
+
+  <!-- Arrow down to observation -->
+  <line x1="100" y1="135" x2="100" y2="175" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="280" y1="135" x2="280" y2="175" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="475" y1="135" x2="475" y2="175" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="685" y1="135" x2="685" y2="175" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Big observation box -->
+  <rect x="20" y="180" width="760" height="70" rx="12" fill="#fff" stroke="#6366f1" stroke-width="2.5"/>
+  <text x="400" y="210" text-anchor="middle" font-size="16" fill="#4338ca" font-weight="700">observation_t</text>
+  <text x="400" y="235" text-anchor="middle" font-size="12" fill="#6366f1">模型在第 t 步能看到的所有信息 → 据此决定下一步动作</text>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+</svg>
+<div class="diagram-caption">一个 step 的观测由多种模态组成：图像、机器人状态、语言指令</div>
+</div>
+
+<p>常见的观测模态包括：</p>
+
+<table>
+  <tr><th>模态</th><th>典型字段名</th><th>内容</th><th>数据格式</th></tr>
+  <tr><td>图像</td><td><code>observation.images.front</code></td><td>外部相机的 RGB 图像</td><td>[H, W, 3] uint8</td></tr>
+  <tr><td>腕部图像</td><td><code>observation.images.wrist</code></td><td>机械臂末端相机</td><td>[H, W, 3] uint8</td></tr>
+  <tr><td>深度图</td><td><code>observation.depth.front</code></td><td>像素级距离信息</td><td>[H, W] float32 (米)</td></tr>
+  <tr><td>关节状态</td><td><code>observation.state</code></td><td>关节角度 + 夹爪开度</td><td>[n_joints + 1] float32</td></tr>
+  <tr><td>末端位姿</td><td><code>observation.end_effector</code></td><td>末端在空间中的位置和朝向</td><td>[7] float32 (xyz + quat)</td></tr>
+  <tr><td>力/力矩</td><td><code>observation.force_torque</code></td><td>末端受力</td><td>[6] float32</td></tr>
+  <tr><td>语言指令</td><td><code>task</code></td><td>自然语言描述的任务</td><td>字符串</td></tr>
+</table>
+
+<div class="callout warn">
+  <div class="callout-title">初学者最常踩的坑：时间对齐</div>
+  <p>图像和关节状态可能来自不同传感器，采样频率不同（相机 30Hz，关节 500Hz）。如果没有正确对齐时间戳，模型学到的是"看到上一帧图像，做出当前动作"——在真机上就变成反应慢半拍。</p>
+</div>
+
+<!-- ==================== 动作 ==================== -->
+<h2>动作（Action）：机器人被告知做什么</h2>
+
+<p>action 是操作员在那一刻发出的控制指令。但"控制指令"有很多种写法，不同的写法叫做不同的<strong>动作空间</strong>（action space）：</p>
+
+<div class="diagram-container">
+<svg viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Joint position -->
+  <rect x="20" y="20" width="230" height="160" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="135" y="48" text-anchor="middle" font-size="13" fill="#92400e" font-weight="600">关节位置</text>
+  <text x="135" y="70" text-anchor="middle" font-size="11" fill="#b45309">joint position</text>
+  <text x="40" y="95" font-size="11" fill="#78350f" font-family="monospace">[0.12, -0.45, 0.78,</text>
+  <text x="40" y="112" font-size="11" fill="#78350f" font-family="monospace"> 1.23, -0.56, 0.34]</text>
+  <text x="135" y="140" text-anchor="middle" font-size="10.5" fill="#a16207">"每个关节转到这个角度"</text>
+  <text x="135" y="160" text-anchor="middle" font-size="10.5" fill="#a16207">直观、精确、6-7 个数</text>
+
+  <!-- End effector -->
+  <rect x="280" y="20" width="230" height="160" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="395" y="48" text-anchor="middle" font-size="13" fill="#1e40af" font-weight="600">末端位姿</text>
+  <text x="395" y="70" text-anchor="middle" font-size="11" fill="#2563eb">end-effector pose</text>
+  <text x="300" y="95" font-size="11" fill="#1e3a8a" font-family="monospace">[x, y, z,</text>
+  <text x="300" y="112" font-size="11" fill="#1e3a8a" font-family="monospace"> roll, pitch, yaw]</text>
+  <text x="395" y="140" text-anchor="middle" font-size="10.5" fill="#1d4ed8">"手移到这个位置和朝向"</text>
+  <text x="395" y="160" text-anchor="middle" font-size="10.5" fill="#1d4ed8">更符合人类直觉</text>
+
+  <!-- Delta / velocity -->
+  <rect x="540" y="20" width="240" height="160" rx="10" fill="#f0fdf4" stroke="#22c55e" stroke-width="2"/>
+  <text x="660" y="48" text-anchor="middle" font-size="13" fill="#166534" font-weight="600">增量 / 速度</text>
+  <text x="660" y="70" text-anchor="middle" font-size="11" fill="#16a34a">delta / velocity</text>
+  <text x="560" y="95" font-size="11" fill="#14532d" font-family="monospace">[dx, dy, dz,</text>
+  <text x="560" y="112" font-size="11" fill="#14532d" font-family="monospace"> drx, dry, drz]</text>
+  <text x="660" y="140" text-anchor="middle" font-size="10.5" fill="#15803d">"手往这个方向移一小步"</text>
+  <text x="660" y="160" text-anchor="middle" font-size="10.5" fill="#15803d">适合精细操作、更平滑</text>
+</svg>
+<div class="diagram-caption">三种常见动作空间对比。同一个"往右移 1 厘米"的动作，在不同空间里写法完全不同</div>
+</div>
+
+<div class="callout green">
+  <div class="callout-title">选哪种动作空间？</div>
+  <p><strong>新手建议</strong>：先用关节位置（joint position），因为和 observation.state 直接对应，调试最简单。末端位姿更直观但需要逆运动学，增量动作更平滑但对控制频率敏感。</p>
+</div>
+
+<!-- ==================== Episode 结构 ==================== -->
+<h2>从 Step 到 Episode 到 Dataset</h2>
+
+<p>理解了一个 step 之后，让我们把视角拉远，看一条完整的 episode，以及整个数据集的结构：</p>
+
+<div class="diagram-container">
+<svg viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dataset level -->
+  <rect x="20" y="10" width="760" height="360" rx="14" fill="none" stroke="#6366f1" stroke-width="2.5" stroke-dasharray="8,4"/>
+  <text x="40" y="36" font-size="15" fill="#4338ca" font-weight="700">Dataset: pick_and_place_v1</text>
+  <text x="390" y="36" font-size="11" fill="#818cf8">1000 episodes, 50Hz, 7-DoF arm</text>
+
+  <!-- Episode 0 -->
+  <rect x="40" y="55" width="720" height="90" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="60" y="78" font-size="12" fill="#1e40af" font-weight="600">Episode #0</text>
+  <text x="200" y="78" font-size="10.5" fill="#60a5fa">task: "pick red block" | 120 frames | 2.4s | success=true</text>
+
+  <!-- Steps in episode 0 -->
+  <rect x="60" y="90" width="50" height="42" rx="5" fill="#dbeafe" stroke="#93c5fd"/>
+  <text x="85" y="108" text-anchor="middle" font-size="9" fill="#1d4ed8">step 0</text>
+  <text x="85" y="122" text-anchor="middle" font-size="8" fill="#60a5fa">is_first</text>
+
+  <rect x="120" y="90" width="50" height="42" rx="5" fill="#dbeafe" stroke="#93c5fd"/>
+  <text x="145" y="108" text-anchor="middle" font-size="9" fill="#1d4ed8">step 1</text>
+
+  <rect x="180" y="90" width="50" height="42" rx="5" fill="#dbeafe" stroke="#93c5fd"/>
+  <text x="205" y="108" text-anchor="middle" font-size="9" fill="#1d4ed8">step 2</text>
+
+  <text x="250" y="115" font-size="14" fill="#94a3b8">...</text>
+
+  <rect x="290" y="90" width="50" height="42" rx="5" fill="#dbeafe" stroke="#93c5fd"/>
+  <text x="315" y="108" text-anchor="middle" font-size="9" fill="#1d4ed8">step 37</text>
+  <text x="315" y="122" text-anchor="middle" font-size="8" fill="#f59e0b">approaching</text>
+
+  <text x="360" y="115" font-size="14" fill="#94a3b8">...</text>
+
+  <rect x="400" y="90" width="50" height="42" rx="5" fill="#dbeafe" stroke="#93c5fd"/>
+  <text x="425" y="108" text-anchor="middle" font-size="9" fill="#1d4ed8">step 85</text>
+  <text x="425" y="122" text-anchor="middle" font-size="8" fill="#f59e0b">grasping</text>
+
+  <text x="470" y="115" font-size="14" fill="#94a3b8">...</text>
+
+  <rect x="510" y="90" width="60" height="42" rx="5" fill="#bbf7d0" stroke="#4ade80"/>
+  <text x="540" y="108" text-anchor="middle" font-size="9" fill="#166534">step 119</text>
+  <text x="540" y="122" text-anchor="middle" font-size="8" fill="#16a34a">is_last ✓</text>
+
+  <!-- Episode 1 -->
+  <rect x="40" y="160" width="720" height="55" rx="10" fill="#f0fdf4" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="60" y="183" font-size="12" fill="#166534" font-weight="600">Episode #1</text>
+  <text x="200" y="183" font-size="10.5" fill="#4ade80">task: "pick red block" | 98 frames | 1.96s | success=true</text>
+  <text x="60" y="200" font-size="10" fill="#86efac">step 0 → step 1 → ... → step 97</text>
+
+  <!-- Episode 2 (failed) -->
+  <rect x="40" y="225" width="720" height="55" rx="10" fill="#fef2f2" stroke="#f87171" stroke-width="1.5"/>
+  <text x="60" y="248" font-size="12" fill="#991b1b" font-weight="600">Episode #2</text>
+  <text x="200" y="248" font-size="10.5" fill="#f87171">task: "pick red block" | 150 frames | 3.0s | success=false</text>
+  <text x="60" y="265" font-size="10" fill="#fca5a5">step 0 → step 1 → ... → step 149 (dropped block)</text>
+
+  <!-- More episodes -->
+  <text x="400" y="305" text-anchor="middle" font-size="14" fill="#94a3b8">... 997 more episodes ...</text>
+
+  <!-- Meta info -->
+  <rect x="40" y="320" width="720" height="35" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="60" y="343" font-size="11" fill="#475569" font-weight="600">meta/info.json:</text>
+  <text x="200" y="343" font-size="11" fill="#64748b" font-family="monospace">robot="koch_v1.1", fps=50, total_episodes=1000, total_frames=112340</text>
+</svg>
+<div class="diagram-caption">数据集的三层结构：Dataset → Episode → Step。每条 episode 是一次完整的任务尝试</div>
+</div>
+
+<div class="callout">
+  <div class="callout-title">关键概念</div>
+  <p><strong>Episode</strong> = 一次完整的任务执行，从 reset 到结束。有成功的，也有失败的。<br>
+  <strong>Step/Frame</strong> = episode 中的一个时间步，包含那一刻的观测和动作。<br>
+  <strong>Dataset</strong> = 很多条 episode 的集合，可能包含多个任务、多个操作员的数据。</p>
+</div>
+
+<!-- ==================== 数据格式 ==================== -->
+<h2>数据怎么存：从文件夹结构说起</h2>
+
+<p>收集完数据后，要存到硬盘上。目前机器人学习社区最常用的格式是 <strong>LeRobot v2</strong>（Hugging Face 维护），文件夹结构长这样：</p>
+
+<pre><code>dataset/
+├── meta/
+│   ├── info.json          ← 数据集级别的元信息
+│   ├── stats.json         ← 每个字段的均值、标准差（用于归一化）
+│   ├── episodes.jsonl     ← 每条 episode 的起止位置和标签
+│   └── tasks.jsonl        ← 任务列表
+├── data/
+│   ├── chunk-000/
+│   │   └── episode_000000.parquet  ← 状态、动作等数值数据
+│   │   └── episode_000001.parquet
+│   │   └── ...
+├── videos/
+│   ├── chunk-000/
+│   │   ├── observation.images.front/
+│   │   │   ├── episode_000000.mp4  ← 图像压缩成视频
+│   │   │   └── episode_000001.mp4
+│   │   └── observation.images.wrist/
+│   │       ├── episode_000000.mp4
+│   │       └── ...
+</code></pre>
+
+<p>为什么这样设计？</p>
+
+<table>
+  <tr><th>设计决策</th><th>原因</th></tr>
+  <tr><td>数值数据用 Parquet</td><td>列式存储，读取特定字段极快，支持高效压缩</td></tr>
+  <tr><td>图像压缩成 MP4 视频</td><td>1000 帧 JPEG ≈ 200MB，MP4 ≈ 5MB。省 40 倍空间</td></tr>
+  <tr><td>按 episode 分文件</td><td>加载单条 episode 不用读整个数据集</td></tr>
+  <tr><td>chunk 分组</td><td>单目录文件过多时文件系统变慢，分 chunk 避免</td></tr>
+  <tr><td>stats.json 预计算</td><td>训练时归一化不用重新扫全集</td></tr>
+</table>
+
+<div class="callout warn">
+  <div class="callout-title">注意 stats.json</div>
+  <p>如果你修改了数据（增删 episode、改了动作空间），<strong>必须重新生成 stats.json</strong>。过时的归一化统计量是训练失败的常见隐性原因——模型看到的数值范围和它认为的不一致。</p>
+</div>
+
+<!-- ==================== 数据流水线 ==================== -->
+<h2>数据从哪里来：采集流水线</h2>
+
+<p>一条 episode 的诞生过程，从操作员的手开始：</p>
+
+<div class="diagram-container">
+<svg viewBox="0 0 800 140" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6366f1"/>
+    </marker>
+  </defs>
+
+  <!-- Step 1 -->
+  <rect x="5" y="30" width="120" height="70" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="65" y="55" text-anchor="middle" font-size="11" fill="#92400e" font-weight="600">操作员</text>
+  <text x="65" y="73" text-anchor="middle" font-size="10" fill="#a16207">手持遥操作设备</text>
+  <text x="65" y="88" text-anchor="middle" font-size="10" fill="#a16207">执行任务</text>
+
+  <line x1="130" y1="65" x2="160" y2="65" stroke="#6366f1" stroke-width="2" marker-end="url(#arr2)"/>
+
+  <!-- Step 2 -->
+  <rect x="165" y="30" width="120" height="70" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="225" y="55" text-anchor="middle" font-size="11" fill="#1e40af" font-weight="600">遥操作系统</text>
+  <text x="225" y="73" text-anchor="middle" font-size="10" fill="#2563eb">映射手部动作</text>
+  <text x="225" y="88" text-anchor="middle" font-size="10" fill="#2563eb">→ 机器人指令</text>
+
+  <line x1="290" y1="65" x2="320" y2="65" stroke="#6366f1" stroke-width="2" marker-end="url(#arr2)"/>
+
+  <!-- Step 3 -->
+  <rect x="325" y="30" width="120" height="70" rx="10" fill="#f0fdf4" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="385" y="55" text-anchor="middle" font-size="11" fill="#166534" font-weight="600">机器人执行</text>
+  <text x="385" y="73" text-anchor="middle" font-size="10" fill="#16a34a">关节控制器</text>
+  <text x="385" y="88" text-anchor="middle" font-size="10" fill="#16a34a">执行动作</text>
+
+  <line x1="450" y1="65" x2="480" y2="65" stroke="#6366f1" stroke-width="2" marker-end="url(#arr2)"/>
+
+  <!-- Step 4 -->
+  <rect x="485" y="30" width="120" height="70" rx="10" fill="#faf5ff" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="545" y="55" text-anchor="middle" font-size="11" fill="#6b21a8" font-weight="600">传感器录制</text>
+  <text x="545" y="73" text-anchor="middle" font-size="10" fill="#7c3aed">相机、关节编码器</text>
+  <text x="545" y="88" text-anchor="middle" font-size="10" fill="#7c3aed">→ 原始数据流</text>
+
+  <line x1="610" y1="65" x2="640" y2="65" stroke="#6366f1" stroke-width="2" marker-end="url(#arr2)"/>
+
+  <!-- Step 5 -->
+  <rect x="645" y="30" width="140" height="70" rx="10" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="715" y="52" text-anchor="middle" font-size="11" fill="#991b1b" font-weight="600">质检 &amp; 格式化</text>
+  <text x="715" y="70" text-anchor="middle" font-size="10" fill="#dc2626">时间对齐、裁剪</text>
+  <text x="715" y="85" text-anchor="middle" font-size="10" fill="#dc2626">质量标注</text>
+  <text x="715" y="100" text-anchor="middle" font-size="10" fill="#dc2626">→ LeRobot 格式</text>
+</svg>
+<div class="diagram-caption">数据采集流水线：人 → 遥操 → 执行 → 录制 → 质检</div>
+</div>
+
+<p>采集数据不只是"录一段视频"。需要同时记录图像、关节状态、动作指令，并确保它们在时间上对齐。一次质量合格的采集通常需要：</p>
+
+<div class="step-grid">
+  <div class="step-card">
+    <h4>1. 采集前</h4>
+    <p>确定任务定义、动作空间、相机位置。写清楚"什么算成功"。用几条试录验证硬件。</p>
+  </div>
+  <div class="step-card">
+    <h4>2. 采集中</h4>
+    <p>操作员按协议执行任务，每条 episode 独立标记成功/失败。保持一致性。</p>
+  </div>
+  <div class="step-card">
+    <h4>3. 采集后</h4>
+    <p>回放录像检查质量，删除明显失败的 episode。生成 stats.json、拆分训练/验证集。</p>
+  </div>
+  <div class="step-card">
+    <h4>4. 格式化</h4>
+    <p>转换为 LeRobot v2 格式。上传到 Hugging Face Hub 或本地存储。填写 dataset card。</p>
+  </div>
+</div>
+
+<!-- ==================== 格式对比 ==================== -->
+<h2>常见数据格式一览</h2>
+
+<p>不同的机器人学习项目用了不同的数据格式。核心差异在于"数值数据怎么存"和"图像怎么存"：</p>
+
+<table>
+  <tr><th>格式</th><th>数值存储</th><th>图像存储</th><th>代表项目</th><th>特点</th></tr>
+  <tr>
+    <td><strong>LeRobot v2</strong></td>
+    <td>Parquet</td>
+    <td>MP4 视频</td>
+    <td>Hugging Face LeRobot</td>
+    <td>当前社区主流，空间效率高</td>
+  </tr>
+  <tr>
+    <td><strong>HDF5</strong></td>
+    <td>HDF5 dataset</td>
+    <td>HDF5 中的数组</td>
+    <td>robomimic, ACT</td>
+    <td>单文件包含一切，读取灵活</td>
+  </tr>
+  <tr>
+    <td><strong>RLDS/TFDS</strong></td>
+    <td>TFRecord</td>
+    <td>TFRecord 中的字节</td>
+    <td>Open X-Embodiment</td>
+    <td>Google 生态，适合大规模</td>
+  </tr>
+  <tr>
+    <td><strong>Zarr</strong></td>
+    <td>Zarr arrays</td>
+    <td>Zarr 中的数组</td>
+    <td>Diffusion Policy</td>
+    <td>按 chunk 分块，适合流式访问</td>
+  </tr>
+  <tr>
+    <td><strong>原始文件</strong></td>
+    <td>CSV / JSON</td>
+    <td>PNG / JPEG 序列</td>
+    <td>早期项目</td>
+    <td>最容易理解，但效率最低</td>
+  </tr>
+</table>
+
+<div class="callout green">
+  <div class="callout-title">选哪个？</div>
+  <p>如果你刚开始学，用 <strong>LeRobot</strong>。它有完善的工具链（录制、可视化、训练、上传），社区支持最活跃。只有在对接已有项目时才需要其他格式——到时候可以用 <a href="02-data-conversion/01-any4lerobot.md">Any4LeRobot</a> 工具做转换。</p>
+</div>
+
+<!-- ==================== 完整示例 ==================== -->
+<h2>一条完整 Episode 的故事</h2>
+
+<p>让我们用一条实际的 episode 把所有概念串起来。这是一条 "抓起红色方块" 的示教：</p>
+
+<div class="data-record">
+  <div class="badge">Episode #12 完整时间线</div>
+
+  <div style="display:grid; grid-template-columns: 80px 1fr; gap:4px; margin-top:8px;">
+    <span style="color:#6366f1; font-weight:600; font-size:0.88em;">t=0.00s</span>
+    <span style="font-size:0.9em;">机械臂在初始位置，夹爪张开。方块在桌面左侧。</span>
+
+    <span style="color:#6366f1; font-weight:600; font-size:0.88em;">t=0.20s</span>
+    <span style="font-size:0.9em;">臂开始向左移动，靠近方块。<code class="inline-code">action</code> 主要是 x/y 方向的位移。</span>
+
+    <span style="color:#6366f1; font-weight:600; font-size:0.88em;">t=0.74s</span>
+    <span style="font-size:0.9em;">← <strong>就是上面那个 step #37</strong>。臂已经很靠近方块了。</span>
+
+    <span style="color:#6366f1; font-weight:600; font-size:0.88em;">t=1.10s</span>
+    <span style="font-size:0.9em;">末端降低到方块高度，开始对准抓取姿态。</span>
+
+    <span style="color:#f59e0b; font-weight:600; font-size:0.88em;">t=1.30s</span>
+    <span style="font-size:0.9em;">夹爪闭合！<code class="inline-code">action[-1]</code> 从 0.0 变成 1.0（闭爪指令）。</span>
+
+    <span style="color:#f59e0b; font-weight:600; font-size:0.88em;">t=1.50s</span>
+    <span style="font-size:0.9em;">确认抓住，开始抬起。<code class="inline-code">action</code> 的 z 分量变正。</span>
+
+    <span style="color:#22c55e; font-weight:600; font-size:0.88em;">t=2.00s</span>
+    <span style="font-size:0.9em;">移向篮子上方。</span>
+
+    <span style="color:#22c55e; font-weight:600; font-size:0.88em;">t=2.20s</span>
+    <span style="font-size:0.9em;">夹爪松开，方块落入篮子。</span>
+
+    <span style="color:#22c55e; font-weight:600; font-size:0.88em;">t=2.40s</span>
+    <span style="font-size:0.9em;"><strong>Episode 结束。</strong> <code class="inline-code">done=true, success=true</code>。共 120 帧。</span>
+  </div>
+</div>
+
+<p>这 120 帧数据，就是模型要学习的"教材"。模型的目标：对于任何一帧，给定当时的图像和关节状态，预测操作员在那一刻的动作。学会了，就能自己执行"抓红色方块"。</p>
+
+<!-- ==================== 关键要点 ==================== -->
+<h2>带走这几件事</h2>
+
+<div class="callout green">
+  <div class="callout-title">总结</div>
+  <ol style="margin-top:8px; padding-left:20px;">
+    <li><strong>一条 step</strong> = 那一瞬间的观测 + 动作 + 标记。是训练的最小单位。</li>
+    <li><strong>一条 episode</strong> = 一次完整的任务尝试。有成功有失败，每条独立。</li>
+    <li><strong>观测不只是图像</strong>——还有关节状态、力觉、语言指令等多种模态。</li>
+    <li><strong>动作空间有多种选择</strong>——关节位置、末端位姿、增量速度，选择影响学习难度。</li>
+    <li><strong>数据质量 > 数据数量</strong>——100 条高质量示教 > 1000 条对齐混乱的数据。</li>
+    <li><strong>时间对齐是命门</strong>——观测和动作错开一帧，模型在真机上就会反应迟钝。</li>
+  </ol>
+</div>
+
+<h2>继续阅读</h2>
+
+<table>
+  <tr><th>想了解</th><th>去哪里看</th></tr>
+  <tr><td>常用格式怎么选</td><td><a href="01-common-data-formats.md">7.1 常用数据格式</a></td></tr>
+  <tr><td>LeRobot v2 vs v3 的区别</td><td><a href="01-common-data-formats/01-lerobot-data-format.md">7.1.1 LeRobot 数据格式</a></td></tr>
+  <tr><td>HDF5、Zarr 的工程细节</td><td><a href="01-common-data-formats/02-hdf5.md">7.1.2 HDF5</a></td></tr>
+  <tr><td>RLDS 的 episode/step 语义</td><td><a href="01-common-data-formats/03-rlds.md">7.1.3 RLDS</a></td></tr>
+  <tr><td>格式转换怎么做</td><td><a href="02-data-conversion.md">7.2 数据转换</a></td></tr>
+  <tr><td>有哪些大规模真机数据源</td><td><a href="03-large-scale-real-robot-datasets.md">7.3 大规模真机数据集</a></td></tr>
+  <tr><td>怎么组织采集引擎</td><td><a href="04-robogenesis-data-engine.md">7.4 RoboGenesis 数据收集引擎</a></td></tr>
+</table>
+
+</body>
+</html>

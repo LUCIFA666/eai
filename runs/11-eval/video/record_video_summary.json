@@ -1,0 +1,24 @@
+{
+  "seed": 0,
+  "fps": 30,
+  "frame_size_hw": [
+    240,
+    360
+  ],
+  "videos": [
+    {
+      "path": "runs/11-eval/video/success_cartpole.mp4",
+      "policy": "balanced_PD",
+      "return": 200.0,
+      "steps": 200,
+      "frames": 200
+    },
+    {
+      "path": "runs/11-eval/video/failure_cartpole.mp4",
+      "policy": "random",
+      "return": 18.0,
+      "steps": 18,
+      "frames": 19
+    }
+  ]
+}

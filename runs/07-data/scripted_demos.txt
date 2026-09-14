@@ -1,0 +1,8 @@
+episodes      : 50
+timesteps/ep  : 600
+obs shape     : (30000, 3)  (theta, omega, target)
+act shape     : (30000, 1)  (torque, Nm)
+success rate  : 10.00%
+|final_err| mean(deg): 11.97
+action range  : [-3.000, +3.000] Nm
+wrote runs/07-data/scripted_demos.npz  (588.1 KiB)

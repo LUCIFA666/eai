@@ -1,0 +1,19 @@
+cuRobo chapter asset provenance
+================================
+
+Upstream repository: https://github.com/NVlabs/curobo
+Upstream commit: a35a708ecfbb26eb9ab2d7ef22c65919c4fae4a9
+Retrieved for this curriculum: 2026-07-04
+
+Local file                         Upstream path
+---------------------------------  -----------------------------------------------------------
+optimization-graph.png             docs/images/optimization_graph.png
+franka-collision-spheres.png       docs/images/franka_spheres.png
+sphere-approximation.png           docs/images/sphere_approx.png
+get-started-ik.webm                docs/_html_extra/videos/get_started_ik.webm
+get-started-motion-plan.webm       docs/_html_extra/videos/get_started_motion_plan.webm
+get-started-reachability.webm      docs/_html_extra/videos/get_started_reachability.webm
+
+The files are reused without content edits. cuRobo is distributed under the
+Apache License 2.0. Robot/example assets may carry their own terms; consult the
+upstream LICENSE and LICENSE_ASSETS files before redistribution.

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="430" viewBox="0 0 1180 430" role="img" aria-labelledby="title desc">
+  <title id="title">全局规划与 Servo 对比</title>
+  <desc id="desc">对比全局运动规划和 MoveIt Servo 的输入、频率和输出。</desc>
+  <defs><style>
+    .bg{fill:#fbf8f0}.panel{fill:#fff;stroke:#cfc7b8;stroke-width:2;rx:18}.g{fill:#dfeee6;stroke:#0e6b50}.o{fill:#f6e4d6;stroke:#d46b32}.t{font:700 22px "Microsoft YaHei",Arial,sans-serif;fill:#17211d}.s{font:15px "Microsoft YaHei",Arial,sans-serif;fill:#5d6b65}.arrow{stroke:#d46b32;stroke-width:4;fill:none;marker-end:url(#arrow)}
+  </style><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#d46b32"/></marker></defs>
+  <rect class="bg" width="1180" height="430"/>
+  <text x="42" y="52" class="t">全局规划 vs MoveIt Servo：两个入口解决不同问题</text>
+  <rect x="60" y="95" width="500" height="250" class="panel g"/>
+  <text x="95" y="140" class="t">全局 motion planning</text>
+  <text x="95" y="180" class="s">输入：start state + goal constraints + planning scene</text>
+  <text x="95" y="214" class="s">过程：planning pipeline 搜索整条轨迹</text>
+  <text x="95" y="248" class="s">输出：带时间戳的 JointTrajectory</text>
+  <text x="95" y="282" class="s">适用：环境相对稳定，先规划再执行</text>
+  <rect x="620" y="95" width="500" height="250" class="panel o"/>
+  <text x="655" y="140" class="t">MoveIt Servo</text>
+  <text x="655" y="180" class="s">输入：joint velocity / twist / pose command</text>
+  <text x="655" y="214" class="s">过程：持续更新，检查碰撞、奇异点和限位</text>
+  <text x="655" y="248" class="s">输出：关节命令或短轨迹</text>
+  <text x="655" y="282" class="s">适用：遥操作、视觉伺服、姿态跟踪</text>
+  <path d="M560 220 H615" class="arrow"/>
+  <text x="385" y="390" class="s">真实系统中二者可以组合：全局规划给出粗路径，Servo 根据实时反馈做局部跟随或微调。</text>
+</svg>

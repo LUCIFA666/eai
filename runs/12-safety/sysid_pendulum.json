@@ -1,0 +1,27 @@
+{
+  "truth": {
+    "mass": 1.0,
+    "length": 0.55,
+    "damping": 0.18,
+    "gravity": 9.81
+  },
+  "noise_std_deg": 0.6,
+  "fit": {
+    "length": 0.55,
+    "damping": 0.1825,
+    "mass": 1.0,
+    "residual_rad": 0.010066148043229623,
+    "residual_deg": 0.5767477988309295
+  },
+  "errors": {
+    "length_abs": 0.0,
+    "damping_abs": 0.0025000000000000022,
+    "length_rel_pct": 0.0,
+    "damping_rel_pct": 1.3888888888888902
+  },
+  "coarse_stage": {
+    "residual_rad": 0.010723017540673346,
+    "length": 0.56,
+    "damping": 0.18
+  }
+}

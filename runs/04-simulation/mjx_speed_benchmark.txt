@@ -1,0 +1,11 @@
+Fair benchmark — CPU(multiprocess) vs MJX(GPU vmap), both run N parallel envs
+JAX backend: gpu  devices: ['cuda:0']
+model: inline_chain(n_links=8)  nq=14 nv=13 nu=7
+CPU workers: 16  steps/measure: 100
+
+      N     CPU env-steps/s   MJX env-steps/s   MJX/CPU
+------------------------------------------------------------
+      1               16383               817      0.05
+    256              214029            178161      0.83
+   2048              227954            662309      2.91
+   8192    ~227954(plateau)            880353      3.86

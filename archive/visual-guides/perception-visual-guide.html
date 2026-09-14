@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>感知系统：看图学概念</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", sans-serif;
+    background: #fff; color: #1a1a2e; line-height: 1.8;
+    max-width: 960px; margin: 0 auto; padding: 40px 24px 80px;
+  }
+  h1 { font-size: 2em; font-weight: 700; margin-bottom: 8px; }
+  h2 { font-size: 1.5em; font-weight: 600; margin: 56px 0 16px; padding-bottom: 8px; border-bottom: 2px solid #e8e8e8; }
+  h3 { font-size: 1.15em; font-weight: 600; margin: 32px 0 12px; }
+  p { margin: 12px 0; }
+  .subtitle { color: #666; font-size: 1.05em; margin-bottom: 32px; }
+  a { color: #2563eb; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .callout { background: #f0f7ff; border-left: 4px solid #2563eb; padding: 16px 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+  .callout.warn { background: #fffbeb; border-left-color: #f59e0b; }
+  .callout.green { background: #f0fdf4; border-left-color: #22c55e; }
+  .callout-title { font-weight: 600; margin-bottom: 4px; }
+  pre { background: #f8f9fa; border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px 20px; overflow-x: auto; font-size: 0.88em; line-height: 1.6; margin: 16px 0; }
+  code { font-family: "SF Mono", "Fira Code", "Consolas", monospace; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.92em; }
+  th { background: #f8f9fa; font-weight: 600; text-align: left; }
+  th, td { padding: 10px 14px; border: 1px solid #e5e7eb; }
+  tr:nth-child(even) { background: #fafafa; }
+  .diagram-container { margin: 28px 0; text-align: center; }
+  .diagram-container svg { max-width: 100%; height: auto; }
+  .diagram-caption { color: #666; font-size: 0.88em; margin-top: 8px; text-align: center; }
+  .nav-breadcrumb { font-size: 0.88em; color: #94a3b8; margin-bottom: 24px; }
+  .nav-breadcrumb a { color: #64748b; }
+  .concept-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .concept-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; }
+  .concept-card h4 { margin-bottom: 6px; }
+  @media (max-width: 700px) { .concept-grid { grid-template-columns: 1fr; } }
+  .data-record { background: #f8fafc; border: 1px solid #d1d5db; border-radius: 12px; padding: 20px 24px; margin: 20px 0; font-size: 0.92em; }
+  .data-record .field { display: flex; gap: 8px; padding: 4px 0; border-bottom: 1px dashed #e5e7eb; }
+  .data-record .field:last-child { border-bottom: none; }
+  .data-record .field-name { font-weight: 600; color: #2563eb; min-width: 140px; font-family: "SF Mono", "Fira Code", monospace; font-size: 0.92em; }
+  .data-record .field-value { color: #374151; }
+  .data-record .field-note { color: #6b7280; font-size: 0.88em; margin-left: 4px; }
+  .pipeline-step { display: inline-block; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 6px 14px; margin: 4px; font-size: 0.9em; }
+  .pipeline-arrow { display: inline-block; color: #94a3b8; margin: 0 2px; font-size: 1.2em; vertical-align: middle; }
+</style>
+</head>
+<body>
+
+<div class="nav-breadcrumb">
+  <a href="README.md">04 感知</a> &gt; 可视化概念指南
+</div>
+
+<h1>感知系统：看图学概念</h1>
+<p class="subtitle">相机、点云、检测分割、手眼标定——一步步看懂机器人的"眼睛"。</p>
+
+<p>你让朋友帮你拿桌上的红色杯子。朋友会怎么做？先"看到"杯子在哪里，再判断怎么伸手过去。机器人也一样——但它的"看到"背后，藏着一条从像素到 3D 坐标的完整链路。这条链路上任何一环出错，最终都会表现为"抓不准"或"抓错了"。</p>
+
+<p>这一页用图来解释这条链路上的核心概念。不需要你有计算机视觉的基础——只需要知道图片是由像素组成的就够了。</p>
+
+<!-- ===== 1. Pinhole Camera Model ===== -->
+<h2>1. 小孔成像：从 3D 世界到 2D 像素</h2>
+
+<p>相机最基本的数学模型叫<strong>针孔模型</strong>（Pinhole Model）。它描述了一个简单的事实：3D 世界中的一个点，通过镜头，会落在图像传感器上的某个像素位置。</p>
+
+<div class="diagram-container">
+<svg viewBox="0 0 780 340" xmlns="http://www.w3.org/2000/svg" style="max-width:780px">
+  <!-- World point -->
+  <circle cx="80" cy="100" r="10" fill="#ef4444"/>
+  <text x="80" y="80" text-anchor="middle" font-size="13" fill="#374151" font-weight="600">3D 空间中的杯子</text>
+  <text x="80" y="130" text-anchor="middle" font-size="11" fill="#6b7280">(X, Y, Z) = (0.3, 0.1, 0.8) m</text>
+
+  <!-- Light rays -->
+  <line x1="90" y1="100" x2="350" y2="170" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <line x1="90" y1="100" x2="350" y2="160" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="6,4"/>
+
+  <!-- Lens / pinhole -->
+  <rect x="340" y="90" width="20" height="160" rx="4" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="350" y="80" text-anchor="middle" font-size="12" fill="#6366f1" font-weight="600">镜头</text>
+  <circle cx="350" cy="170" r="4" fill="#6366f1"/>
+  <text x="350" y="270" text-anchor="middle" font-size="11" fill="#6b7280">光心（焦点）</text>
+
+  <!-- Sensor plane -->
+  <rect x="540" y="110" width="8" height="120" rx="2" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="544" y="100" text-anchor="middle" font-size="12" fill="#3b82f6" font-weight="600">传感器平面</text>
+
+  <!-- Projected point -->
+  <line x1="360" y1="170" x2="540" y2="195" stroke="#ef4444" stroke-width="2"/>
+  <circle cx="542" cy="195" r="6" fill="#ef4444"/>
+  <text x="580" y="195" font-size="12" fill="#374151" font-weight="600">像素 (u, v)</text>
+  <text x="580" y="212" font-size="11" fill="#6b7280">= (418, 276)</text>
+
+  <!-- Focal length annotation -->
+  <line x1="350" y1="260" x2="544" y2="260" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="447" y="280" text-anchor="middle" font-size="11" fill="#94a3b8">焦距 f（像素单位）</text>
+
+  <!-- Formula box -->
+  <rect x="570" y="240" width="200" height="80" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="670" y="262" text-anchor="middle" font-size="12" fill="#374151" font-weight="600">投影公式</text>
+  <text x="670" y="282" text-anchor="middle" font-size="12" fill="#2563eb" font-family="monospace">u = f_x · X/Z + c_x</text>
+  <text x="670" y="302" text-anchor="middle" font-size="12" fill="#2563eb" font-family="monospace">v = f_y · Y/Z + c_y</text>
+</svg>
+<p class="diagram-caption">针孔相机模型：3D 点通过镜头投射到 2D 传感器平面</p>
+</div>
+
+<p>这里面有 4 个关键数字，合称<strong>相机内参</strong>：</p>
+
+<div class="concept-grid">
+  <div class="concept-card">
+    <h4>f<sub>x</sub>, f<sub>y</sub>（焦距）</h4>
+    <p>以像素为单位的焦距。它决定了"看到的范围有多宽"——焦距大，视野窄但远处更清楚；焦距小，视野宽但放大倍率低。</p>
+  </div>
+  <div class="concept-card">
+    <h4>c<sub>x</sub>, c<sub>y</sub>（主点）</h4>
+    <p>图像中心的像素坐标。理想中是正中央，但真实镜头总是有点偏。如果主点标错了，所有 3D 点都会向一个方向系统性偏移。</p>
+  </div>
+</div>
+
+<div class="callout">
+  <div class="callout-title">类比</div>
+  想象你用手机拍一张桌面照片。焦距决定了你"站多远"才能把整个桌面拍全；主点决定了照片有没有"歪"。内参就是手机镜头出厂时固有的参数——换了手机，参数就变了。
+</div>
+
+<h3>反过来：从像素到 3D</h3>
+
+<p>机器人不是要拍照——它需要知道杯子在<strong>真实世界</strong>中的位置。所以要反过来算：</p>
+
+<pre><code>X = (u - c_x) × Z / f_x
+Y = (v - c_y) × Z / f_y
+Z = depth(u, v)          ← 来自深度相机</code></pre>
+
+<p>注意：没有深度值 Z，像素只能告诉你方向，无法告诉你距离。这就是为什么机器人通常需要 RGB-D 相机（同时拍颜色和深度）。</p>
+
+<!-- ===== 2. RGB-D to Point Cloud ===== -->
+<h2>2. 从 RGB-D 图像到点云</h2>
+
+<p>RGB-D 相机每一帧输出两张图：一张彩色图（RGB），一张深度图（Depth）。把每个像素用上面的公式反投影，就得到了<strong>点云</strong>——一堆 3D 点，每个点有位置和颜色。</p>
+
+<div class="diagram-container">
+<svg viewBox="0 0 780 320" xmlns="http://www.w3.org/2000/svg" style="max-width:780px">
+  <!-- RGB image -->
+  <rect x="20" y="40" width="140" height="105" rx="6" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.5"/>
+  <text x="90" y="32" text-anchor="middle" font-size="12" fill="#374151" font-weight="600">RGB 图像</text>
+  <!-- Simple table scene -->
+  <rect x="30" y="80" width="120" height="30" rx="2" fill="#d1d5db"/>
+  <text x="90" y="100" text-anchor="middle" font-size="9" fill="#6b7280">桌面</text>
+  <circle cx="65" cy="72" r="10" fill="#ef4444" stroke="#dc2626" stroke-width="1"/>
+  <text x="65" y="76" text-anchor="middle" font-size="7" fill="#fff">杯</text>
+  <rect x="100" y="62" width="18" height="22" rx="2" fill="#3b82f6"/>
+  <text x="109" y="78" text-anchor="middle" font-size="7" fill="#fff">盒</text>
+
+  <!-- Depth image -->
+  <rect x="20" y="180" width="140" height="105" rx="6" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+  <text x="90" y="172" text-anchor="middle" font-size="12" fill="#374151" font-weight="600">Depth 深度图</text>
+  <!-- Depth gradient -->
+  <defs>
+    <linearGradient id="depthGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e3a5f"/>
+      <stop offset="100%" stop-color="#93c5fd"/>
+    </linearGradient>
+  </defs>
+  <rect x="30" y="220" width="120" height="30" rx="2" fill="#93c5fd"/>
+  <circle cx="65" cy="212" r="10" fill="#1e3a5f"/>
+  <rect x="100" y="202" width="18" height="22" rx="2" fill="#2563eb"/>
+  <text x="90" y="270" text-anchor="middle" font-size="9" fill="#6b7280">深色 = 近，浅色 = 远</text>
+
+  <!-- Plus sign -->
+  <text x="185" y="165" text-anchor="middle" font-size="28" fill="#94a3b8" font-weight="300">+</text>
+
+  <!-- Intrinsics box -->
+  <rect x="210" y="120" width="100" height="70" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+  <text x="260" y="142" text-anchor="middle" font-size="11" fill="#2563eb" font-weight="600">相机内参</text>
+  <text x="260" y="160" text-anchor="middle" font-size="10" fill="#6b7280" font-family="monospace">f_x, f_y</text>
+  <text x="260" y="176" text-anchor="middle" font-size="10" fill="#6b7280" font-family="monospace">c_x, c_y</text>
+
+  <!-- Arrow -->
+  <line x1="320" y1="160" x2="390" y2="160" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrowGray)"/>
+  <defs><marker id="arrowGray" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#94a3b8"/></marker></defs>
+  <text x="355" y="150" text-anchor="middle" font-size="10" fill="#94a3b8">反投影</text>
+
+  <!-- Point cloud (camera frame) -->
+  <rect x="400" y="50" width="160" height="220" rx="10" fill="#faf5ff" stroke="#c4b5fd" stroke-width="1.5"/>
+  <text x="480" y="42" text-anchor="middle" font-size="12" fill="#7c3aed" font-weight="600">相机坐标系点云</text>
+  <!-- Scattered 3D points -->
+  <circle cx="440" cy="120" r="4" fill="#ef4444" opacity="0.8"/>
+  <circle cx="455" cy="128" r="3" fill="#ef4444" opacity="0.6"/>
+  <circle cx="432" cy="115" r="3" fill="#ef4444" opacity="0.7"/>
+  <circle cx="448" cy="110" r="3.5" fill="#ef4444" opacity="0.7"/>
+  <circle cx="500" cy="105" r="4" fill="#3b82f6" opacity="0.8"/>
+  <circle cx="510" cy="115" r="3" fill="#3b82f6" opacity="0.7"/>
+  <circle cx="495" cy="118" r="3" fill="#3b82f6" opacity="0.6"/>
+  <circle cx="508" cy="100" r="3.5" fill="#3b82f6" opacity="0.7"/>
+  <!-- Table dots -->
+  <circle cx="430" cy="170" r="2.5" fill="#9ca3af" opacity="0.5"/>
+  <circle cx="450" cy="175" r="2.5" fill="#9ca3af" opacity="0.5"/>
+  <circle cx="470" cy="172" r="2.5" fill="#9ca3af" opacity="0.5"/>
+  <circle cx="490" cy="168" r="2.5" fill="#9ca3af" opacity="0.5"/>
+  <circle cx="510" cy="174" r="2.5" fill="#9ca3af" opacity="0.5"/>
+  <circle cx="440" cy="185" r="2" fill="#9ca3af" opacity="0.4"/>
+  <circle cx="460" cy="188" r="2" fill="#9ca3af" opacity="0.4"/>
+  <circle cx="480" cy="183" r="2" fill="#9ca3af" opacity="0.4"/>
+  <circle cx="500" cy="187" r="2" fill="#9ca3af" opacity="0.4"/>
+  <circle cx="520" cy="182" r="2" fill="#9ca3af" opacity="0.4"/>
+
+  <text x="480" y="230" text-anchor="middle" font-size="10" fill="#7c3aed">每个点 = (X, Y, Z, R, G, B)</text>
+  <text x="480" y="248" text-anchor="middle" font-size="10" fill="#6b7280">坐标系：相机光心为原点</text>
+
+  <!-- Transform arrow -->
+  <line x1="570" y1="160" x2="630" y2="160" stroke="#22c55e" stroke-width="2" marker-end="url(#arrowGreen)"/>
+  <defs><marker id="arrowGreen" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#22c55e"/></marker></defs>
+  <text x="600" y="145" text-anchor="middle" font-size="10" fill="#22c55e" font-weight="600">外参</text>
+  <text x="600" y="180" text-anchor="middle" font-size="9" fill="#6b7280">T_base_camera</text>
+
+  <!-- Robot frame cloud -->
+  <rect x="640" y="80" width="130" height="160" rx="10" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+  <text x="705" y="72" text-anchor="middle" font-size="12" fill="#16a34a" font-weight="600">机器人坐标系点云</text>
+  <circle cx="670" cy="150" r="4" fill="#ef4444" opacity="0.8"/>
+  <circle cx="685" cy="158" r="3" fill="#ef4444" opacity="0.6"/>
+  <circle cx="677" cy="143" r="3" fill="#ef4444" opacity="0.7"/>
+  <circle cx="720" cy="135" r="4" fill="#3b82f6" opacity="0.8"/>
+  <circle cx="730" cy="145" r="3" fill="#3b82f6" opacity="0.7"/>
+  <circle cx="715" cy="148" r="3" fill="#3b82f6" opacity="0.6"/>
+  <circle cx="668" cy="195" r="2" fill="#9ca3af" opacity="0.4"/>
+  <circle cx="688" cy="198" r="2" fill="#9ca3af" opacity="0.4"/>
+  <circle cx="708" cy="193" r="2" fill="#9ca3af" opacity="0.4"/>
+  <circle cx="728" cy="196" r="2" fill="#9ca3af" opacity="0.4"/>
+  <text x="705" y="228" text-anchor="middle" font-size="10" fill="#16a34a">规划器可以直接使用</text>
+</svg>
+<p class="diagram-caption">RGB + Depth + 内参 → 相机坐标系点云 → 经外参变换 → 机器人坐标系点云</p>
+</div>
+
+<div class="callout warn">
+  <div class="callout-title">新手最常犯的错</div>
+  深度单位搞错了。很多相机输出深度单位是毫米（mm），但你的代码假设是米（m）——结果所有点云都被放大了 1000 倍。永远检查 <code>depth_scale</code>！
+</div>
+
+<h3>点云不是拍完就能用</h3>
+
+<p>原始点云通常有几十万个点，里面包含大量无用信息（桌面、背景墙、噪声）。在送给规划器之前，需要一系列清洗步骤：</p>
+
+<div style="text-align:center; margin: 20px 0;">
+  <span class="pipeline-step">去掉无效深度</span>
+  <span class="pipeline-arrow">&rarr;</span>
+  <span class="pipeline-step">体素降采样</span>
+  <span class="pipeline-arrow">&rarr;</span>
+  <span class="pipeline-step">工作空间裁剪</span>
+  <span class="pipeline-arrow">&rarr;</span>
+  <span class="pipeline-step">去桌面平面</span>
+  <span class="pipeline-arrow">&rarr;</span>
+  <span class="pipeline-step">去离群噪声点</span>
+</div>
+
+<table>
+  <tr><th>步骤</th><th>做什么</th><th>为什么</th></tr>
+  <tr><td>去无效深度</td><td>过滤 depth = 0、NaN、太近或太远的像素</td><td>深度相机对反光、透明物体经常丢失深度</td></tr>
+  <tr><td>体素降采样</td><td>把空间分成小立方体（如 5mm），每个格子只保留一个点</td><td>减少点数，降低计算量，同时平滑噪声</td></tr>
+  <tr><td>工作空间裁剪</td><td>只保留机器人能到达的区域内的点</td><td>远处的背景对抓取没有意义</td></tr>
+  <tr><td>去桌面平面</td><td>用 RANSAC 检测并移除最大平面</td><td>桌面点太多，会淹没物体的点</td></tr>
+  <tr><td>去离群噪声</td><td>删除周围邻居太少的孤立点</td><td>它们通常是传感器噪声，不是真实物体</td></tr>
+</table>
+
+<!-- ===== 3. Detection vs Segmentation ===== -->
+<h2>3. 检测 vs 分割：找到物体的不同方式</h2>
+
+<p>有了点云，下一个问题是：哪些点属于"我要拿的那个杯子"？这就要靠<strong>检测</strong>和<strong>分割</strong>来回答。</p>
+
+<div class="diagram-container">
+<svg viewBox="0 0 780 380" xmlns="http://www.w3.org/2000/svg" style="max-width:780px">
+  <!-- Original image -->
+  <rect x="20" y="30" width="160" height="120" rx="6" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.5"/>
+  <text x="100" y="22" text-anchor="middle" font-size="12" fill="#374151" font-weight="600">原始图像</text>
+  <rect x="35" y="90" width="130" height="30" rx="2" fill="#e5e7eb"/>
+  <circle cx="70" cy="78" r="14" fill="#ef4444" opacity="0.7"/>
+  <rect x="110" y="65" width="22" height="28" rx="2" fill="#3b82f6" opacity="0.7"/>
+  <circle cx="145" cy="80" r="10" fill="#f59e0b" opacity="0.7"/>
+
+  <!-- Detection (bbox) -->
+  <rect x="220" y="30" width="160" height="120" rx="6" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.5"/>
+  <text x="300" y="22" text-anchor="middle" font-size="12" fill="#374151" font-weight="600">目标检测 (bbox)</text>
+  <rect x="235" y="90" width="130" height="30" rx="2" fill="#e5e7eb"/>
+  <circle cx="270" cy="78" r="14" fill="#ef4444" opacity="0.7"/>
+  <rect x="310" y="65" width="22" height="28" rx="2" fill="#3b82f6" opacity="0.7"/>
+  <circle cx="345" cy="80" r="10" fill="#f59e0b" opacity="0.7"/>
+  <!-- bboxes -->
+  <rect x="252" y="60" width="36" height="36" rx="1" fill="none" stroke="#22c55e" stroke-width="2"/>
+  <rect x="306" y="61" width="30" height="36" rx="1" fill="none" stroke="#22c55e" stroke-width="2"/>
+  <rect x="331" y="66" width="28" height="28" rx="1" fill="none" stroke="#22c55e" stroke-width="2"/>
+  <text x="267" y="57" font-size="8" fill="#22c55e" font-weight="600">cup 0.92</text>
+  <text x="310" y="57" font-size="8" fill="#22c55e" font-weight="600">box 0.88</text>
+
+  <!-- Semantic Segmentation -->
+  <rect x="420" y="30" width="160" height="120" rx="6" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.5"/>
+  <text x="500" y="22" text-anchor="middle" font-size="12" fill="#374151" font-weight="600">语义分割</text>
+  <rect x="435" y="90" width="130" height="30" rx="2" fill="#d1fae5"/>
+  <circle cx="470" cy="78" r="14" fill="#fecaca"/>
+  <rect x="510" y="65" width="22" height="28" rx="2" fill="#bfdbfe"/>
+  <circle cx="545" cy="80" r="10" fill="#fecaca"/>
+  <text x="500" y="140" text-anchor="middle" font-size="9" fill="#6b7280">每个像素一个类别颜色</text>
+  <text x="500" y="152" text-anchor="middle" font-size="9" fill="#6b7280">但两个杯子颜色相同</text>
+
+  <!-- Instance Segmentation -->
+  <rect x="620" y="30" width="160" height="120" rx="6" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.5"/>
+  <text x="700" y="22" text-anchor="middle" font-size="12" fill="#374151" font-weight="600">实例分割</text>
+  <rect x="635" y="90" width="130" height="30" rx="2" fill="#e5e7eb"/>
+  <circle cx="670" cy="78" r="14" fill="#ef4444" opacity="0.6"/>
+  <rect x="710" y="65" width="22" height="28" rx="2" fill="#3b82f6" opacity="0.6"/>
+  <circle cx="745" cy="80" r="10" fill="#a855f7" opacity="0.6"/>
+  <text x="700" y="140" text-anchor="middle" font-size="9" fill="#6b7280">每个物体实例独立标记</text>
+  <text x="700" y="152" text-anchor="middle" font-size="9" fill="#6b7280">两个杯子有不同 mask</text>
+
+  <!-- Comparison table below -->
+  <rect x="20" y="185" width="760" height="185" rx="10" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+
+  <text x="40" y="210" font-size="12" fill="#374151" font-weight="600">对比</text>
+
+  <!-- Headers -->
+  <text x="40" y="238" font-size="11" fill="#6b7280" font-weight="600">方法</text>
+  <text x="200" y="238" font-size="11" fill="#6b7280" font-weight="600">输出形式</text>
+  <text x="400" y="238" font-size="11" fill="#6b7280" font-weight="600">精度</text>
+  <text x="560" y="238" font-size="11" fill="#6b7280" font-weight="600">机器人用途</text>
+  <line x1="30" y1="245" x2="770" y2="245" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Row 1 -->
+  <text x="40" y="268" font-size="11" fill="#374151">目标检测</text>
+  <text x="200" y="268" font-size="11" fill="#374151">矩形框 (x1,y1,x2,y2)</text>
+  <text x="400" y="268" font-size="11" fill="#f59e0b">粗略——框里包含背景</text>
+  <text x="560" y="268" font-size="11" fill="#374151">粗定位、目标选择</text>
+  <line x1="30" y1="280" x2="770" y2="280" stroke="#f1f5f9" stroke-width="1"/>
+
+  <!-- Row 2 -->
+  <text x="40" y="303" font-size="11" fill="#374151">语义分割</text>
+  <text x="200" y="303" font-size="11" fill="#374151">每像素类别标签</text>
+  <text x="400" y="303" font-size="11" fill="#f59e0b">像素级——但不分实例</text>
+  <text x="560" y="303" font-size="11" fill="#374151">场景理解、可通行区域</text>
+  <line x1="30" y1="315" x2="770" y2="315" stroke="#f1f5f9" stroke-width="1"/>
+
+  <!-- Row 3 -->
+  <text x="40" y="338" font-size="11" fill="#374151">实例分割</text>
+  <text x="200" y="338" font-size="11" fill="#374151">每像素实例 mask</text>
+  <text x="400" y="338" font-size="11" fill="#22c55e" font-weight="600">最精确——每个物体独立</text>
+  <text x="560" y="338" font-size="11" fill="#374151">抓取、遮挡分析、点云裁剪</text>
+  <line x1="30" y1="350" x2="770" y2="350" stroke="#f1f5f9" stroke-width="1"/>
+
+  <!-- Row 4 -->
+  <text x="40" y="362" font-size="11" fill="#374151">Prompt 分割</text>
+  <text x="200" y="362" font-size="11" fill="#374151">点击/文本/框 → mask</text>
+  <text x="400" y="362" font-size="11" fill="#374151">取决于 prompt 质量</text>
+  <text x="560" y="362" font-size="11" fill="#374151">人机交互、开放词汇</text>
+</svg>
+<p class="diagram-caption">四种视觉识别方式的输出对比</p>
+</div>
+
+<div class="callout green">
+  <div class="callout-title">机器人抓取为什么需要实例分割？</div>
+  想象桌面上有三个杯子。语义分割会把它们全标成"杯子类"，你分不清哪些像素属于哪个杯子。但实例分割能区分"杯子 #1""杯子 #2""杯子 #3"——用这个 mask 去裁剪点云，就能得到单独一个杯子的 3D 形状，这才是抓取规划需要的输入。
+</div>
+
+<!-- ===== 4. Perception Pipeline ===== -->
+<h2>4. 完整感知管线：从拍照到告诉机器人"在哪抓"</h2>
+
+<p>把前面的步骤串起来，就是一条完整的感知管线。让我们以"抓桌上的红色杯子"为例，走一遍全流程：</p>
+
+<div class="diagram-container">
+<svg viewBox="0 0 780 520" xmlns="http://www.w3.org/2000/svg" style="max-width:780px">
+  <defs>
+    <marker id="arrowBlue" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#3b82f6"/></marker>
+  </defs>
+
+  <!-- Step 1: Capture -->
+  <rect x="20" y="20" width="200" height="70" rx="10" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5"/>
+  <text x="120" y="47" text-anchor="middle" font-size="13" fill="#1e40af" font-weight="600">1. 拍摄</text>
+  <text x="120" y="67" text-anchor="middle" font-size="11" fill="#6b7280">RGB-D 相机输出一帧</text>
+  <text x="120" y="82" text-anchor="middle" font-size="10" fill="#94a3b8">同时记录时间戳</text>
+
+  <line x1="220" y1="55" x2="280" y2="55" stroke="#3b82f6" stroke-width="1.5" marker-end="url(#arrowBlue)"/>
+
+  <!-- Step 2: Unproject -->
+  <rect x="280" y="20" width="200" height="70" rx="10" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5"/>
+  <text x="380" y="47" text-anchor="middle" font-size="13" fill="#1e40af" font-weight="600">2. 反投影</text>
+  <text x="380" y="67" text-anchor="middle" font-size="11" fill="#6b7280">像素 + 深度 → 3D 点云</text>
+  <text x="380" y="82" text-anchor="middle" font-size="10" fill="#94a3b8">使用相机内参</text>
+
+  <line x1="480" y1="55" x2="540" y2="55" stroke="#3b82f6" stroke-width="1.5" marker-end="url(#arrowBlue)"/>
+
+  <!-- Step 3: Transform -->
+  <rect x="540" y="20" width="220" height="70" rx="10" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5"/>
+  <text x="650" y="47" text-anchor="middle" font-size="13" fill="#1e40af" font-weight="600">3. 坐标变换</text>
+  <text x="650" y="67" text-anchor="middle" font-size="11" fill="#6b7280">相机坐标系 → 机器人坐标系</text>
+  <text x="650" y="82" text-anchor="middle" font-size="10" fill="#94a3b8">使用手眼标定外参</text>
+
+  <!-- Arrow down -->
+  <line x1="650" y1="90" x2="650" y2="130" stroke="#3b82f6" stroke-width="1.5" marker-end="url(#arrowBlue)"/>
+
+  <!-- Step 4: Clean -->
+  <rect x="440" y="130" width="320" height="70" rx="10" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+  <text x="600" y="157" text-anchor="middle" font-size="13" fill="#166534" font-weight="600">4. 点云清洗</text>
+  <text x="600" y="177" text-anchor="middle" font-size="11" fill="#6b7280">过滤无效点 → 降采样 → 裁剪工作空间 → 去桌面</text>
+  <text x="600" y="192" text-anchor="middle" font-size="10" fill="#94a3b8">保留有效的物体候选点</text>
+
+  <!-- Arrow left-down -->
+  <line x1="440" y1="165" x2="370" y2="165" stroke="#3b82f6" stroke-width="1.5"/>
+  <line x1="370" y1="165" x2="370" y2="240" stroke="#3b82f6" stroke-width="1.5" marker-end="url(#arrowBlue)"/>
+
+  <!-- Step 5: Detect -->
+  <rect x="20" y="130" width="300" height="70" rx="10" fill="#faf5ff" stroke="#c4b5fd" stroke-width="1.5"/>
+  <text x="170" y="157" text-anchor="middle" font-size="13" fill="#6b21a8" font-weight="600">5. 检测 + 分割</text>
+  <text x="170" y="177" text-anchor="middle" font-size="11" fill="#6b7280">在 RGB 图上找到红色杯子的 instance mask</text>
+  <text x="170" y="192" text-anchor="middle" font-size="10" fill="#94a3b8">Grounding DINO + SAM / 训练好的检测器</text>
+
+  <!-- Arrow down from detect -->
+  <line x1="170" y1="200" x2="170" y2="240" stroke="#3b82f6" stroke-width="1.5" marker-end="url(#arrowBlue)"/>
+
+  <!-- Step 6: Crop -->
+  <rect x="80" y="240" width="480" height="70" rx="10" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5"/>
+  <text x="320" y="267" text-anchor="middle" font-size="13" fill="#9a3412" font-weight="600">6. Mask 裁剪点云</text>
+  <text x="320" y="287" text-anchor="middle" font-size="11" fill="#6b7280">用 mask 覆盖到点云上，只留下杯子的 3D 点</text>
+  <text x="320" y="302" text-anchor="middle" font-size="10" fill="#94a3b8">mask 和 depth 必须对齐！否则裁出来的是桌面而不是杯子</text>
+
+  <!-- Arrow down -->
+  <line x1="320" y1="310" x2="320" y2="350" stroke="#3b82f6" stroke-width="1.5" marker-end="url(#arrowBlue)"/>
+
+  <!-- Step 7: Pose -->
+  <rect x="140" y="350" width="360" height="70" rx="10" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.5"/>
+  <text x="320" y="377" text-anchor="middle" font-size="13" fill="#991b1b" font-weight="600">7. 位姿估计</text>
+  <text x="320" y="397" text-anchor="middle" font-size="11" fill="#6b7280">从物体点云估计杯子的 6D pose (位置 + 朝向)</text>
+  <text x="320" y="412" text-anchor="middle" font-size="10" fill="#94a3b8">PnP / ICP / FoundationPose / 关键点匹配</text>
+
+  <!-- Arrow down -->
+  <line x1="320" y1="420" x2="320" y2="460" stroke="#3b82f6" stroke-width="1.5" marker-end="url(#arrowBlue)"/>
+
+  <!-- Step 8: Output -->
+  <rect x="100" y="460" width="440" height="50" rx="10" fill="#22c55e" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="320" y="490" text-anchor="middle" font-size="14" fill="#fff" font-weight="600">输出：杯子在机器人坐标系下的位姿、置信度、失败码</text>
+</svg>
+<p class="diagram-caption">从一帧 RGB-D 图像到"杯子在哪里"的完整管线</p>
+</div>
+
+<h3>一条真实的感知输出长什么样？</h3>
+
+<p>管线最终会输出一份结构化数据，交给下游的规划器或抓取策略使用：</p>
+
+<div class="data-record">
+  <div style="font-weight:700; margin-bottom:12px; font-size:1.05em; color:#1e40af;">感知输出 — "红色杯子" (object_id: cup_03)</div>
+
+  <div class="field">
+    <span class="field-name">frame</span>
+    <span class="field-value">robot_base</span>
+    <span class="field-note">← 坐标系必须写清楚，否则规划器不知道数字是什么含义</span>
+  </div>
+  <div class="field">
+    <span class="field-name">timestamp</span>
+    <span class="field-value">2026-05-25T14:32:01.123Z</span>
+    <span class="field-note">← 拍摄时刻，判断数据是否过期</span>
+  </div>
+  <div class="field">
+    <span class="field-name">position</span>
+    <span class="field-value">[0.42, -0.15, 0.03] m</span>
+    <span class="field-note">← 杯子中心在 base frame 下的 XYZ</span>
+  </div>
+  <div class="field">
+    <span class="field-name">orientation</span>
+    <span class="field-value">[0.0, 0.0, 0.38, 0.92] (quaternion)</span>
+    <span class="field-note">← 杯口朝哪个方向</span>
+  </div>
+  <div class="field">
+    <span class="field-name">confidence</span>
+    <span class="field-value">0.87</span>
+    <span class="field-note">← 检测置信度，低于阈值时应该拒绝动作</span>
+  </div>
+  <div class="field">
+    <span class="field-name">symmetry</span>
+    <span class="field-value">axial_z</span>
+    <span class="field-note">← 杯子绕 Z 轴旋转对称，yaw 角不可信</span>
+  </div>
+  <div class="field">
+    <span class="field-name">mask_coverage</span>
+    <span class="field-value">0.72</span>
+    <span class="field-note">← mask 覆盖了多少有效深度，太低说明遮挡严重</span>
+  </div>
+  <div class="field">
+    <span class="field-name">failure_code</span>
+    <span class="field-value">none</span>
+    <span class="field-note">← 可能的值：depth_hole, occlusion, low_confidence, calibration_stale</span>
+  </div>
+</div>
+
+<div class="callout">
+  <div class="callout-title">为什么需要 failure_code？</div>
+  机器人不能像人一样"感觉不确定就多看一眼"。如果感知输出看起来正常但其实不靠谱（比如反光导致深度全是空洞），机器人会自信地抓向一个不存在的位置。failure_code 让系统可以提前拒绝不可靠的结果，而不是等到抓空了才发现问题。
+</div>
+
+<!-- ===== 5. Hand-Eye Calibration ===== -->
+<h2>5. 手眼标定：让相机和机器人说同一种"话"</h2>
+
+<p>假设相机看到杯子在图像右下角，深度 0.5 米。经过反投影，你得到了杯子在<strong>相机坐标系</strong>下的位置——但机器人不认识"相机坐标系"，它只懂自己的<strong>基座坐标系</strong>。</p>
+
+<p><strong>手眼标定</strong>就是找到这两个坐标系之间的"翻译关系"（一个 4×4 变换矩阵）。</p>
+
+<div class="diagram-container">
+<svg viewBox="0 0 780 440" xmlns="http://www.w3.org/2000/svg" style="max-width:780px">
+  <!-- Eye-in-hand setup -->
+  <text x="200" y="30" text-anchor="middle" font-size="14" fill="#374151" font-weight="700">Eye-in-Hand（相机装在手上）</text>
+
+  <!-- Robot base -->
+  <rect x="80" y="340" width="80" height="30" rx="4" fill="#64748b"/>
+  <text x="120" y="360" text-anchor="middle" font-size="10" fill="#fff" font-weight="600">Base</text>
+  <!-- arm segments -->
+  <line x1="120" y1="340" x2="120" y2="280" stroke="#475569" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="120" cy="280" r="6" fill="#94a3b8"/>
+  <line x1="120" y1="280" x2="200" y2="220" stroke="#475569" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="200" cy="220" r="6" fill="#94a3b8"/>
+  <line x1="200" y1="220" x2="260" y2="180" stroke="#475569" stroke-width="6" stroke-linecap="round"/>
+  <!-- Gripper -->
+  <rect x="250" y="165" width="40" height="25" rx="4" fill="#334155"/>
+  <text x="270" y="182" text-anchor="middle" font-size="8" fill="#cbd5e1">Gripper</text>
+  <!-- Camera on gripper -->
+  <rect x="258" y="148" width="24" height="16" rx="3" fill="#3b82f6"/>
+  <text x="270" y="161" text-anchor="middle" font-size="7" fill="#fff">Cam</text>
+  <!-- FOV lines -->
+  <line x1="265" y1="148" x2="220" y2="90" stroke="#3b82f6" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+  <line x1="275" y1="148" x2="320" y2="90" stroke="#3b82f6" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+  <text x="270" y="85" text-anchor="middle" font-size="9" fill="#3b82f6">视野</text>
+
+  <!-- Transform labels -->
+  <text x="80" y="265" font-size="10" fill="#16a34a" font-weight="600">T_base_gripper</text>
+  <text x="80" y="278" font-size="9" fill="#6b7280">机器人已知（FK）</text>
+
+  <text x="292" y="155" font-size="10" fill="#dc2626" font-weight="600">T_gripper_camera</text>
+  <text x="292" y="168" font-size="9" fill="#6b7280">← 要标定的！</text>
+
+  <!-- Divider -->
+  <line x1="390" y1="50" x2="390" y2="400" stroke="#e2e8f0" stroke-width="1.5" stroke-dasharray="8,6"/>
+
+  <!-- Eye-to-hand setup -->
+  <text x="580" y="30" text-anchor="middle" font-size="14" fill="#374151" font-weight="700">Eye-to-Hand（相机装在外面）</text>
+
+  <!-- Camera on tripod -->
+  <rect x="460" y="90" width="36" height="24" rx="4" fill="#3b82f6"/>
+  <text x="478" y="106" text-anchor="middle" font-size="8" fill="#fff">Cam</text>
+  <line x1="478" y1="114" x2="478" y2="160" stroke="#94a3b8" stroke-width="3"/>
+  <rect x="466" y="160" width="24" height="6" rx="2" fill="#94a3b8"/>
+  <!-- FOV -->
+  <line x1="475" y1="114" x2="540" y2="200" stroke="#3b82f6" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+  <line x1="481" y1="114" x2="680" y2="200" stroke="#3b82f6" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+
+  <!-- Robot base (eye-to-hand) -->
+  <rect x="580" y="340" width="80" height="30" rx="4" fill="#64748b"/>
+  <text x="620" y="360" text-anchor="middle" font-size="10" fill="#fff" font-weight="600">Base</text>
+  <line x1="620" y1="340" x2="620" y2="280" stroke="#475569" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="620" cy="280" r="6" fill="#94a3b8"/>
+  <line x1="620" y1="280" x2="680" y2="230" stroke="#475569" stroke-width="6" stroke-linecap="round"/>
+  <rect x="670" y="218" width="36" height="22" rx="4" fill="#334155"/>
+  <text x="688" y="234" text-anchor="middle" font-size="8" fill="#cbd5e1">Gripper</text>
+
+  <!-- Transform labels -->
+  <text x="498" y="90" font-size="10" fill="#dc2626" font-weight="600">T_base_camera</text>
+  <text x="498" y="103" font-size="9" fill="#6b7280">← 要标定的！</text>
+
+  <!-- Calibration process -->
+  <rect x="80" y="395" width="620" height="40" rx="8" fill="#f0f7ff" stroke="#bfdbfe" stroke-width="1"/>
+  <text x="390" y="420" text-anchor="middle" font-size="12" fill="#1e40af">标定方法：在多个不同位姿下，同时记录"机器人末端 pose"和"相机看到标定板的 pose"，解方程组 AX = XB</text>
+</svg>
+<p class="diagram-caption">两种手眼标定设置——区别在于相机装在哪里</p>
+</div>
+
+<div class="concept-grid">
+  <div class="concept-card">
+    <h4>Eye-in-Hand</h4>
+    <p><strong>相机跟着手动。</strong>相机装在手腕/末端上，随机器人一起移动。适合近距离精细操作，但视野随姿态变化。</p>
+    <p style="color:#6b7280; font-size:0.9em">要标定的是：相机 → 夹爪 的变换</p>
+  </div>
+  <div class="concept-card">
+    <h4>Eye-to-Hand</h4>
+    <p><strong>相机从外面看。</strong>相机固定在三脚架或桌面上，不随机器人移动。视野稳定，但当手遮挡物体时就看不到了。</p>
+    <p style="color:#6b7280; font-size:0.9em">要标定的是：相机 → 机器人基座 的变换</p>
+  </div>
+</div>
+
+<div class="callout warn">
+  <div class="callout-title">最容易搞反的地方</div>
+  <code>T_camera_gripper</code> 和 <code>T_gripper_camera</code> 是<strong>互逆</strong>的。用错了方向，所有 3D 点都会出现在镜像的位置。如果发现机器人总是朝反方向动作——大概率是变换矩阵用反了。
+</div>
+
+<h3>标定质量怎么判断？</h3>
+
+<p>只看重投影误差（reprojection error）不够。真正的检验方法很直接：</p>
+
+<table>
+  <tr><th>检查方式</th><th>怎么做</th><th>通过标准</th></tr>
+  <tr>
+    <td>重投影误差</td>
+    <td>把 3D 标定点投回图像，看偏了多少</td>
+    <td>&lt; 0.5 像素</td>
+  </tr>
+  <tr>
+    <td>3D 一致性</td>
+    <td>机器人移到不同位姿，同一个桌角的 base frame 坐标应该不变</td>
+    <td>偏差 &lt; 3mm</td>
+  </tr>
+  <tr>
+    <td>抓取验证</td>
+    <td>让机器人根据视觉结果去碰一个已知位置的物体</td>
+    <td>到位偏差 &lt; 5mm</td>
+  </tr>
+  <tr>
+    <td>重启稳定性</td>
+    <td>关机重启后重测上面三项</td>
+    <td>结果不变</td>
+  </tr>
+</table>
+
+<!-- ===== 6. Depth Gotchas ===== -->
+<h2>6. 深度相机的"坑"：为什么有些东西看不到</h2>
+
+<p>初学者经常把深度相机想象成完美的 3D 扫描仪——实际上它在很多情况下会"失明"：</p>
+
+<div class="diagram-container">
+<svg viewBox="0 0 780 280" xmlns="http://www.w3.org/2000/svg" style="max-width:780px">
+  <!-- Scene: table with objects -->
+  <rect x="40" y="180" width="700" height="12" rx="2" fill="#d1d5db"/>
+  <text x="390" y="210" text-anchor="middle" font-size="10" fill="#9ca3af">桌面</text>
+
+  <!-- Normal mug (works fine) -->
+  <rect x="80" y="130" width="50" height="50" rx="6" fill="#ef4444" opacity="0.8"/>
+  <text x="105" y="160" text-anchor="middle" font-size="10" fill="#fff" font-weight="600">红杯</text>
+  <text x="105" y="230" text-anchor="middle" font-size="10" fill="#22c55e" font-weight="600">正常</text>
+  <text x="105" y="245" text-anchor="middle" font-size="9" fill="#6b7280">漫反射，深度OK</text>
+
+  <!-- Shiny metal (reflection) -->
+  <rect x="200" y="130" width="50" height="50" rx="6" fill="url(#shinyGrad)" stroke="#94a3b8" stroke-width="1"/>
+  <defs>
+    <linearGradient id="shinyGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e2e8f0"/>
+      <stop offset="50%" stop-color="#fff"/>
+      <stop offset="100%" stop-color="#cbd5e1"/>
+    </linearGradient>
+  </defs>
+  <text x="225" y="160" text-anchor="middle" font-size="10" fill="#475569" font-weight="600">金属罐</text>
+  <text x="225" y="230" text-anchor="middle" font-size="10" fill="#ef4444" font-weight="600">深度空洞</text>
+  <text x="225" y="245" text-anchor="middle" font-size="9" fill="#6b7280">镜面反射，IR 散射</text>
+
+  <!-- Glass (transparent) -->
+  <rect x="330" y="120" width="45" height="60" rx="8" fill="none" stroke="#93c5fd" stroke-width="2" stroke-dasharray="4,2"/>
+  <text x="352" y="155" text-anchor="middle" font-size="10" fill="#3b82f6" font-weight="600">玻璃杯</text>
+  <text x="352" y="230" text-anchor="middle" font-size="10" fill="#ef4444" font-weight="600">深度穿透</text>
+  <text x="352" y="245" text-anchor="middle" font-size="9" fill="#6b7280">IR 直接穿过，测到桌面</text>
+
+  <!-- Black object -->
+  <rect x="450" y="140" width="50" height="40" rx="4" fill="#1e1b4b"/>
+  <text x="475" y="165" text-anchor="middle" font-size="10" fill="#6366f1" font-weight="600">黑色盒</text>
+  <text x="475" y="230" text-anchor="middle" font-size="10" fill="#f59e0b" font-weight="600">深度不稳定</text>
+  <text x="475" y="245" text-anchor="middle" font-size="9" fill="#6b7280">吸收太多光，信噪比低</text>
+
+  <!-- Too close -->
+  <rect x="570" y="150" width="60" height="30" rx="4" fill="#fde68a" stroke="#f59e0b" stroke-width="1"/>
+  <text x="600" y="170" text-anchor="middle" font-size="10" fill="#92400e" font-weight="600">近处物体</text>
+  <text x="600" y="230" text-anchor="middle" font-size="10" fill="#ef4444" font-weight="600">超出范围</text>
+  <text x="600" y="245" text-anchor="middle" font-size="9" fill="#6b7280">低于相机最小深度距离</text>
+
+  <!-- Depth indicator bars -->
+  <rect x="77" y="115" width="56" height="6" rx="3" fill="#22c55e" opacity="0.7"/>
+  <rect x="197" y="115" width="56" height="6" rx="3" fill="#ef4444" opacity="0.7"/>
+  <rect x="327" y="115" width="51" height="6" rx="3" fill="#ef4444" opacity="0.7"/>
+  <rect x="447" y="115" width="56" height="6" rx="3" fill="#f59e0b" opacity="0.7"/>
+  <rect x="567" y="115" width="66" height="6" rx="3" fill="#ef4444" opacity="0.7"/>
+  <text x="390" y="108" text-anchor="middle" font-size="10" fill="#94a3b8">深度质量（绿 = 好，红 = 差）</text>
+</svg>
+<p class="diagram-caption">不同材质对深度相机的影响——并不是所有东西都能被"看到"</p>
+</div>
+
+<p>这就是为什么感知输出需要 <code>failure_code</code> 和 <code>mask_coverage</code>：当深度空洞覆盖了目标物体的大部分面积时，系统应该主动拒绝这次观测，而不是用残缺的点云去估计一个不靠谱的位姿。</p>
+
+<!-- ===== 7. Coordinate Frames ===== -->
+<h2>7. 坐标系链路：为什么所有东西都必须写 frame</h2>
+
+<p>一个机器人系统里同时存在很多坐标系。这个概念在 <a href="../03-robotics-foundations/robotics-visual-guide.html">机器人基础</a> 里有详细图解，这里我们只看感知相关的部分：</p>
+
+<div class="diagram-container">
+<svg viewBox="0 0 780 220" xmlns="http://www.w3.org/2000/svg" style="max-width:780px">
+  <defs>
+    <marker id="arrowDark" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#475569"/></marker>
+  </defs>
+
+  <!-- World frame -->
+  <rect x="20" y="80" width="110" height="50" rx="8" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+  <text x="75" y="102" text-anchor="middle" font-size="11" fill="#166534" font-weight="600">world / map</text>
+  <text x="75" y="118" text-anchor="middle" font-size="9" fill="#6b7280">全局坐标系</text>
+
+  <!-- Base frame -->
+  <line x1="130" y1="105" x2="180" y2="105" stroke="#475569" stroke-width="1.5" marker-end="url(#arrowDark)"/>
+  <rect x="180" y="80" width="110" height="50" rx="8" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5"/>
+  <text x="235" y="102" text-anchor="middle" font-size="11" fill="#1e40af" font-weight="600">robot_base</text>
+  <text x="235" y="118" text-anchor="middle" font-size="9" fill="#6b7280">机器人基座</text>
+
+  <!-- Gripper frame -->
+  <line x1="290" y1="105" x2="340" y2="105" stroke="#475569" stroke-width="1.5" marker-end="url(#arrowDark)"/>
+  <rect x="340" y="80" width="110" height="50" rx="8" fill="#faf5ff" stroke="#c4b5fd" stroke-width="1.5"/>
+  <text x="395" y="102" text-anchor="middle" font-size="11" fill="#6b21a8" font-weight="600">gripper / TCP</text>
+  <text x="395" y="118" text-anchor="middle" font-size="9" fill="#6b7280">末端工具</text>
+
+  <!-- Camera frame -->
+  <line x1="450" y1="105" x2="500" y2="105" stroke="#475569" stroke-width="1.5" marker-end="url(#arrowDark)"/>
+  <rect x="500" y="80" width="120" height="50" rx="8" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5"/>
+  <text x="560" y="102" text-anchor="middle" font-size="11" fill="#9a3412" font-weight="600">camera_optical</text>
+  <text x="560" y="118" text-anchor="middle" font-size="9" fill="#6b7280">相机光心</text>
+
+  <!-- Object frame -->
+  <line x1="560" y1="130" x2="560" y2="165" stroke="#475569" stroke-width="1.5" marker-end="url(#arrowDark)"/>
+  <rect x="500" y="165" width="120" height="40" rx="8" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.5"/>
+  <text x="560" y="190" text-anchor="middle" font-size="11" fill="#991b1b" font-weight="600">object (杯子)</text>
+
+  <!-- Labels on arrows -->
+  <text x="155" y="95" text-anchor="middle" font-size="8" fill="#94a3b8">固定</text>
+  <text x="315" y="95" text-anchor="middle" font-size="8" fill="#94a3b8">FK</text>
+  <text x="475" y="95" text-anchor="middle" font-size="8" fill="#dc2626" font-size="8">标定</text>
+  <text x="545" y="158" text-anchor="middle" font-size="8" fill="#94a3b8">感知</text>
+
+  <!-- The key message -->
+  <rect x="20" y="165" width="460" height="40" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="250" y="185" text-anchor="middle" font-size="11" fill="#374151">
+    要得到杯子在 base 下的位置：T_base_object = T_base_gripper × T_gripper_camera × T_camera_object
+  </text>
+</svg>
+<p class="diagram-caption">Eye-in-Hand 设置下的坐标系链路——每个箭头都是一个变换矩阵</p>
+</div>
+
+<div class="callout">
+  <div class="callout-title">坐标系的"黄金规则"</div>
+  <strong>任何 3D 数据，不写 frame 就是废数据。</strong>一个点 (0.3, -0.1, 0.5) 在 camera frame 和 base frame 下指向完全不同的物理位置。把 camera frame 的数字当 base frame 用，机器人会撞到桌子。
+</div>
+
+<!-- ===== 8. Summary ===== -->
+<h2>总结：感知链路的核心检查清单</h2>
+
+<p>无论你的项目用什么硬件和模型，在把感知结果交给下游之前，检查这几件事：</p>
+
+<table>
+  <tr><th>#</th><th>检查项</th><th>常见失败原因</th></tr>
+  <tr><td>1</td><td>内参是否正确且匹配当前分辨率</td><td>缩放图像后忘了同步缩放内参</td></tr>
+  <tr><td>2</td><td>深度单位是否正确（m vs mm）</td><td>点云比真实世界大 1000 倍</td></tr>
+  <tr><td>3</td><td>点云坐标系是否是 base frame</td><td>相机坐标系的数据被当成 base frame 使用</td></tr>
+  <tr><td>4</td><td>手眼标定是否有效</td><td>相机支架动了、线缆拉扯了但没有重新标定</td></tr>
+  <tr><td>5</td><td>mask 和 depth 是否对齐</td><td>RGB 裁剪了但 depth 没有，或两者分辨率不同</td></tr>
+  <tr><td>6</td><td>深度空洞是否被标记</td><td>反光/透明物体的空洞被当成有效深度</td></tr>
+  <tr><td>7</td><td>位姿的 frame 方向是否写清楚</td><td>T_camera_object 和 T_object_camera 用反了</td></tr>
+  <tr><td>8</td><td>时间戳是否在容忍范围内</td><td>相机延迟大，图像和机器人状态不同步</td></tr>
+</table>
+
+<div class="callout green">
+  <div class="callout-title">一句话总结</div>
+  机器人感知 = 相机内参（像素 ↔ 射线）+ 深度（射线 → 3D 点）+ 分割（哪些点是目标）+ 外参标定（3D 点在哪个坐标系）+ 质量检查（结果可不可信）。任何一环缺失或出错，下游都会失败。
+</div>
+
+<p style="margin-top:40px; color:#94a3b8; font-size:0.88em;">
+  详细内容请参考各小节：
+  <a href="01-camera-calibration.md">相机标定</a> ·
+  <a href="02-rgbd-pointcloud.md">RGB-D 与点云</a> ·
+  <a href="02-rgbd-pointcloud/01-pointcloud-registration.md">点云配准</a> ·
+  <a href="01-camera-calibration/01-hand-eye-calibration.md">手眼标定</a> ·
+  <a href="03-detection-segmentation.md">检测与分割</a> ·
+  <a href="04-pose-estimation.md">位姿估计</a>
+</p>
+
+</body>
+</html>

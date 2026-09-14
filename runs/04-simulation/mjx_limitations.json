@@ -1,0 +1,116 @@
+[
+  {
+    "robot": "franka_emika_panda",
+    "plain": {
+      "xml": "scene.xml",
+      "nq": 9,
+      "nu": 8,
+      "nbody": 12,
+      "status": "mjx_ok"
+    }
+  },
+  {
+    "robot": "universal_robots_ur5e",
+    "plain": {
+      "xml": "scene.xml",
+      "nq": 6,
+      "nu": 6,
+      "nbody": 8,
+      "status": "mjx_ok"
+    }
+  },
+  {
+    "robot": "kuka_iiwa_14",
+    "plain": {
+      "xml": "scene.xml",
+      "nq": 7,
+      "nu": 7,
+      "nbody": 9,
+      "status": "mjx_ok"
+    }
+  },
+  {
+    "robot": "unitree_a1",
+    "plain": {
+      "xml": "scene.xml",
+      "nq": 19,
+      "nu": 12,
+      "nbody": 14,
+      "status": "mjx_ok"
+    }
+  },
+  {
+    "robot": "unitree_go2",
+    "plain": {
+      "xml": "scene.xml",
+      "nq": 19,
+      "nu": 12,
+      "nbody": 14,
+      "status": "mjx_failed",
+      "error": "NotImplementedError: (mjtGeom.mjGEOM_CYLINDER, mjtGeom.mjGEOM_BOX) collisions not implemented."
+    }
+  },
+  {
+    "robot": "anybotics_anymal_b",
+    "plain": {
+      "xml": "scene.xml",
+      "nq": 19,
+      "nu": 12,
+      "nbody": 14,
+      "status": "mjx_failed",
+      "error": "NotImplementedError: (mjtGeom.mjGEOM_CYLINDER, mjtGeom.mjGEOM_BOX) collisions not implemented."
+    }
+  },
+  {
+    "robot": "anybotics_anymal_c",
+    "plain": {
+      "xml": "scene.xml",
+      "nq": 19,
+      "nu": 12,
+      "nbody": 14,
+      "status": "mjx_failed",
+      "error": "NotImplementedError: (mjtGeom.mjGEOM_CYLINDER, mjtGeom.mjGEOM_BOX) collisions not implemented."
+    }
+  },
+  {
+    "robot": "robotis_op3",
+    "plain": {
+      "xml": "scene.xml",
+      "nq": 27,
+      "nu": 20,
+      "nbody": 22,
+      "status": "mjx_ok"
+    }
+  },
+  {
+    "robot": "aloha",
+    "plain": {
+      "xml": "scene.xml",
+      "nq": 16,
+      "nu": 14,
+      "nbody": 21,
+      "status": "mjx_ok"
+    }
+  },
+  {
+    "robot": "google_robot",
+    "plain": {
+      "xml": "scene.xml",
+      "nq": 9,
+      "nu": 9,
+      "nbody": 13,
+      "status": "mjx_failed",
+      "error": "NotImplementedError: (mjtGeom.mjGEOM_CYLINDER, mjtGeom.mjGEOM_MESH) collisions not implemented."
+    }
+  },
+  {
+    "robot": "trs_so_arm100",
+    "plain": {
+      "xml": "scene.xml",
+      "nq": 6,
+      "nu": 6,
+      "nbody": 8,
+      "status": "mjx_ok"
+    }
+  }
+]

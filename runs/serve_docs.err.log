@@ -1,0 +1,366 @@
+127.0.0.1 - - [28/May/2026 17:35:07] "GET /section/08-vlm-vla-and-foundation-models/06-vla-foundations/01-action-representation.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 17:35:24] "GET /healthz HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 17:35:40] "GET /section/08-vlm-vla-and-foundation-models/06-vla-foundations/01-action-representation.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 17:35:48] "GET /README.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 17:35:59] "GET /section/README.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 17:36:25] "GET /section/08-vlm-vla-and-foundation-models/06-vla-foundations/01-action-representation.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 17:36:34] "GET /section/08-vlm-vla-and-foundation-models/06-vla-foundations/02-action-tokenization.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 17:36:40] "GET /section/08-vlm-vla-and-foundation-models/06-vla-foundations/03-autoregressive-action.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 17:36:53] "GET /section/08-vlm-vla-and-foundation-models/06-vla-foundations/05-3d-vla.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 17:37:04] "GET /section/08-vlm-vla-and-foundation-models/06-vla-foundations/06-multi-embodiment.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 17:37:21] "GET /section/08-vlm-vla-and-foundation-models/01-training-strategy-map.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 17:37:40] "GET /section/08-vlm-vla-and-foundation-models/01-training-strategy-map/02-data-policy-eval-loop.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 17:37:45] "GET /section/08-vlm-vla-and-foundation-models/01-training-strategy-map/01-task-to-strategy.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 17:37:54] "GET /section/08-vlm-vla-and-foundation-models/06-vla-foundations/04-diffusion-flow-action.md HTTP/1.1" 200 -
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 58038)
+Traceback (most recent call last):
+  File "D:\Anaconda\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Anaconda\Lib\socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Anaconda\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "D:\Anaconda\Lib\http\server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Anaconda\Lib\http\server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "D:\Coding\hands-on-embodied-ai\scripts\serve_docs.py", line 1619, in do_GET
+    self.wfile.write(content)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\Anaconda\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+    ~~~~~~~~~~~~~~~~~~^^^
+ConnectionAbortedError: [WinError 10053] 你的主机中的软件中止了一个已建立的连接。
+----------------------------------------
+127.0.0.1 - - [28/May/2026 17:37:56] "GET /section/08-vlm-vla-and-foundation-models/06-vla-foundations/06-multi-embodiment.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 17:38:06] "GET /section/08-vlm-vla-and-foundation-models/06-vla-foundations.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 17:56:15] "GET /doc/vla-foundations-writing-guide.html HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 18:06:08] "GET / HTTP/1.1" 200 -
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 62366)
+Traceback (most recent call last):
+  File "D:\Anaconda\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Anaconda\Lib\socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Anaconda\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "D:\Anaconda\Lib\http\server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Anaconda\Lib\http\server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "D:\Coding\hands-on-embodied-ai\scripts\serve_docs.py", line 1619, in do_GET
+    self.wfile.write(content)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\Anaconda\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+    ~~~~~~~~~~~~~~~~~~^^^
+ConnectionAbortedError: [WinError 10053] 你的主机中的软件中止了一个已建立的连接。
+----------------------------------------
+127.0.0.1 - - [28/May/2026 19:25:00] "GET / HTTP/1.1" 200 -
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 50092)
+Traceback (most recent call last):
+  File "D:\Anaconda\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Anaconda\Lib\socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Anaconda\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "D:\Anaconda\Lib\http\server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Anaconda\Lib\http\server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "D:\Coding\hands-on-embodied-ai\scripts\serve_docs.py", line 1619, in do_GET
+    self.wfile.write(content)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\Anaconda\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+    ~~~~~~~~~~~~~~~~~~^^^
+ConnectionAbortedError: [WinError 10053] 你的主机中的软件中止了一个已建立的连接。
+----------------------------------------
+127.0.0.1 - - [28/May/2026 19:36:54] "GET / HTTP/1.1" 200 -
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 62124)
+Traceback (most recent call last):
+  File "D:\Anaconda\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Anaconda\Lib\socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Anaconda\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "D:\Anaconda\Lib\http\server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Anaconda\Lib\http\server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "D:\Coding\hands-on-embodied-ai\scripts\serve_docs.py", line 1619, in do_GET
+    self.wfile.write(content)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\Anaconda\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+    ~~~~~~~~~~~~~~~~~~^^^
+ConnectionAbortedError: [WinError 10053] 你的主机中的软件中止了一个已建立的连接。
+----------------------------------------
+127.0.0.1 - - [28/May/2026 19:36:55] "GET / HTTP/1.1" 200 -
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 62165)
+Traceback (most recent call last):
+  File "D:\Anaconda\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Anaconda\Lib\socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Anaconda\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "D:\Anaconda\Lib\http\server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Anaconda\Lib\http\server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "D:\Coding\hands-on-embodied-ai\scripts\serve_docs.py", line 1619, in do_GET
+    self.wfile.write(content)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\Anaconda\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+    ~~~~~~~~~~~~~~~~~~^^^
+ConnectionAbortedError: [WinError 10053] 你的主机中的软件中止了一个已建立的连接。
+----------------------------------------
+127.0.0.1 - - [28/May/2026 19:47:48] "GET /section/08-vlm-vla-and-foundation-models/06-vla-foundations.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 19:48:42] "GET /section/08-vlm-vla-and-foundation-models/06-vla-foundations.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 19:48:44] "GET /section/08-vlm-vla-and-foundation-models/06-vla-foundations/01-action-representation.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 19:48:46] "GET /section/08-vlm-vla-and-foundation-models/06-vla-foundations/02-action-tokenization.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 19:48:49] "GET /section/08-vlm-vla-and-foundation-models/06-vla-foundations/03-autoregressive-action.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 19:48:52] "GET /section/08-vlm-vla-and-foundation-models/06-vla-foundations/04-diffusion-flow-action.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 19:48:54] "GET /section/08-vlm-vla-and-foundation-models/06-vla-foundations/05-3d-vla.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 19:48:56] "GET /section/08-vlm-vla-and-foundation-models/06-vla-foundations/06-multi-embodiment.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 19:48:56] "GET /section/08-vlm-vla-and-foundation-models/assets/vla-foundations-map.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 19:48:56] "GET /section/08-vlm-vla-and-foundation-models/assets/multi-embodiment-adapter.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 19:51:06] "GET /healthz HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 19:51:22] "GET /section/08-vlm-vla-and-foundation-models/06-vla-foundations.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 19:52:40] "GET /section/08-vlm-vla-and-foundation-models/06-vla-foundations.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 19:52:40] "GET /section/08-vlm-vla-and-foundation-models/assets/vla-foundations-map.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 19:52:41] "GET / HTTP/1.1" 200 -
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 52325)
+Traceback (most recent call last):
+  File "D:\Anaconda\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Anaconda\Lib\socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Anaconda\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "D:\Anaconda\Lib\http\server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Anaconda\Lib\http\server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "D:\Coding\hands-on-embodied-ai\scripts\serve_docs.py", line 1619, in do_GET
+    self.wfile.write(content)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\Anaconda\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+    ~~~~~~~~~~~~~~~~~~^^^
+ConnectionAbortedError: [WinError 10053] 你的主机中的软件中止了一个已建立的连接。
+----------------------------------------
+127.0.0.1 - - [28/May/2026 19:52:46] "GET /section/08-vlm-vla-and-foundation-models/06-vla-foundations/01-action-representation.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 19:52:46] "GET /section/08-vlm-vla-and-foundation-models/assets/action-representation-runtime.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 19:52:50] "GET /section/08-vlm-vla-and-foundation-models/06-vla-foundations.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 19:52:50] "GET /section/08-vlm-vla-and-foundation-models/assets/vla-foundations-map.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 19:53:01] "GET /section/08-vlm-vla-and-foundation-models/04-common-libraries.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 19:53:05] "GET /section/08-vlm-vla-and-foundation-models/03-dagger-augmentation.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 19:53:16] "GET /section/08-vlm-vla-and-foundation-models/03-vlm-grounding.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 19:53:22] "GET /section/08-vlm-vla-and-foundation-models/06-vla-foundations.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 19:53:22] "GET /section/08-vlm-vla-and-foundation-models/assets/vla-foundations-map.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 19:57:36] "GET /section/08-vlm-vla-and-foundation-models/06-vla-foundations/01-action-representation.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 19:57:36] "GET /section/08-vlm-vla-and-foundation-models/assets/action-representation-runtime.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 20:05:50] "GET /section/08-vlm-vla-and-foundation-models/06-vla-foundations/02-action-tokenization.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 20:05:50] "GET /section/08-vlm-vla-and-foundation-models/assets/action-tokenization.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 20:22:34] "GET /section/08-vlm-vla-and-foundation-models/06-vla-foundations/03-autoregressive-action.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 20:22:34] "GET /section/08-vlm-vla-and-foundation-models/assets/autoregressive-action.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 20:40:55] "GET /section/08-vlm-vla-and-foundation-models/06-vla-foundations/04-diffusion-flow-action.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 20:40:55] "GET /section/08-vlm-vla-and-foundation-models/assets/diffusion-flow-action.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 20:42:55] "GET /section/08-vlm-vla-and-foundation-models/02-behavior-cloning/01-act.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 20:44:26] "GET /section/08-vlm-vla-and-foundation-models/02-behavior-cloning/02-diffusion-policy.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 20:45:09] "GET /section/08-vlm-vla-and-foundation-models/06-vla-foundations/04-diffusion-flow-action.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 20:45:09] "GET /section/08-vlm-vla-and-foundation-models/assets/diffusion-flow-action.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 20:53:28] "GET /section/08-vlm-vla-and-foundation-models/06-vla-foundations/01-action-representation.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 20:53:28] "GET /section/08-vlm-vla-and-foundation-models/assets/action-representation-runtime.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 20:58:09] "GET /section/08-vlm-vla-and-foundation-models/06-vla-foundations/05-3d-vla.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 20:58:09] "GET /section/08-vlm-vla-and-foundation-models/assets/3d-vla-pipeline.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 21:04:45] "GET /section/08-vlm-vla-and-foundation-models/06-vla-foundations/06-multi-embodiment.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 21:04:45] "GET /section/08-vlm-vla-and-foundation-models/assets/multi-embodiment-adapter.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 21:07:16] "GET /section/08-vlm-vla-and-foundation-models/03-vlm-grounding.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 21:07:20] "GET /section/00-editorial-template/01-polished-page-template.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 21:07:20] "GET /section/00-editorial-template/assets/visual-servo-loop.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 21:07:20] "GET /section/00-editorial-template/assets/editorial-page-anatomy.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 21:07:21] "GET /section/00-editorial-template/assets/code-reading-route.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 21:08:04] "GET /section/02-environment-and-toolchain/01-python-environments.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 21:15:49] "GET /healthz HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 21:16:25] "GET / HTTP/1.1" 200 -
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 50561)
+127.0.0.1 - - [28/May/2026 21:16:25] "GET / HTTP/1.1" 200 -
+Traceback (most recent call last):
+  File "D:\Anaconda\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Anaconda\Lib\socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Anaconda\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "D:\Anaconda\Lib\http\server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Anaconda\Lib\http\server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "D:\Coding\hands-on-embodied-ai\scripts\serve_docs.py", line 1619, in do_GET
+    self.wfile.write(content)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\Anaconda\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+    ~~~~~~~~~~~~~~~~~~^^^
+ConnectionAbortedError: [WinError 10053] 你的主机中的软件中止了一个已建立的连接。
+----------------------------------------
+127.0.0.1 - - [28/May/2026 21:18:35] "GET /section/08-vlm-vla-and-foundation-models/06-vla-foundations/01-action-representation.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 21:18:35] "GET /section/08-vlm-vla-and-foundation-models/assets/action-representation-runtime.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 21:18:45] "GET /section/08-vlm-vla-and-foundation-models/06-vla-foundations/02-action-tokenization.md HTTP/1.1" 200 -
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 52077)
+Traceback (most recent call last):
+  File "D:\Anaconda\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Anaconda\Lib\socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Anaconda\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "D:\Anaconda\Lib\http\server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Anaconda\Lib\http\server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "D:\Coding\hands-on-embodied-ai\scripts\serve_docs.py", line 1619, in do_GET
+    self.wfile.write(content)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\Anaconda\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+    ~~~~~~~~~~~~~~~~~~^^^
+ConnectionAbortedError: [WinError 10053] 你的主机中的软件中止了一个已建立的连接。
+----------------------------------------
+127.0.0.1 - - [28/May/2026 21:18:46] "GET /section/08-vlm-vla-and-foundation-models/06-vla-foundations/03-autoregressive-action.md HTTP/1.1" 200 -
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 53455)
+Traceback (most recent call last):
+  File "D:\Anaconda\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Anaconda\Lib\socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Anaconda\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "D:\Anaconda\Lib\http\server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Anaconda\Lib\http\server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "D:\Coding\hands-on-embodied-ai\scripts\serve_docs.py", line 1619, in do_GET
+    self.wfile.write(content)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\Anaconda\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+    ~~~~~~~~~~~~~~~~~~^^^
+ConnectionAbortedError: [WinError 10053] 你的主机中的软件中止了一个已建立的连接。
+----------------------------------------
+127.0.0.1 - - [28/May/2026 21:18:47] "GET /section/08-vlm-vla-and-foundation-models/06-vla-foundations/04-diffusion-flow-action.md HTTP/1.1" 200 -
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 58248)
+Traceback (most recent call last):
+  File "D:\Anaconda\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Anaconda\Lib\socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Anaconda\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "D:\Anaconda\Lib\http\server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Anaconda\Lib\http\server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "D:\Coding\hands-on-embodied-ai\scripts\serve_docs.py", line 1619, in do_GET
+    self.wfile.write(content)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\Anaconda\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+    ~~~~~~~~~~~~~~~~~~^^^
+ConnectionAbortedError: [WinError 10053] 你的主机中的软件中止了一个已建立的连接。
+----------------------------------------
+127.0.0.1 - - [28/May/2026 21:18:47] "GET /section/08-vlm-vla-and-foundation-models/06-vla-foundations/06-multi-embodiment.md HTTP/1.1" 200 -
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 54353)
+Traceback (most recent call last):
+  File "D:\Anaconda\Lib\socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Anaconda\Lib\socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Anaconda\Lib\socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "D:\Anaconda\Lib\http\server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Anaconda\Lib\http\server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "D:\Coding\hands-on-embodied-ai\scripts\serve_docs.py", line 1619, in do_GET
+    self.wfile.write(content)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\Anaconda\Lib\socketserver.py", line 845, in write
+    self._sock.sendall(b)
+    ~~~~~~~~~~~~~~~~~~^^^
+ConnectionAbortedError: [WinError 10053] 你的主机中的软件中止了一个已建立的连接。
+----------------------------------------
+127.0.0.1 - - [28/May/2026 21:18:48] "GET /section/08-vlm-vla-and-foundation-models/06-vla-foundations/05-3d-vla.md HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 21:18:48] "GET /section/08-vlm-vla-and-foundation-models/assets/3d-vla-pipeline.svg HTTP/1.1" 200 -

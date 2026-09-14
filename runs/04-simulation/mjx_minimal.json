@@ -1,0 +1,16 @@
+{
+  "jax_backend": "gpu",
+  "jax_devices": [
+    "cuda:0"
+  ],
+  "model": "inline_chain(n_links=8)",
+  "nq": 14,
+  "nv": 13,
+  "nu": 7,
+  "single_first_step_ms": 15729.227,
+  "single_cached_step_ms": 2.829,
+  "batch": 256,
+  "batch_first_ms": 15023.878,
+  "batch_cached_step_ms": 1.567,
+  "batch_throughput_env_steps_per_s": 163400.3
+}

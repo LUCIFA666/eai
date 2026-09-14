@@ -1,0 +1,30 @@
+openpi commit: c23745b5ad24
+found 21 TrainConfig entries in config.py
+
+name                              checkpoint
+------------------------------------------------------------------------------------------------
+pi0_aloha                         (no CheckpointWeightLoader — train from scratch)
+pi05_aloha                        (no CheckpointWeightLoader — train from scratch)
+pi0_aloha_towel                   (no CheckpointWeightLoader — train from scratch)
+pi0_aloha_tupperware              (no CheckpointWeightLoader — train from scratch)
+pi0_droid                         (no CheckpointWeightLoader — train from scratch)
+pi0_fast_droid                    (no CheckpointWeightLoader — train from scratch)
+pi05_droid                        (no CheckpointWeightLoader — train from scratch)
+pi0_libero                        gs://openpi-assets/checkpoints/pi0_base/params
+pi0_libero_low_mem_finetune       gs://openpi-assets/checkpoints/pi0_base/params
+pi0_fast_libero                   gs://openpi-assets/checkpoints/pi0_fast_base/params
+pi0_fast_libero_low_mem_finetune  gs://openpi-assets/checkpoints/pi0_fast_base/params
+pi05_libero                       gs://openpi-assets/checkpoints/pi05_base/params
+pi0_aloha_pen_uncap               gs://openpi-assets/checkpoints/pi0_base/params
+pi05_aloha_pen_uncap              gs://openpi-assets/checkpoints/pi05_base/params
+pi0_fast_full_droid_finetune      gs://openpi-assets/checkpoints/pi0_fast_base/params
+pi05_full_droid_finetune          gs://openpi-assets/checkpoints/pi05_base/params
+pi05_droid_finetune               gs://openpi-assets/checkpoints/pi05_droid/params
+pi0_aloha_sim                     gs://openpi-assets/checkpoints/pi0_base/params
+debug                             (no CheckpointWeightLoader — train from scratch)
+debug_restore                     ./checkpoints/debug/debug/9/params
+debug_pi05                        (no CheckpointWeightLoader — train from scratch)
+
+wrote runs/09-vla/openpi_configs.json
+
+[note] To actually run inference you must download a checkpoint (~5-20 GB) and `uv pip install -e .` inside reference/openpi. See section/09-vlm-vla-and-foundation-models/04-openpi-overview.md.

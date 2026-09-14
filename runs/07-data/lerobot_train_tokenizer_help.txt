@@ -1,0 +1,50 @@
+usage: lerobot-train-tokenizer [-h] [--config_path str] [--repo_id str]
+                               [--root [str]] [--action_horizon int]
+                               [--max_episodes [int]]
+                               [--sample_fraction float] [--encoded_dims str]
+                               [--delta_dims [str]]
+                               [--use_delta_transform bool] [--state_key str]
+                               [--normalization_mode str] [--vocab_size int]
+                               [--scale float] [--output_dir [str]]
+                               [--push_to_hub bool] [--hub_repo_id [str]]
+                               [--hub_private bool]
+
+options:
+  -h, --help            show this help message and exit
+  --config_path str     Path for a config file to parse with draccus (default:
+                        None)
+
+TokenizerTrainingConfig:
+  Configuration for training FAST tokenizer.
+
+  --repo_id str         LeRobot dataset repository ID (default: None)
+  --root [str]          Root directory for dataset (default:
+                        ~/.cache/huggingface/lerobot) (default: None)
+  --action_horizon int  Number of future actions in each chunk (default: 10)
+  --max_episodes [int]  Max episodes to use (None = all episodes in dataset)
+                        (default: None)
+  --sample_fraction float
+                        Fraction of chunks to sample per episode (default:
+                        0.1)
+  --encoded_dims str    Comma-separated dimension ranges to encode (e.g.,
+                        "0:6,7:23") (default: 0:6,7:23)
+  --delta_dims [str]    Comma-separated dimension indices for delta transform
+                        (e.g., "0,1,2,3,4,5") (default: None)
+  --use_delta_transform bool
+                        Whether to apply delta transform (relative actions vs
+                        absolute actions) (default: False)
+  --state_key str       Dataset key for state observations (default:
+                        "observation.state") (default: observation.state)
+  --normalization_mode str
+                        Normalization mode (MEAN_STD, MIN_MAX, QUANTILES,
+                        QUANTILE10, IDENTITY) (default: QUANTILES)
+  --vocab_size int      FAST vocabulary size (BPE vocab size) (default: 1024)
+  --scale float         DCT scaling factor (default: 10.0) (default: 10.0)
+  --output_dir [str]    Directory to save tokenizer (default:
+                        ./fast_tokenizer_{repo_id}) (default: None)
+  --push_to_hub bool    Whether to push the tokenizer to Hugging Face Hub
+                        (default: False)
+  --hub_repo_id [str]   Hub repository ID (e.g., "username/tokenizer-name").
+                        If None, uses output_dir name (default: None)
+  --hub_private bool    Whether to create a private repository on the Hub
+                        (default: False)

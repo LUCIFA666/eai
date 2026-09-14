@@ -1,0 +1,14 @@
+No,Filename,Width,Height,AspectRatio,PixelAspectRatio,SourceDisplayRatio,RatioSource,Format,HasTransparentPixels,UsageCount,DisplayRatioVariants,AssetKind,SvgRenderable,PptxNativeSupported,SizeKB,Category,ImageArea_SxS,TextArea_SxS
+1,action_distribution_shift.png,2226,1052,2.12,2.12,,native,PNG,False,1,,bitmap,True,True,149.3,Ultra-wide,812x384,328x600
+2,epoch_stage_comparison.png,2031,1019,1.99,1.99,,native,PNG,False,1,,bitmap,True,True,74.7,Wide landscape,812x407,328x600
+3,extended_metrics_curve.png,1961,747,2.63,2.63,,native,PNG,False,1,,bitmap,True,True,78.7,Ultra-wide,812x309,328x600
+4,pipeline.png,1980,576,3.44,3.44,,native,PNG,False,1,,bitmap,True,True,58.7,Ultra-wide,1160x337,1160x243
+5,plan_montage.png,1152,984,1.17,1.17,,native,PNG,False,1,,bitmap,True,True,156.9,Near square,702x600,438x600
+6,pusht_extended_final.png,6104,4522,1.35,1.35,,native,PNG,False,1,,bitmap,True,True,619.8,Standard landscape,810x600,330x600
+7,pusht_real_50_first_frame.png,736,288,2.56,2.56,,native,PNG,False,1,,bitmap,True,True,31.5,Ultra-wide,812x318,328x600
+8,reproduction-pipeline.png,1672,941,1.78,1.78,,native,PNG,False,1,,bitmap,True,True,1116.7,Wide landscape,812x457,328x600
+9,result_summary.png,1440,810,1.78,1.78,,native,PNG,False,1,,bitmap,True,True,98.9,Wide landscape,812x457,328x600
+10,tokenizer_reconstruction.png,1921,586,3.28,3.28,,native,PNG,False,1,,bitmap,True,True,90.9,Ultra-wide,1160x354,1160x226
+11,validation_matrix.png,1745,1041,1.68,1.68,,native,PNG,False,1,,bitmap,True,True,147.0,Wide landscape,812x484,328x600
+12,wall_extended_final.png,6104,4522,1.35,1.35,,native,PNG,False,1,,bitmap,True,True,1014.5,Standard landscape,810x600,330x600
+13,world_model_prediction.png,1886,586,3.22,3.22,,native,PNG,False,1,,bitmap,True,True,83.9,Ultra-wide,1160x360,1160x220

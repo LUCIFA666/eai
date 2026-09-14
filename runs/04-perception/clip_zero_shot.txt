@@ -1,0 +1,13 @@
+device = cuda
+CLIP available models: ['RN50', 'RN101', 'RN50x4'] ...
+prompt tokens shape = (6, 77)
+loading cached weights: /home/rbc/.cache/clip/ViT-B-32.pt
+
+--- Zero-shot classification on synthetic squares ---
+truth    top-1 prompt                             p_top  p_correct
+red      a photo of a red square                  0.449      0.449
+green    a photo of a green square                0.994      0.994
+blue     a photo of a blue square                 0.993      0.993
+yellow   a photo of a yellow square               0.999      0.999
+accuracy = 4/4
+wrote /data/rbc/hands-on-embodied-ai/runs/04-perception/clip_zero_shot.csv

@@ -1,0 +1,6 @@
+minigrid is not importable in this environment.
+reason: ModuleNotFoundError: No module named 'minigrid'
+remediation:
+  /data/rbc/miniconda3/envs/lerobot/bin/python -m pip install "minigrid==3.0.0"
+after install, rerun:
+  python labs/02-environment/minigrid_demo.py

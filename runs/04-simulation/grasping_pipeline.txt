@@ -1,0 +1,12 @@
+scene: nq=16 nv=15 nu=8
+block rest: [0.4, -0.0, 0.4449]
+target_site: [0.4, 0.2, 0.44]
+
+REACH  hand=[0.399, 0.0, 0.6231]
+DESCEND hand=[0.4006, 0.0, 0.5439]
+GRASP  fingers=[0.0299, 0.0299] ncon=36
+LIFT   block_z=0.5929  (dz=+0.1480)
+
+FINAL block: [0.4089, 0.1969, 0.4443]
+place xy err: 0.0094 m
+lifted: True   placed_at_target: True

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="500" viewBox="0 0 1180 500" role="img" aria-labelledby="title desc">
+  <title id="title">MoveIt 配置包 contract</title>
+  <desc id="desc">展示 URDF、SRDF、kinematics、joint limits、planning yaml 和 controller yaml 的职责。</desc>
+  <defs><style>
+    .bg{fill:#fbf8f0}.box{fill:#fff;stroke:#cfc7b8;stroke-width:2;rx:16}.g{fill:#dfeee6;stroke:#0e6b50}.o{fill:#f6e4d6;stroke:#d46b32}.b{fill:#e1ebf4;stroke:#2d5f91}.t{font:700 20px "Microsoft YaHei",Arial,sans-serif;fill:#17211d}.s{font:14px "Microsoft YaHei",Arial,sans-serif;fill:#5d6b65}.mono{font:700 16px Consolas,monospace;fill:#17211d}.arrow{stroke:#d46b32;stroke-width:3;fill:none;marker-end:url(#arrow)}
+  </style><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#d46b32"/></marker></defs>
+  <rect class="bg" width="1180" height="500"/>
+  <text x="42" y="52" class="t">MoveIt config package：机器人能不能规划，取决于一组文件共同成立</text>
+  <rect x="50" y="100" width="210" height="110" class="box g"/><text x="78" y="137" class="mono">URDF / xacro</text><text x="78" y="168" class="s">link / joint</text><text x="78" y="190" class="s">visual / collision</text>
+  <rect x="310" y="100" width="210" height="110" class="box o"/><text x="338" y="137" class="mono">SRDF</text><text x="338" y="168" class="s">planning groups</text><text x="338" y="190" class="s">eef / poses / collisions</text>
+  <rect x="570" y="100" width="250" height="110" class="box b"/><text x="598" y="137" class="mono">kinematics.yaml</text><text x="598" y="168" class="s">IK solver</text><text x="598" y="190" class="s">solver parameters</text>
+  <rect x="870" y="100" width="250" height="110" class="box"/><text x="898" y="137" class="mono">joint_limits.yaml</text><text x="898" y="168" class="s">velocity / acceleration</text><text x="898" y="190" class="s">scaling limits</text>
+  <rect x="180" y="280" width="250" height="110" class="box"/><text x="208" y="317" class="mono">*_planning.yaml</text><text x="208" y="348" class="s">pipelines / planner id</text><text x="208" y="370" class="s">OMPL / Pilz / CHOMP</text>
+  <rect x="465" y="280" width="250" height="110" class="box g"/><text x="493" y="317" class="mono">moveit_controllers.yaml</text><text x="493" y="348" class="s">controllers</text><text x="493" y="370" class="s">FollowJointTrajectory</text>
+  <rect x="750" y="280" width="250" height="110" class="box o"/><text x="778" y="317" class="mono">MoveItConfigsBuilder</text><text x="778" y="348" class="s">launch 中加载配置</text><text x="778" y="370" class="s">robot_description 等参数</text>
+  <path d="M260 155 H305" class="arrow"/><path d="M520 155 H565" class="arrow"/><path d="M820 155 H865" class="arrow"/>
+  <path d="M415 210 L330 275" class="arrow"/><path d="M695 210 L590 275" class="arrow"/><path d="M995 210 L875 275" class="arrow"/>
+</svg>

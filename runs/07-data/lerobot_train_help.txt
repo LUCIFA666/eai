@@ -1,0 +1,24 @@
+Traceback (most recent call last):
+  File "/data/rbc/miniconda3/envs/lerobot/bin/lerobot-train", line 3, in <module>
+    from lerobot.scripts.lerobot_train import main
+  File "/data/rbc/lerobot/src/lerobot/scripts/lerobot_train.py", line 33, in <module>
+    from lerobot.envs.factory import make_env, make_env_pre_post_processors
+  File "/data/rbc/lerobot/src/lerobot/envs/factory.py", line 25, in <module>
+    from lerobot.policies.xvla.configuration_xvla import XVLAConfig
+  File "/data/rbc/lerobot/src/lerobot/policies/__init__.py", line 17, in <module>
+    from .groot.configuration_groot import GrootConfig as GrootConfig
+  File "/data/rbc/lerobot/src/lerobot/policies/groot/__init__.py", line 18, in <module>
+    from .modeling_groot import GrootPolicy
+  File "/data/rbc/lerobot/src/lerobot/policies/groot/modeling_groot.py", line 46, in <module>
+    from lerobot.policies.groot.groot_n1 import GR00TN15
+  File "/data/rbc/lerobot/src/lerobot/policies/groot/groot_n1.py", line 177, in <module>
+    class GR00TN15Config(PretrainedConfig):
+  File "/data/rbc/miniconda3/envs/lerobot/lib/python3.10/dataclasses.py", line 1184, in dataclass
+    return wrap(cls)
+  File "/data/rbc/miniconda3/envs/lerobot/lib/python3.10/dataclasses.py", line 1175, in wrap
+    return _process_class(cls, init, repr, eq, order, unsafe_hash,
+  File "/data/rbc/miniconda3/envs/lerobot/lib/python3.10/dataclasses.py", line 1024, in _process_class
+    _init_fn(all_init_fields,
+  File "/data/rbc/miniconda3/envs/lerobot/lib/python3.10/dataclasses.py", line 544, in _init_fn
+    raise TypeError(f'non-default argument {f.name!r} '
+TypeError: non-default argument 'backbone_cfg' follows default argument

@@ -1,0 +1,12 @@
+{
+  "status": "ok",
+  "env": "Pendulum-v1",
+  "algo": "SAC",
+  "total_timesteps": 15000,
+  "eval_episodes": 20,
+  "eval_return_mean": -175.88908555,
+  "eval_return_std": 95.81130147044348,
+  "wall_clock_s": 154.2,
+  "steps_per_sec": 97,
+  "sb3_version": "2.8.0"
+}

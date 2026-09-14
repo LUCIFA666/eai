@@ -1,0 +1,12 @@
+{
+  "status": "ok",
+  "env": "CartPole-v1",
+  "script": "reference/cleanrl/cleanrl/ppo.py",
+  "total_timesteps": 50000,
+  "final_sps": 4818,
+  "final_value_loss": 61.4383,
+  "final_policy_loss": -0.0,
+  "final_entropy": 0.5381,
+  "final_explained_variance": 0.1012,
+  "note": "cleanrl/ppo.py targets gym <= 0.26; episodic_return is logged in TensorBoard, not stdout, because gymnasium 1.x replaced `infos['final_info']` with `infos['_final_info']`. The training loop and TB logging work end-to-end; we read the metrics from runs/CartPole-v1__ppo__1__<ts>/events.out.tfevents.* via the tensorboard EventAccumulator."
+}

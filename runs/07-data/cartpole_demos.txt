@@ -1,0 +1,8 @@
+mode          : scripted (no DISPLAY)
+episodes      : 20
+obs shape     : (9823, 4)  (x, x_dot, theta, theta_dot)
+act shape     : (9823,)  (discrete left=0, right=1)
+return mean   : 491.1  (CartPole-v1 max=500)
+return median : 500.0
+return p10    : 500.0
+wrote runs/07-data/cartpole_demos.npz (270.0 KiB)

@@ -1,0 +1,81 @@
+{
+  "observation": {
+    "schema_version": "perception_observation_v1",
+    "timestamp": "2026-05-30T10:18:24.120Z",
+    "frame_graph": {
+      "world": "world",
+      "robot_base": "panda_link0",
+      "camera": "wrist_color_optical_frame",
+      "gripper": "gripper_tcp"
+    },
+    "objects": [
+      {
+        "object_id": "mug_01",
+        "label": "red mug",
+        "bbox_xyxy": [
+          412,
+          208,
+          610,
+          470
+        ],
+        "pose": {
+          "frame_id": "panda_link0",
+          "xyz_m": [
+            0.43,
+            -0.12,
+            0.08
+          ],
+          "quat_xyzw": [
+            0.0,
+            0.0,
+            0.71,
+            0.7
+          ]
+        },
+        "confidence": 0.84,
+        "staleness_ms": 37,
+        "failure_code": null
+      },
+      {
+        "object_id": "bowl_01",
+        "label": "white bowl",
+        "bbox_xyxy": [
+          138,
+          190,
+          332,
+          411
+        ],
+        "pose": {
+          "frame_id": "panda_link0",
+          "xyz_m": [
+            0.31,
+            0.16,
+            0.07
+          ],
+          "quat_xyzw": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        "confidence": 0.58,
+        "staleness_ms": 24,
+        "failure_code": "ambiguous_target"
+      }
+    ],
+    "contacts": [
+      {
+        "event_type": "stable_grasp",
+        "frame_id": "gripper_tcp",
+        "force_norm_n": 4.8,
+        "confidence": 0.81,
+        "failure_code": null
+      }
+    ]
+  },
+  "suggested_actions": {
+    "mug_01": "execute",
+    "bowl_01": "degrade"
+  }
+}

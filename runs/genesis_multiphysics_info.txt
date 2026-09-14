@@ -1,0 +1,19 @@
+=== Genesis Multi-Object Rigid Demo ===
+Genesis version : 0.4.7
+Entities        : 4
+  [0] Plane       (rigid ground)
+  [1] Box 10cm    (rigid, dropped from 0.5m)
+  [2] Sphere r=6cm (rigid, dropped from 0.8m)
+  [3] Cylinder    (rigid, dropped from 0.6m)
+
+--- Simulating 500 steps (2.5s at dt=0.005) ---
+  step 100: box z=0.0500, sphere z=0.0591, cyl z=0.0600
+  step 200: box z=0.0500, sphere z=0.0599, cyl z=0.0600
+  step 300: box z=0.0500, sphere z=0.0599, cyl z=0.0600
+  step 400: box z=0.0500, sphere z=0.0599, cyl z=0.0600
+  step 500: box z=0.0500, sphere z=0.0599, cyl z=0.0600
+
+--- Final state ---
+  Box        pos: [+0.0000, -0.0000, +0.0500]  settled: yes
+  Sphere     pos: [-0.0000, +0.2000, +0.0599]  settled: yes
+  Cylinder   pos: [+0.1500, -0.1000, +0.0600]  settled: yes

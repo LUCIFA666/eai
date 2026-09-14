@@ -1,0 +1,25 @@
+truth,prompt,score
+red,"a photo of a red square",0.44946
+red,"a photo of a green square",0.04181
+red,"a photo of a blue square",0.11731
+red,"a photo of a yellow square",0.39062
+red,"a photo of a cat",0.00068
+red,"a photo of a robot arm",0.00005
+green,"a photo of a red square",0.00010
+green,"a photo of a green square",0.99365
+green,"a photo of a blue square",0.00093
+green,"a photo of a yellow square",0.00546
+green,"a photo of a cat",0.00001
+green,"a photo of a robot arm",0.00000
+blue,"a photo of a red square",0.00031
+blue,"a photo of a green square",0.00088
+blue,"a photo of a blue square",0.99268
+blue,"a photo of a yellow square",0.00628
+blue,"a photo of a cat",0.00004
+blue,"a photo of a robot arm",0.00000
+yellow,"a photo of a red square",0.00002
+yellow,"a photo of a green square",0.00071
+yellow,"a photo of a blue square",0.00040
+yellow,"a photo of a yellow square",0.99902
+yellow,"a photo of a cat",0.00000
+yellow,"a photo of a robot arm",0.00000

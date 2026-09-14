@@ -1,0 +1,10 @@
+image size = 640x480, fx=525.0, fy=525.0, cx=320.0, cy=240.0
+depth range: 0.570 .. 0.750 m
+valid pixels = 306,075 / 307,200 (99.63%)
+point cloud xyz bounds  min = [-0.4571 -0.3429  0.57  ]
+point cloud xyz bounds  max = [0.4557 0.3414 0.75  ]
+wrote /data/rbc/hands-on-embodied-ai/runs/04-perception/scene.ply
+wrote /data/rbc/hands-on-embodied-ai/runs/04-perception/scene_rgb.png
+wrote /data/rbc/hands-on-embodied-ai/runs/04-perception/scene_depth_mm.png
+reprojection round-trip max error = 3.05e-05 px
+wrote /data/rbc/hands-on-embodied-ai/runs/04-perception/scene.pcd (open3d available)

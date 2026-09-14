@@ -1,0 +1,13 @@
+Third-party media provenance for the control-methods chapter.
+
+OCS2 double-integrator GIF:
+https://github.com/leggedrobotics/ocs2/blob/main/ocs2_doc/tools/sphinx/_static/gif/double_integrator.gif
+
+OCS2 Franka mobile-manipulator GIF:
+https://github.com/leggedrobotics/ocs2/blob/main/ocs2_doc/tools/sphinx/_static/gif/mobile_manipulator/franka.gif
+
+Pink banner PNG:
+https://user-images.githubusercontent.com/1189580/192318997-ed7574c3-8238-451d-9548-a769d46ec03b.png
+
+The original upstream projects retain their respective licenses. The SVG files
+next to this note are original diagrams created for this curriculum.

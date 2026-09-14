@@ -1,0 +1,7 @@
+[load] reference/mujoco_menagerie/franka_emika_panda/scene.xml
+[info] nq=9 nv=9 nu=8 timestep=0.0020
+[info] bodies=12 joints=9 actuators=8
+[write] runs/04-simulation/mujoco_first_sim.mp4  (200 frames)
+[write] runs/04-simulation/mujoco_first_sim.png
+[write] runs/04-simulation/mujoco_first_sim.txt
+{"mujoco_version": "3.8.1", "model_path": "reference/mujoco_menagerie/franka_emika_panda/scene.xml", "model_name": "scene.xml", "nq": 9, "nv": 9, "nu": 8, "nbody": 12, "njnt": 9, "timestep": 0.002, "frames": 200, "wall_time_final": 2.0000000000000013, "final_qpos_head": [0.8201292906246583, 0.3854488681164834, 0.29416833860682984, -1.6221542844154961, -0.4517609122778444, 1.3940621205167691, -0.8583469087258296]}

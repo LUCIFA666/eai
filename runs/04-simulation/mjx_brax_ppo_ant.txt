@@ -1,0 +1,48 @@
+JAX backend: gpu
+JAX devices: ['cuda:0']
+Env: ant  (backend=mjx)
+obs_size=27  action_size=8
+num_timesteps: 50,000,000  |  num_envs: 4096
+
+Wall-clock (incl. compile + eval): 148.8 s  (2.48 min)
+Overall throughput: 335952 env-steps/s (incl. compile + eval)
+Steady-state training throughput: 920698 env-steps/s
+
+Final eval metrics:
+  step: 50135040
+  eval/walltime: 55.263296127319336
+  training/sps: 915674.4122742879
+  training/walltime: 73.05479741096497
+  training/entropy_loss: 0.08855170756578445
+  training/kl_mean: 0.021792976185679436
+  training/learning_rate: 0.00029999998514540493
+  training/policy_dist_mean_std: 0.09704455733299255
+  training/policy_loss: 0.0030236642342060804
+  training/total_loss: 0.14861401915550232
+  training/v_loss: 0.057038649916648865
+  eval/episode_distance_from_origin: 75162.515625
+  eval/episode_forward_reward: 3126.005615234375
+  eval/episode_reward: 3643.41748046875
+  eval/episode_reward_contact: 0.0
+  eval/episode_reward_ctrl: -275.0444641113281
+  eval/episode_reward_forward: 3126.005615234375
+  eval/episode_reward_survive: 792.46875
+  eval/episode_x_position: 73836.5625
+  eval/episode_x_velocity: 3126.005615234375
+  eval/episode_y_position: 13882.7099609375
+  eval/episode_y_velocity: 591.7835693359375
+  eval/episode_distance_from_origin_std: 40132.96484375
+  eval/episode_forward_reward_std: 1465.2802734375
+  eval/episode_reward_std: 1698.649658203125
+  eval/episode_reward_contact_std: 0.0
+  eval/episode_reward_ctrl_std: 123.75484466552734
+  eval/episode_reward_forward_std: 1465.2802734375
+  eval/episode_reward_survive_std: 357.4493103027344
+  eval/episode_x_position_std: 39427.78515625
+  eval/episode_x_velocity_std: 1465.2802734375
+  eval/episode_y_position_std: 7589.583984375
+  eval/episode_y_velocity_std: 280.6464538574219
+  eval/avg_episode_length: 792.46875
+  eval/std_episode_length: 357.4493103027344
+  eval/epoch_eval_time: 1.5897586345672607
+  eval/sps: 80515.36706063696

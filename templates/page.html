@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{title}} · 动手学具身 AI</title>
+  <link rel="stylesheet" href="/static/base.css" />
+  <link rel="stylesheet" href="/static/highlight.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" />
+</head>
+<body>
+  <div class="shell">
+    <aside>
+      <a class="brand" href="/README.md">动手学具身 AI<span>Markdown Docs</span></a>
+      <nav aria-label="章节导航">
+        {{nav}}
+      </nav>
+    </aside>
+    <main>
+      <div class="path">{{breadcrumb}}</div>
+      <article>
+        {{body}}
+      </article>
+      {{prevnext}}
+    </main>
+  </div>
+  <script src="/static/reload.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.querySelector('article'), {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$',  right: '$',  display: false}
+      ]
+    })"></script>
+</body>
+</html>

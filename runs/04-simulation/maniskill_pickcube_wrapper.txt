@@ -1,0 +1,14 @@
+{
+  "observation_space": "Box(-inf, inf, (42,), float32)",
+  "action_space": "Box(-1.0, 1.0, (7,), float32)",
+  "obs_type": "ndarray",
+  "obs_shape": [
+    42
+  ],
+  "reward": 0.06842513382434845,
+  "reward_type": "float",
+  "terminated_type": "bool",
+  "truncated_type": "bool",
+  "success": false,
+  "success_type": "bool"
+}

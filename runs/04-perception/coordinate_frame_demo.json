@@ -1,0 +1,45 @@
+{
+  "frame_graph": {
+    "target_frame": "robot_base",
+    "source_frame": "wrist_color_optical_frame"
+  },
+  "transform": {
+    "T_base_camera": [
+      [
+        0.922806,
+        -0.338031,
+        0.184835,
+        0.42
+      ],
+      [
+        0.299838,
+        0.931397,
+        0.206392,
+        -0.18
+      ],
+      [
+        -0.241922,
+        -0.135039,
+        0.960853,
+        0.72
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "point_camera_xyz_m": [
+    0.08,
+    -0.03,
+    0.55
+  ],
+  "point_base_xyz_m": [
+    0.605625,
+    -0.070439,
+    1.233167
+  ],
+  "roundtrip_error_mm": 0.0
+}

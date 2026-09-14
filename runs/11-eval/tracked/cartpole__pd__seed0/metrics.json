@@ -1,0 +1,6 @@
+{
+  "success_rate": 0.8,
+  "episodes": 5,
+  "env": "CartPole-v1",
+  "policy": "PD"
+}

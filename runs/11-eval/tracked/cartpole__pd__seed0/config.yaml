@@ -1,0 +1,14 @@
+env: cartpole
+policy: pd
+seed: 0
+n_episodes: 5
+env_cfg:
+  name: CartPole-v1
+  max_steps: 200
+  obs_dim: 4
+  act_dim: 2
+policy_cfg:
+  kind: PD
+  kp: 15.0
+  kd: 0.6
+  params_count: 2

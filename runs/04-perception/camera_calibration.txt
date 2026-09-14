@@ -1,0 +1,35 @@
+image size = 1280x720, chessboard = 9x6, square = 25 mm
+ground-truth K =
+ [[ 950.    0.  644.]
+ [   0.  950.  357.]
+ [   0.    0.    1.]]
+ground-truth dist = [-0.1   0.04  0.    0.    0.  ]
+
+--- pixel noise std = 0.00 px, views used = 36 ---
+recovered K =
+ [[ 950.        0.      644.    ]
+ [   0.      950.      356.9999]
+ [   0.        0.        1.    ]]
+recovered dist = [-0.1   0.04 -0.    0.   -0.  ]
+RMS reprojection error = 0.0000 px
+fx err = 0.000% | fy err = 0.000% | cx err = 0.000% | cy err = 0.000%
+
+--- pixel noise std = 0.25 px, views used = 36 ---
+recovered K =
+ [[ 949.9004    0.      646.2752]
+ [   0.      950.032   355.6986]
+ [   0.        0.        1.    ]]
+recovered dist = [-0.0933 -0.027  -0.0004  0.0004  0.1917]
+RMS reprojection error = 0.3448 px
+fx err = 0.010% | fy err = 0.003% | cx err = 0.353% | cy err = 0.365%
+
+--- pixel noise std = 0.50 px, views used = 36 ---
+recovered K =
+ [[ 949.8109    0.      648.5092]
+ [   0.      950.0786  354.4491]
+ [   0.        0.        1.    ]]
+recovered dist = [-0.087  -0.0895 -0.0008  0.0007  0.3678]
+RMS reprojection error = 0.6897 px
+fx err = 0.020% | fy err = 0.008% | cx err = 0.700% | cy err = 0.715%
+
+>>> noiseless check: max relative intrinsic error = 0.0000% (threshold 0.5%) | RMS = 1.75e-05 px | views = 36

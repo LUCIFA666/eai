@@ -1,0 +1,25 @@
+--- ground-truth pose ---
+R =
+ [[ 0.7698 -0.6265 -0.1222]
+ [ 0.539   0.7405 -0.4015]
+ [ 0.342   0.2432  0.9077]]
+t = [ 0.04 -0.03  0.55] (metres)
+
+image = 1024x768, focal = 900.0 px, model points = 14
+
+method      noise_px   rot_err_deg   t_err_mm  reproj_px
+ITERATIVE       0.00        0.0000     0.0000     0.0000
+EPNP            0.00        0.0000     0.0000     0.0000
+SQPNP           0.00        0.0000     0.0000     0.0000
+ITERATIVE       0.50        0.3276     1.1991     0.3566
+EPNP            0.50        0.3554     1.2101     0.3574
+SQPNP           0.50        0.3494     1.3621     0.3559
+ITERATIVE       1.50        0.5320     0.6268     1.6387
+EPNP            1.50        0.6068     0.2947     1.6612
+SQPNP           1.50        0.6281     1.8137     1.6464
+
+--- RANSAC PnP with 2 outlier(s) out of 14 ---
+inliers = 12/14 | rot_err = 0.0563 deg | t_err = 4.210 mm
+
+wrote /data/rbc/hands-on-embodied-ai/runs/04-perception/pnp_pose.csv
+>>> PASS: noiseless PnP exact, RANSAC PnP robust to 20% outliers.

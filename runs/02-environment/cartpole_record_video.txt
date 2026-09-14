@@ -1,0 +1,6 @@
+steps          : 18
+terminated     : True
+frames written : 19
+mp4            : cartpole_rollout.mp4 (8226 bytes)
+gif            : cartpole_rollout.gif (30317 bytes)
+json           : cartpole_rollout.json

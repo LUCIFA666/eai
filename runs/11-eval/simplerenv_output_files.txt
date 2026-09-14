@@ -1,0 +1,23 @@
+runs/11-eval/simplerenv_step_debug:
+total 412K
+-rw-rw-r-- 1 hndx hndx 1.6K 6月 8 09:52 result.json
+-rw-rw-r-- 1 hndx hndx 204K 6月 8 09:52 step_000_reset.png
+-rw-rw-r-- 1 hndx hndx 204K 6月 8 09:52 step_001_after_zero_action.png
+
+runs/11-eval/simplerenv_rollout_video_zero:
+total 44K
+drwxrwxr-x 2 hndx hndx 4.0K 6月 8 09:56 frames
+-rw-rw-r-- 1 hndx hndx 4.7K 6月 8 09:56 result.json
+-rw-rw-r-- 1 hndx hndx 32K 6月 8 09:56 rollout.mp4
+
+runs/11-eval/simplerenv_rollout_video_small:
+total 56K
+drwxrwxr-x 2 hndx hndx 4.0K 6月 8 09:58 frames
+-rw-rw-r-- 1 hndx hndx 5.2K 6月 8 09:58 result.json
+-rw-rw-r-- 1 hndx hndx 42K 6月 8 09:58 rollout.mp4
+
+runs/11-eval/simplerenv_rollout_video_small_008:
+total 88K
+drwxrwxr-x 2 hndx hndx 4.0K 6月 8 frames
+-rw-rw-r-- 1 hndx hndx 9.2K result.json
+-rw-rw-r-- 1 hndx hndx 76K rollout.mp4

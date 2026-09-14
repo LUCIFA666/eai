@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="content" font-family="SimSun, Georgia, serif">
+  <rect id="paper-background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#F5F0E6"/>
+  <g id="page-title" data-pptx-bounds="46 26 1186 74">
+    <text x="46" y="72" font-family="DengXian, Impact, sans-serif" font-size="38" font-weight="bold" fill="#111111">DINO-WM：预训练视觉特征可以直接成为规划空间</text>
+    <path d="M49 88 C335 79 668 95 1021 84" fill="none" stroke="#2D5B8A" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <g id="planning-evidence" data-pptx-bounds="50 112 650 352">
+    <path d="M55 116 C224 108 478 112 693 119 C697 229 696 350 689 455 C483 462 249 458 54 452 C48 338 49 221 55 116 Z" fill="#FFFFFF" stroke="#111111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <image href="../images/plan_montage.png" x="70" y="132" width="610" height="305" preserveAspectRatio="xMidYMid meet"/>
+    <text x="76" y="452" font-family="DengXian, Impact, sans-serif" font-size="18" fill="#625E57">PointMaze 规划迭代拼图｜完整帧与标签保留</text>
+  </g>
+  <g id="dino-results" data-pptx-bounds="730 112 500 352">
+    <text x="744" y="150" font-family="DengXian, Impact, sans-serif" font-size="24" font-weight="bold" fill="#2D5B8A">有界评估结果</text>
+    <text x="744" y="221" font-family="DengXian, Consolas, monospace" font-size="72" font-weight="bold" fill="#2F7D5C">1.00</text>
+    <text x="956" y="219" font-size="24" fill="#191919">PointMaze</text>
+    <text x="744" y="291" font-family="DengXian, Consolas, monospace" font-size="44" font-weight="bold" fill="#D94841">43 / 50</text>
+    <text x="956" y="289" font-size="24" fill="#191919">PushT · 86%</text>
+    <text x="744" y="344" font-family="DengXian, Consolas, monospace" font-size="44" font-weight="bold" fill="#D94841">47 / 50</text>
+    <text x="956" y="342" font-size="24" fill="#191919">Wall · 94%</text>
+    <path d="M744 367 C879 360 1024 370 1199 361" fill="none" stroke="#C8C0B3" stroke-width="3" stroke-linecap="round"/>
+    <text x="744" y="401" font-size="18" fill="#625E57">seed=99 · 50 evals · 300 samples · 10 opt steps</text>
+    <text x="744" y="428" font-family="DengXian, Impact, sans-serif" font-size="24" font-weight="bold" fill="#D94841">我的理解：保留目标匹配几何，<tspan x="744" dy="28">无需先重建每个像素。</tspan></text>
+  </g>
+  <g id="dino-metrics-strip" data-pptx-bounds="50 486 1180 164">
+    <path d="M53 491 C343 482 779 488 1223 495 C1227 541 1222 597 1218 642 C816 651 405 648 54 640 C48 593 48 539 53 491 Z" fill="#FFFFFF" stroke="#111111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <image href="../images/extended_metrics_curve.png" x="70" y="505" width="1140" height="120" preserveAspectRatio="xMidYMid meet"/>
+    <text x="76" y="641" font-family="DengXian, Impact, sans-serif" font-size="18" fill="#625E57">PushT / Wall 50 次评估曲线｜Wilson 95% CI：PushT [0.738, 0.930]；Wall [0.838, 0.979]</text>
+  </g>
+  <text id="page-number" data-pptx-role="page-number" x="1230" y="688" text-anchor="end" font-family="DengXian, Impact, sans-serif" font-size="18" fill="#625E57">04</text>
+</svg>

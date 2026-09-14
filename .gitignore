@@ -1,0 +1,16 @@
+.omx/
+doc/
+reference/
+task_plan.md
+findings.md
+progress.md
+__pycache__/
+*.py[cod]
+MUJOCO_LOG.TXT
+.idea
+**/.omc/
+AGENTS.md
+CLAUDE.md
+CLAUDE.md.local
+model-*.safetensors
+runs/

@@ -1,0 +1,3 @@
+planner,tree_size,iterations,time_ms,path_length_m
+RRT,193,258,19.48,16.3124
+RRT*,3277,4000,10534.84,12.6522

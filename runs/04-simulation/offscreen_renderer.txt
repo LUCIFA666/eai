@@ -1,0 +1,5 @@
+RGB: shape=(240, 320, 3) dtype=uint8 min=0 max=210
+depth: shape=(240, 320) dtype=float32 min=1.028 max=48.710 (meters)
+seg: shape=(240, 320, 2) dtype=int32 unique_obj_ids=[-1, 0, 1]
+try/finally RGB: shape=(240, 320, 3)
+multi-frame: rendered 10 frames, each (240, 320, 3)

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" data-pptx-page-role="content" font-family="SimSun, Georgia, serif">
+  <rect id="paper-background" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#F5F0E6"/>
+  <g id="page-title" data-pptx-bounds="46 28 1186 74">
+    <text x="46" y="74" font-family="DengXian, Impact, sans-serif" font-size="38" font-weight="bold" fill="#111111">跨四条路线，我形成了三条统一判断</text>
+    <path d="M49 90 C238 81 480 95 723 85" fill="none" stroke="#D94841" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <g id="judgment-one" data-pptx-bounds="60 135 1160 130">
+    <text x="64" y="220" font-family="DengXian, Consolas, monospace" font-size="72" font-weight="bold" fill="#2D5B8A">01</text>
+    <text x="190" y="180" font-family="DengXian, Impact, sans-serif" font-size="38" font-weight="bold" fill="#111111">表征不等于重建</text>
+    <text x="190" y="224" font-size="24" fill="#625E57">DINO-WM / LeWM：特征几何能支持目标匹配，就不必重建每个像素。</text>
+    <path d="M182 245 C472 236 814 253 1194 241" fill="none" stroke="#C8C0B3" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <g id="judgment-two" data-pptx-bounds="60 285 1160 130">
+    <text x="64" y="370" font-family="DengXian, Consolas, monospace" font-size="72" font-weight="bold" fill="#D94841">02</text>
+    <text x="190" y="330" font-family="DengXian, Impact, sans-serif" font-size="38" font-weight="bold" fill="#111111">预测不等于一张图</text>
+    <text x="190" y="374" font-size="24" fill="#625E57">Δ-IRIS：随机未来应报告条件分布、典型误差与不确定性边界。</text>
+    <path d="M182 395 C471 385 817 402 1194 390" fill="none" stroke="#C8C0B3" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <g id="judgment-three" data-pptx-bounds="60 435 1160 130">
+    <text x="64" y="520" font-family="DengXian, Consolas, monospace" font-size="72" font-weight="bold" fill="#2F7D5C">03</text>
+    <text x="190" y="480" font-family="DengXian, Impact, sans-serif" font-size="38" font-weight="bold" fill="#111111">规划不等于长 rollout</text>
+    <text x="190" y="524" font-size="24" fill="#625E57">TD-MPC2：短期模型预测 + terminal Q + policy prior，也能形成可扩展闭环。</text>
+    <path d="M182 545 C470 535 815 552 1194 540" fill="none" stroke="#C8C0B3" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <g id="unified-answer" data-pptx-bounds="80 590 1120 70">
+    <path d="M224 599 C416 582 839 588 1054 606 C1042 641 805 654 439 647 C315 644 239 627 224 599 Z" fill="#E4DED2" fill-opacity="0.72" stroke="#D94841" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="640" y="634" text-anchor="middle" font-family="DengXian, Impact, sans-serif" font-size="32" font-weight="bold" fill="#D94841">好的世界模型 = 任务相关表示 + 可校准不确定性 + 闭环决策价值</text>
+  </g>
+  <text id="page-number" data-pptx-role="page-number" x="1230" y="688" text-anchor="end" font-family="DengXian, Impact, sans-serif" font-size="18" fill="#625E57">09</text>
+</svg>

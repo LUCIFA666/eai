@@ -1,0 +1,9 @@
+/* highlight.css — 代码高亮主题（独立文件，可单独替换）。
+   渲染器只产出 .syntax-* 类（见 templates/CONTRACT.md），颜色全在这里定义。 */
+
+.syntax-keyword { color: #9b4f16; font-weight: 800; }
+.syntax-builtin { color: #42677a; font-weight: 700; }
+.syntax-string  { color: #0b6f64; }
+.syntax-number  { color: #7a5c12; }
+.syntax-comment { color: #7a8580; font-style: italic; }
+.syntax-heading { color: #0b6f64; font-weight: 800; }

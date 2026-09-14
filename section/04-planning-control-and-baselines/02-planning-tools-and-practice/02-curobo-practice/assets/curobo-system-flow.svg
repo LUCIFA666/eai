@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 360" role="img" aria-labelledby="title desc">
+  <title id="title">cuRobo 系统数据流</title><desc id="desc">从任务目标和机器人场景输入，经 cuRobo 求解，到轨迹执行。</desc>
+  <defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#f3faf7"/><stop offset="1" stop-color="#eef4ff"/></linearGradient><marker id="a" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0 0L10 3L0 6Z" fill="#287b65"/></marker></defs>
+  <rect width="1100" height="360" rx="28" fill="url(#bg)"/>
+  <g font-family="Arial,'Microsoft YaHei',sans-serif" text-anchor="middle"><text x="550" y="48" font-size="25" font-weight="700" fill="#17231f">从任务目标到可执行轨迹</text>
+    <g fill="#fff" stroke="#b8d5cb" stroke-width="2"><rect x="45" y="112" width="190" height="118" rx="18"/><rect x="285" y="82" width="220" height="178" rx="18"/><rect x="555" y="82" width="260" height="178" rx="18"/><rect x="865" y="112" width="190" height="118" rx="18"/></g>
+    <g fill="#17231f"><text x="140" y="151" font-size="20" font-weight="700">任务 / 视觉</text><text x="140" y="184" font-size="16">目标末端位姿</text>
+      <text x="395" y="120" font-size="20" font-weight="700">规划输入</text><text x="395" y="157" font-size="16">RobotConfig</text><text x="395" y="188" font-size="16">当前 JointState</text><text x="395" y="219" font-size="16">Scene</text>
+      <text x="685" y="120" font-size="20" font-weight="700" fill="#14795c">cuRobo</text><text x="685" y="154" font-size="15">FK · IK · Collision</text><text x="685" y="184" font-size="15">Trajectory Optimization</text><text x="685" y="214" font-size="15">Graph Planning</text>
+      <text x="960" y="151" font-size="20" font-weight="700">执行端</text><text x="960" y="181" font-size="16">仿真器 / ROS 2</text><text x="960" y="207" font-size="14" fill="#52615c">带时间的关节轨迹</text></g>
+    <g stroke="#287b65" stroke-width="4" fill="none" marker-end="url(#a)"><path d="M235 171H278"/><path d="M505 171H548"/><path d="M815 171H858"/></g>
+  </g>
+</svg>
