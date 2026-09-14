@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 300" role="img" aria-labelledby="title desc">
+  <title id="title">VLA 基础六层路线</title>
+  <desc id="desc">从动作表示到动作 token、自回归、扩散和 flow，再到 3D VLA 与多本体训练。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#0f766e"/>
+    </marker>
+    <style>
+      .box { fill: #fbfaf6; stroke: #0f766e; stroke-width: 2; rx: 10; }
+      .soft { fill: #e7f3ef; }
+      .amber { fill: #fff2d8; stroke: #a15c07; }
+      .blue { fill: #eaf1ff; stroke: #2563eb; }
+      .clay { fill: #f8e7df; stroke: #a2472c; }
+      .gray { fill: #f1f3ee; stroke: #66736f; }
+      .title { font: 700 16px sans-serif; fill: #17211f; }
+      .small { font: 13px sans-serif; fill: #66736f; }
+      .label { font: 700 13px sans-serif; fill: #0f766e; }
+      .line { stroke: #0f766e; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect x="20" y="95" width="130" height="88" class="box soft"/>
+  <text x="85" y="125" text-anchor="middle" class="label">8.1.1</text>
+  <text x="85" y="149" text-anchor="middle" class="title">Action</text>
+  <text x="85" y="168" text-anchor="middle" class="small">表示物理命令</text>
+
+  <path d="M150 139 H195" class="line"/>
+  <rect x="195" y="95" width="130" height="88" class="box amber"/>
+  <text x="260" y="125" text-anchor="middle" class="label">8.1.2</text>
+  <text x="260" y="149" text-anchor="middle" class="title">Tokenization</text>
+  <text x="260" y="168" text-anchor="middle" class="small">连续值进模型</text>
+
+  <path d="M325 139 C350 139 356 80 385 80" class="line"/>
+  <path d="M325 139 C350 139 356 198 385 198" class="line"/>
+
+  <rect x="385" y="42" width="150" height="88" class="box blue"/>
+  <text x="460" y="72" text-anchor="middle" class="label">8.1.3</text>
+  <text x="460" y="96" text-anchor="middle" class="title">Autoregressive</text>
+  <text x="460" y="115" text-anchor="middle" class="small">逐 token 解码</text>
+
+  <rect x="385" y="170" width="150" height="88" class="box clay"/>
+  <text x="460" y="200" text-anchor="middle" class="label">8.1.4</text>
+  <text x="460" y="224" text-anchor="middle" class="title">Diffusion / Flow</text>
+  <text x="460" y="243" text-anchor="middle" class="small">连续 chunk 生成</text>
+
+  <path d="M535 86 C575 86 580 139 620 139" class="line"/>
+  <path d="M535 214 C575 214 580 139 620 139" class="line"/>
+
+  <rect x="620" y="95" width="130" height="88" class="box gray"/>
+  <text x="685" y="125" text-anchor="middle" class="label">8.1.5</text>
+  <text x="685" y="149" text-anchor="middle" class="title">3D VLA</text>
+  <text x="685" y="168" text-anchor="middle" class="small">空间输入对齐</text>
+
+  <path d="M750 139 H805" class="line"/>
+  <rect x="805" y="95" width="145" height="88" class="box soft"/>
+  <text x="877" y="125" text-anchor="middle" class="label">8.1.6</text>
+  <text x="877" y="149" text-anchor="middle" class="title">Multi-Embodiment</text>
+  <text x="877" y="168" text-anchor="middle" class="small">多个身体共训</text>
+
+  <text x="490" y="286" text-anchor="middle" class="small">动作先有物理语义，再进入模型表示，最后回到空间和机器人本体对齐。</text>
+</svg>

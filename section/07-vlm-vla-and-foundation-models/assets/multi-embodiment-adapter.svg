@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 330" role="img" aria-labelledby="title desc">
+  <title id="title">多本体训练接口</title>
+  <desc id="desc">不同机器人数据集通过 metadata registry、action adapter 和 normalization 进入 shared policy。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#0f766e"/>
+    </marker>
+    <style>
+      .box { fill: #fffdf7; stroke: #d9ddd4; stroke-width: 2; rx: 8; }
+      .green { fill: #e7f3ef; stroke: #0f766e; }
+      .blue { fill: #eaf1ff; stroke: #2563eb; }
+      .amber { fill: #fff2d8; stroke: #a15c07; }
+      .clay { fill: #f8e7df; stroke: #a2472c; }
+      .head { font: 700 16px sans-serif; fill: #17211f; }
+      .txt { font: 13px sans-serif; fill: #66736f; }
+      .line { fill: none; stroke: #0f766e; stroke-width: 2; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect x="35" y="45" width="150" height="70" class="box blue"/>
+  <text x="110" y="73" text-anchor="middle" class="head">Franka data</text>
+  <text x="110" y="96" text-anchor="middle" class="txt">eef delta 7D</text>
+  <rect x="35" y="135" width="150" height="70" class="box amber"/>
+  <text x="110" y="163" text-anchor="middle" class="head">ALOHA data</text>
+  <text x="110" y="186" text-anchor="middle" class="txt">dual-arm joints</text>
+  <rect x="35" y="225" width="150" height="70" class="box clay"/>
+  <text x="110" y="253" text-anchor="middle" class="head">Mobile manip.</text>
+  <text x="110" y="276" text-anchor="middle" class="txt">arm + base</text>
+
+  <line x1="185" y1="80" x2="275" y2="155" class="line"/>
+  <line x1="185" y1="170" x2="275" y2="170" class="line"/>
+  <line x1="185" y1="260" x2="275" y2="185" class="line"/>
+
+  <rect x="275" y="120" width="170" height="100" class="box green"/>
+  <text x="360" y="155" text-anchor="middle" class="head">Metadata Registry</text>
+  <text x="360" y="180" text-anchor="middle" class="txt">robot, camera, action</text>
+  <text x="360" y="200" text-anchor="middle" class="txt">fps, stats, source</text>
+
+  <line x1="445" y1="170" x2="520" y2="170" class="line"/>
+  <rect x="520" y="120" width="160" height="100" class="box"/>
+  <text x="600" y="155" text-anchor="middle" class="head">Action Adapter</text>
+  <text x="600" y="180" text-anchor="middle" class="txt">common action</text>
+  <text x="600" y="200" text-anchor="middle" class="txt">or robot head</text>
+
+  <line x1="680" y1="170" x2="755" y2="170" class="line"/>
+  <rect x="755" y="120" width="170" height="100" class="box green"/>
+  <text x="840" y="155" text-anchor="middle" class="head">Shared Policy</text>
+  <text x="840" y="180" text-anchor="middle" class="txt">conditioned by</text>
+  <text x="840" y="200" text-anchor="middle" class="txt">embodiment metadata</text>
+
+  <text x="490" y="305" text-anchor="middle" class="txt">评测必须按 robot、task、source 和 hold-out split 拆开，不能只看混合平均分。</text>
+</svg>

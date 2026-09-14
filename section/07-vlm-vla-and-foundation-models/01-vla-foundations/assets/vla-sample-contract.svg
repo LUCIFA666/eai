@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="360" viewBox="0 0 1080 360" role="img" aria-labelledby="title desc">
+  <title id="title">VLA 样本和动作 contract</title>
+  <desc id="desc">展示 VLA 样本从观测、任务和状态进入模型，再输出动作并通过动作规范接到控制器。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#0f766e"/>
+    </marker>
+    <style>
+      .box { fill: #fbfcf8; stroke: #0f766e; stroke-width: 2; rx: 10; }
+      .soft { fill: #eef7f3; }
+      .blue { fill: #edf4ff; stroke: #2563eb; }
+      .gold { fill: #fff6df; stroke: #a16207; }
+      .rose { fill: #fff0f3; stroke: #be123c; }
+      .title { font: 700 18px sans-serif; fill: #17211d; }
+      .label { font: 700 14px sans-serif; fill: #0f766e; }
+      .small { font: 13px sans-serif; fill: #66736c; }
+      .line { stroke: #0f766e; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect x="28" y="42" width="250" height="84" class="box blue"/>
+  <text x="153" y="75" text-anchor="middle" class="title">Observation</text>
+  <text x="153" y="100" text-anchor="middle" class="small">外部相机 / 腕部相机 / 历史帧</text>
+
+  <rect x="28" y="150" width="250" height="84" class="box soft"/>
+  <text x="153" y="183" text-anchor="middle" class="title">Task</text>
+  <text x="153" y="208" text-anchor="middle" class="small">语言指令 / 子任务 / 目标图像</text>
+
+  <rect x="28" y="258" width="250" height="84" class="box gold"/>
+  <text x="153" y="291" text-anchor="middle" class="title">State</text>
+  <text x="153" y="316" text-anchor="middle" class="small">关节角 / 末端位姿 / 夹爪</text>
+
+  <path d="M278 84 C320 84 340 165 380 165" class="line"/>
+  <path d="M278 192 H380" class="line"/>
+  <path d="M278 300 C320 300 340 205 380 205" class="line"/>
+
+  <rect x="380" y="118" width="240" height="112" class="box"/>
+  <text x="500" y="156" text-anchor="middle" class="title">VLA Policy</text>
+  <text x="500" y="184" text-anchor="middle" class="small">把视觉、语言、身体状态</text>
+  <text x="500" y="206" text-anchor="middle" class="small">联合映射为动作</text>
+
+  <path d="M620 174 H690" class="line"/>
+
+  <rect x="690" y="118" width="180" height="112" class="box rose"/>
+  <text x="780" y="154" text-anchor="middle" class="title">Action</text>
+  <text x="780" y="182" text-anchor="middle" class="small">joint / eef / gripper</text>
+  <text x="780" y="204" text-anchor="middle" class="small">step 或 chunk</text>
+
+  <path d="M870 174 H920" class="line"/>
+
+  <rect x="920" y="118" width="122" height="112" class="box soft"/>
+  <text x="981" y="154" text-anchor="middle" class="title">Robot</text>
+  <text x="981" y="182" text-anchor="middle" class="small">控制器</text>
+  <text x="981" y="204" text-anchor="middle" class="small">真机执行</text>
+
+  <rect x="390" y="276" width="650" height="42" class="box soft"/>
+  <text x="715" y="302" text-anchor="middle" class="label">Action contract: type / shape / unit / frame / fps / range / normalization</text>
+  <path d="M780 230 V276" class="line"/>
+</svg>

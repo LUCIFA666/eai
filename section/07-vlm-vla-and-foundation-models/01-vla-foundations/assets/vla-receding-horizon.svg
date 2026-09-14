@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="300" viewBox="0 0 960 300" role="img" aria-labelledby="title desc">
+  <title id="title">VLA 滚动时域执行节奏</title>
+  <desc id="desc">展示模型观察最近窗口，预测未来动作片段，只执行前几步，然后重新观察和预测。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#0f766e"/>
+    </marker>
+    <style>
+      .box { fill: #fbfcf8; stroke: #0f766e; stroke-width: 2; rx: 10; }
+      .soft { fill: #eef7f3; }
+      .muted { fill: #f2f6f0; stroke: #9aa8a0; }
+      .title { font: 700 17px sans-serif; fill: #17211d; }
+      .small { font: 13px sans-serif; fill: #66736c; }
+      .label { font: 700 13px sans-serif; fill: #0f766e; }
+      .line { stroke: #0f766e; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+      .tick { fill: #0f766e; }
+      .future { fill: #dfeee9; }
+      .exec { fill: #0f766e; }
+    </style>
+  </defs>
+
+  <rect x="38" y="62" width="170" height="86" class="box soft"/>
+  <text x="123" y="96" text-anchor="middle" class="title">观测窗口</text>
+  <text x="123" y="122" text-anchor="middle" class="small">最近 N 帧图像 + 状态</text>
+
+  <path d="M208 105 H282" class="line"/>
+
+  <rect x="282" y="62" width="170" height="86" class="box"/>
+  <text x="367" y="96" text-anchor="middle" class="title">VLA 推理</text>
+  <text x="367" y="122" text-anchor="middle" class="small">生成未来 H 步 action chunk</text>
+
+  <path d="M452 105 H526" class="line"/>
+
+  <rect x="526" y="62" width="202" height="86" class="box soft"/>
+  <text x="627" y="96" text-anchor="middle" class="title">执行前 K 步</text>
+  <text x="627" y="122" text-anchor="middle" class="small">保留闭环纠错机会</text>
+
+  <path d="M728 105 H802" class="line"/>
+
+  <rect x="802" y="62" width="120" height="86" class="box"/>
+  <text x="862" y="96" text-anchor="middle" class="title">重新观测</text>
+  <text x="862" y="122" text-anchor="middle" class="small">再规划下一段</text>
+
+  <path d="M862 148 C862 230 123 230 123 148" class="line"/>
+
+  <text x="480" y="195" text-anchor="middle" class="label">循环节奏：预测一段，不盲目执行完整段</text>
+
+  <g transform="translate(282 238)">
+    <text x="0" y="0" class="small">action chunk:</text>
+    <rect x="112" y="-18" width="24" height="24" class="exec" rx="4"/>
+    <rect x="142" y="-18" width="24" height="24" class="exec" rx="4"/>
+    <rect x="172" y="-18" width="24" height="24" class="exec" rx="4"/>
+    <rect x="202" y="-18" width="24" height="24" class="future" rx="4"/>
+    <rect x="232" y="-18" width="24" height="24" class="future" rx="4"/>
+    <rect x="262" y="-18" width="24" height="24" class="future" rx="4"/>
+    <text x="334" y="0" class="small">深色 = 已执行 K 步，浅色 = 丢弃并重新预测</text>
+  </g>
+</svg>

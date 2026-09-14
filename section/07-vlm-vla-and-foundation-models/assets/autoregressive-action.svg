@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 300" role="img" aria-labelledby="title desc">
+  <title id="title">自回归动作 token 序列</title>
+  <desc id="desc">图像、语言、状态和动作 token 组成统一序列，模型逐 token 生成动作。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#2563eb"/>
+    </marker>
+    <style>
+      .tok { stroke-width: 1.5; rx: 7; }
+      .img { fill: #eaf1ff; stroke: #2563eb; }
+      .lang { fill: #e7f3ef; stroke: #0f766e; }
+      .state { fill: #fff2d8; stroke: #a15c07; }
+      .act { fill: #f8e7df; stroke: #a2472c; }
+      .txt { font: 13px sans-serif; fill: #17211f; }
+      .small { font: 12px sans-serif; fill: #66736f; }
+      .line { fill: none; stroke: #2563eb; stroke-width: 2; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <text x="40" y="48" class="txt">训练 / 推理上下文</text>
+  <g transform="translate(40 82)">
+    <rect width="80" height="42" class="tok img"/><text x="40" y="26" text-anchor="middle" class="txt">IMG</text>
+    <rect x="92" width="80" height="42" class="tok img"/><text x="132" y="26" text-anchor="middle" class="txt">IMG</text>
+    <rect x="184" width="105" height="42" class="tok lang"/><text x="236" y="26" text-anchor="middle" class="txt">TASK</text>
+    <rect x="301" width="105" height="42" class="tok state"/><text x="353" y="26" text-anchor="middle" class="txt">STATE</text>
+    <rect x="418" width="70" height="42" class="tok act"/><text x="453" y="26" text-anchor="middle" class="txt">a1</text>
+    <rect x="500" width="70" height="42" class="tok act"/><text x="535" y="26" text-anchor="middle" class="txt">a2</text>
+    <rect x="582" width="70" height="42" class="tok act"/><text x="617" y="26" text-anchor="middle" class="txt">a3</text>
+    <text x="680" y="26" class="txt">...</text>
+  </g>
+  <line x1="450" y1="155" x2="450" y2="205" class="line"/>
+  <rect x="300" y="205" width="300" height="56" rx="8" fill="#fffdf7" stroke="#d9ddd4" stroke-width="2"/>
+  <text x="450" y="230" text-anchor="middle" class="txt">decode action tokens -> continuous action chunk</text>
+  <text x="450" y="250" text-anchor="middle" class="small">token 数、顺序、停止条件和延迟都必须可检查</text>
+  <text x="805" y="110" class="small">自回归：每次生成下一个 token</text>
+  <path d="M760 120 C805 155 805 190 640 222" class="line"/>
+</svg>

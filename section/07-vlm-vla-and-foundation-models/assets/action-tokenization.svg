@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 190" role="img" aria-labelledby="title desc">
+  <title id="title">动作 Token 化</title>
+  <desc id="desc">连续动作轴被划分为多个 bins，动作值编码成 token，再解码回 bin center。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#0f766e"/>
+    </marker>
+    <style>
+      .axis { stroke: #17211f; stroke-width: 2; }
+      .tick { stroke: #a15c07; stroke-width: 2; }
+      .bin { fill: #fff2d8; stroke: #a15c07; }
+      .sel { fill: #f8e7df; stroke: #a2472c; stroke-width: 2; }
+      .txt { font: 13px sans-serif; fill: #66736f; }
+      .head { font: 700 17px sans-serif; fill: #17211f; }
+      .token { fill: #eaf1ff; stroke: #2563eb; stroke-width: 2; rx: 8; }
+      .line { fill: none; stroke: #0f766e; stroke-width: 2; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <text x="55" y="60" class="head">连续动作 dx</text>
+  <line x1="55" y1="130" x2="465" y2="130" class="axis"/>
+  <text x="55" y="158" text-anchor="middle" class="txt">-0.05 m</text>
+  <text x="465" y="158" text-anchor="middle" class="txt">0.05 m</text>
+  <g>
+    <rect x="75" y="100" width="48" height="30" class="bin"/>
+    <rect x="123" y="100" width="48" height="30" class="bin"/>
+    <rect x="171" y="100" width="48" height="30" class="bin"/>
+    <rect x="219" y="100" width="48" height="30" class="bin"/>
+    <rect x="267" y="100" width="48" height="30" class="sel"/>
+    <rect x="315" y="100" width="48" height="30" class="bin"/>
+    <rect x="363" y="100" width="48" height="30" class="bin"/>
+  </g>
+  <circle cx="292" cy="90" r="6" fill="#a2472c"/>
+  <text x="292" y="78" text-anchor="middle" class="txt">value</text>
+
+  <line x1="475" y1="115" x2="560" y2="115" class="line"/>
+  <rect x="560" y="80" width="130" height="70" class="token"/>
+  <text x="625" y="110" text-anchor="middle" class="head">token 161</text>
+  <text x="625" y="133" text-anchor="middle" class="txt">离散符号</text>
+
+  <line x1="690" y1="115" x2="770" y2="115" class="line"/>
+  <rect x="770" y="80" width="130" height="70" class="token"/>
+  <text x="835" y="110" text-anchor="middle" class="head">decoded</text>
+  <text x="835" y="133" text-anchor="middle" class="txt">bin center</text>
+</svg>

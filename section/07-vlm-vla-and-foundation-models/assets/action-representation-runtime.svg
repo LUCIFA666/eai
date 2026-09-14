@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 260" role="img" aria-labelledby="title desc">
+  <title id="title">动作表示到控制器的链路</title>
+  <desc id="desc">模型输出经过解码、反归一化、坐标系检查和控制器适配后发送到机器人。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#2563eb"/>
+    </marker>
+    <style>
+      .box { fill: #fffdf7; stroke: #d9ddd4; stroke-width: 2; rx: 8; }
+      .head { font: 700 16px sans-serif; fill: #17211f; }
+      .txt { font: 13px sans-serif; fill: #66736f; }
+      .line { fill: none; stroke: #2563eb; stroke-width: 2; marker-end: url(#arrow); }
+      .warn { fill: #fff2d8; stroke: #a15c07; }
+    </style>
+  </defs>
+  <rect x="25" y="75" width="130" height="85" class="box"/>
+  <text x="90" y="108" text-anchor="middle" class="head">VLA 输出</text>
+  <text x="90" y="132" text-anchor="middle" class="txt">token 或 normalized</text>
+  <line x1="155" y1="118" x2="205" y2="118" class="line"/>
+
+  <rect x="205" y="75" width="130" height="85" class="box"/>
+  <text x="270" y="108" text-anchor="middle" class="head">Decode</text>
+  <text x="270" y="132" text-anchor="middle" class="txt">token -> action</text>
+  <line x1="335" y1="118" x2="385" y2="118" class="line"/>
+
+  <rect x="385" y="75" width="130" height="85" class="box warn"/>
+  <text x="450" y="108" text-anchor="middle" class="head">Denormalize</text>
+  <text x="450" y="132" text-anchor="middle" class="txt">复用训练 stats</text>
+  <line x1="515" y1="118" x2="565" y2="118" class="line"/>
+
+  <rect x="565" y="75" width="145" height="85" class="box"/>
+  <text x="637" y="108" text-anchor="middle" class="head">Frame / Unit</text>
+  <text x="637" y="132" text-anchor="middle" class="txt">坐标系和单位检查</text>
+  <line x1="710" y1="118" x2="760" y2="118" class="line"/>
+
+  <rect x="760" y="75" width="155" height="85" class="box"/>
+  <text x="837" y="108" text-anchor="middle" class="head">Controller</text>
+  <text x="837" y="132" text-anchor="middle" class="txt">joint / EEF / gripper</text>
+
+  <text x="470" y="218" text-anchor="middle" class="txt">每一步都必须可审计：shape、range、unit、frame、fps、normalizer 和 safety clip。</text>
+</svg>

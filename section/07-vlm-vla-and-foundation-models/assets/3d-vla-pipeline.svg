@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 300" role="img" aria-labelledby="title desc">
+  <title id="title">3D VLA 输入链路</title>
+  <desc id="desc">RGB-D 输入生成点云，经过外参变换到机器人坐标系，再进入 VLA policy。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#2563eb"/>
+    </marker>
+    <style>
+      .box { fill: #fffdf7; stroke: #d9ddd4; stroke-width: 2; rx: 8; }
+      .blue { fill: #eaf1ff; stroke: #2563eb; }
+      .green { fill: #e7f3ef; stroke: #0f766e; }
+      .amber { fill: #fff2d8; stroke: #a15c07; }
+      .gray { fill: #f1f3ee; stroke: #66736f; }
+      .head { font: 700 16px sans-serif; fill: #17211f; }
+      .txt { font: 13px sans-serif; fill: #66736f; }
+      .line { fill: none; stroke: #2563eb; stroke-width: 2; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect x="35" y="80" width="140" height="88" class="box blue"/>
+  <text x="105" y="112" text-anchor="middle" class="head">RGB-D</text>
+  <text x="105" y="138" text-anchor="middle" class="txt">image + depth</text>
+  <line x1="175" y1="124" x2="230" y2="124" class="line"/>
+
+  <rect x="230" y="80" width="150" height="88" class="box green"/>
+  <text x="305" y="112" text-anchor="middle" class="head">Point Cloud</text>
+  <text x="305" y="138" text-anchor="middle" class="txt">points, colors, mask</text>
+  <line x1="380" y1="124" x2="435" y2="124" class="line"/>
+
+  <rect x="435" y="80" width="160" height="88" class="box amber"/>
+  <text x="515" y="112" text-anchor="middle" class="head">Extrinsics</text>
+  <text x="515" y="138" text-anchor="middle" class="txt">camera -> base</text>
+  <line x1="595" y1="124" x2="650" y2="124" class="line"/>
+
+  <rect x="650" y="80" width="135" height="88" class="box gray"/>
+  <text x="717" y="112" text-anchor="middle" class="head">3D Tokens</text>
+  <text x="717" y="138" text-anchor="middle" class="txt">or spatial grid</text>
+  <line x1="785" y1="124" x2="840" y2="124" class="line"/>
+
+  <rect x="840" y="80" width="115" height="88" class="box"/>
+  <text x="897" y="112" text-anchor="middle" class="head">Action</text>
+  <text x="897" y="138" text-anchor="middle" class="txt">base frame</text>
+
+  <text x="490" y="235" text-anchor="middle" class="txt">关键检查：depth_scale、timestamp、intrinsics、extrinsics、point frame 与 action frame 是否一致。</text>
+</svg>

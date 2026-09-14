@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 310" role="img" aria-labelledby="title desc">
+  <title id="title">Diffusion 和 Flow 动作头</title>
+  <desc id="desc">视觉语言条件和带噪动作 chunk 输入连续动作头，生成可执行的动作片段。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#0f766e"/>
+    </marker>
+    <style>
+      .box { fill: #fffdf7; stroke: #d9ddd4; stroke-width: 2; rx: 8; }
+      .blue { fill: #eaf1ff; stroke: #2563eb; }
+      .clay { fill: #f8e7df; stroke: #a2472c; }
+      .green { fill: #e7f3ef; stroke: #0f766e; }
+      .txt { font: 13px sans-serif; fill: #66736f; }
+      .head { font: 700 16px sans-serif; fill: #17211f; }
+      .line { fill: none; stroke: #0f766e; stroke-width: 2; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect x="55" y="60" width="165" height="82" class="box blue"/>
+  <text x="137" y="92" text-anchor="middle" class="head">VLA condition</text>
+  <text x="137" y="118" text-anchor="middle" class="txt">image + language + state</text>
+
+  <rect x="55" y="180" width="165" height="82" class="box clay"/>
+  <text x="137" y="212" text-anchor="middle" class="head">Noisy action</text>
+  <text x="137" y="238" text-anchor="middle" class="txt">chunk at step t</text>
+
+  <line x1="220" y1="101" x2="330" y2="135" class="line"/>
+  <line x1="220" y1="221" x2="330" y2="165" class="line"/>
+
+  <rect x="330" y="105" width="250" height="90" class="box green"/>
+  <text x="455" y="138" text-anchor="middle" class="head">Diffusion / Flow Action Head</text>
+  <text x="455" y="164" text-anchor="middle" class="txt">predict noise, clean action, or velocity</text>
+
+  <line x1="580" y1="150" x2="690" y2="150" class="line"/>
+  <rect x="690" y="105" width="210" height="90" class="box"/>
+  <text x="795" y="138" text-anchor="middle" class="head">continuous action chunk</text>
+  <text x="795" y="164" text-anchor="middle" class="txt">execute first n steps</text>
+
+  <path d="M795 205 C765 255 520 260 455 205" fill="none" stroke="#a15c07" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="635" y="278" text-anchor="middle" class="txt">receding horizon: 重新观测后再生成</text>
+</svg>
